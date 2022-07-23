@@ -247,6 +247,7 @@ Options:
 
 ## TODO
 
+- [ ] Merge original changes from https://github.com/hlissner/dotfiles/commits/master/?after=b1f170f7f984a372c5647ad74fee9ed1deeabdab+0
 - [x] fix agenix secrets
 - [ ] ngnix bind 80 port and set root url
 - [ ] set root path for all services (www/..)
