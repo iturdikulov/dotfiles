@@ -110,6 +110,7 @@
       newsboat.enable = true;
       ttyper.enable = true;
 
+      adl.enable = true;
       direnv.enable = true;
       git.enable = true;
       tmux.enable = true;
