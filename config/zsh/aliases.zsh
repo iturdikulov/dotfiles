@@ -63,6 +63,7 @@ alias p='xclip -selection clipboard -out'
 
 alias jc='journalctl -xe'
 alias sc=systemctl
+alias scu='systemctl --user'
 alias ssc='sudo systemctl'
 
 if (( $+commands[eza] )); then

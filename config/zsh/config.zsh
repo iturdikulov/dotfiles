@@ -42,7 +42,7 @@ if (( $+commands[autin] )); then
     atuin import auto # History manager
 fi
 
-setopt BANG_HIST                 # Don't treat '!' specially during expansion.
+unsetopt BANG_HIST               # Don't treat '!' specially during expansion.
 setopt EXTENDED_HISTORY          # Include start time in history records
 setopt APPEND_HISTORY            # Appends history to history file on exit
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
