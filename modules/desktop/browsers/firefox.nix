@@ -28,13 +28,13 @@ in {
   config = mkIf cfg.enable (mkMerge [
     {
       user.packages = with pkgs; [
-        unstable.firefox-bin
+        firefox-bin
         (makeDesktopItem {
           name = "firefox-private";
           desktopName = "Firefox (Private)";
           genericName = "Open a private Firefox window";
           icon = "firefox";
-          exec = "${unstable.firefox-bin}/bin/firefox --private-window";
+          exec = "${firefox-bin}/bin/firefox --private-window";
           categories = [ "Network" ];
         })
       ];
@@ -127,6 +127,7 @@ in {
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
         "media.hardware-video-decoding.force-enabled" = true; # Force enable hardware-video-decoding, TODO: review in future, maybe not required
         "extensions.pocket.enabled" = false;
+        "extensions.unifiedExtensions.enabled" = false;
         "extensions.shield-recipe-client.enabled" = false;
         "reader.parse-on-load.enabled" = false;  # "reader view"
 
