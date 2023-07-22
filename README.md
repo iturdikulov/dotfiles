@@ -75,7 +75,7 @@ TODO: add screenshoot
    git add hosts/$HOST
    
    # Install nixOS
-   # as alternative you can install flake from installed nixos (not 100% tested)
+   # as alternative you can install flake from installed nixos
    # USER=$USER nixos-rebuild switch --impure --flake .#$HOST
    USER=$USER nixos-install --root /mnt --impure --flake .#$HOST
    
