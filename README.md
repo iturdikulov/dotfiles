@@ -25,13 +25,13 @@ dotfiles over there.
 
 |                |                                                          |
 |----------------|----------------------------------------------------------|
-| **Shell:**     | zsh + zgenom                                             |
+| **Shell:**     | zsh                                                      |
 | **DM:**        | lightdm + lightdm-mini-greeter                           |
-| **WM:**        | bspwm + polybar                                          |
-| **Editor:**    | [Doom Emacs][doom-emacs]                                 |
-| **Terminal:**  | st                                                       |
+| **WM:**        | TODO: dwm-flexipatch + dwmblocks                         |
+| **Editor:**    | TODO: neovim                                             |
+| **Terminal:**  | TODO: kitty                                              |
 | **Launcher:**  | rofi                                                     |
-| **Browser:**   | firefox                                                  |
+| **Browser:**   | TODO: ungoogled-chromium                                 |
 | **GTK Theme:** | [Ant Dracula](https://github.com/EliverLara/Ant-Dracula) |
 
 -----
@@ -208,6 +208,5 @@ Options:
   + [What y'all will need when Nix drives you to drink.](https://www.youtube.com/watch?v=Eni9PPPPBpg)
 
 
-[doom-emacs]: https://github.com/hlissner/doom-emacs
 [nixos]: https://releases.nixos.org/?prefix=nixos/unstable/
 [agenix]: https://github.com/ryantm/agenix
