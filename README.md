@@ -13,12 +13,12 @@ dotfiles over there.
 > authority or expert in the NixOS space. Seek help on [the NixOS
 > discourse](https://discourse.nixos.org) instead.
 
-<img src="/../screenshots/alucard/fakebusy.png" width="100%" />
+TODO: add screenshoot
 
 <p align="center">
-<span><img src="/../screenshots/alucard/desktop.png" height="178" /></span>
-<span><img src="/../screenshots/alucard/rofi.png" height="178" /></span>
-<span><img src="/../screenshots/alucard/tiling.png" height="178" /></span>
+TODO: add screenshoot
+TODO: add screenshoot
+TODO: add screenshoot
 </p>
 
 ------
