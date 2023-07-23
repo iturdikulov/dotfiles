@@ -71,6 +71,7 @@ TODO: add screenshoot
    nixos-generate-config --root /mnt --dir /etc/dotfiles/hosts/$HOST
    rm -f hosts/$HOST/configuration.nix
    cp hosts/kuro/default.nix hosts/$HOST/default.nix
+   # get some settings from hosts/kuro/hardware-configuration.nix too!
 
    vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
 
@@ -241,3 +242,4 @@ Options:
 
 ## TODO
 - parametrize $GNUPGHOME/sshcontrol
+- todo replace kuro with volga in README.md, add volga README.md
