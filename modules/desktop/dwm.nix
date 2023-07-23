@@ -60,6 +60,20 @@ in {
           enable = true;
         };
       };
+      dwm-status = {
+        enable = true;
+        order = ["cpu_load" "audio" "battery" "time"];
+	    extraConfig = ''
+	      separator = "/"
+	      [audio]
+	      mute = "🔇"
+	      template = "{ICO} {VOL}%"
+	      icons = ["奄", "奔", "墳"]
+	
+	      [time]
+	      format = "%A, %B %d %H:%M"
+	    '';
+       gvfs.enable = true;
     };
 
     systemd.user.services."dunst" = {
