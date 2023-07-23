@@ -64,7 +64,7 @@ separator = " / "
 [audio]
 mute = "🔇"
 template = "{ICO} {VOL}%"
-icons = ["奄", "奔", "墳"]
+icons = ["🔈", "🔉", "🔊"]
 
 [time]
 format = "%A, %B %d %H:%M"
