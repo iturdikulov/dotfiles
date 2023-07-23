@@ -105,6 +105,7 @@ TODO: add screenshoot
    git remote set-url origin git@github.com:Inom-Turdikulov/nix_dotfiles.git
    git status
    ```
+10. Check / adjust options file (user name): `nix_dotfiles/modules/options.nix`
 
 ### Share directory in VM
 
