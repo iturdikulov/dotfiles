@@ -21,6 +21,7 @@ in {
     #      is cleaner than overriding the systemd unit.
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
+        enable-ssh-support
         default-cache-ttl ${toString cfg.cacheTTL}
         pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
       '';
