@@ -238,3 +238,6 @@ Options:
 
 [nixos]: https://releases.nixos.org/?prefix=nixos/unstable/
 [agenix]: https://github.com/ryantm/agenix
+
+## TODO
+- parametrize $GNUPGHOME/sshcontrol
