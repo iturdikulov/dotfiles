@@ -75,7 +75,7 @@ TODO: add screenshoot
    vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
 
    # Optionally Check / adjust options file (default user name at least)
-   vim nix_dotfiles/modules/options.nix
+   vim modules/options.nix
    
    git add hosts/$HOST
    
