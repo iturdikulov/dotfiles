@@ -91,6 +91,13 @@ TODO: add screenshoot
 > :warning: **Don't forget to change your `root` and `$USER` passwords!** They
 > are set to `nixos` by default.
 
+7. Import gpg key
+   `gpg --import-options restore --import private.gpg`
+
+8. Optional. Setup git config
+   - Get `sec` key from this output: `gpg --list-secret-keys --keyid-format LONG <EMAIL>`
+   - Change git config: `vi config/git/config`
+   - Rebuild configuration `hey rebuild`
 
 ## Management
 
