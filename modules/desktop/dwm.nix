@@ -15,9 +15,12 @@ in {
     #   source $XDG_CONFIG_HOME/bspwm/bspwmrc
     # '';
 
-    home.xdg.dataFile."dwm/autostart.sh".text = ''
-
-    '';
+    home.dataFile."dwm/autostart.sh" = {
+        text = ''
+#!/bin/sh
+[[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || source $XDG_CONFIG_HOME/xtheme.init'';
+        executable = true;
+    };
 
     nixpkgs.overlays = [
       (self: super: {
