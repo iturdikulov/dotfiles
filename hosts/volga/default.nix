@@ -11,7 +11,7 @@
       dwm.enable = true;
       apps = {
         rofi.enable = true;
-        # godot.enable = true;
+        godot.enable = true;
       };
       browsers = {
         default = "brave";
