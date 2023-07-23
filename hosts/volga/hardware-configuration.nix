@@ -8,10 +8,51 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+    initrd.kernelModules = [];
+    extraModulePackages = [];
+    kernelModules = [ "kvm-amd" ];
+    kernelParams = [
+      # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
+      #      vulnerabilities. Don't copy this blindly! And especially not for
+      #      mission critical or server/headless builds exposed to the world.
+      "mitigations=off"
+    ];
+
+    # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
+    # pinging them, unlike my servers.
+    kernel.sysctl."net.ipv4.icmp_echo_ignore_broadcasts" = 1;
+  };
+
+
+  # Modules
+  modules.hardware = {
+    audio.enable = true;
+    ergodox.enable = false;
+    fs = {
+      enable = true;
+      ssd.enable = true;
+    };
+    nvidia.enable = false;
+    sensors.enable = true;
+  };
+
+  # CPU
+  nix.settings.max-jobs = lib.mkDefault 16;
+  powerManagement.cpuFreqGovernor = "performance";
+  hardware.cpu.amd.updateMicrocode = true;
+
+  # Displays
+  #services.xserver = {
+  #  # This must be done manually to ensure my screen spaces are arranged exactly
+  #  # as I need them to be *and* the correct monitor is "primary". Using
+  #  # xrandrHeads does not work.
+  #  monitorSection = ''
+  #  '';
+  #  screenSection = ''
+  #  '';
+  #};
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/be744f28-b85c-4658-879c-f739cafc7064";
