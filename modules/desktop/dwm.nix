@@ -42,7 +42,6 @@ in {
       dunst
       libnotify
       dmenu
-      alsa-utils
     ];
 
     services = {
