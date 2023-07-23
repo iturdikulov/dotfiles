@@ -63,7 +63,7 @@ TODO: add screenshoot
    # Set USER to your desired username (defaults to hlissner)
    export USER=...
 
-   git clone https://github.com/hlissner/dotfiles /etc/dotfiles
+   git clone https://github.com/Inom-Turdikulov/nix_dotfiles /etc/dotfiles
    cd /etc/dotfiles
    
    # Create a host config in `hosts/` and add it to the repo:
