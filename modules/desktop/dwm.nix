@@ -15,6 +15,10 @@ in {
     #   source $XDG_CONFIG_HOME/bspwm/bspwmrc
     # '';
 
+    home.xdg.dataFile."dwm/autostart.sh".text = ''
+
+    '';
+
     nixpkgs.overlays = [
       (self: super: {
         dwm = super.dwm.overrideAttrs (old: {
