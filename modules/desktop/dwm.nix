@@ -17,14 +17,14 @@ in {
 
     nixpkgs.overlays = [
       (self: super: {
-        dwm = super.dwm.override {
-           src = fetchFromGitHub {
+        dwm = super.dwm.overrideAttrs (old: {
+           src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "3e0598a7bd1687a6fbc4fab382d340f597067bb1";
-             hash = "sha256-e5JUDcQZr0XaR3jpK3WithJWj9g0Bj5dROMcef+RMrc=";
+             rev = "364a48aa162c43f4a2094a0cef667af8ed635654";
+	     hash = "sha256-qEaVn87xtatbKo8vgkwkRIHycmVsTXIIPxSAkDfDXtc=";
            };
-        };
+        });
       })
     ];
 
@@ -32,6 +32,8 @@ in {
       lightdm
       dunst
       libnotify
+      kitty
+      dmenu
       (polybar.override {
         pulseSupport = true;
         nlSupport = true;
@@ -50,9 +52,6 @@ in {
         };
         windowManager.dwm = {
           enable = true;
-          package = with pkgs;
-            dwm.overrideAttrs (old: {
-            });
         };
       };
     };
