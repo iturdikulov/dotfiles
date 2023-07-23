@@ -99,6 +99,13 @@ TODO: add screenshoot
    - Change git config: `vi config/git/config`
    - Rebuild configuration `hey rebuild`
 
+9. When you configured git access, you can change dotfiles remote url:
+   ```sh
+   cd /etc/dotfiles
+   git remote set-url origin git@github.com:Inom-Turdikulov/nix_dotfiles.git
+   git status
+   ```
+
 ### Share directory in VM
 
 Sometimes if you want to test dotfiles in VM, you need access to some files outside guest
