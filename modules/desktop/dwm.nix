@@ -32,12 +32,8 @@ in {
       lightdm
       dunst
       libnotify
-      kitty
       dmenu
-      (polybar.override {
-        pulseSupport = true;
-        nlSupport = true;
-      })
+      alsa-utils
     ];
 
     services = {
