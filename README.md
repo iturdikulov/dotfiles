@@ -99,6 +99,14 @@ TODO: add screenshoot
    - Change git config: `vi config/git/config`
    - Rebuild configuration `hey rebuild`
 
+### Share directory in VM
+
+Sometimes if you want to test dotfiles in VM, you need access to some files outside guest
+machine, here some steps required for QUEMU/VirtManager
+- poweroff guest and enable shared memory (`memory` -> `enable shared memory`)
+- add shared Filesystem (`add hardware` -> `File system` -> `Driver=virtiofs` -> select `soruce` and `target path`)
+- mount shared Filesystem (`sudo mount -t virtiofs target_path mount_path`)
+
 ## Management
 
 And I say, `bin/hey`, [what's going on?](http://hemansings.com/)
