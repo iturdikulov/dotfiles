@@ -1,11 +1,12 @@
 # When I'm stuck in the terminal or don't have access to Emacs, (neo)vim is my
 # go-to. I am a vimmer at heart, after all.
 
-{ config, options, lib, pkgs, ... }:
+{ config, lib, pkgs, home, inputs, ... }:
 
 with lib;
 with lib.my;
 let cfg = config.modules.editors.vim;
+    configDir = config.dotfiles.configDir;
 in {
   options.modules.editors.vim = {
     enable = mkBoolOpt false;
@@ -13,16 +14,26 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      editorconfig-core-c
-      unstable.neovim
-    ];
+      neovim
 
-    # This is for non-neovim, so it loads my nvim config
-    # env.VIMINIT = "let \\$MYVIMRC='\\$XDG_CONFIG_HOME/nvim/init.vim' | source \\$MYVIMRC";
+      git
+      gnutls              # for TLS connectivity
+
+      fd                  # faster projectile indexing
+      imagemagick         # for image-dired
+
+      ## Module dependencies
+      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      editorconfig-core-c
+      sqlite
+      texlive.combined.scheme-medium
+    ];
 
     environment.shellAliases = {
       vim = "nvim";
       v   = "nvim";
     };
+
+    # fonts.fonts = [ pkgs.vim-all-the-icons-fonts ];
   };
 }
