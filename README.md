@@ -27,10 +27,10 @@ TODO: add screenshoot
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
 | **DM:**        | lightdm + lightdm-mini-greeter                           |
-| **WM:**        | TODO: dwm-flexipatch + dwmblocks                         |
-| **Editor:**    | TODO: neovim                                             |
-| **Terminal:**  | TODO: kitty                                              |
-| **Launcher:**  | rofi                                                     |
+| **WM:**        | dwm-flexipatch + TODO: dwmblocks                         |
+| **Editor:**    | neovim                                                   |
+| **Terminal:**  | st                                                       |
+| **Launcher:**  | dmenu                                                    |
 | **Browser:**   | TODO: ungoogled-chromium                                 |
 | **GTK Theme:** | [Ant Dracula](https://github.com/EliverLara/Ant-Dracula) |
 
@@ -38,7 +38,7 @@ TODO: add screenshoot
 
 ## Quick start
 
-1. Acquire NixOS 21.11 or newer:
+1. Acquire NixOS 23.04 or newer:
    ```sh
    # Yoink nixos-unstable
    wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
@@ -231,7 +231,7 @@ Options:
   + [Some notes about using Nix](https://github.com/justinwoo/nix-shorts)
   + [What helped me figure out generators (for npm, yarn, python and haskell)](https://myme.no/posts/2020-01-26-nixos-for-development.html)
   + [Learn from someone else's descent into madness; this journals his
-    experience digging into the NixOS
+    experience digging into the NTODO: kittyixOS
     ecosystem](https://www.ianthehenry.com/posts/how-to-learn-nix/introduction/)
   + [What y'all will need when Nix drives you to drink.](https://www.youtube.com/watch?v=Eni9PPPPBpg)
 
