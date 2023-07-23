@@ -70,7 +70,7 @@
 
 
   ## Local config
-  programs.ssh.startAgent = true;
+  programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
   networking.networkmanager.enable = true;
 }
