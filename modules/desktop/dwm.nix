@@ -15,6 +15,19 @@ in {
     #   source $XDG_CONFIG_HOME/bspwm/bspwmrc
     # '';
 
+    nixpkgs.overlays = [
+      (self: super: {
+        dwm = super.dwm.override {
+           src = fetchFromGitHub {
+             owner = "Inom-Turdikulov";
+             repo = "dwm-flexipatch";
+             rev = "3e0598a7bd1687a6fbc4fab382d340f597067bb1";
+             hash = "sha256-e5JUDcQZr0XaR3jpK3WithJWj9g0Bj5dROMcef+RMrc=";
+           };
+        };
+      })
+    ];
+
     environment.systemPackages = with pkgs; [
       lightdm
       dunst
@@ -39,13 +52,6 @@ in {
           enable = true;
           package = with pkgs;
             dwm.overrideAttrs (old: {
-              src = fetchFromGitHub {
-                owner = "Inom-Turdikulov";
-                repo = "dwm-flexipatch";
-                rev = "3e0598a7bd1687a6fbc4fab382d340f597067bb1";
-                hash = "sha256-e5JUDcQZr0XaR3jpK3WithJWj9g0Bj5dROMcef+RMrc=";
-              };
-              buildInputs = old.buildInputs ++ [imlib2];
             });
         };
       };
