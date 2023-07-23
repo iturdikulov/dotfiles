@@ -13,6 +13,7 @@ in {
     environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
     programs.gnupg.agent.enable = true;
+    programs.gnupg.agent.enableSSHSupport = true;
 
     user.packages = [ pkgs.tomb ];
 
@@ -24,7 +25,6 @@ in {
         enable-ssh-support
         default-cache-ttl ${toString cfg.cacheTTL}
         pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
-        ${pkgs.gnupg}/bin/gpg-connect-agent updatestartuptty /bye > /dev/null
       '';
     };
   };
