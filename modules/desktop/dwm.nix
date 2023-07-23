@@ -64,7 +64,7 @@ in {
         enable = true;
         order = ["audio" "time"];
 	extraConfig = ''
-separator = "/"
+separator = " / "
 [audio]
 mute = "🔇"
 template = "{ICO} {VOL}%"
