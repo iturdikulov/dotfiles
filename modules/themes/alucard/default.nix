@@ -19,7 +19,7 @@ in {
           };
           fonts = {
             sans.name = "Fira Sans";
-            mono.name = "Fira Code";
+            mono.name = "Terminus (TTF)";
           };
           colors = {
             black         = "#1E2029";
@@ -75,6 +75,7 @@ in {
           jetbrains-mono
           siji
           font-awesome
+	  terminus_font_ttf
         ];
       };
 
