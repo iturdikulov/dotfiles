@@ -27,7 +27,7 @@ TODO: add screenshoot
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
 | **DM:**        | lightdm + lightdm-mini-greeter                           |
-| **WM:**        | dwm-flexipatch + TODO: dwmblocks                         |
+| **WM:**        | dwm-flexipatch + dwm-status                              |
 | **Editor:**    | neovim                                                   |
 | **Terminal:**  | st                                                       |
 | **Launcher:**  | dmenu                                                    |
