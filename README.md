@@ -71,12 +71,16 @@ TODO: add screenshoot
    nixos-generate-config --root /mnt --dir /etc/dotfiles/hosts/$HOST
    rm -f hosts/$HOST/configuration.nix
    cp hosts/kuro/default.nix hosts/$HOST/default.nix
+
    vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
+
+   # Optionally Check / adjust options file (default user name at least)
+   vim nix_dotfiles/modules/options.nix
+   
    git add hosts/$HOST
    
    # Install nixOS
    # as alternative you can install flake from installed nixos
-   # USER=$USER nixos-rebuild switch --impure --flake .#$HOST
    USER=$USER nixos-install --root /mnt --impure --flake .#$HOST
    
    # If you get 'unrecognized option: --impure', replace '--impure' with 
@@ -105,7 +109,6 @@ TODO: add screenshoot
    git remote set-url origin git@github.com:Inom-Turdikulov/nix_dotfiles.git
    git status
    ```
-10. Check / adjust options file (user name): `nix_dotfiles/modules/options.nix`
 
 ### Share directory in VM
 
