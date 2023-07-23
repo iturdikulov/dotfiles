@@ -1,7 +1,7 @@
 [user]
-	name = Henrik Lissner
-	email = git@henrik.io
-	signingKey = FA1FADD9440B688CAA75A057B60957CA074D39A3
+	name = Inom Turdikulov
+	email = inom@iturdikulov.com
+	signingKey = A481023F91573F2DAFD91C603731FE9B6D4A4602
 [commit]
 	gpgSign = true
 [tag]
@@ -11,9 +11,9 @@
 [init]
 	defaultBranch = main
 [github]
-	user = hlissner
+	user = Inom-Turdikulov
 [gitlab]
-	user = hlissner
+	user = Inom-Turdikulov
 [push]
 	autoSquash = true
 [push]
@@ -36,7 +36,7 @@
     insteadOf = gh:
 [url "git@github.com:"]
     insteadOf = ssh+gh:
-[url "git@github.com:hlissner/"]
+[url "git@github.com:Inom-Turdikulov/"]
     insteadOf = gh:/
 [url "https://gitlab.com/"]
     insteadOf = gl:
