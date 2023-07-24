@@ -45,6 +45,7 @@
       node.enable = true;
       rust.enable = true;
       python.enable = true;
+      cc.enable = true;
     };
     editors = {
       default = "nvim";

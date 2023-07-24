@@ -36,6 +36,11 @@ in {
       editorconfig-core-c
       sqlite
       texlive.combined.scheme-medium
+
+      ## LSP
+      lua-language-server
+      nodePackages.pyright  # NOTE: sync this with python.nix
+      clang-tools  # NOTE: sync this with cc.nix
     ];
 
     programs.neovim = {
@@ -57,6 +62,16 @@ in {
                  which-key-nvim
                  comment-nvim
                  onedark-nvim
+
+                 # LSP, autocomplete and snippets
+                 nvim-lspconfig
+                 nvim-cmp
+                 cmp-buffer
+                 cmp-path
+                 cmp-nvim-lsp
+                 luasnip
+                 cmp_luasnip
+                 friendly-snippets
              ];
          };
        };
