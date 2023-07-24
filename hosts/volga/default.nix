@@ -54,12 +54,14 @@
       adl.enable = true;
       vaultwarden.enable = false;
       direnv.enable = true;
+      wiki-tui.enable = true;
       git.enable    = true;
       gnupg.enable  = true;
       tmux.enable   = true;
       zsh.enable    = true;
     };
     services = {
+      dictd.enable = true;
       ssh.enable = true;
       docker.enable = true;
       # Needed occasionally to help the parental units with PC problems
