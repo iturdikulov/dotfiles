@@ -10,12 +10,14 @@ in {
     enable = mkBoolOpt false;
     pdf.enable = mkBoolOpt false;
     ebook.enable = mkBoolOpt false;
+    research.enable = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       (mkIf cfg.ebook.enable calibre)
       (mkIf cfg.pdf.enable   evince)
+      (mkIf cfg.research.enable   papis)
       # zathura
     ];
 

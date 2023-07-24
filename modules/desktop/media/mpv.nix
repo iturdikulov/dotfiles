@@ -12,6 +12,15 @@ in {
     user.packages = with pkgs; [
       mpv
       mpvc  # CLI controller for mpv
+
+      # Web-torrent integration
+      jq
+      xidel
+      nodePackages.webtorrent-cli
+      mpvScripts.webtorrent-mpv-hook
+
+      # Youtube integration (for hook)
+      yt-dlp
     ];
   };
 }
