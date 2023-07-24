@@ -59,6 +59,7 @@
       gnupg.enable  = true;
       tmux.enable   = true;
       zsh.enable    = true;
+      sc-im.enable  = true;
     };
     services = {
       dictd.enable = true;
