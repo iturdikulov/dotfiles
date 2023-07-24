@@ -7,6 +7,14 @@ with lib;
 with lib.my;
 let cfg = config.modules.editors.vim;
     configDir = config.dotfiles.configDir;
+    fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "${lib.strings.sanitizeDerivationName repo}";
+      version = ref;
+      src = builtins.fetchGit {
+        url = "https://github.com/${repo}.git";
+        ref = ref;
+      };
+    };
 in {
   options.modules.editors.vim = {
     enable = mkBoolOpt false;
@@ -14,8 +22,6 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      neovim
-
       git
       gnutls              # for TLS connectivity
 
@@ -28,6 +34,36 @@ in {
       sqlite
       texlive.combined.scheme-medium
     ];
+
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+        configure = {
+         customRC = ''
+           luafile $XDG_CONFIG_HOME/nvim/init.lua
+         '';
+
+         packages.neovimPlugins = with pkgs.vimPlugins; {
+           start = [
+             plenary-nvim
+	     telescope-nvim
+             nvim-treesitter.withAllGrammars
+
+	     (fromGitHub "HEAD" "navarasu/onedark.nvim")
+	     (fromGitHub "HEAD" "tpope/vim-fugitive")
+	   ];
+         };
+       };
+
+      #plugins = with pkgs.vimPlugins; [
+      #  nvim-lspconfig
+      #
+      #
+      #
+      #];
+    };
 
     environment.shellAliases = {
       vim = "nvim";
