@@ -65,6 +65,8 @@
       dictd.enable = true;
       ssh.enable = true;
       docker.enable = true;
+      syncthing.enable = true;
+
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
     };
