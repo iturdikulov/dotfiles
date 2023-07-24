@@ -12,6 +12,7 @@
       apps = {
         rofi.enable = true;
         godot.enable = true;
+	slack.enable = true;
       };
       browsers = {
         default = "brave";
