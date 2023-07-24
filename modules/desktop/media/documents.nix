@@ -8,19 +8,26 @@ let cfg = config.modules.desktop.media.documents;
 in {
   options.modules.desktop.media.documents = {
     enable = mkBoolOpt false;
-    pdf.enable = mkBoolOpt false;
-    ebook.enable = mkBoolOpt false;
+    pdf.enable = mkBoolOpt true;
     research.enable = mkBoolOpt true;
+    ebook.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      (mkIf cfg.ebook.enable calibre)
-      (mkIf cfg.pdf.enable   evince)
-      (mkIf cfg.research.enable   papis)
-      # zathura
-    ];
+    user.packages = with pkgs;
+      (if cfg.ebook.enable then [
+	calibre
+      ] else [])++
 
-    # TODO calibre/evince/zathura dotfiles
+      (if cfg.pdf.enable then [
+	zathura
+      ] else [])++
+
+      (if cfg.research.enable then [
+        papis # to store DOI stuff
+	obsidian # render markdown and learn flashcards
+      ] else []);
+
+    # TODO thing about dotfiles for this packages
   };
 }
