@@ -26,6 +26,8 @@ in {
       (if cfg.research.enable then [
         papis # to store DOI stuff
 	obsidian # render markdown and learn flashcards
+	wiki-tui # wikipedia in terminal
+	taskwarrior # my daily tasks
       ] else []);
 
     # TODO thing about dotfiles for this packages

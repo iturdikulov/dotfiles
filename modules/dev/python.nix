@@ -19,14 +19,14 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        python3
+        python311
+	python311Packages.ipython
       ];
 
       environment.shellAliases = {
         py     = "python";
         py2    = "python2";
         py3    = "python3";
-        po     = "poetry";
         ipy    = "ipython --no-banner";
         ipylab = "ipython --pylab=qt5 --no-banner";
       };
