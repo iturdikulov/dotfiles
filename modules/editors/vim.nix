@@ -7,6 +7,9 @@ with lib;
 with lib.my;
 let cfg = config.modules.editors.vim;
     configDir = config.dotfiles.configDir;
+
+    # Looad plugin from github
+    # usage (fromGitHub "HEAD" "user/repo")
     fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = ref;
@@ -46,14 +49,15 @@ in {
          '';
 
          packages.neovimPlugins = with pkgs.vimPlugins; {
-           start = [
-             plenary-nvim
-	     telescope-nvim
-             nvim-treesitter.withAllGrammars
-
-	     (fromGitHub "HEAD" "navarasu/onedark.nvim")
-	     (fromGitHub "HEAD" "tpope/vim-fugitive")
-	   ];
+             start = [
+                 plenary-nvim
+                 telescope-nvim
+                 nvim-treesitter.withAllGrammars
+                 harpoon
+                 which-key-nvim
+                 comment-nvim
+                 onedark-nvim
+             ];
          };
        };
 
