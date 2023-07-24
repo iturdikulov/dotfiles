@@ -19,6 +19,7 @@ in {
     vector.enable  = mkBoolOpt true;
     sprites.enable = mkBoolOpt true;
     models.enable  = mkBoolOpt true;
+    photos.enable  = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
@@ -48,6 +49,11 @@ in {
       # 3D modelling
       (if cfg.models.enable then [
         blender
+      ] else []) ++
+
+      # Photography workflow
+      (if cfg.photos.enable then [
+        darktable
       ] else []);
 
     home.configFile = mkIf cfg.raster.enable {
