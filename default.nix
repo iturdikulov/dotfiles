@@ -70,5 +70,6 @@ with lib.my;
     wget
     gnumake
     unzip
+    p7zip
   ];
 }
