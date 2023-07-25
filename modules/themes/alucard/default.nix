@@ -19,7 +19,7 @@ in {
           };
           fonts = {
             sans.name = "Fira Sans";
-            mono.name = "Terminus (TTF)";
+            mono.name = "Terminess Nerd Font Mono";
           };
           colors = {
             black         = "#1E2029";
@@ -75,7 +75,8 @@ in {
           jetbrains-mono
           siji
           font-awesome
-	  terminus_font_ttf
+          terminus_font_ttf
+          terminus-nerdfont
         ];
       };
 

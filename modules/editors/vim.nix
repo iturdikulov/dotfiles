@@ -59,13 +59,26 @@ in {
 
          packages.neovimPlugins = with pkgs.vimPlugins; {
              start = [
-                 plenary-nvim
+                 onedark-nvim
+                 nvim-web-devicons
+                 (fromGitHub "HEAD" "tjdevries/express_line.nvim")
+
                  telescope-nvim
+                 telescope-file-browser-nvim
+
+                 plenary-nvim
                  nvim-treesitter.withAllGrammars
                  harpoon
                  which-key-nvim
                  comment-nvim
-                 onedark-nvim
+                 undotree
+                 nvim-ufo
+                 gitsigns-nvim
+                 nvim-surround
+                 trouble-nvim
+                 sniprun
+                 (fromGitHub "HEAD" "antonk52/markdowny.nvim")
+                 (fromGitHub "HEAD" "cbochs/portal.nvim")
 
                  # LSP, autocomplete and snippets
                  nvim-lspconfig

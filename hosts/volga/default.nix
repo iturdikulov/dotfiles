@@ -61,6 +61,7 @@
       tmux.enable   = true;
       zsh.enable    = true;
       sc-im.enable  = true;
+      dblab.enable  = true;
     };
     services = {
       dictd.enable = true;
