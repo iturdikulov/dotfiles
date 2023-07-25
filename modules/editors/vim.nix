@@ -80,6 +80,10 @@ in {
                  (fromGitHub "HEAD" "antonk52/markdowny.nvim")
                  (fromGitHub "HEAD" "cbochs/portal.nvim")
 
+                 neotest
+                 neotest-rust
+                 neotest-python
+
                  # LSP, autocomplete and snippets
                  nvim-lspconfig
                  nvim-cmp
