@@ -30,8 +30,8 @@ in {
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "364a48aa162c43f4a2094a0cef667af8ed635654";
-	     hash = "sha256-qEaVn87xtatbKo8vgkwkRIHycmVsTXIIPxSAkDfDXtc=";
+             rev = "926e24c2dadf8122e0a24acf748bff81b94873de";
+             hash = "sha256-qEaVn87xtatbKo8vgkwkRIHycmVsTXIIPxSAkDfDXtc=";
            };
         });
       })
@@ -54,7 +54,7 @@ in {
         layout = "us,ru";
         xkbVariant = "colemak_dh,";
         xkbOptions = "grp:win_space_toggle";
- 
+
         displayManager = {
           defaultSession = "none+dwm";
           lightdm.enable = true;
