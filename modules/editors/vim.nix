@@ -86,6 +86,9 @@ in {
                  (fromGitHub "HEAD" "antonk52/markdowny.nvim")
                  (fromGitHub "HEAD" "cbochs/portal.nvim")
 
+                 copilot-lua
+                 copilot-cmp
+
                  nvim-dap
                  nvim-dap-ui
                  nvim-dap-virtual-text
