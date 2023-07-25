@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.browserpass.enable = true;
+
     user.packages = with pkgs; [
       (pass.withExtensions (exts: [
         exts.pass-otp

@@ -63,6 +63,7 @@
       sc-im.enable  = true;
       db.enable     = true;
       xh.enable     = true;
+      pass.enable   = true;
     };
     services = {
       dictd.enable = true;
