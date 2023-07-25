@@ -31,7 +31,7 @@ in {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
              rev = "926e24c2dadf8122e0a24acf748bff81b94873de";
-             hash = "sha256-qEaVn87xtatbKo8vgkwkRIHycmVsTXIIPxSAkDfDXtc=";
+             hash = "sha256-SHXUuNBk3pNBts3vDsE1d6vFC6LiGeB8DWH5OjvSo0Q=";
            };
         });
       })
