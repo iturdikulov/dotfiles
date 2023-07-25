@@ -12,7 +12,7 @@
       apps = {
         rofi.enable = true;
         godot.enable = true;
-	slack.enable = true;
+        slack.enable = true;
       };
       browsers = {
         default = "brave";
@@ -61,7 +61,8 @@
       tmux.enable   = true;
       zsh.enable    = true;
       sc-im.enable  = true;
-      dblab.enable  = true;
+      db.enable     = true;
+      xh.enable     = true;
     };
     services = {
       dictd.enable = true;
