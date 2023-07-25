@@ -30,6 +30,7 @@ in {
 
       fd                  # faster projectile indexing
       imagemagick         # for image-dired
+      viu                 # to preview images
 
       ## Module dependencies
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
@@ -65,7 +66,9 @@ in {
 
                  telescope-nvim
                  telescope-file-browser-nvim
+                 (fromGitHub "HEAD" "renerocksai/telekasten.nvim")
 
+                 vim-fugitive
                  plenary-nvim
                  nvim-treesitter.withAllGrammars
                  harpoon
@@ -79,6 +82,12 @@ in {
                  sniprun
                  (fromGitHub "HEAD" "antonk52/markdowny.nvim")
                  (fromGitHub "HEAD" "cbochs/portal.nvim")
+
+                 nvim-dap
+                 nvim-dap-ui
+                 nvim-dap-virtual-text
+                 nvim-dap-python
+                 telescope-dap-nvim
 
                  neotest
                  neotest-rust
