@@ -39,8 +39,12 @@ in {
 
       ## LSP
       lua-language-server
-      nodePackages.pyright  # NOTE: sync this with python.nix
       clang-tools  # NOTE: sync this with cc.nix
+      nodePackages.pyright  # NOTE: sync this with python.nix
+
+      # NOTE: sync this with node.nix
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
     ];
 
     programs.neovim = {
@@ -75,13 +79,6 @@ in {
              ];
          };
        };
-
-      #plugins = with pkgs.vimPlugins; [
-      #  nvim-lspconfig
-      #
-      #
-      #
-      #];
     };
 
     environment.shellAliases = {

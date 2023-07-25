@@ -21,6 +21,8 @@ in {
       user.packages = [
         node
         pkgs.yarn
+        pkgs.nodePackages.typescript
+        pkgs.nodePackages.node2nix
       ];
 
       # Run locally installed bin-script, e.g. n coffee file.coffee
