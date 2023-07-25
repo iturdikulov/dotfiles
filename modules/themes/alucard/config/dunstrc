@@ -2,17 +2,14 @@
 ''
 [global]
 alignment = left
-browser = firefox -new-tab
+# browser = firefox -new-tab
 corner_radius = 2
-dmenu = rofi -dmenu -p dunst:
 follow = none
 font = ${fonts.sans.name} ${toString(fonts.sans.size)}
 format = "<b>%s</b>\n%b"
 frame_color = "${colors.types.border}"
 frame_width = 1
-origin = top-right
 width = 440
-height = 15
 offset = -26, +26
 history_length = 20
 horizontal_padding = 16
@@ -23,7 +20,6 @@ indicate_hidden = yes
 line_height = 0
 markup = full
 max_icon_size = 64
-monitor = 0
 padding = 20
 separator_color = auto
 separator_height = 4

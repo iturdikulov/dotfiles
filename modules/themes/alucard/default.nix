@@ -18,7 +18,7 @@ in {
             cursorTheme = "Paper";
           };
           fonts = {
-            sans.name = "Fira Sans";
+            sans.name = "Noto Sans";
             mono.name = "Terminess Nerd Font Mono";
           };
           colors = {
@@ -69,6 +69,8 @@ in {
       ];
       fonts = {
         fonts = with pkgs; [
+          noto-fonts
+          noto-fonts-emoji
           fira-code
           fira-code-symbols
           open-sans
@@ -121,7 +123,7 @@ in {
         (mkIf desktop.apps.rofi.enable {
           "rofi/theme" = { source = ./config/rofi; recursive = true; };
         })
-        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable) {
+        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable || desktop.dwm.enable) {
           "polybar" = { source = ./config/polybar; recursive = true; };
           "dunst/dunstrc".text = import ./config/dunstrc cfg;
           "Dracula-purple-solid-kvantum" = {
