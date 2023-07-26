@@ -244,3 +244,4 @@ Options:
 - parametrize $GNUPGHOME/sshcontrol
 - todo replace kuro with volga in README.md, add volga README.md
 - fix wgetrc error / dashit
+- W3m intgeration
