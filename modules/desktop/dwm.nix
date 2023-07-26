@@ -53,7 +53,7 @@ in {
         # Configure keymap in X11
         layout = "us,ru";
         xkbVariant = "colemak_dh,";
-        xkbOptions = "grp:win_space_toggle";
+        xkbOptions = "grp:menu_toggle";
 
         displayManager = {
           defaultSession = "none+dwm";
