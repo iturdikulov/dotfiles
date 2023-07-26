@@ -31,6 +31,7 @@ in {
       fd                  # faster projectile indexing
       imagemagick         # for image-dired
       viu                 # to preview images
+      dasht               # to search in docsets
 
       ## Module dependencies
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
@@ -72,6 +73,7 @@ in {
                  (fromGitHub "HEAD" "renerocksai/telekasten.nvim")
 
                  vim-fugitive
+                 vim-dasht
                  plenary-nvim
                  nvim-treesitter.withAllGrammars
                  harpoon

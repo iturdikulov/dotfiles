@@ -27,6 +27,7 @@ in {
 	python311Packages.ipython
 	python311Packages.pandas
 	python311Packages.scipy
+	python311Packages.numpy
       ];
 
       environment.shellAliases = {
