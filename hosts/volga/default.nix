@@ -64,6 +64,7 @@
       db.enable     = true;
       xh.enable     = true;
       pass.enable   = true;
+      tealdeer.enable  = true;
     };
     services = {
       dictd.enable = true;
