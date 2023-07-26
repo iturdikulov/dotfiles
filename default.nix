@@ -71,5 +71,6 @@ with lib.my;
     gnumake
     unzip
     p7zip
+    ncdu
   ];
 }
