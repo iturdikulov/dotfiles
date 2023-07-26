@@ -14,9 +14,9 @@ in {
       w3m
     ];
 
-    home.configFile = {
+    home.file = {
       ".w3m/config".source = "${configDir}/w3m/config";
-      ".w3m/keymap".source = "${configDir}/w3m/ignore";
+      ".w3m/keymap".source = "${configDir}/w3m/keymap";
     };
   };
 }

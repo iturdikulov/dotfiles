@@ -64,6 +64,7 @@
       db.enable     = true;
       xh.enable     = true;
       pass.enable   = true;
+      w3m.enable    = true;
       tealdeer.enable  = true;
     };
     services = {
