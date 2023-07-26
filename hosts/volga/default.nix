@@ -61,6 +61,7 @@
       tmux.enable   = true;
       zsh.enable    = true;
       sc-im.enable  = true;
+      du-dust.enable  = true;
       db.enable     = true;
       xh.enable     = true;
       pass.enable   = true;
