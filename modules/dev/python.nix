@@ -20,21 +20,21 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         ruff # Linter
-        python3
-        python3Packages.pip
-        python3Packages.black
-        python3Packages.setuptools
-        python3Packages.debugpy  # debug python in DAP
-        python3Packages.ipython
-        python3Packages.pandas
-        python3Packages.scipy
-        python3Packages.numpy
+        python310
+        python310Packages.debugpy
+        python310Packages.pip
+        python310Packages.black
+        python310Packages.setuptools
+        python310Packages.ipython
+        python310Packages.pandas
+        python310Packages.scipy
+        python310Packages.numpy
       ];
 
       environment.shellAliases = {
         py     = "python";
         py2    = "python2";
-        py3    = "python3";
+        py3    = "python310";
         ipy    = "ipython --no-banner";
         ipylab = "ipython --pylab=qt5 --no-banner";
       };
