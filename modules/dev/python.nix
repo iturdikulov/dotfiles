@@ -19,15 +19,16 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-	ruff # Linter
-        python311
-        python311Packages.pip
-        python311Packages.black
-        python311Packages.setuptools
-	python311Packages.ipython
-	python311Packages.pandas
-	python311Packages.scipy
-	python311Packages.numpy
+        ruff # Linter
+        python3
+        python3Packages.pip
+        python3Packages.black
+        python3Packages.setuptools
+        python3Packages.debugpy
+        python3Packages.ipython
+        python3Packages.pandas
+        python3Packages.scipy
+        python3Packages.numpy
       ];
 
       environment.shellAliases = {
