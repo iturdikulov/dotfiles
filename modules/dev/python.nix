@@ -24,7 +24,7 @@ in {
         python3Packages.pip
         python3Packages.black
         python3Packages.setuptools
-        python3Packages.debugpy
+        python3Packages.debugpy  # debug python in DAP
         python3Packages.ipython
         python3Packages.pandas
         python3Packages.scipy
