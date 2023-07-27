@@ -20,10 +20,8 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         ruff # Linter
-        python310
-        python310Packages.debugpy
+        python310Full
         python310Packages.pip
-        python310Packages.black
         python310Packages.setuptools
         python310Packages.ipython
         python310Packages.pandas
