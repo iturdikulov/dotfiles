@@ -28,7 +28,7 @@ in {
     longitude = 76.889709;
   } else if config.time.timeZone == "Europe/Moscow" then {
     latitude = 53.20066;
-    longitude = 45.00464
+    longitude = 45.00464;
   } else {});
 
   # So the vaultwarden CLI knows where to find my server.
