@@ -28,6 +28,7 @@
       media = {
         daw.enable = true;
         documents.enable = true;
+        documents.office.enable = true;
         graphics.enable = true;
         mpv.enable = true;
         recording.enable = true;

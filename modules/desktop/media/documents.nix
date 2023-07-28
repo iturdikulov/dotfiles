@@ -11,23 +11,30 @@ in {
     pdf.enable = mkBoolOpt true;
     research.enable = mkBoolOpt true;
     ebook.enable = mkBoolOpt false;
+    office.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
-	calibre
+        calibre
       ] else [])++
 
       (if cfg.pdf.enable then [
-	zathura
+        zathura
       ] else [])++
 
       (if cfg.research.enable then [
         papis # to store DOI stuff
-	obsidian # render markdown and learn flashcards
-	wiki-tui # wikipedia in terminal
-	taskwarrior # my daily tasks
+        obsidian # render markdown and learn flashcards
+        wiki-tui # wikipedia in terminal
+        taskwarrior # my daily tasks
+      ] else [])++
+
+      (if cfg.office.enable then [
+        libreoffice-fresh  # Sometimes I need edit MS-office documents
+        hunspell  # Spell checker
+        hunspellDicts.ru_RU  # RU dictionary from LibreOffice
       ] else []);
 
     # TODO thing about dotfiles for this packages
