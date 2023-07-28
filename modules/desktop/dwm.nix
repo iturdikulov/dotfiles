@@ -42,7 +42,6 @@ in {
       dunst
       libnotify
       dmenu
-      wmctrl  # for my custom scripts
     ];
 
     # My custom dmenu scripts
