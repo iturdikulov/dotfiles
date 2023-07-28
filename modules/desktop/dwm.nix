@@ -44,6 +44,9 @@ in {
       dmenu
     ];
 
+    # My custom dmenu scripts
+    env.PATH = [ "$XDG_CONFIG_HOME/dmenu/bin" ];
+
     services = {
       picom.enable = false;
       redshift.enable = true;
