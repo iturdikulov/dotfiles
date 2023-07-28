@@ -46,7 +46,7 @@ in {
     ];
 
     # My custom dmenu scripts
-    env.PATH = [ "$XDG_CONFIG_HOME/dmenu/bin" ];
+    env.PATH = [ "$DOTFILES_BIN/dmenu" ];
 
     services = {
       picom.enable = false;
