@@ -44,6 +44,7 @@ TODO: add screenshoot
    wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
 
    # Write it to a flash drive
+   # TODO: add ventoy note
    cp nixos.iso /dev/sdX
    ```
 
@@ -51,8 +52,8 @@ TODO: add screenshoot
 
 3. Switch to root user: `sudo su -`
 
-4. Do your partitions and mount your root to `/mnt` ([for
-   example](hosts/kuro/README.org)).
+4. Do your partitions and mount your root.
+   TODO: add link to my note about NixOS base install (btrfs RAID1)
 
 5. Install these dotfiles:
    ```sh
@@ -70,8 +71,8 @@ TODO: add screenshoot
    mkdir -p hosts/$HOST
    nixos-generate-config --root /mnt --dir /etc/dotfiles/hosts/$HOST
    rm -f hosts/$HOST/configuration.nix
-   cp hosts/kuro/default.nix hosts/$HOST/default.nix
-   # get some settings from hosts/kuro/hardware-configuration.nix too!
+   cp hosts/volga/default.nix hosts/$HOST/default.nix
+   # get some settings from hosts/volga/hardware-configuration.nix too!
 
    vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
 
@@ -245,6 +246,7 @@ Options:
 - [ ] khard & khal workflow
 - [ ] port sxhkd config into dwm config
 - [ ] parametrize $GNUPGHOME/sshcontrol
-- [ ] todo replace kuro with volga in README.md, add volga README.md
-- [ ] fix wgetrc error / dashit
+- [x] todo replace kuro with volga in README.md, add volga README.md
+- [x] fix wgetrc error
+- [x] fix dashit error
 - [x] W3m intgeration
