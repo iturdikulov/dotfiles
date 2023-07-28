@@ -37,6 +37,7 @@ in {
       dunst
       libnotify
       dmenu
+      alsa-utils  # for dwm-status
     ];
 
     # My custom dmenu scripts
@@ -64,13 +65,9 @@ in {
       };
       dwm-status = {
         enable = true;
-        order = ["audio" "time"];
+        order = ["time"];
 	extraConfig = ''
 separator = " / "
-[audio]
-mute = "🔇"
-template = "{ICO} {VOL}%"
-icons = ["🔈", "🔉", "🔊"]
 
 [time]
 format = "%A, %B %d %H:%M:%S"
