@@ -67,7 +67,6 @@ with lib.my;
     cached-nix-shell
     git
     vim
-    wget
     gnumake
     unzip
     p7zip

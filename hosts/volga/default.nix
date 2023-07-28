@@ -54,8 +54,8 @@
       vim.enable = true;
     };
     shell = {
-      adl.enable = true;
-      vaultwarden.enable = false;
+      wget.enable   = true;
+      adl.enable    = true;
       direnv.enable = true;
       git.enable    = true;
       gnupg.enable  = true;
@@ -68,6 +68,7 @@
       pass.enable   = true;
       w3m.enable    = true;
       tealdeer.enable  = true;
+      vaultwarden.enable = false;
     };
     services = {
       dictd.enable = true;
