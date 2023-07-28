@@ -10,11 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # modules.theme.onReload.bspwm = ''
-    #   ${pkgs.bspwm}/bin/bspc wm -r
-    #   source $XDG_CONFIG_HOME/bspwm/bspwmrc
-    # '';
-
     home.dataFile."dwm/autostart.sh" = {
         text = ''
 #!/bin/sh
@@ -78,7 +73,7 @@ template = "{ICO} {VOL}%"
 icons = ["🔈", "🔉", "🔊"]
 
 [time]
-format = "%A, %B %d %H:%M"
+format = "%A, %B %d %H:%M:%S"
 	'';
       };
       gvfs.enable = true;
