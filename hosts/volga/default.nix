@@ -13,6 +13,7 @@
         rofi.enable = true;
         godot.enable = true;
         slack.enable = true;
+        pidgin.enable = true;
       };
       browsers = {
         default = "brave";
