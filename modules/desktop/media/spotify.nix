@@ -18,6 +18,7 @@ in {
       # still occasionally need the official client for more sophisticated
       # search and the "made for you" playlists.
       spotify
+      spotify-player  # TUI for spotify
 
       # # services.spotifyd doesn't work so we'll have to roll our own spotifyd +
       # # spotify-tui solution. The dbus interface doesn't work, though, so we
