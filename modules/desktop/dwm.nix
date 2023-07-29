@@ -70,7 +70,7 @@ in {
 separator = " / "
 
 [time]
-format = "%A, %B %d %H:%M:%S"
+format = "%A, %d.%m [%B], %H:%M"
 	'';
       };
       gvfs.enable = true;
