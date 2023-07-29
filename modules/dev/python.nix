@@ -20,13 +20,15 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         ruff # Linter
-        python310Full
-        python310Packages.pip
-        python310Packages.setuptools
-        python310Packages.ipython
-        python310Packages.pandas
-        python310Packages.scipy
-        python310Packages.numpy
+        (unstable.python3.withPackages(ps: with ps; [
+          pip
+          setuptools
+          ipython
+          pandas
+          scipy
+          numpy
+          debugpy
+        ]))
       ];
 
       environment.shellAliases = {
