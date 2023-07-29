@@ -25,8 +25,8 @@ in {
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "926e24c2dadf8122e0a24acf748bff81b94873de";
-             hash = "sha256-SHXUuNBk3pNBts3vDsE1d6vFC6LiGeB8DWH5OjvSo0Q=";
+             rev = "7975df5b1854087f261e48fdcf71ce7f847c2ba8";
+             hash = "sha256-dgoaCfajzdD3rlTeU73OIJ9QK4lXdS8S8/SvsDSyoLc=";
            };
         });
       })
