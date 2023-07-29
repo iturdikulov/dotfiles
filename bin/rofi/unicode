@@ -1,6 +1,9 @@
 #!/usr/bin/env cached-nix-shell
 #! nix-shell -i sh -p xdotool libnotify
 
+# This scripts iterate over text files, extract char and description
+# then user can select char and scirpt will copy it into clipboard
+
 chars_path="$(dirname $0)/emoji.txt"
 
 # Generated using i_all.sh from
