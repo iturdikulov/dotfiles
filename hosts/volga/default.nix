@@ -67,12 +67,9 @@
       xh.enable     = true;
       pass.enable   = true;
       w3m.enable    = true;
-      tealdeer.enable  = true;
-<<<<<<< HEAD
-      vaultwarden.enable = false;
-=======
       ttyper.enable = true;
->>>>>>> 5d3e653 (Add ttyper shell keybord tutor)
+      tealdeer.enable  = true;
+      vaultwarden.enable = false;
     };
     services = {
       dictd.enable = true;
