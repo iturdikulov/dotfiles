@@ -242,6 +242,7 @@ Options:
 [agenix]: https://github.com/ryantm/agenix
 
 ## TODO
+- [ ] taskwarriro workflow
 - [ ] isync and himalaya workflow
 - [ ] khard & khal workflow
 - [ ] port sxhkd config into dwm config
