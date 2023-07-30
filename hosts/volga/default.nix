@@ -69,6 +69,7 @@
       pass.enable   = true;
       w3m.enable    = true;
       ttyper.enable = true;
+      weechat.enable   = true;
       tealdeer.enable  = true;
       vaultwarden.enable = false;
     };
