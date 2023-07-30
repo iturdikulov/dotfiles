@@ -25,7 +25,11 @@ in {
     ];
 
     user.packages = with pkgs; [
-      (pidgin.override {plugins = [purple-discord];})
+      (unstable.pidgin.override {plugins = [
+        purple-discord
+        purple-lurch
+        pidgin-window-merge
+      ];})
     ];
   };
 }
