@@ -71,6 +71,7 @@
       ttyper.enable = true;
       weechat.enable   = true;
       tealdeer.enable  = true;
+      htop.enable      = true;
       vaultwarden.enable = false;
     };
     services = {
