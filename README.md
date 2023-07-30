@@ -242,11 +242,13 @@ Options:
 [agenix]: https://github.com/ryantm/agenix
 
 ## TODO
-- [ ] taskwarriro workflow
+- [ ] taskwarrior workflow
+- [ ] weechat workflow
 - [ ] isync and himalaya workflow
 - [ ] khard & khal workflow
 - [ ] port sxhkd config into dwm config
 - [ ] parametrize $GNUPGHOME/sshcontrol
+- [ ] disable password auth for ssh/check TODO (ssh.nix)
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] fix dashit error
