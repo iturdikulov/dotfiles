@@ -11,7 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.wget ];
-
     home.configFile."wgetrc".source = "${configDir}/wget/wgetrc";
   };
 }

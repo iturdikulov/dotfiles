@@ -18,5 +18,7 @@ in {
       lsof        # show open files
       strace      # attach to running process
     ];
+
+    home.configFile."htop/htoprc".source = "${configDir}/htop/htoprc";
   };
 }
