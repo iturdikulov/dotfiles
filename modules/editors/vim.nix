@@ -42,15 +42,10 @@ in {
       ## LSP
       lua-language-server
       clang-tools  # NOTE: sync this with cc.nix
-      nodePackages.pyright  # NOTE: sync this with python.nix
       ltex-ls
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
-
-      # NOTE: sync this with node.nix
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
     ];
 
     programs.neovim = {

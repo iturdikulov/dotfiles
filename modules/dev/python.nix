@@ -20,13 +20,18 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         ruff # Linter
-        (unstable.python311.withPackages(ps: with ps; [
+        (unstable.python310.withPackages(ps: with ps; [
           pip
           setuptools
           ipython
           pandas
           scipy
           numpy
+
+          # LSP
+          ruff-lsp
+          black
+          debugpy
         ]))
       ];
 
