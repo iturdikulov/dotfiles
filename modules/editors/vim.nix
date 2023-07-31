@@ -43,6 +43,10 @@ in {
       lua-language-server
       clang-tools  # NOTE: sync this with cc.nix
       ltex-ls
+      efm-langserver  # for formatting
+
+      ## Formatting
+      luaformatter
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
