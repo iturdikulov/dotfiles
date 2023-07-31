@@ -43,6 +43,7 @@ in {
       lua-language-server
       clang-tools  # NOTE: sync this with cc.nix
       nodePackages.pyright  # NOTE: sync this with python.nix
+      ltex-ls
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
@@ -110,6 +111,7 @@ in {
                  luasnip
                  cmp_luasnip
                  friendly-snippets
+                 ltex_extra-nvim
              ];
          };
        };
