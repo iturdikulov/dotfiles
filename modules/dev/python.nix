@@ -29,6 +29,7 @@ in {
           numpy
 
           # LSP
+          # TODO: check vim enabled
           ruff-lsp
           black
           debugpy
