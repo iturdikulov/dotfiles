@@ -7,7 +7,7 @@
 # is no formal proof of your claims for safety, but who said you have to solve
 # all the world's problems to be wonderful?
 
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, pkgs, inputs, ... }:
 
 with lib;
 with lib.my;
@@ -21,11 +21,15 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = [ pkgs.rustup ];
+      nixpkgs.overlays = [ inputs.rust-overlay.overlays.default ];
+
+      user.packages = with pkgs; [
+        rust-bin.stable.latest.default
+        rust-analyzer
+      ];
       env.PATH = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
       environment.shellAliases = {
         rs  = "rustc";
-        rsp = "rustup";
         ca  = "cargo";
       };
     })
