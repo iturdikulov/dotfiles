@@ -14,7 +14,7 @@ in {
       unstable.newsboat
     ];
 
-    home.file = {
+    home.configFile = {
       "newsboat/config".source = "${configDir}/newsboat/config";
       "newsboat/urls".source = "${configDir}/newsboat/urls";
     };
