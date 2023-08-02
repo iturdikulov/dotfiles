@@ -13,6 +13,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # This env mostly used in scripts, to auto-pause player in some cases
+    env.AUDIO_PLAYER = "ncspot";  # TODO parametrize this?
+
     user.packages = with pkgs; [
       # spotify-tui is fine for selecting and playing music, but incomplete. We
       # still occasionally need the official client for more sophisticated
