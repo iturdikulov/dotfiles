@@ -72,6 +72,7 @@
       weechat.enable   = true;
       tealdeer.enable  = true;
       htop.enable      = true;
+      newsboat.enable  = true;
       vaultwarden.enable = false;
     };
     services = {
