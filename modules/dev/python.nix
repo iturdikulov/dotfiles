@@ -33,6 +33,7 @@ in {
           ruff-lsp
           black
           debugpy
+          flake8
         ]))
       ];
 

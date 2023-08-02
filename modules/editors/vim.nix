@@ -43,6 +43,7 @@ in {
       lua-language-server
       clang-tools  # NOTE: sync this with cc.nix
       ltex-ls
+      nil             # Yet another language server for Nix
       efm-langserver  # for formatting
 
       ## Formatting
@@ -111,6 +112,7 @@ in {
                  cmp_luasnip
                  friendly-snippets
                  ltex_extra-nvim
+                 (fromGitHub "HEAD" "creativenull/efmls-configs-nvim")
              ];
          };
        };
