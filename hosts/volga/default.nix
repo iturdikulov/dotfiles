@@ -73,6 +73,7 @@
       tealdeer.enable  = true;
       htop.enable      = true;
       newsboat.enable  = true;
+      wtwitch.enable  = true;
       vaultwarden.enable = false;
     };
     services = {

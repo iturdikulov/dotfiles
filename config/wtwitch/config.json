@@ -1,0 +1,284 @@
+{
+    "player": "mpv",
+    "quality": "best",
+    "colors": "true",
+    "printOfflineSubscriptions": "false",
+    "subscriptions": [
+        {
+            "streamer": "rationabilem"
+        },
+        {
+            "streamer": "togglebit"
+        },
+        {
+            "streamer": "usernm"
+        },
+        {
+            "streamer": "sashagrey"
+        },
+        {
+            "streamer": "pocketwatch"
+        },
+        {
+            "streamer": "dev_spajus"
+        },
+        {
+            "streamer": "adamcyounis"
+        },
+        {
+            "streamer": "mercernarymage"
+        },
+        {
+            "streamer": "ppy"
+        },
+        {
+            "streamer": "trezycodes"
+        },
+        {
+            "streamer": "baldbeardedbuilder"
+        },
+        {
+            "streamer": "nikolovlazar"
+        },
+        {
+            "streamer": "jitterted"
+        },
+        {
+            "streamer": "whitep4nth3r"
+        },
+        {
+            "streamer": "1kevgriff"
+        },
+        {
+            "streamer": "kensodev"
+        },
+        {
+            "streamer": "opsitive_"
+        },
+        {
+            "streamer": "progrium"
+        },
+        {
+            "streamer": "uselessmouth"
+        },
+        {
+            "streamer": "howtocodewell"
+        },
+        {
+            "streamer": "guyroyse"
+        },
+        {
+            "streamer": "rw_grim"
+        },
+        {
+            "streamer": "fboucheros"
+        },
+        {
+            "streamer": "developersgarage"
+        },
+        {
+            "streamer": "thealtf4stream"
+        },
+        {
+            "streamer": "talk2megooseman"
+        },
+        {
+            "streamer": "codephobia"
+        },
+        {
+            "streamer": "coderushed"
+        },
+        {
+            "streamer": "laylacodesit"
+        },
+        {
+            "streamer": "binarysologames"
+        },
+        {
+            "streamer": "thlorenz"
+        },
+        {
+            "streamer": "andrewrok"
+        },
+        {
+            "streamer": "alsweigart"
+        },
+        {
+            "streamer": "sorskoot"
+        },
+        {
+            "streamer": "tek256"
+        },
+        {
+            "streamer": "clarkio"
+        },
+        {
+            "streamer": "nipafx"
+        },
+        {
+            "streamer": "tsoding"
+        },
+        {
+            "streamer": "honestdangames"
+        },
+        {
+            "streamer": "chiroptical"
+        },
+        {
+            "streamer": "brookzerker"
+        },
+        {
+            "streamer": "matthewdgroves"
+        },
+        {
+            "streamer": "fhinkel"
+        },
+        {
+            "streamer": "frozzyaka"
+        },
+        {
+            "streamer": "orkpod"
+        },
+        {
+            "streamer": "blender_org"
+        },
+        {
+            "streamer": "antielitz"
+        },
+        {
+            "streamer": "venusworld"
+        },
+        {
+            "streamer": "properartist"
+        },
+        {
+            "streamer": "drearbeast"
+        },
+        {
+            "streamer": "piratesoftware"
+        },
+        {
+            "streamer": "ynnigvartv"
+        },
+        {
+            "streamer": "adamlearnslive"
+        },
+        {
+            "streamer": "arschles"
+        },
+        {
+            "streamer": "djh0ffman"
+        },
+        {
+            "streamer": "ferrisstreamsstuff"
+        },
+        {
+            "streamer": "devchatter"
+        },
+        {
+            "streamer": "brianlagunas"
+        },
+        {
+            "streamer": "radicalfishgames"
+        },
+        {
+            "streamer": "sxywu"
+        },
+        {
+            "streamer": "csharpfritz"
+        },
+        {
+            "streamer": "chrisbiscardi"
+        },
+        {
+            "streamer": "jlengstorf"
+        },
+        {
+            "streamer": "molly_rocket"
+        },
+        {
+            "streamer": "codico"
+        },
+        {
+            "streamer": "chaelcodes"
+        },
+        {
+            "streamer": "mrhalzy"
+        },
+        {
+            "streamer": "fractalmindmike"
+        },
+        {
+            "streamer": "krisnova"
+        },
+        {
+            "streamer": "xra_"
+        },
+        {
+            "streamer": "j_blow"
+        },
+        {
+            "streamer": "juliday97"
+        },
+        {
+            "streamer": "prismaticadev"
+        },
+        {
+            "streamer": "anthonywritescode"
+        },
+        {
+            "streamer": "large__data__bank"
+        },
+        {
+            "streamer": "firstcrimson"
+        },
+        {
+            "streamer": "sovereigndev"
+        },
+        {
+            "streamer": "oh_bother"
+        },
+        {
+            "streamer": "theprimeagen"
+        },
+        {
+            "streamer": "chluaid"
+        },
+        {
+            "streamer": "6figuredev"
+        },
+        {
+            "streamer": "visualjamie"
+        },
+        {
+            "streamer": "adobe"
+        },
+        {
+            "streamer": "bobross"
+        },
+        {
+            "streamer": "sporadik"
+        },
+        {
+            "streamer": "studioband"
+        },
+        {
+            "streamer": "soulboundleather"
+        },
+        {
+            "streamer": "volpinprops"
+        },
+        {
+            "streamer": "theryanhawkins"
+        },
+        {
+            "streamer": "provod"
+        },
+        {
+            "streamer": "psenough"
+        },
+        {
+            "streamer": "hourences"
+        }
+    ]
+}
