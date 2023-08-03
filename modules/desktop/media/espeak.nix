@@ -18,6 +18,7 @@ in {
        unstable.piper-tts
        xdotool
        xclip
+       alsa-utils
     ];
 
     home.dataFile = {
