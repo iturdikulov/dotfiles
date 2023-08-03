@@ -14,7 +14,6 @@ in {
          configure = { availablePlugins, ... }: {
            scripts = with pkgs.weechatScripts; [
              weechat-notify-send
-             weechat-matrix
              weechat-go
              weechat-autosort
            ];
