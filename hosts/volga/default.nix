@@ -68,6 +68,7 @@
       xh.enable     = true;
       pass.enable   = true;
       w3m.enable    = true;
+      ytfzf.enable  = true;
       ttyper.enable = true;
       weechat.enable   = true;
       tealdeer.enable  = true;
