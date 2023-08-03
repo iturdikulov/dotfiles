@@ -13,7 +13,6 @@ in {
       (weechat.override {
          configure = { availablePlugins, ... }: {
            scripts = with pkgs.weechatScripts; [
-             wee-slack
              weechat-notify-send
              weechat-matrix
              weechat-go
