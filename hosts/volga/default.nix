@@ -74,7 +74,6 @@
       tealdeer.enable  = true;
       htop.enable      = true;
       newsboat.enable  = true;
-      wtwitch.enable  = true;
       chatgpt-cli.enable = true;
       vaultwarden.enable = false;
     };
