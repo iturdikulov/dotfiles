@@ -249,6 +249,7 @@ Options:
 - [ ] port sxhkd config into dwm config
 - [ ] parametrize $GNUPGHOME/sshcontrol
 - [ ] disable password auth for ssh/check TODO (ssh.nix)
+- [ ] aegnix chatgpt/config.json
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] fix dashit error
