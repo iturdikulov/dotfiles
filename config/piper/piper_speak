@@ -1,0 +1,27 @@
+#!/bin/env bash
+# if here 2 speak.sh kill the old aplay instance
+# wery dirty version!
+# dependency: python-unidecode
+
+speak_sh_processes=$(ps aux | grep speak.sh | grep -v grep | wc -l)
+if [[ $speak_sh_processes  -gt 2 ]]; then
+    # TODO: maybe need find aplay process by parent
+    pkill aplay
+    exit 0
+fi
+
+active_window=$(xdotool getactivewindow)
+sleep 0.15
+if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "xst" ]]; then
+    xdotool key --clearmodifiers ctrl+shift+c
+else
+    xdotool key --clearmodifiers ctrl+c
+fi
+xdotool keyup Meta_L Meta_R Alt_L Alt_R Super_L Super_R
+
+if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "Zathura" ]]; then
+    xdotool click 3
+fi
+xclip -o -selection clipboard | unidecode | piper-tts --length_scale 1.2 --model\
+  ~/.local/share/piper_model/en_US-lessac-medium.onnx \
+  --output-raw | aplay -f S16_LE -c1 -r22050 -
