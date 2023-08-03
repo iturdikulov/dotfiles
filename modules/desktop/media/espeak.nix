@@ -14,8 +14,10 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-       (writeScriptBin "piper_speak" readFile ["${configDir}/piper/piper_speak"])
-       piper
+       (pkgs.writeScriptBin "piper_speak" (readFile "${configDir}/piper/piper_speak"))
+       unstable.piper-tts
+       xdotool
+       xclip
     ];
 
     home.dataFile = {

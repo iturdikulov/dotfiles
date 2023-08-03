@@ -1,4 +1,5 @@
-#!/bin/env bash
+#!/usr/bin/env bash
+
 # if here 2 speak.sh kill the old aplay instance
 # wery dirty version!
 # dependency: python-unidecode
@@ -22,6 +23,6 @@ xdotool keyup Meta_L Meta_R Alt_L Alt_R Super_L Super_R
 if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "Zathura" ]]; then
     xdotool click 3
 fi
-xclip -o -selection clipboard | unidecode | piper-tts --length_scale 1.2 --model\
+xclip -o -selection clipboard | piper --length_scale 1.2 --model\
   ~/.local/share/piper_model/en_US-lessac-medium.onnx \
   --output-raw | aplay -f S16_LE -c1 -r22050 -

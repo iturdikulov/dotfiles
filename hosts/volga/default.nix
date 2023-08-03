@@ -34,6 +34,7 @@
         mpv.enable = true;
         recording.enable = true;
         spotify.enable = true;
+        espeak.enable = true;
       };
       term = {
         default = "xst";
