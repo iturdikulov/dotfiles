@@ -84,6 +84,7 @@
       ssh.enable = true;
       docker.enable = true;
       syncthing.enable = true;
+      calibre.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
