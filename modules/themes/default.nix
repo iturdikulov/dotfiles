@@ -47,29 +47,28 @@ in {
       };
     };
 
-    # OneDark based colors
     colors = {
-      black         = mkOpt str "#0E1013"; # 0
-      red           = mkOpt str "#E55561"; # 1
-      green         = mkOpt str "#8EBD6B"; # 2
-      yellow        = mkOpt str "#E2B86B"; # 3
-      blue          = mkOpt str "#4FA6ED"; # 4
-      magenta       = mkOpt str "#BF68D9"; # 5
-      cyan          = mkOpt str "#188C9B"; # 6
-      silver        = mkOpt str "#ABB2BF"; # 7
-      grey          = mkOpt str "#545862"; # 8
-      brightred     = mkOpt str "#E06C75"; # 9
-      brightgreen   = mkOpt str "#98C379"; # 10
-      brightyellow  = mkOpt str "#E5C07B"; # 11
-      brightblue    = mkOpt str "#61AFEF"; # 12
-      brightmagenta = mkOpt str "#C678DD"; # 13
-      brightcyan    = mkOpt str "#56B6C2"; # 14
-      white         = mkOpt str "#C8CCD4"; # 15
+      black         = mkOpt str "#000000"; # 0
+      red           = mkOpt str "#FF0000"; # 1
+      green         = mkOpt str "#00FF00"; # 2
+      yellow        = mkOpt str "#FFFF00"; # 3
+      blue          = mkOpt str "#0000FF"; # 4
+      magenta       = mkOpt str "#FF00FF"; # 5
+      cyan          = mkOpt str "#00FFFF"; # 6
+      silver        = mkOpt str "#BBBBBB"; # 7
+      grey          = mkOpt str "#888888"; # 8
+      brightred     = mkOpt str "#FF8800"; # 9
+      brightgreen   = mkOpt str "#00FF80"; # 10
+      brightyellow  = mkOpt str "#FF8800"; # 11
+      brightblue    = mkOpt str "#0088FF"; # 12
+      brightmagenta = mkOpt str "#FF88FF"; # 13
+      brightcyan    = mkOpt str "#88FFFF"; # 14
+      white         = mkOpt str "#FFFFFF"; # 15
 
       # Color classes
       types = {
-        bg        = mkOpt str "#1F2329";
-        fg        = mkOpt str "#A0A8B7";
+        bg        = mkOpt str cfg.colors.black;
+        fg        = mkOpt str cfg.colors.white;
         panelbg   = mkOpt str cfg.colors.types.bg;
         panelfg   = mkOpt str cfg.colors.types.fg;
         border    = mkOpt str cfg.colors.types.bg;
