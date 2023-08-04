@@ -22,26 +22,25 @@ in {
             mono.name = "Terminess Nerd Font Mono";
           };
           colors = {
-            black         = "#1E2029";
-            red           = "#ffb86c";
-            green         = "#50fa7b";
-            yellow        = "#f0c674";
-            blue          = "#61bfff";
-            magenta       = "#bd93f9";
-            cyan          = "#8be9fd";
-            silver        = "#e2e2dc";
-            grey          = "#5B6268";
-            brightred     = "#de935f";
-            brightgreen   = "#0189cc";
-            brightyellow  = "#f9a03f";
-            brightblue    = "#8be9fd";
-            brightmagenta = "#ff79c6";
-            brightcyan    = "#0189cc";
-            white         = "#f8f8f2";
+            black         = "#0E1013"; # 0
+            red           = "#E55561"; # 1
+            green         = "#8EBD6B"; # 2
+            yellow        = "#E2B86B"; # 3
+            blue          = "#4FA6ED"; # 4
+            magenta       = "#BF68D9"; # 5
+            cyan          = "#188C9B"; # 6
+            silver        = "#ABB2BF"; # 7
+            grey          = "#545862"; # 8
+            brightred     = "#E06C75"; # 9
+            brightgreen   = "#98C379"; # 10
+            brightyellow  = "#E5C07B"; # 11
+            brightblue    = "#61AFEF"; # 12
+            brightmagenta = "#C678DD"; # 13
+            brightcyan    = "#56B6C2"; # 14
+            white         = "#C8CCD4"; # 15
 
-            types.fg      = "#bbc2cf";
-            types.panelbg = "#21242b";
-            types.border  = "#1a1c25";
+            types.bg      = "#1F2329";
+            types.fg      = "#A0A8B7";
           };
         };
 
