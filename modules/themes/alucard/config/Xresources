@@ -16,7 +16,7 @@ st.scratch.font: monospace:pixelsize=24:antialias=false:autohint=true
 
 !! xst
 st.font: monospace:pixelsize=24:antialias=false:autohint=true
-st.borderpx: 8
+st.borderpx: 5
 
 
 !! urxvt
