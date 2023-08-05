@@ -15,7 +15,11 @@ in {
 #!/bin/sh
 
 # Load theme specific settings
-[[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init'';
+[[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
+
+# Bind F13 (XF86Tools) to mod3mask key
+xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
+'';
         executable = true;
     };
 
@@ -38,6 +42,7 @@ in {
       libnotify
       dmenu
       alsa-utils  # for dwm-status
+      xorg.xmodmap # to set mod3 key
     ];
 
     # My custom dmenu scripts
