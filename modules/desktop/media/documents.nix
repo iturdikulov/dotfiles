@@ -29,6 +29,7 @@ in {
         obsidian # render markdown and learn flashcards
         wiki-tui # wikipedia in terminal
         taskwarrior # my daily tasks
+        taskwarrior-tui # TUI to rare clean taskwarrior tasks
       ] else [])++
 
       (if cfg.office.enable then [
