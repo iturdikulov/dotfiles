@@ -15,7 +15,6 @@ in {
           gtk = {
             theme = "Dracula";
             iconTheme = "Papirus-Dark";
-            cursorTheme = "Paper";
           };
           fonts = {
             sans.name = "Noto Sans";
@@ -64,7 +63,6 @@ in {
     (mkIf config.services.xserver.enable {
       user.packages = with pkgs; [
         unstable.dracula-theme
-        paper-icon-theme # for rofi
         papirus-icon-theme
       ];
       fonts = {
