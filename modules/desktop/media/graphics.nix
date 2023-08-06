@@ -34,9 +34,13 @@ in {
         unstable.inkscape
       ] else []) ++
 
-      # Replaces photoshop
+      # raster images workflow
       (if cfg.raster.enable then [
+        # nsxiv image viewer
         nsxiv
+        libwebp  # required for animated webp playback
+        giflib   # used for animated gif playback
+
         krita
         gimp
         # gimpPlugins.resynthesizer  # content-aware scaling in gimp
