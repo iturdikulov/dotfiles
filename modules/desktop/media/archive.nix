@@ -14,10 +14,11 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       xarchiver
+      unrar   # Utility for RAR archives
       p7zip   # A new p7zip fork with additional codecs and improvements
-      zstd    # real-time compression algorithm
-      brotli  # generic-purpose lossless compression algorithm
-      patool  # cli, portable archive file manager
+      zstd    # Real-time compression algorithm
+      brotli  # Generic-purpose lossless compression algorithm
+      patool  # CLI, portable archive file manager
     ];
   };
 }
