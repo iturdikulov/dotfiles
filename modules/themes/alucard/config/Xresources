@@ -1,3 +1,6 @@
+!! TODO: paremetrize in modules/themes/alucard/default.nix
+Xcursor.theme: Adwaita
+
 !! Colors
 *.cursorColor: mag
 ! greys

@@ -19,6 +19,9 @@ in {
 
 # Bind F13 (XF86Tools) to mod3mask key
 xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
+
+# Set cursor shape
+xsetroot -cursor_name left_ptr
 '';
         executable = true;
     };

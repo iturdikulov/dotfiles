@@ -15,6 +15,7 @@ in {
           gtk = {
             theme = "Dracula";
             iconTheme = "Papirus-Dark";
+            cursorTheme = "Adwaita";
           };
           fonts = {
             sans.name = "Noto Sans";
@@ -61,6 +62,9 @@ in {
 
     # Desktop (X11) theming
     (mkIf config.services.xserver.enable {
+      environment.systemPackages = with pkgs; [
+        gnome.adwaita-icon-theme
+      ];
       user.packages = with pkgs; [
         unstable.dracula-theme
         papirus-icon-theme
