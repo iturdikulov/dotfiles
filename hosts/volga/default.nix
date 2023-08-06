@@ -72,7 +72,6 @@
       ytfzf.enable  = true;
       ttyper.enable = true;
       weechat.enable   = true;
-      tealdeer.enable  = true;
       htop.enable      = true;
       newsboat.enable  = true;
       termdown.enable  = true;

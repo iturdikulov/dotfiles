@@ -46,7 +46,7 @@ in {
       fzf
       jq
       ripgrep
-      tldr
+      tealdeer
     ];
 
     env = {
