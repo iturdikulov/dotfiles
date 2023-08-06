@@ -17,7 +17,9 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
-        coolreader
+        xchm
+        zathura
+        pandoc
       ] else [])++
 
       (if cfg.pdf.enable then [
