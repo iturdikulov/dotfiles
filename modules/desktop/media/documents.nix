@@ -17,7 +17,6 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
-        calibre
         coolreader
       ] else [])++
 
