@@ -26,19 +26,6 @@ xsetroot -cursor_name left_ptr
         executable = true;
     };
 
-    nixpkgs.overlays = [
-      (self: super: {
-        dwm = super.dwm.overrideAttrs (old: {
-           src = pkgs.fetchFromGitHub {
-             owner = "Inom-Turdikulov";
-             repo = "dwm-flexipatch";
-             rev = "3a04d727e60ad2eeff47ba8c59f62df71ff05ae9";
-             hash = "sha256-W9jilIFB1ri+9k4Kxd6Xo/x8NrlI5Uy+M+/xXqOtJUM=";
-           };
-        });
-      })
-    ];
-
     environment.systemPackages = with pkgs; [
       lightdm
       dunst
@@ -69,6 +56,14 @@ xsetroot -cursor_name left_ptr
         };
         windowManager.dwm = {
           enable = true;
+          package = pkgs.dwm.overrideAttrs (old: {
+           src = pkgs.fetchFromGitHub {
+             owner = "Inom-Turdikulov";
+             repo = "dwm-flexipatch";
+             rev = "f939ece2a3f22e540fb2437e0c42e165c397ab40";
+             hash = "sha256-W+rPuzWypqQLMnw5L+EreVk1OnhhmAalU7nsTFHuR4Q=";
+           };
+        });
         };
       };
       dwm-status = {
