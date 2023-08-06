@@ -27,6 +27,7 @@
         # emulators.psx.enable = true;
       };
       media = {
+        archive.enable = true;
         daw.enable = true;
         documents.enable = true;
         documents.office.enable = true;

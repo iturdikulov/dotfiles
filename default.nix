@@ -69,6 +69,5 @@ with lib.my;
     vim
     gnumake
     unzip
-    p7zip
   ];
 }
