@@ -13,6 +13,7 @@
         rofi.enable = true;
         godot.enable = true;
         slack.enable = true;
+        telegram.enable = true;
         pidgin.enable = true;
       };
       browsers = {
