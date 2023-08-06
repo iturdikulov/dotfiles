@@ -56,26 +56,29 @@
       vim.enable = true;
     };
     shell = {
-      wget.enable   = true;
+      download.enable = true;
+      db.enable       = true;
+
+      gnupg.enable  = true;
+      pass.enable   = true;
+
+      w3m.enable    = true;
+      xh.enable     = true;
+      ytfzf.enable  = true;
+      newsboat.enable  = true;
+      chatgpt-cli.enable = true;
+
       adl.enable    = true;
       direnv.enable = true;
       git.enable    = true;
-      gnupg.enable  = true;
       tmux.enable   = true;
       zsh.enable    = true;
       sc-im.enable  = true;
       du-dust.enable  = true;
-      db.enable     = true;
-      xh.enable     = true;
-      pass.enable   = true;
-      w3m.enable    = true;
-      ytfzf.enable  = true;
       ttyper.enable = true;
       weechat.enable   = true;
       htop.enable      = true;
-      newsboat.enable  = true;
       termdown.enable  = true;
-      chatgpt-cli.enable = true;
       vaultwarden.enable = false;
     };
     services = {
