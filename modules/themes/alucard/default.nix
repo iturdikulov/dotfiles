@@ -14,7 +14,7 @@ in {
           wallpaper = mkDefault ./config/wallpaper.png;
           gtk = {
             theme = "Dracula";
-            iconTheme = "Paper";
+            iconTheme = "Papirus-Dark";
             cursorTheme = "Paper";
           };
           fonts = {
@@ -65,6 +65,7 @@ in {
       user.packages = with pkgs; [
         unstable.dracula-theme
         paper-icon-theme # for rofi
+        papirus-icon-theme
       ];
       fonts = {
         fonts = with pkgs; [
