@@ -10,7 +10,7 @@ in {
     enable = mkBoolOpt false;
     pdf.enable = mkBoolOpt true;
     research.enable = mkBoolOpt true;
-    ebook.enable = mkBoolOpt false;
+    ebook.enable = mkBoolOpt true;
     office.enable = mkBoolOpt false;
   };
 
@@ -18,6 +18,7 @@ in {
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         calibre
+        coolreader
       ] else [])++
 
       (if cfg.pdf.enable then [
