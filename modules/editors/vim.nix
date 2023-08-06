@@ -51,6 +51,22 @@ in {
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
+
+      # Desktop file
+      (makeDesktopItem {
+        name = "nvim";
+        desktopName = "Neovim Text Editor";
+        comment = "Edit text files";
+        tryExec = "nvim";
+        exec = "${pkgs.xst}/bin/xst -e nvim %F";
+        terminal = false;
+        type = "Application";
+        keywords = [ "Text" "editor" ];
+        icon = "nvim";
+        categories = [ "Utility" "TextEditor" ];
+        startupNotify = false;
+        mimeTypes = [ "text/plain" "text/x-makefile" "text/x-c++hdr" "text/x-c++src" "text/x-chdr" "text/x-csrc" "text/x-java" "text/x-moc" "text/x-pascal" "text/x-tcl" "text/x-tex" "application/x-shellscript" "text/x-c" "text/x-c++" ];
+      })
     ];
 
     programs.neovim = {
@@ -58,6 +74,7 @@ in {
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+      package = pkgs.neovim-unwrapped;
         configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
