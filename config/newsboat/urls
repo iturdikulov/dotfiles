@@ -3,6 +3,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCoHhuummRZaIVX7bD4t2czg "~y
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdp4_l1vPmpN-gDbUwhaRUQ "~youtube/Branch Education" "Arts_and_Entertainment"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "~youtube/LEMMiNO" "Arts_and_Entertainment"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCfzlCWGWYyIQ0aLC5w48gBQ "~youtube/sentdex" "Computer AI"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKaYxkHrmsQePZFpzF9b7sQ "~youtube/Mr. P Solver" "Computer AI"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaTznQhurW5AaiYPbhEA-KA "~youtube/Molly Rocket" "Computer Game"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCCuoqzrsHlwv1YyPKLuMDUQ "~youtube/Jonathan Blow" "Computer Game"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA "~youtube/TJ DeVries" "Computer Programming"
@@ -13,6 +14,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC-yuWVUplUJZvieEligKBkA "~y
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdioEctcBLd2nw2aQkl8msw "~youtube/BornCG" "Computer Graphic"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCOKHwx1VCdgnxwbjyb9Iu1g "~youtube/Blender Guru" "Computer Graphic"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCI0vQvr9aFn27yR6Ej6n5UA "~youtube/Real Python" "Computer Programming"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC7yZ6keOGsvERMp2HaEbbXQ "~youtube/devaslife" "Computer Programming""
 
 https://twitchrss.appspot.com/vod/j_blow "~twitch/j_blow" "Arts_and_Entertainment"
 https://twitchrss.appspot.com/vod/molly_rocket "~twitch/molly_rocket" "Arts_and_Entertainment"
@@ -26,11 +28,14 @@ https://twitchrss.appspot.com/vod/tsoding "~twitch/tsoding" "Arts_and_Entertainm
 https://twitchrss.appspot.com/vod/uselessmouth "~twitch/uselessmouth" "Arts_and_Entertainment"
 
 https://explainxkcd.com/rss.xml "Arts_and_Entertainment"
+https://www.phoronix.com/rss.php "Arts_and_Entertainment"
 
+https://rsshub.app/openai/blog "Computer AI"
 https://godotengine.org/rss.xml "Computer Game"
 https://www.blender.org/feed/  "Computer Graphic"
 
 https://jeremykun.com/feed/ "Computer Science"
+https://rsshub.app/hackernews/best "Computer Programming"
 https://okmij.org/ftp/atom.xml "Computer Programming"
 https://begriffs.com/atom.xml "Computer Programming"
 https://mcla.ug/blog/feeds/all.atom.xml "Computer Programming"
