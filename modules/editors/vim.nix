@@ -91,6 +91,7 @@ in {
                  (fromGitHub "HEAD" "renerocksai/telekasten.nvim")
 
                  vim-fugitive
+                 refactoring-nvim
                  vim-dasht
                  plenary-nvim
                  nvim-treesitter.withAllGrammars
