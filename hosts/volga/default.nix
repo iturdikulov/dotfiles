@@ -51,6 +51,9 @@
       rust.enable = true;
       python.enable = true;
       cc.enable = true;
+      lua.enable = true;
+      lua.love2D.enable = true;
+      haxe.enable = true;
     };
     editors = {
       default = "nvim";
