@@ -27,7 +27,6 @@ xsetroot -cursor_name left_ptr
     };
 
     environment.systemPackages = with pkgs; [
-      lightdm
       dunst
       libnotify
       dmenu
