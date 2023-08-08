@@ -7,7 +7,11 @@
 
   ## Modules
   modules = {
-    hardware.wacom.enable = true;
+    hardware = {
+      wacom.enable = true;
+      #amd.enable = true; TODO: implement & enable, DRI, opengl, vulkan, ROCm
+    };
+
     desktop = {
       dwm.enable = true;
       apps = {

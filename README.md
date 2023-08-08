@@ -252,6 +252,7 @@ Options:
 - [ ] aegnix chatgpt/config.json
 - [ ] polish and do various fixes for piper_speak script
 - [ ] inkscape settings / config...
+- [ ] implemend AMD module, check hosts/volga hardware section
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] fix dashit error
