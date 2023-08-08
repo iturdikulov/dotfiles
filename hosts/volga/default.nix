@@ -102,9 +102,8 @@
 
   ## Local config
   programs.ssh.startAgent = false;
-
   services.openssh.startWhenNeeded = true;
+  services.openssh.settings.X11Forwarding = true;
   services.pcscd.enable = true; # for gpg-agent
-
   networking.networkmanager.enable = true;
 }
