@@ -23,21 +23,17 @@ browser "xdg-open '%u'"
 macro m set browser "playerctl -p $AUDIO_PLAYER pause & mpv --no-resume-playback %u" ; open-in-browser ; set browser "xdg-open '%u'"
 macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser "xdg-open '%u'"
 
-# Dark theme based on Dracula color scheme for newsboat.
-#
-# In order to use this color scheme, you must first configure
-# your terminal emulator to use the Dracula palette.
-# See <https://draculatheme.com/> for more information.
-
-color background default default
-color listnormal color255 default
-color listfocus color238 color255 standout
-color listnormal_unread color47 default
-color listfocus_unread color238 color47 standout
-color info color141 color236
+color background          color15    default
+color listnormal          color248   default
+color listnormal_unread   color10    default
+color listfocus           color15    color9
+color listfocus_unread    color15    color9   bold
+color info                color12    color0
+color article             color248   default
 
 # highlights
 highlight all "---.*---" yellow
+highlight article "[a-z]+://[^ ]+" green default underline
 highlight feedlist ".*(0/0))" black
 highlight article "(^Feed:|^Title:|^Date:|^Link:|^Author:)" cyan default bold
 highlight article "https?://[^ ]+" yellow default
