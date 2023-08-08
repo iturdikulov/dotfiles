@@ -42,6 +42,7 @@
         recording.enable = true;
         spotify.enable = true;
         espeak.enable = true;
+        useless.enable = true;
       };
       term = {
         default = "xst";
