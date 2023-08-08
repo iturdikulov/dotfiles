@@ -7,6 +7,7 @@
 
   ## Modules
   modules = {
+    hardware.wacom.enable = true;
     desktop = {
       dwm.enable = true;
       apps = {
