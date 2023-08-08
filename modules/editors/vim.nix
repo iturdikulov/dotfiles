@@ -92,6 +92,7 @@ in {
 
                  vim-fugitive
                  refactoring-nvim
+                 indent-o-matic
                  vim-dasht
                  plenary-nvim
                  nvim-treesitter.withAllGrammars
