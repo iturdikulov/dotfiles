@@ -30,7 +30,7 @@ xsetroot -cursor_name left_ptr
       dunst
       libnotify
       dmenu
-      alsa-utils  # for dwm-status
+      alsa-utils   # for dwm-status
       xorg.xmodmap # to set mod3 key
     ];
 
