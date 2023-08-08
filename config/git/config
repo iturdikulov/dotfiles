@@ -8,12 +8,21 @@
 	gpgSign = true
 [core]
 	whitespace = trailing-space
+[delta]
+    navigate = true    # use n and N to move between diff sections
+	syntax-theme = OneHalfDark
 [init]
 	defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
 [github]
 	user = Inom-Turdikulov
 [gitlab]
 	user = Inom-Turdikulov
+[core]
+	pager = delta
+[merge]
+    conflictstyle = diff3
 [push]
 	autoSquash = true
 [push]
@@ -46,6 +55,8 @@
     insteadOf = bb:
 [url "https://git.henrik.io"]
     insteadOf = my:
+[diff]
+    colorMoved = default
 [diff "lisp"]
 	xfuncname = "^(((;;;+ )|\\(|([ \t]+\\(((cl-|el-patch-)?def(un|var|macro|method|custom)|gb/))).*)$"
 [diff "org"]
