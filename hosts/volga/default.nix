@@ -89,7 +89,7 @@
       du-dust.enable  = true;
       ttyper.enable = true;
       weechat.enable   = true;
-      htop.enable      = true;
+      top.enable      = true;
       termdown.enable  = true;
       vaultwarden.enable = false;
     };
