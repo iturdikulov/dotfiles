@@ -32,6 +32,7 @@
         steam.enable = true;
         # emulators.enable = true;
         # emulators.psx.enable = true;
+        native_games.enable = true;
       };
       media = {
         archive.enable = true;

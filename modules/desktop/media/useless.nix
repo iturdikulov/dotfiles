@@ -23,14 +23,6 @@ in {
       figlet         # Program for making large letters out of ordinary text
       boxes          # Command line ASCII boxes unlimited!
       linux_logo     # Prints an ASCII logo and some system info
-
-      bastet         # Tetris clone with 'bastard' block-choosing AI
-      nsnake         # ncurses based snake game for the terminal
-      tty-solitaire  # Klondike Solitaire in your ncurses terminal
-      moon-buggy     # A simple character graphics game
-      nethack        # Rogue-like game
-      pokete         # A terminal based Pokemon like game
-      dwarf-fortress # Not really useless ;-) A single-player fantasy game
     ];
   };
 }
