@@ -17,7 +17,7 @@ alias mkdir='mkdir -pv'
 alias wget='wget -c'
 alias wget_warc='wget --delete-after --no-directories --warc-file=epfl --recursive --level=1'
 alias wget_img='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
-alias path='echo -e ${PATH//:/\\n}'
+alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
@@ -108,7 +108,6 @@ alias urldecode='python3 -c "import sys, urllib.parse as ul; print (ul.unquote_p
 alias map="xargs -n1"
 
 
-alias path='echo -e ${PATH//:/\\n}' # Formatted $PATH print
 alias latest_dir='ls -tad */ | head -n1'
 alias oldest_files='ls -Atr | head -n10'
 alias broken_symlinks='find / -xtype l -print'
@@ -120,6 +119,18 @@ function print_colors {
   for colour in {1..225}
       do echo -en "\033[38;5;${colour}m38;5;${colour} \n"
   done | column -x
+}
+
+function abspath {
+  if [ -d "$1" ]; then
+      echo "$(cd $1; pwd)"
+  elif [ -f "$1" ]; then
+      if [[ $1 == */* ]]; then
+          echo "$(cd ${1%/*}; pwd)/${1##*/}"
+      else
+          echo "$(pwd)/$1"
+      fi
+  fi
 }
 
 
@@ -166,18 +177,6 @@ function print_colors {
 # 	fi;
 # }
 #
-# function abspath() {
-#   if [ -d "$1" ]; then
-#       echo "$(cd $1; pwd)"
-#   elif [ -f "$1" ]; then
-#       if [[ $1 == */* ]]; then
-#           echo "$(cd ${1%/*}; pwd)/${1##*/}"
-#       else
-#           echo "$(pwd)/$1"
-#       fi
-#   fi
-# }
-# alias abspath="abspath "
 #
 # function gccd { git clone "$1" && cd "$(basename $1)"; }
 #
@@ -252,11 +251,6 @@ function print_colors {
 #   fi
 # }
 #
-# function sync_with_ignore() {
-#   rsync -av --delete --exclude-from=.gitignore "$@"
-# }
-#
-#
 # function get_local_projects() {
 #   prj_path=$HOME/Projects
 #   selected_dir=$(
@@ -305,23 +299,6 @@ function print_colors {
 # # Upload clipboard to imgur
 # imgur-xclip() {
 #   xclip -selection c -o | imgur && icat $(xclip -selection c -o)
-# }
-#
-# # Check if 'venv' directory exists and activate it or create a new one
-# python-venv() {
-#   if [ -d "venv" ]
-#   then
-#       echo "Activating existing virtual environment..."
-#       source venv/bin/activate
-#       which python
-#   else
-#       echo "Creating new virtual environment..."
-#       # Create a new virtual environment named 'venv'
-#       python3 -m venv venv
-#       # Activate the virtual environment
-#       source venv/bin/activate
-#       which python
-#   fi
 # }
 #
 # # Convert url to pdf
