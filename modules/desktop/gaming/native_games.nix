@@ -20,6 +20,7 @@ in {
       superTuxKart   # A Free 3D kart racing game
       superTux       # Classic 2D jump'n run sidescroller game
       openmw         # An unofficial open source engine reimplementation of the game Morrowind
+      mari0          # Crossover between Super Mario Bros. and Portal
     ];
   };
 }
