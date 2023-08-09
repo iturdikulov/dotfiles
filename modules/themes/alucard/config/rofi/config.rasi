@@ -1,6 +1,6 @@
 /* -*- mode: css; -*- */
 configuration {
-  icon-theme:       "Paper";
+  icon-theme:       "Papirus-Dark";
   cycle:            true;
   disable-history:  false;
 
