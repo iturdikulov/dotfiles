@@ -16,6 +16,7 @@ alias mv='mv -i'
 alias mkdir='mkdir -pv'
 alias wget='wget -c'
 alias wget_warc='wget --delete-after --no-directories --warc-file=epfl --recursive --level=1'
+alias wget_img='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
 alias path='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
 alias df='df -h'                          # human-readable sizes
@@ -28,6 +29,7 @@ alias E="SUDO_EDITOR=nvim sudo -e"
 
 alias mk=make
 alias gurl='curl --compressed'
+alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
 
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
@@ -96,48 +98,22 @@ function r {
 }; compdef r=sched
 
 
-# # Network
-# # =======
-# alias mylocalip="ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'"
-# alias myips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-# alias ifactive="ifconfig -a" # Show active network interfaces
-# alias flush="sudo systemctl restart systemd-resolved" # Flush Directory Service cache
-# # URL-encode strings, usage: `urlencode "http://www.google.com/?q=Shell Script"`
-# alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
-# # Download images from current page using wget
-# # -nd no create directories, -P prefix, -A accept, -r recursive, -l depth
-# alias get_images='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png'
-# alias get_audio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
-# alias generate_playlist="fd . --base-directory=$HOME/Music -E archive -E '*.m3u' -t f > ~/Music/all.m3u"
-#
-# # Intuitive map function
-# # For example, to list all directories that contain a certain file:
-# # find . -name .gitattributes | map dirname
-# alias map="xargs -n1"
-#
-# # Hardware
-# # =========
-# # Grep data from temp sensors
-# alias systemperatures='sudo hddtemp /dev/disk/by-id/*ata*part1; sudo sensors'
-# alias cpuinfo='cat /proc/cpuinfo'
-# alias meminfo='cat /proc/meminfo'
-# alias mem='smem -ktP ' # Get process total memory usage, with shared memory divided proportionally
-# alias autorandr_save="autorandr --force --save default" # Save monitor configuration
-#
-#
-# # Work with files
-# # ======
-# # Print each PATH entry on a separate line
-# alias path='echo -e ${PATH//:/\\n}'
-# alias latest_file='/usr/bin/ls -tap | grep -v / | head -n1'
-# alias latest_dir='/usr/bin/ls -tad */ | head -n1'
-# alias oldest_files='find -type f -printf "%T+ %p\n" | sort'
-# alias fzf_history='cat ~/.cache/ytfzf/watch_hist | jq  ".[].title,.[].url"|tail -n 20'
-#
-# # Mount and unmount Kindle
-# alias koreader_mount='sshfs -o ssh_command="ssh -p 2222" root@koreader:/mnt/us/documents ~/public/koreader/'
-# alias koreader_umount='umount ~/public/koreader'
-#
+alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
+alias urldecode='python3 -c "import sys, urllib.parse as ul; print (ul.unquote_plus(sys.argv[1]))"'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# fd .env | map dirname
+alias map="xargs -n1"
+
+
+alias path='echo -e ${PATH//:/\\n}' # Formatted $PATH print
+alias latest_dir='ls -tad */ | head -n1'
+alias oldest_files='ls -Atr | head -n10'
+alias broken_symlinks='find / -xtype l -print'
+alias fc-list-mono='fc-list :spacing=mono'
+alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
+
 # # Merge PDF files, preserving hyperlinks
 # # Usage: `mergepdf input{1,2,3}.pdf`
 # alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
@@ -145,42 +121,6 @@ function r {
 # # Rename all files with numbers
 # alias rename_all_numbers='ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done'
 #
-# # Merge, split or and manipulate audiobook files with chapters
-# alias m4b-tool-merge='docker run -it --rm -u $(id -u):$(id -g) -v "$(pwd)":/mnt sandreas/m4b-tool:latest merge -v --jobs=6 --output-file="output/" --batch-pattern="input/%g/%a/%n/" "input/"'
-#
-# # Ripgrep over epub files
-# alias rga_epub='rga --rga-adapters=pandoc'
-#
-# # Interactive helpers
-# # ====================
-# # Howdoi - stackoverflow from the terminal
-# alias h='function hdi(){ howdoi $* -c -n 3|sed 's/================================================================================/=================================/g'|bat -p; }; hdi'
-#
-#
-#
-#
-# # Operation system and MAINTENANCE
-# # =================
-# #
-# alias systemd_timers="systemctl list-timers --all"
-# alias systemd_services="systemctl list-units --type=service --all"
-# alias failed_services='systemctl --failed'
-# alias failed_user_services='systemctl --user --failed'
-#
-# alias xprop_hold='$TERMINAL --hold -e xprop' # get window info
-# alias xprop_class="xprop -id $(xprop -root 32x '\t$0' _NET_ACTIVE_WINDOW | cut -f 2) WM_CLASS|xclip -selection c"
-# alias broken_symlinks='sudo find / -xtype l -print'
-# alias packages_sync_database='pikaur -Syuw'
-# alias kernel_log='journalctl -o short-precise -k'
-# alias packages_list='expac "%n %m" -l'\n' -Q $(pacman -Qq) | sort -rhk 2 | less'
-# alias packages_clean='pikaur -Sc'
-# alias packages_upgrade='pikaur -Syu'
-# alias packages_orphans_clean='pacman -Qtdq | sudo pacman -Rns -'
-# alias fonts_mono='fc-list :spacing=mono family style | sort'
-# alias fonts_all='fc-list | sort'
-# alias lastboot_log='journalctl -b -1 -n' # inspect previous boot
-# alias regenerate_initramfs='sudo mkinitcpio -P'
-# alias regenerate_grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 # # Connect to win10 machine
 # alias vmconnect='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
 # stouch() {
@@ -214,45 +154,10 @@ function r {
 #       done
 # }
 #
-# #
-# # # ex - archive extractor
-# # # usage: ex <file>
-# ex ()
-# {
-#   if [ -f $1 ] ; then
-#   case $1 in
-#     *.tar.bz2)   tar xjf $1   ;;
-#     *.tar.gz)    tar xzf $1   ;;
-#     *.bz2)       bunzip2 $1   ;;
-#     *.rar)       unrar x $1     ;;
-#     *.gz)        gunzip $1    ;;
-#     *.tar)       tar xf $1    ;;
-#     *.tbz2)      tar xjf $1   ;;
-#     *.tgz)       tar xzf $1   ;;
-#     *.zip)       unzip $1     ;;
-#     *.Z)         uncompress $1;;
-#     *.7z)        7z x $1      ;;
-#     *)           echo "'$1' cannot be extracted via ex()" ;;
-#   esac
-#   else
-#   echo "'$1' is not a valid file"
-#   fi
-# }
-#
 # # Create a new directory and enter it
 # function mkd() {
 # 	mkdir -p "$@" && cd "$_";
 # }
-#
-# # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
-# function targz() {
-# 	local tmpFile="${@%/}.tar";
-# 	tar -cvf "${tmpFile}" --exclude="tmp/" "${@}" || return 1;
-#
-# 	size=$(
-# 		stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
-# 		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
-# 	);
 #
 # 	local cmd="";
 # 	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
@@ -443,9 +348,6 @@ function r {
 #   if test -f "$outputfile"; then echo "$outputfile created"; fi
 # }
 #
-# function mem_total(){
-#   ps_mem -S -p $(pgrep "$1"|head -n 1)
-# }
 #
 # lfiles() {
 #   files="$(fzf --query="$1" --multi --select-1 --exit-0)"
