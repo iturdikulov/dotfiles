@@ -255,6 +255,7 @@ Options:
 - [ ] implemend AMD module, check hosts/volga hardware section
 - [ ] borgbackup integration
 - [ ] check https://nixos.wiki/wiki/Qmk
+- [ ] check/fix kvantum theme
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] fix dashit error
