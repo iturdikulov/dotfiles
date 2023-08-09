@@ -46,6 +46,7 @@ in {
       fzf
       jq
       ripgrep
+      ripgrep-all # Ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, and more
       tealdeer
     ];
 
