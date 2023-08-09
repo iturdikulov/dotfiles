@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       cmatrix     # Simulates the falling characters theme from The Matrix movie
+      cava        # Console-based Audio Visualizer for Alsa
       neo-cowsay  # Generates ASCII pictures of a cow with a message
       fortune     # Displays a pseudorandom message from a database of quotations
       lolcat      # Rainbows and unicorns
