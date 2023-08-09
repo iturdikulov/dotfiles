@@ -29,6 +29,8 @@ alias gst='git stash'
 alias gr='git reset HEAD'
 alias gv='git rev-parse'
 
+alias git_sub='git submodule update --init --recursive --remote'
+
 # fzf
 if (( $+commands[fzf] )); then
   __git_log () {
