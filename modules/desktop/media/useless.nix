@@ -13,17 +13,21 @@ in {
     user.packages = with pkgs; [
       cmatrix       # Simulates the falling characters theme from The Matrix movie
       cava          # Console-based Audio Visualizer for Alsa
+      cbonsai       # Grow bonsai trees in your terminal
+      sl            # Steam Locomotive runs across your terminal when you type 'sl'
       neo-cowsay    # Generates ASCII pictures of a cow with a message
       fortune       # Displays a pseudorandom message from a database of quotations
       lolcat        # Rainbows and unicorns
       figlet        # Program for making large letters out of ordinary text
       boxes         # Command line ASCII boxes unlimited!
-      sl            # Steam Locomotive runs across your terminal when you type 'sl'
       doge          # WoW very terminal doge
       linux_logo    # Prints an ASCII logo and some system info
       bastet        # Tetris clone with 'bastard' block-choosing AI
       nsnake        # ncurses based snake game for the terminal
       tty-solitaire # Klondike Solitaire in your ncurses terminal
+      moon-buggy    # A simple character graphics game
+      nethack       # Rogue-like game
+      pokete        # A terminal based Pokemon like game
     ];
   };
 }
