@@ -93,8 +93,11 @@ function zman {
 }
 
 # Create a reminder with human-readable durations, e.g. 15m, 1h, 40s, etc
+# Used the zsh/sched module
+# TODO: add examples, check ding
 function r {
   local time=$1; shift
+  echo $time
   sched "$time" "notify-send --urgency=critical 'Reminder' '$@'; ding";
 }; compdef r=sched
 
