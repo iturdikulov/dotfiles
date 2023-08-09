@@ -2,10 +2,10 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.top;
+let cfg = config.modules.shell.maintenance;
     configDir = config.dotfiles.configDir;
 in {
-  options.modules.shell.top = {
+  options.modules.shell.maintenance = {
     enable = mkBoolOpt false;
   };
 
@@ -18,8 +18,9 @@ in {
       strace      # attach to running process
 
       btop        # A monitor of resources
+      sysz        # A fzf terminal UI for systemctl
     ];
 
-    home.configFile."top/htoprc".source = "${configDir}/htop/htoprc";
+    home.configFile."maintenance/htoprc".source = "${configDir}/htop/htoprc";
   };
 }

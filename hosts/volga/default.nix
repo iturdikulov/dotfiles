@@ -86,11 +86,11 @@
       tmux.enable   = true;
       zsh.enable    = true;
       sc-im.enable  = true;
-      du-dust.enable  = true;
-      ttyper.enable = true;
-      weechat.enable   = true;
-      top.enable      = true;
-      termdown.enable  = true;
+      du-dust.enable     = true;
+      ttyper.enable      = true;
+      weechat.enable     = true;
+      maintenance.enable = true;
+      termdown.enable    = true;
       vaultwarden.enable = false;
     };
     services = {
