@@ -70,6 +70,7 @@ if (( $+commands[exa] )); then
   alias llm='ll --sort=modified'
   alias la="LC_COLLATE=C exa -ablF";
   alias tree='exa --tree'
+  alias tree_bat='exa --color=always --tree|bat'
 fi
 
 if (( $+commands[fasd] )); then
@@ -114,110 +115,22 @@ alias broken_symlinks='find / -xtype l -print'
 alias fc-list-mono='fc-list :spacing=mono'
 alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 
+# Print colors from 1 to 255, 0 is background
+function print_colors {
+  for colour in {1..225}
+      do echo -en "\033[38;5;${colour}m38;5;${colour} \n"
+  done | column -x
+}
+
+
+# alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
+
 # # Merge PDF files, preserving hyperlinks
 # # Usage: `mergepdf input{1,2,3}.pdf`
 # alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 #
 # # Rename all files with numbers
 # alias rename_all_numbers='ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done'
-#
-# # Connect to win10 machine
-# alias vmconnect='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
-# stouch() {
-#       mkdir -p "$(dirname "$1")" && touch "$1"
-# }
-#
-# colors() {
-#       local fgc bgc vals seq0
-#
-#       printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-#       printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-#       printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-#       printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
-#
-#       # foreground colors
-#       for fgc in {30..37}; do
-#               # background colors
-#               for bgc in {40..47}; do
-#                       fgc=${fgc#37} # white
-#                       bgc=${bgc#40} # black
-#
-#                       vals="${fgc:+$fgc;}${bgc}"
-#                       vals=${vals%%;}
-#
-#                       seq0="${vals:+\e[${vals}m}"
-#                       printf "  %-9s" "${seq0:-(default)}"
-#                       printf " ${seq0}TEXT\e[m"
-#                       printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
-#               done
-#               echo; echo
-#       done
-# }
-#
-# # Create a new directory and enter it
-# function mkd() {
-# 	mkdir -p "$@" && cd "$_";
-# }
-#
-# 	local cmd="";
-# 	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
-# 		# the .tar file is smaller than 50 MB and Zopfli is available; use it
-# 		cmd="zopfli";
-# 	else
-# 		if hash pigz 2> /dev/null; then
-# 			cmd="pigz";
-# 		else
-# 			cmd="gzip";
-# 		fi;
-# 	fi;
-#
-# 	echo "Compressing .tar ($((size / 1000)) kB) using \`${cmd}\`…";
-# 	"${cmd}" -v "${tmpFile}" || return 1;
-# 	[ -f "${tmpFile}" ] && rm "${tmpFile}";
-#
-# 	zippedSize=$(
-# 		stat -f"%z" "${tmpFile}.gz" 2> /dev/null; # macOS `stat`
-# 		stat -c"%s" "${tmpFile}.gz" 2> /dev/null; # GNU `stat`
-# 	);
-#
-# 	echo "${tmpFile}.gz ($((zippedSize / 1000)) kB) created successfully.";
-# }
-#
-# # Determine size of a file or total size of a directory
-# function fs() {
-# 	if du -b /dev/null > /dev/null 2>&1; then
-# 		local arg=-sbh;
-# 	else
-# 		local arg=-sh;
-# 	fi
-# 	if [[ -n "$@" ]]; then
-# 		du $arg -- "$@";
-# 	else
-# 		du $arg .[^.]* ./*;
-# 	fi;
-# }
-#
-# # Use Git’s colored diff when available
-# hash git &>/dev/null;
-# if [ $? -eq 0 ]; then
-# 	function git_diff() {
-# 		git diff --no-index --color-words "$@";
-# 	}
-# fi;
-#
-# # Create a data URL from a file
-# function dataurl() {
-# 	local mimeType=$(file -b --mime-type "$1");
-# 	if [[ $mimeType == text/* ]]; then
-# 		mimeType="${mimeType};charset=utf-8";
-# 	fi
-# 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
-# }
-#
-# # Run `dig` and display the most useful info
-# function digga() {
-# 	dig +nocmd "$1" any +multiline +noall +answer;
-# }
 #
 # # Show all the names (CNs and SANs) listed in the SSL certificate
 # # for a given domain
@@ -253,14 +166,6 @@ alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 # 	fi;
 # }
 #
-# # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# # the `.git` directory, listing directories first. The output gets piped into
-# # `less` with options to preserve color and line numbers, unless the output is
-# # small enough for one screen.
-# function tre() {
-# 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
-# }
-#
 # function abspath() {
 #   if [ -d "$1" ]; then
 #       echo "$(cd $1; pwd)"
@@ -273,11 +178,6 @@ alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 #   fi
 # }
 # alias abspath="abspath "
-#
-# git_rm_cached(){
-#   git rm -r --cached .
-#   git add .
-# }
 #
 # function gccd { git clone "$1" && cd "$(basename $1)"; }
 #
@@ -307,14 +207,10 @@ alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 #   done
 # }
 #
-# # Initialize file at give path (better touch)
-# t() { mkdir -pv "$(dirname "$1")" && touch "$1"; $EDITOR "$1"; }
-#
 # transfer() {
 #   curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename "$1") | xclip -selection clipboard && notify-send  "File uploaded $(xclip -selection clipboard -o)";
 #   echo
 # }
-#
 #
 # function mergemp4() {
 #   #######################################
@@ -444,11 +340,6 @@ alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 #   }
 # }
 #
-# # Pick color using maim
-# average-color-picker() {
-#   color=$(maim -st 0 | convert - -resize 1x1\! -format "#%[hex:u]\n" info:-)
-#   xclip -selection clipboard <<< "$color"
-# }
 #
 # # Pick recent file opened in Zathura
 # zathura-recent() {
@@ -462,9 +353,4 @@ alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 #            -V geometry:a4paper -V linkcolor:teal \
 #            -V geometry:margin=1in --pdf-engine=wkhtmltopdf \
 #            "$1" -o "$2"
-# }
-#
-# # Set speed and duplex
-# eth_speed() {
-#   sudo ethtool -s $1 autoneg off speed $2 duplex full && sudo ethtool $1 | grep Speed
 # }
