@@ -9,6 +9,7 @@
   modules = {
     hardware = {
       wacom.enable = true;
+      microcontroller.enable = true;
       #amd.enable = true; TODO: implement & enable, DRI, opengl, vulkan, ROCm
     };
 
