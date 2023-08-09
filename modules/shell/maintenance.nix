@@ -19,6 +19,7 @@ in {
 
       btop        # A monitor of resources
       sysz        # A fzf terminal UI for systemctl
+      ps_mem      # A utility to accurately report the in core memory usage for a program
     ];
 
     home.configFile."maintenance/htoprc".source = "${configDir}/htop/htoprc";
