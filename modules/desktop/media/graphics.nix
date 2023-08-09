@@ -20,6 +20,7 @@ in {
     sprites.enable = mkBoolOpt true;
     models.enable  = mkBoolOpt true;
     photos.enable  = mkBoolOpt true;
+    videos.enable  = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
@@ -59,6 +60,12 @@ in {
       # Photography workflow
       (if cfg.photos.enable then [
         darktable
+      ] else [])++
+
+      # Video editing
+      (if cfg.videos.enable then [
+        olive-editor
+        natron
       ] else []);
 
     home.configFile = mkIf cfg.raster.enable {
