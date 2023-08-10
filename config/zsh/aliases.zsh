@@ -117,6 +117,11 @@ alias broken_symlinks='find / -xtype l -print'
 alias fc-list-mono='fc-list :spacing=mono'
 alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 
+# Merge PDF files, preserving hyperlinks
+# Usage: `mergepdf input{1,2,3}.pdf`
+# Required: ghostscript
+alias merge_pdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+
 # Print colors from 1 to 255, 0 is background
 function print_colors {
   for colour in {1..225}
@@ -135,7 +140,6 @@ function abspath {
       fi
   fi
 }
-
 
 # fzfman() {
 # 	packages="$(awk {'print $1'} <<< $(pacman -Ss $1 | awk 'NR%2 {printf "\033[1;32m%s \033[0;36m%s\033[0m — ",$1,$2;next;}{ print substr($0, 5, length($0) - 4); }' | fzf -m --ansi --select-1))"
@@ -186,6 +190,3 @@ function abspath {
 #
 # alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
 #
-# # Merge PDF files, preserving hyperlinks
-# # Usage: `mergepdf input{1,2,3}.pdf`
-# alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
