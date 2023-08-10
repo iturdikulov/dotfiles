@@ -20,6 +20,7 @@ in {
         xchm
         zathura
         pandoc
+        calibre
       ] else [])++
 
       (if cfg.pdf.enable then [

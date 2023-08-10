@@ -184,26 +184,6 @@ function abspath {
 #    "$2"
 #
 #
-# audio-join() {
-#   ffmpeg -i "concat:${(j:|:)@[2,-1]}" -acodec copy $1
-# }
-#
-# # Convert url to pdf
-# chrome2pdf() {
-#   chromium --headless --no-margins --disable-gpu \
-#            --print-to-pdf-no-header \
-#            --print-to-pdf="$2" $1
-# }
-#
-#
-# # Epub to pdf
-# epub2pdf() {
-#     pandoc -s --toc --top-level-division=chapter \
-#            -V geometry:a4paper -V linkcolor:teal \
-#            -V geometry:margin=1in --pdf-engine=wkhtmltopdf \
-#            "$1" -o "$2"
-# }
-#
 # alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
 #
 # # Merge PDF files, preserving hyperlinks
