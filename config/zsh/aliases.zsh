@@ -146,41 +146,6 @@ function abspath {
 # # Rename all files with numbers
 # alias rename_all_numbers='ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done'
 #
-# # Show all the names (CNs and SANs) listed in the SSL certificate
-# # for a given domain
-# function getcertnames() {
-# 	if [ -z "${1}" ]; then
-# 		echo "ERROR: No domain specified.";
-# 		return 1;
-# 	fi;
-#
-# 	local domain="${1}";
-# 	echo "Testing ${domain}…";
-# 	echo ""; # newline
-#
-# 	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
-# 		| openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
-#
-# 	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-# 		local certText=$(echo "${tmp}" \
-# 			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
-# 			no_serial, no_sigdump, no_signame, no_validity, no_version");
-# 		echo "Common Name:";
-# 		echo ""; # newline
-# 		echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
-# 		echo ""; # newline
-# 		echo "Subject Alternative Name(s):";
-# 		echo ""; # newline
-# 		echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-# 			| sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
-# 		return 0;
-# 	else
-# 		echo "ERROR: Certificate not found.";
-# 		return 1;
-# 	fi;
-# }
-#
-#
 # function gccd { git clone "$1" && cd "$(basename $1)"; }
 #
 # fzfman() {
@@ -190,24 +155,6 @@ function abspath {
 #
 # # The following bash function will compare the file listings from the zip files. The listings include verbose output (unzip -v), so checksums can be compared. Output is sorted by filename (sort -k8) to allow side by side comparison and the diff output expanded (W200) so the filenames are visible int he side by side view.
 # function zipdiff() { diff -W200 -y <(unzip -vql "$1" | sort -k8) <(unzip -vql "$2" | sort -k8); }
-#
-# countdown() {
-#   start="$(( $(date '+%s') + $1))"
-#   while [ $start -ge $(date +%s) ]; do
-#       time="$(( $start - $(date +%s) ))"
-#       printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
-#       sleep 0.1
-#   done
-# }
-#
-# stopwatch() {
-#   start=$(date +%s)
-#   while true; do
-#       time="$(( $(date +%s) - $start))"
-#       printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
-#       sleep 0.1
-#   done
-# }
 #
 # transfer() {
 #   curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename "$1") | xclip -selection clipboard && notify-send  "File uploaded $(xclip -selection clipboard -o)";
