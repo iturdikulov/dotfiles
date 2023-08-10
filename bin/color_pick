@@ -1,0 +1,9 @@
+#!/usr/bin/env cached-nix-shell
+#! nix-shell -i bash -p gpick
+
+# Pick color using gpick
+selected_color="$(gpick -o -s)"
+
+[ -z "$selected_color" ] || {
+    echo "$selected_color" | xclip -sel c
+}

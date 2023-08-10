@@ -137,17 +137,6 @@ function abspath {
 }
 
 
-# alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
-
-# # Merge PDF files, preserving hyperlinks
-# # Usage: `mergepdf input{1,2,3}.pdf`
-# alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
-#
-# # Rename all files with numbers
-# alias rename_all_numbers='ls -v | cat -n | while read n f; do mv -n "$f" "$n.ext"; done'
-#
-# function gccd { git clone "$1" && cd "$(basename $1)"; }
-#
 # fzfman() {
 # 	packages="$(awk {'print $1'} <<< $(pacman -Ss $1 | awk 'NR%2 {printf "\033[1;32m%s \033[0;36m%s\033[0m — ",$1,$2;next;}{ print substr($0, 5, length($0) - 4); }' | fzf -m --ansi --select-1))"
 # 	[ "$packages" ] && pacman -S $(echo "$packages" | tr "\n" " ")
@@ -155,44 +144,6 @@ function abspath {
 #
 # # The following bash function will compare the file listings from the zip files. The listings include verbose output (unzip -v), so checksums can be compared. Output is sorted by filename (sort -k8) to allow side by side comparison and the diff output expanded (W200) so the filenames are visible int he side by side view.
 # function zipdiff() { diff -W200 -y <(unzip -vql "$1" | sort -k8) <(unzip -vql "$2" | sort -k8); }
-#
-# transfer() {
-#   curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename "$1") | xclip -selection clipboard && notify-send  "File uploaded $(xclip -selection clipboard -o)";
-#   echo
-# }
-#
-# function mergemp4() {
-#   #######################################
-#   # Merge mp4 files into one output mp4 file
-#   # usage:
-#   #   mergemp4 #merges all mp4 in current directory
-#   #   mergemp4 video1.mp4 video2.mp4
-#   #   mergemp4 video1.mp4 video2.mp4 [ video3.mp4 ...] output.mp4
-#   #######################################
-#   if [ $# = 1 ]; then return; fi
-#
-#   outputfile="output.mp4"
-#
-#   #if no arguments we take all mp4 in current directory as array
-#   if [ $# = 0 ]; then inputfiles=($(ls -1v *.mp4)); fi
-#   if [ $# = 2 ]; then inputfiles=($1 $2); fi
-#   if [ $# -ge 3 ]; then
-#   outputfile=${@: -1} # Get the last argument
-#   inputfiles=(${@:1:$# - 1}) # Get all arguments besides last one as array
-#   fi
-#
-#   # -y: automatically overwrite output file if exists
-#   # -loglevel quiet: disable ffmpeg logs
-#   ffmpeg -y \
-#   -loglevel quiet \
-#   -f concat \
-#   -safe 0 \
-#   -i <(for f in $inputfiles; do echo "file '$PWD/$f'"; done) \
-#   -c copy $outputfile
-#
-#   if test -f "$outputfile"; then echo "$outputfile created"; fi
-# }
-#
 #
 # lfiles() {
 #   files="$(fzf --query="$1" --multi --select-1 --exit-0)"
@@ -216,15 +167,6 @@ function abspath {
 #   fi
 # }
 #
-# # Copy path to file
-# function link2clip() {
-#   readlink -f $1 | xsel --clipboard
-# }
-#
-# # Upload image to imgur
-# function link2imgur() {
-#   imgur $(readlink -f "$@")
-# }
 #
 # # Download page recursive
 # wget-recursive() wget \
@@ -246,11 +188,6 @@ function abspath {
 #   ffmpeg -i "concat:${(j:|:)@[2,-1]}" -acodec copy $1
 # }
 #
-# # Upload clipboard to imgur
-# imgur-xclip() {
-#   xclip -selection c -o | imgur && icat $(xclip -selection c -o)
-# }
-#
 # # Convert url to pdf
 # chrome2pdf() {
 #   chromium --headless --no-margins --disable-gpu \
@@ -258,21 +195,6 @@ function abspath {
 #            --print-to-pdf="$2" $1
 # }
 #
-# # Pick color using gpick
-# color-picker() {
-#   selected_color="$(gpick -o -s)"
-#
-#   [ -z "$selected_color" ] || {
-#     echo "$selected_color" | xclip -sel c
-#   }
-# }
-#
-#
-# # Pick recent file opened in Zathura
-# zathura-recent() {
-#   recent_file=$(cat ~/.local/share/zathura/history|grep -Po '\[\K[^\]]*'|dmenu -i)
-#   zathura "$recent_file"
-# }
 #
 # # Epub to pdf
 # epub2pdf() {
@@ -281,3 +203,9 @@ function abspath {
 #            -V geometry:margin=1in --pdf-engine=wkhtmltopdf \
 #            "$1" -o "$2"
 # }
+#
+# alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
+#
+# # Merge PDF files, preserving hyperlinks
+# # Usage: `mergepdf input{1,2,3}.pdf`
+# alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
