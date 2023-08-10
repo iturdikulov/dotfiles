@@ -84,5 +84,9 @@ in {
       rm -rf $ZSH_CACHE
       rm -fv $ZGEN_DIR/init.zsh{,.zwc}
     '';
+
+    system.userActivationScripts.updateTealdeer = ''
+      tldr --update
+    '';
   };
 }
