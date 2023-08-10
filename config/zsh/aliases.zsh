@@ -15,8 +15,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -pv'
 alias wget='wget -c'
-alias wget_warc='wget --delete-after --no-directories --warc-file=epfl --recursive --level=1'
 alias wget_img='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
+
 alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
 alias df='df -h'                          # human-readable sizes
@@ -136,52 +136,23 @@ function abspath {
   fi
 }
 
-# fzfman() {
-# 	packages="$(awk {'print $1'} <<< $(pacman -Ss $1 | awk 'NR%2 {printf "\033[1;32m%s \033[0;36m%s\033[0m — ",$1,$2;next;}{ print substr($0, 5, length($0) - 4); }' | fzf -m --ansi --select-1))"
-# 	[ "$packages" ] && pacman -S $(echo "$packages" | tr "\n" " ")
-# }
-#
-# # The following bash function will compare the file listings from the zip files. The listings include verbose output (unzip -v), so checksums can be compared. Output is sorted by filename (sort -k8) to allow side by side comparison and the diff output expanded (W200) so the filenames are visible int he side by side view.
-# function zipdiff() { diff -W200 -y <(unzip -vql "$1" | sort -k8) <(unzip -vql "$2" | sort -k8); }
-#
-# lfiles() {
-#   files="$(fzf --query="$1" --multi --select-1 --exit-0)"
-#   if test -n "$files"; then
-#       xdg-open "$files"
-#   fi
-# }
-#
-# function get_local_projects() {
-#   prj_path=$HOME/Projects
-#   selected_dir=$(
-#   find $prj_path/* -maxdepth 1 -mindepth 1 -type d |
-#     sed "s~$prj_path/~~" |
-#     fzf-tmux -p --cycle --layout=reverse --prompt 't> ' |
-#     sed "s~^~$prj_path/~"
-#   )
-#
-#   if test -n "$selected_dir"; then
-#   tab_name=$(echo $selected_dir | sed "s~$prj_path/~~")
-#   kitty @ focus-tab --match title:$tab_name 2>/dev/null || kitty @ new-window --new-tab --tab-title $tab_name --cwd $selected_dir
-#   fi
-# }
-#
-#
-# # Download page recursive
-# wget-recursive() wget \
-#    --recursive \
-#    -l 2 \
-#    -A jpg,jpeg,png,gif \
-#    -e robots=off \
-#    --page-requisites \
-#    --no-directories \
-#    --html-extension \
-#    --convert-links \
-#    --restrict-file-names=windows \
-#    --domains $1 \
-#    --no-parent \
-#    "$2"
-#
-#
-# alias win10='virsh --connect qemu:///system start win10 & virt-viewer -c qemu:///system --attach -f win10'
-#
+# The following bash function will compare the file listings from the zip files.
+# The listings include verbose output (unzip -v), so checksums can be compared.
+# Output is sorted by filename (sort -k8) to allow side by side comparison and
+# the diff output expanded (W200) so the filenames are visible int he side by
+# side view.
+function zipdiff {
+  diff -W200 -y <(unzip -vql "$1" | sort -k8) <(unzip -vql "$2" | sort -k8);
+}
+
+# TODO: use quick-emu here, test on actual system
+function vmconnect {
+  local vm_running=$(virsh --connect qemu:///system  list --name --state-running)
+  # If $1 not in $vm_running list start
+  if [[ ! " $vm_running " =~ " $1 " ]]; then
+    echo "Starting virtual machine: $1"
+    virsh --connect qemu:///system start "$1"
+  fi
+
+  virt-viewer -c qemu:///system --attach -f "$1"
+}
