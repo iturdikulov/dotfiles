@@ -117,11 +117,6 @@ alias broken_symlinks='find / -xtype l -print'
 alias fc-list-mono='fc-list :spacing=mono'
 alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
 
-# Merge PDF files, preserving hyperlinks
-# Usage: `mergepdf input{1,2,3}.pdf`
-# Required: ghostscript
-alias merge_pdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
-
 # Print colors from 1 to 255, 0 is background
 function print_colors {
   for colour in {1..225}
