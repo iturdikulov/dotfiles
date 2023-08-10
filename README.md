@@ -256,6 +256,7 @@ Options:
 - [ ] borgbackup integration
 - [ ] check https://nixos.wiki/wiki/Qmk
 - [ ] check/fix kvantum theme
+- [ ] setup/configure calibre-web
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] fix dashit error
