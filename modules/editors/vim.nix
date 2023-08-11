@@ -90,6 +90,7 @@ in {
                  telescope-file-browser-nvim
                  (fromGitHub "HEAD" "renerocksai/telekasten.nvim")
 
+                 (fromGitHub "HEAD" "phelipetls/jsonpath.nvim")
                  vim-fugitive
                  refactoring-nvim
                  indent-o-matic
