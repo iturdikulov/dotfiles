@@ -7,9 +7,17 @@ in {
   options.modules.shell.gnupg = with types; {
     enable   = mkBoolOpt false;
     cacheTTL = mkOpt int 3600;  # 1hr
+    sshKeys = mkOption {
+      type = types.nullOr (types.listOf types.str);
+      default = null;
+      description = ''
+          Which GPG keys (by keygrip) to expose as SSH keys.
+      '';
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf cfg.enable (mkMerge [
+  {
     environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
     programs.gnupg.agent.enable = true;
@@ -29,5 +37,13 @@ in {
         pinentry-program ${pkgs.pinentry.gtk2}/bin/pinentry
       '';
     };
-  };
+  }
+
+  (mkIf (cfg.sshKeys != null) {
+   # Trailing newlines are important
+   home.file."${homedir}/sshcontrol".text = concatMapStrings (s: ''
+       ${s}
+       '') cfg.sshKeys;
+   })
+  ]);
 }
