@@ -9,7 +9,7 @@
 [core]
 	whitespace = trailing-space
 [delta]
-    navigate = true    # use n and N to move between diff sections
+	navigate = true    # use n and N to move between diff sections
 	syntax-theme = OneHalfDark
 [init]
 	defaultBranch = main
