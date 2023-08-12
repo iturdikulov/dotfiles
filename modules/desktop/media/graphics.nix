@@ -28,6 +28,14 @@ in {
       (if cfg.tools.enable then [
         font-manager   # so many damned fonts...
         imagemagick    # for image manipulation from the shell
+        tesseract4     # OCR engine
+        maim           # A command-line screenshot utility
+        (pkgs.writeScriptBin "scrcap_ocr" ''
+        #!/usr/bin/env bash
+        maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
+        | tesseract -l eng+rus stdin stdout \
+        | xclip -in -selection clipboard
+        '')
       ] else []) ++
 
       # replaces illustrator & indesign
