@@ -29,7 +29,6 @@ in {
       gnutls              # for TLS connectivity
 
       fd                  # faster projectile indexing
-      imagemagick         # for image-dired
       viu                 # to preview images
       dasht               # to search in docsets
 
