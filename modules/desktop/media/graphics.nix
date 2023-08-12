@@ -35,6 +35,7 @@ in {
         maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
         | tesseract -l eng+rus stdin stdout \
         | xclip -in -selection clipboard
+        notify-send "Screenshot OCR" "Image copied to clipboard"
         '')
       ] else []) ++
 
