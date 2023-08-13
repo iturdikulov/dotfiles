@@ -44,8 +44,8 @@ xsetroot -cursor_name left_ptr
         enable = true;
 
         # Configure keymap in X11
-        layout = "us,ru";
-        xkbVariant = "colemak_dh,";
+        layout = "us,ru,us";
+        xkbVariant = "colemak_dh,,";
         xkbOptions = "grp:menu_toggle";
 
         displayManager = {
