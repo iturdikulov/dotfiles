@@ -98,6 +98,12 @@ in {
 
                  (fromGitHub "HEAD" "phelipetls/jsonpath.nvim")
                  vim-fugitive
+                 vim-rsi
+                 vim-gnupg
+
+                 (fromGitHub "HEAD" "jalvesaq/zotcite")
+                 (fromGitHub "HEAD" "jalvesaq/cmp-zotcite")
+
                  refactoring-nvim
                  indent-o-matic
                  vim-dasht
