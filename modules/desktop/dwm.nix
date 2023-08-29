@@ -10,6 +10,28 @@ in {
   };
 
   config = mkIf cfg.enable {
+    user.packages = with pkgs; [
+        (pkgs.writeScriptBin "chatgpt-cli" ''
+        #!/bin/sh
+        xst -c chatgpt -e chatgpt
+        '')
+        (pkgs.writeScriptBin "wiki" ''
+        #!/bin/sh
+        cd ~/Wiki && xst -c wiki -e nvim Now.md
+        '')
+        (pkgs.writeScriptBin "trans-ru" ''
+        #!/bin/sh
+        xst -c trans -e trans -shell ru:en
+        '')
+        (pkgs.writeScriptBin "newsboat-cli" ''
+        #!/bin/sh
+        xst -c newsboat -e newsboat
+        '')
+        (pkgs.writeScriptBin "weechat-cli" ''
+        #!/bin/sh
+        xst -c weechat -e weechat
+        '')
+    ];
     home.dataFile."dwm/autostart.sh" = {
         text = ''
 #!/bin/sh
@@ -32,6 +54,7 @@ xsetroot -cursor_name left_ptr
       dmenu
       alsa-utils   # for dwm-status
       xorg.xmodmap # to set mod3 key
+      jumpapp      # quick switch between apps
     ];
 
     # My custom dmenu scripts
@@ -59,8 +82,8 @@ xsetroot -cursor_name left_ptr
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "479033babb02440d2faf889ce5bddbbc925d2d2c";
-             hash = "sha256-7fP7XXCFeqeYcieI9jFviHmio2DBHYOvvPhInFM3JoY=";
+             rev = "f88ccb93b3a962acca36dd629f91fe75d30ce72f";
+             hash = "sha256-p+T7nsueB3PVGaOcS9p7NxzBp6Ap/lYdka8/2LhwwA0=";
            };
         });
         };
