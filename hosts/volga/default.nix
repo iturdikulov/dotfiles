@@ -86,6 +86,7 @@
       git.enable    = true;
       tmux.enable   = true;
       zsh.enable    = true;
+      sdcv.enable   = true;
       sc-im.enable  = true;
       du-dust.enable     = true;
       ttyper.enable      = true;
