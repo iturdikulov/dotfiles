@@ -19,9 +19,9 @@ bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
 
-browser "xdg-open '%u'"
-macro m set browser "playerctl -p $AUDIO_PLAYER pause & mpv --no-resume-playback %u" ; open-in-browser ; set browser "xdg-open '%u'"
-macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser "xdg-open '%u'"
+browser $BROWSER
+macro m set browser "playerctl -p $AUDIO_PLAYER pause & mpv --no-resume-playback %u" ; open-in-browser ; set browser $BROWSER
+macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser $BROWSER
 
 color background          color15    default
 color listnormal          color248   default

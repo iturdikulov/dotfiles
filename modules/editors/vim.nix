@@ -32,6 +32,11 @@ in {
       viu                 # to preview images
       dasht               # to search in docsets
 
+      # required for telescope-media-files-nvim
+      chafa
+      poppler_utils
+      imagemagick
+
       ## Module dependencies
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
       editorconfig-core-c
@@ -81,6 +86,8 @@ in {
 
          packages.neovimPlugins = with pkgs.vimPlugins; {
              start = [
+                 plenary-nvim
+
                  onedark-nvim
                  nvim-web-devicons
                  (fromGitHub "HEAD" "tjdevries/express_line.nvim")
@@ -94,7 +101,6 @@ in {
                  refactoring-nvim
                  indent-o-matic
                  vim-dasht
-                 plenary-nvim
                  nvim-treesitter.withAllGrammars
                  harpoon
                  which-key-nvim
@@ -104,6 +110,10 @@ in {
                  gitsigns-nvim
                  nvim-surround
                  trouble-nvim
+
+                 popup-nvim
+                 telescope-media-files-nvim  # required plenary-nvim, popup.nvim, telescope.nvim
+
                  sniprun
                  (fromGitHub "HEAD" "antonk52/markdowny.nvim")
                  (fromGitHub "HEAD" "cbochs/portal.nvim")
