@@ -19,6 +19,8 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
+        jetbrains.pycharm-community  # YES it's IDE, maybe someday I can replace it
+
         ruff # Linter
         (unstable.python310.withPackages(ps: with ps; [
           pip
