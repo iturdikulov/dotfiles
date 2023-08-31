@@ -100,6 +100,7 @@
       ssh.enable = true;
       docker.enable = true;
       syncthing.enable = true;
+      virt-manager.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
