@@ -16,10 +16,9 @@ in {
       };
     };
 
-    # TODO: add own key
     user.openssh.authorizedKeys.keys =
-      if config.user.name == "hlissner"
-      then [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB71rSnjuC06Qq3NLXQJwSz7jazoB+umydddrxL6vg1a hlissner" ]
+      if config.user.name == "inom"
+      then [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAuq7AMP3tGbkgRpdb0MX4JHT9NeUiif0w8xF00iqjq Inom M. Turdikulov inom@iturdikulov.org" ]
       else [];
   };
 }
