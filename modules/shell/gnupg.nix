@@ -41,7 +41,7 @@ in {
 
   (mkIf (cfg.sshKeys != null) {
    # Trailing newlines are important
-   home.file."${homedir}/sshcontrol".text = concatMapStrings (s: ''
+   home.configFile."gnupg/sshcontrol".text = concatMapStrings (s: ''
        ${s}
        '') cfg.sshKeys;
    })
