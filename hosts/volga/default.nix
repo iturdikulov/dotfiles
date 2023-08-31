@@ -75,10 +75,6 @@
 
       gnupg = {
         enable = true;
-
-        # keygrip(s) of GPG key to generate sshcontrol file for gpg-agen with
-        # ssh support
-        sshKeys = ["3489C4C3075DB1C75E10783078385A34E8028998"];
       };
 
       pass.enable   = true;
@@ -124,4 +120,7 @@
   services.pcscd.enable = true;     # for gpg-agent
   services.timesyncd.enable = true; # to sync time
   networking.networkmanager.enable = true;
+
+  ## SSH control file
+  home.configFile."gnupg/sshcontrol".source = config.age.secrets.sshcontrol.path;
 }

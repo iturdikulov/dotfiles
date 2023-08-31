@@ -16,7 +16,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config = mkIf cfg.enable (
   {
     environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
@@ -39,11 +39,5 @@ in {
     };
   }
 
-  (mkIf (cfg.sshKeys != null) {
-   # Trailing newlines are important
-   home.configFile."gnupg/sshcontrol".text = concatMapStrings (s: ''
-       ${s}
-       '') cfg.sshKeys;
-   })
-  ]);
+  );
 }
