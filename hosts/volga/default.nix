@@ -3,7 +3,7 @@
   imports = [
     ../home.nix
     ./hardware-configuration.nix
-    # ./modules/wireguard.nix
+    ./modules/wireguard.nix
   ];
 
   ## Modules
@@ -73,7 +73,14 @@
       download.enable = true;
       db.enable       = true;
 
-      gnupg.enable  = true;
+      gnupg = {
+        enable = true;
+
+        # keygrip(s) of GPG key to generate sshcontrol file for gpg-agen with
+        # ssh support
+        sshKeys = ["3489C4C3075DB1C75E10783078385A34E8028998"];
+      };
+
       pass.enable   = true;
 
       w3m.enable    = true;
