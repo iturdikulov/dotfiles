@@ -82,8 +82,8 @@ xsetroot -cursor_name left_ptr
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "f88ccb93b3a962acca36dd629f91fe75d30ce72f";
-             hash = "sha256-p+T7nsueB3PVGaOcS9p7NxzBp6Ap/lYdka8/2LhwwA0=";
+             rev = "9135a18782764df8dfb143360c879786f549be1a";
+             hash = "sha256-4hTwL+J3YYJdjGdmSH1rtiauHY9gvQAWXCj4tfHEWE8=";
            };
         });
         };
