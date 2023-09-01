@@ -18,6 +18,8 @@
       #      vulnerabilities. Don't copy this blindly! And especially not for
       #      mission critical or server/headless builds exposed to the world.
       "mitigations=off"
+      # AMDGPU freeze 2021, possible workround
+      # amdgpu.noretry=0
     ];
 
     # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
