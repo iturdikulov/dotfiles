@@ -19,6 +19,12 @@
       defaultApplications = {
         # TODO: check raster/svg/etc enabled and only then apply associations?
 
+        # Default browser
+        "x-scheme-handler/http"    = "firefox.desktop";
+        "x-scheme-handler/https"   = "firefox.desktop";
+        "x-scheme-handler/about"   = "firefox.desktop";
+        "x-scheme-handler/unknown" = "firefox.desktop";
+
         # Documents
         "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
         "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
@@ -158,4 +164,3 @@
     '';
   };
 }
-
