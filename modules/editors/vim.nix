@@ -101,9 +101,6 @@ in {
                  vim-rsi
                  vim-gnupg
 
-                 (fromGitHub "HEAD" "jalvesaq/zotcite")
-                 (fromGitHub "HEAD" "jalvesaq/cmp-zotcite")
-
                  refactoring-nvim
                  indent-o-matic
                  vim-dasht
