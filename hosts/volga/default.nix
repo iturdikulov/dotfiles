@@ -3,6 +3,7 @@
   imports = [
     ../home.nix
     ./hardware-configuration.nix
+    ./modules/dyndns.nix
   ];
 
   ## Modules
