@@ -1,5 +1,5 @@
-let key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAuq7AMP3tGbkgRpdb0MX4JHT9NeUiif0w8xF00iqjq Inom M. Turdikulov inom@iturdikulov.org";
+let key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+98UauMXllELyhSNhTTJPITI2OmJSNf1HUXxjiv6V";
 in {
-  "wireguard.age".publicKeys = [key];
+  #"wireguard.age".publicKeys = [key];
   "sshcontrol.age".publicKeys = [key];
 }
