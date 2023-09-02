@@ -5,78 +5,35 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot = {
-    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
-    initrd.kernelModules = [];
-    extraModulePackages = [];
-    kernelModules = [ "kvm-amd" ];
-    kernelParams = [
-      # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
-      #      vulnerabilities. Don't copy this blindly! And especially not for
-      #      mission critical or server/headless builds exposed to the world.
-      "mitigations=off"
-      # AMDGPU freeze 2021, possible workround
-      # amdgpu.noretry=0
-    ];
-
-    # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
-    # pinging them, unlike my servers.
-    kernel.sysctl."net.ipv4.icmp_echo_ignore_broadcasts" = 1;
-  };
-
-
-  # Modules
-  modules.hardware = {
-    audio.enable = true;
-    ergodox.enable = false;
-    fs = {
-      enable = true;
-      ssd.enable = true;
-    };
-    nvidia.enable = false;
-    sensors.enable = true;
-  };
-
-  # CPU
-  nix.settings.max-jobs = lib.mkDefault 16;
-  powerManagement.cpuFreqGovernor = "performance";
-  hardware.cpu.amd.updateMicrocode = true;
-
-  # Displays
-  #services.xserver = {
-  #  # This must be done manually to ensure my screen spaces are arranged exactly
-  #  # as I need them to be *and* the correct monitor is "primary". Using
-  #  # xrandrHeads does not work.
-  #  monitorSection = ''
-  #  '';
-  #  screenSection = ''
-  #  '';
-  #};
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/be744f28-b85c-4658-879c-f739cafc7064";
+    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=root" ];
     };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/be744f28-b85c-4658-879c-f739cafc7064";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/EF8C-D8DA";
+      fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/be744f28-b85c-4658-879c-f739cafc7064";
+    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=home" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A9D0-629F";
-      fsType = "vfat";
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
     };
 
   swapDevices = [ ];
@@ -86,7 +43,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp34s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
