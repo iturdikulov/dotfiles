@@ -155,6 +155,6 @@ in {
       v   = "nvim";
     };
 
-    # fonts.fonts = [ pkgs.vim-all-the-icons-fonts ];
+    # fonts.packages = [ pkgs.vim-all-the-icons-fonts ];
   };
 }

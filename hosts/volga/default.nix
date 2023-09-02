@@ -3,7 +3,6 @@
   imports = [
     ../home.nix
     ./hardware-configuration.nix
-    ./modules/wireguard.nix
   ];
 
   ## Modules
@@ -69,7 +68,7 @@
     };
     editors = {
       default = "nvim";
-      emacs.enable = true;
+      emacs.enable = false;
       vim.enable = true;
     };
     shell = {
@@ -123,7 +122,4 @@
   services.pcscd.enable = true;     # for gpg-agent
   services.timesyncd.enable = true; # to sync time
   networking.networkmanager.enable = true;
-
-  ## SSH control file
-  home.configFile."gnupg/sshcontrol".source = config.age.secrets.sshcontrol.path;
 }
