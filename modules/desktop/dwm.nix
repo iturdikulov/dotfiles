@@ -44,6 +44,12 @@ xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
 
 # Set cursor shape
 xsetroot -cursor_name left_ptr
+
+# Load some IRL-sensentive apps and bloatware ;-)
+thunderbird &
+slack &
+telegram-desktop &
+spotify &
 '';
         executable = true;
     };
@@ -82,8 +88,8 @@ xsetroot -cursor_name left_ptr
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "d8a8a841397ab87d6656d5b5d04e533ccae4b92f";
-             hash = "sha256-4Dup6s13V5UOiCfu7gj4D0+sVvfDr3aycmdENHLmgwg=";
+             rev = "2db78f3982f5fc8da4898f6159069e6eeb95dafd";
+             hash = "sha256-PNNcc354kRQWXKhwemgr3bPl/8Ea9GrJ35YSulKnWGY=";
            };
         });
         };
