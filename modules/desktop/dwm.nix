@@ -61,7 +61,7 @@ xsetroot -cursor_name left_ptr
     env.PATH = [ "$DOTFILES_BIN/dmenu" ];
 
     services = {
-      picom.enable = false;
+      picom.enable = true;
       redshift.enable = true;
       xserver = {
         enable = true;
