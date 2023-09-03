@@ -13,6 +13,8 @@ in {
     user.packages = with pkgs; [
         (pkgs.writeScriptBin "chatgpt-cli" ''
         #!/bin/sh
+        KEYS=~/.profile-keys && test -f $KEYS && source $KEYS
+        unset KEYS
         xst -c chatgpt -e chatgpt
         '')
         (pkgs.writeScriptBin "wiki" ''
