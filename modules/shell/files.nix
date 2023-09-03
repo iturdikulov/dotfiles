@@ -11,7 +11,10 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       du-dust
+
       (nnn.override {withNerdIcons = true;})
+      xdragon  # mainly for supporting dragdrop nnn plugin
+
       fd
       fasd
       ripgrep
