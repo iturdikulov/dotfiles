@@ -74,6 +74,7 @@ indent_size = unset
 # Instead of a hard line break, start a new paragraph by inserting a blank line.
 [*.md]
 trim_trailing_whitespace = true
+max_line_length = 80
 
 # binaries
 [*.nib]
