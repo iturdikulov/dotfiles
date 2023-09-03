@@ -18,10 +18,15 @@ in {
 
       (mpv.override {
         youtubeSupport = true;
-        scripts = [
-          mpvScripts.mpris
-          mpvScripts.webtorrent-mpv-hook
-          mpvScripts.uosc
+        scripts = with mpvScripts; [
+          mpris
+          webtorrent-mpv-hook
+          uosc
+          thumbfast
+          mpv-playlistmanager
+          autoload
+          autocrop
+          acompressor
         ];
       })
 
@@ -31,6 +36,7 @@ in {
     home.configFile = {
       "mpv/mpv.conf".source   = "${configDir}/mpv/mpv.conf";
       "mpv/input.conf".source = "${configDir}/mpv/input.conf";
+      "mpv/scripts" = { source = "${configDir}/mpv/scripts"; recursive = true; };
     };
   };
 }
