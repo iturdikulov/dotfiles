@@ -18,6 +18,6 @@ in {
     ];
 
     # wget configuration
-    home.configFile."downloadrc".source = "${configDir}/wget/wgetrc";
+    home.configFile."wgetrc".source = "${configDir}/wget/wgetrc";
   };
 }
