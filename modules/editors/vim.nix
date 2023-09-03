@@ -101,7 +101,6 @@ in {
                  vim-gnupg
 
                  refactoring-nvim
-                 indent-o-matic
                  vim-dasht
                  nvim-treesitter.withAllGrammars
                  harpoon
