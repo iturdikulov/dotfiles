@@ -8,14 +8,6 @@
 
   ## Modules
   modules = {
-    hardware = {
-      audio.enable = true;
-      wacom.enable = true;
-      microcontroller.enable = true;
-      fs.enable = true;
-      #amd.enable = true; TODO: implement & enable, DRI, opengl, vulkan, ROCm
-    };
-
     desktop = {
       dwm.enable = true;
       apps = {
