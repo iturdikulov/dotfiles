@@ -11,7 +11,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       du-dust
-      nnn
+      (nnn.override {withNerdIcons = true;})
       fd
       fasd
       ripgrep
