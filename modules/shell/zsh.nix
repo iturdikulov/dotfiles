@@ -85,7 +85,7 @@ in {
     '';
 
     system.userActivationScripts.updateTealdeer = ''
-      tldr --update
+      ${pkgs.tealdeer}/bin/tldr --update
     '';
   };
 }
