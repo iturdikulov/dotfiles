@@ -79,8 +79,8 @@
 
   # NixOS hardware options
   hardware = {
-    xpadneo.enable = true;# Xbox controller support
-    keyboard.qmk.enable = true # QMK keyboard support
+    xpadneo.enable = true;      # Xbox controller support
+    keyboard.qmk.enable = true; # QMK keyboard support
   };
 
   # Custom hardware options
