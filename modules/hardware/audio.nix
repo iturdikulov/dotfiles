@@ -18,9 +18,24 @@ in {
 
     security.rtkit.enable = true;
 
-    environment.systemPackages = with pkgs; [
+    user.packages = with pkgs; [
       easyeffects
     ];
+
+    systemd.user.services."easyeffects" = {
+      description = "Easyeffects daemon";
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session-pre.target" ];
+      partOf = [ "graphical-session.target" "pipewire.service" ];
+
+      serviceConfig = {
+        ExecStart =
+          "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+        ExecStop = "${pkgs.easyeffects}/bin/easyeffects --quit";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+    };
 
     # HACK Prevents ~/.esd_auth files by disabling the esound protocol module
     #      for pulseaudio, which I likely don't need. Is there a better way?
