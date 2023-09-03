@@ -63,7 +63,7 @@ in {
 
       # 3D modelling
       (if cfg.models.enable then [
-        blender
+        blender-hip
       ] else []) ++
 
       # Photography workflow
