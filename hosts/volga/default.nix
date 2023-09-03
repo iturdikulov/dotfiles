@@ -68,6 +68,7 @@
       download.enable = true;
       db.enable       = true;  # database CLI's
       files.enable    = true;  # files utilites
+      editorconfig.enable = true;
 
       gnupg = {
         enable = true;
