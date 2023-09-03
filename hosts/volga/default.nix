@@ -66,7 +66,8 @@
     };
     shell = {
       download.enable = true;
-      db.enable       = true;
+      db.enable       = true;  # database CLI's
+      files.enable    = true;  # files utilites
 
       gnupg = {
         enable = true;
@@ -87,7 +88,6 @@
       zsh.enable    = true;
       sdcv.enable   = true;
       sc-im.enable  = true;
-      du-dust.enable     = true;
       ttyper.enable      = true;
       weechat.enable     = true;
       maintenance.enable = true;

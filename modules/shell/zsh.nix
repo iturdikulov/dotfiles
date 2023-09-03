@@ -41,11 +41,8 @@ in {
       nix-zsh-completions
       bat
       exa
-      fasd
-      fd
       fzf
       jq
-      ripgrep
       tealdeer
     ];
 
