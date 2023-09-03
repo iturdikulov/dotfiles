@@ -80,7 +80,6 @@
   # NixOS hardware options
   hardware = {
     xpadneo.enable = true;      # Xbox controller support
-    keyboard.qmk.enable = true; # QMK keyboard support
   };
 
   # Custom hardware options
@@ -90,6 +89,7 @@
     bluetooth.enable = true;
     radeon.enable = true;
     microcontroller.enable = true;
+    qmk.enable = true;
     fs = {
       enable = true;
       ssd.enable = false;  # I use instead discard=async with BTRFS
