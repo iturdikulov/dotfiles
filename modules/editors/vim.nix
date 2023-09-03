@@ -29,7 +29,6 @@ in {
       gnutls              # for TLS connectivity
 
       fd                  # faster projectile indexing
-      viu                 # to preview images
       dasht               # to search in docsets
 
       # required for telescope-media-files-nvim
