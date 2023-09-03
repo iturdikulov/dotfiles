@@ -14,5 +14,13 @@ in {
     hardware.keyboard.qmk.enable = true;
 
     user.extraGroups = [ "plugdev" ];
+
+    home.configFile."qmk/qmk.ini" = {
+      text = ''
+        [user]
+        keyboard = kbdfans/kbd75/rev2
+        keymap = inomoz
+      '';
+    };
   };
 }
