@@ -66,8 +66,8 @@ in {
         gnome.adwaita-icon-theme
       ];
       user.packages = with pkgs; [
-        unstable.dracula-theme
         papirus-icon-theme
+        unstable.dracula-theme
       ];
       fonts = {
         fonts = with pkgs; [
@@ -130,11 +130,14 @@ in {
           "dunst/dunstrc".text = import ./config/dunstrc cfg;
           "Dracula-purple-solid-kvantum" = {
             recursive = true;
-            source = "${pkgs.unstable.dracula-theme}/share/themes/Dracula/kde/kvantum/Dracula-purple-solid";
+            source = "${pkgs.unstable.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
             target = "Kvantum/Dracula-purple-solid";
           };
           "kvantum.kvconfig" = {
-            text = "theme=Dracula-purple-solid";
+            text = ''
+            [General]
+            theme=Dracula-purple-solid
+            '';
             target = "Kvantum/kvantum.kvconfig";
           };
         })

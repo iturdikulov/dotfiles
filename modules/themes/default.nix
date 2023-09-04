@@ -175,6 +175,13 @@ in {
         '';
       };
 
+      # Fix icon theme in QT applications
+      programs.dconf.enable = true;
+      home-manager.users.${config.user.name}.dconf.settings."org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          icon-theme = "${cfg.gtk.iconTheme}";
+      };
+
       fonts.fontconfig.defaultFonts = {
         sansSerif = [ cfg.fonts.sans.name ];
         monospace = [ cfg.fonts.mono.name ];

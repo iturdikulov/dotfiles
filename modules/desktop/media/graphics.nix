@@ -80,5 +80,8 @@ in {
     home.configFile = mkIf cfg.raster.enable {
       "GIMP/2.10" = { source = "${configDir}/gimp"; recursive = true; };
     };
+
+    # Fix krita styling
+    env.KRITA_NO_STYLE_OVERRIDE = "1";
   };
 }
