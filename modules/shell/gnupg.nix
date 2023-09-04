@@ -22,6 +22,7 @@ in {
 
     programs.gnupg.agent.enable = true;
     programs.gnupg.agent.enableSSHSupport = true;
+    programs.gnupg.agent.pinentryFlavor = "qt";
 
     user.packages = with pkgs; [
       tomb      # File encryption on GNU/Linux
@@ -34,7 +35,6 @@ in {
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
-        pinentry-program ${pkgs.pinentry}/bin/pinentry
       '';
     };
   }
