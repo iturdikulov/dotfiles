@@ -33,6 +33,10 @@ in {
         #!/bin/sh
         xst -c weechat -e weechat
         '')
+        (pkgs.writeScriptBin "ttyper-cli" ''
+        #!/bin/sh
+        xst -c ttyper -e ttyper
+        '')
     ];
     home.dataFile."dwm/autostart.sh" = {
         text = ''
@@ -90,8 +94,8 @@ spotify &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "2db78f3982f5fc8da4898f6159069e6eeb95dafd";
-             hash = "sha256-PNNcc354kRQWXKhwemgr3bPl/8Ea9GrJ35YSulKnWGY=";
+             rev = "689ee1d2190484095445280aa9d6d4c5d31c7707";
+             hash = "sha256-IUcsZvJkuL2DNnPD9TLNQvcyWEE/D6JXfcdMGYdLJCU=";
            };
         });
         };
