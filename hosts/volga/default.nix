@@ -65,7 +65,7 @@
       vim.enable = true;
     };
     shell = {
-      download.enable = true;
+      network.enable = true;
       db.enable       = true;  # database CLI's
       files.enable    = true;  # files utilites
       editorconfig.enable = true;
@@ -101,6 +101,7 @@
       docker.enable = true;
       syncthing.enable = true;
       virt-manager.enable = true;
+      nginx.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
