@@ -20,8 +20,8 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         jetbrains.pycharm-community  # YES it's IDE, maybe someday I can replace it
-
         ruff # Linter
+        python310
         (unstable.python310.withPackages(ps: with ps; [
           pip
           setuptools
@@ -29,13 +29,6 @@ in {
           pandas
           scipy
           numpy
-
-          # LSP
-          # TODO: check vim enabled
-          ruff-lsp
-          black
-          debugpy
-          flake8
         ]))
       ];
 
