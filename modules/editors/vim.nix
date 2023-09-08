@@ -1,7 +1,9 @@
 # When I'm stuck in the terminal or don't have access to Emacs, (neo)vim is my
 # go-to. I am a vimmer at heart, after all.
 
-{ config, lib, pkgs, home, inputs, ... }:
+{ config, lib, pkgs, home, inputs, buildNpmPackage
+, fetchFromGitHub
+, fetchpatch, ... }:
 
 with lib;
 with lib.my;
@@ -24,6 +26,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+
     user.packages = with pkgs; [
       git
       gnutls              # for TLS connectivity
@@ -48,12 +51,14 @@ in {
       ltex-ls
       nil             # Yet another language server for Nix
       efm-langserver  # for formatting
+      unstable.emmet-ls
 
       ## Formatting
       luaformatter
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
+      my.vscode-js-debug
 
       # Desktop file
       (makeDesktopItem {
@@ -127,6 +132,7 @@ in {
                  nvim-dap-virtual-text
                  nvim-dap-python
                  telescope-dap-nvim
+                 (fromGitHub "HEAD" "mxsdev/nvim-dap-vscode-js")
 
                  neotest
                  neotest-rust
