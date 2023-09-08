@@ -89,7 +89,6 @@
       zsh.enable    = true;
       sdcv.enable   = true;
       sc-im.enable  = true;
-      ttyper.enable      = true;
       weechat.enable     = true;
       maintenance.enable = true;
       termdown.enable    = true;
