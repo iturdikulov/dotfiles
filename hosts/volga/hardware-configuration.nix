@@ -18,6 +18,7 @@
       #      vulnerabilities. Don't copy this blindly! And especially not for
       #      mission critical or server/headless builds exposed to the world.
       "mitigations=off"
+      "amdgpu.noretry=0"
     ];
 
     # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
@@ -26,23 +27,23 @@
   };
 
   # Displays
-  services.xserver = {
-    # This must be done manually to ensure my screen spaces are arranged exactly
-    # as I need them to be *and* the correct monitor is "primary". Using
-    # xrandrHeads does not work.
-    monitorSection = ''
-      VendorName     "Unknown"
-      ModelName      "Asus VZ239"
-      Option         "DPMS"
-      Modeline "1920x1080_60.00" 220.64 1920 2056 2264 2608 1080 1081 1084 1128 -HSync +Vsync
-      Option "PreferredMode" "1920x1080_60.00"
-    '';
-    screenSection = ''
-      SubSection "Display"
-        Modes "1920x1080_60.00"
-      EndSubSection
-    '';
-  };
+  # services.xserver = {
+  #   # This must be done manually to ensure my screen spaces are arranged exactly
+  #   # as I need them to be *and* the correct monitor is "primary". Using
+  #   # xrandrHeads does not work.
+  #   monitorSection = ''
+  #     VendorName     "Unknown"
+  #     ModelName      "Asus VZ239"
+  #     Option         "DPMS"
+  #     Modeline "1920x1080_60.00" 220.64 1920 2056 2264 2608 1080 1081 1084 1128 -HSync +Vsync
+  #     Option "PreferredMode" "1920x1080_60.00"
+  #   '';
+  #   screenSection = ''
+  #     SubSection "Display"
+  #       Modes "1920x1080_60.00"
+  #     EndSubSection
+  #   '';
+  # };
 
   services.autorandr = {
     enable = true;
@@ -90,6 +91,7 @@
     radeon.enable = true;
     microcontroller.enable = true;
     qmk.enable = true;
+    android.enable = true;
     fs = {
       enable = true;
       ssd.enable = false;  # I use instead discard=async with BTRFS
