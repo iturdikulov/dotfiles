@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
+
     user.packages = with pkgs; [
         (pkgs.writeScriptBin "chatgpt-cli" ''
         #!/bin/sh
