@@ -1,0 +1,13 @@
+#!/bin/sh
+URL=$(xclip -o -selection clipboard)
+
+# Remove whitespace using sed
+URL=$(echo $URL | xargs)
+
+notify-send "Opening URL $URL"
+
+if [[ $URL =~ ^magnet.* ]]; then
+  webtorrent -d 3000 "$URL" --mpv
+else
+  mpv "$URL"
+fi
