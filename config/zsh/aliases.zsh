@@ -115,7 +115,8 @@ alias latest_dir='ls -tad */ | head -n1'
 alias oldest_files='ls -Atr | head -n10'
 alias broken_symlinks='find / -xtype l -print'
 alias fc-list-mono='fc-list :spacing=mono'
-alias ps_mem_all='ps_mem -p $(pgrep -d, -u $USER)'
+alias cpu_hogs='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
+alias memory_hogs='ps_mem -p $(pgrep -d, -u $USER)'
 
 # Print colors from 1 to 255, 0 is background
 function print_colors {
