@@ -7,7 +7,7 @@ URL=$(echo $URL | xargs)
 notify-send "Opening URL $URL"
 
 if [[ $URL =~ ^magnet.* ]]; then
-  webtorrent -d 3000 "$URL" --mpv
+  webtorrent -d 3000 "$URL" --out "$HOME/Downloads/webtorrent" --mpv
 else
   mpv "$URL"
 fi
