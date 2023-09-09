@@ -26,7 +26,7 @@ screencast() { \
 	-r 24 \
 	-use_wallclock_as_timestamps 1 \
 	-f alsa -thread_queue_size 1024 -i default \
- 	-c:v h264 \
+	-c:v h264 \
 	-crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/record/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
@@ -80,7 +80,7 @@ askrecording() { \
 	}
 
 asktoend() { \
-	response=$(printf "No\\nYes" | rofi -theme theme/filemenu.rasi -dmenu -i -p "Recording still active. End recording?") &&
+	response=$(printf "Yes\\nNo" | rofi -theme theme/filemenu.rasi -dmenu -i -p "Recording still active. End recording?") &&
 	[ "$response" = "Yes" ] &&  killrecording
 	}
 
