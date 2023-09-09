@@ -20,7 +20,6 @@ in {
         youtubeSupport = true;
         scripts = with mpvScripts; [
           mpris
-          webtorrent-mpv-hook
           uosc
           thumbfast
           mpv-playlistmanager
