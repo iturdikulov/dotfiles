@@ -132,6 +132,5 @@ element {
   text-color: @fg;
 }
 element selected {
-  background-color: @bg-dark;
-  text-color: @accent;
+  background-color: @accent;
 }
