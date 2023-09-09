@@ -40,6 +40,9 @@ in {
         text = ''
 #!/bin/sh
 
+# Exit if spotify already running (we already started...)
+pgrep spotify && exit 1
+
 # Load theme specific settings
 [[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
 
@@ -92,8 +95,8 @@ spotify &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "405e57d470d0db59779eace87bacca250d78cdd6";
-             hash = "sha256-x0q46cYjMABN5jAKZznU0Bbgix3x4NrcRK7whEqD2d8=";
+             rev = "fb19f1af3955c15c4d4d9f8d14a77f8b975aabcc";
+             hash = "sha256-O2h8oCClKXeoz0PMOhm4g0Pi5cgD9JzkNukgjcD0a3Q=";
            };
         });
         };
