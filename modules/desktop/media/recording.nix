@@ -24,18 +24,15 @@ in {
       (if cfg.audio.enable then [ unstable.audacity unstable.ardour ] else []) ++
       # for longer term streaming/recording the screen
       (if cfg.video.enable then [
-         unstable.obs-studio
-         unstable.obs-studio-plugins.obs-vaapi
-         unstable.gst_all_1.gst-vaapi
          unstable.handbrake
          unstable.ffmpeg-full
         (pkgs.writeScriptBin "latest_record" ''
         #!/bin/sh
         RECORDINGS_DIR="$HOME/Videos/record"
         [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
-        RECORDING=$(ls -Art | tail -n 1)
-        echo "$HOME/Videos/record/$RECORDING"| xclip -sel c
-        mpv $RECORDING
+        RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
+        echo "$RECORDING"| xclip -sel c
+        mpv --loop-file=yes "$RECORDING"
         '')
       ] else []);
   };
