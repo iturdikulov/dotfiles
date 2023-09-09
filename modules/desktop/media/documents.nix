@@ -25,6 +25,7 @@ in {
 
       (if cfg.pdf.enable then [
         zathura
+        ghostscript
       ] else [])++
 
       (if cfg.research.enable then [
