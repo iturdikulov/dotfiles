@@ -1,8 +1,8 @@
 #!/bin/sh
 URL=$(xclip -o -selection clipboard)
 
-# Remove whitespace using sed
-URL=$(echo $URL | xargs)
+# Trim whitespaces
+URL=$(echo "$URL" | tr -d '[:space:]')
 
 notify-send "Opening URL $URL"
 
