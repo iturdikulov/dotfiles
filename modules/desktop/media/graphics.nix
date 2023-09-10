@@ -18,7 +18,9 @@ in {
     raster.enable  = mkBoolOpt true;
     vector.enable  = mkBoolOpt true;
     sprites.enable = mkBoolOpt true;
-    models.enable  = mkBoolOpt false;
+    models.enable  = mkBoolOpt true;
+    photos.enable  = mkBoolOpt true;
+    videos.enable  = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
@@ -26,6 +28,15 @@ in {
       (if cfg.tools.enable then [
         font-manager   # so many damned fonts...
         imagemagick    # for image manipulation from the shell
+        tesseract4     # OCR engine
+        maim           # A command-line screenshot utility
+        (pkgs.writeScriptBin "scrcap_ocr" ''
+        #!/bin/sh
+        maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
+        | tesseract -l eng+rus stdin stdout \
+        | xclip -in -selection clipboard
+        notify-send "Screenshot OCR" "Image copied to clipboard"
+        '')
       ] else []) ++
 
       # replaces illustrator & indesign
@@ -33,11 +44,16 @@ in {
         unstable.inkscape
       ] else []) ++
 
-      # Replaces photoshop
+      # raster images workflow
       (if cfg.raster.enable then [
+        # nsxiv image viewer
+        nsxiv
+        libwebp  # required for animated webp playback
+        giflib   # used for animated gif playback
+
         krita
         gimp
-        gimpPlugins.resynthesizer  # content-aware scaling in gimp
+        # gimpPlugins.resynthesizer  # content-aware scaling in gimp
       ] else []) ++
 
       # Sprite sheets & animation
@@ -47,11 +63,25 @@ in {
 
       # 3D modelling
       (if cfg.models.enable then [
-        blender
+        blender-hip
+      ] else []) ++
+
+      # Photography workflow
+      (if cfg.photos.enable then [
+        darktable
+      ] else [])++
+
+      # Video editing
+      (if cfg.videos.enable then [
+        olive-editor
+        natron
       ] else []);
 
     home.configFile = mkIf cfg.raster.enable {
       "GIMP/2.10" = { source = "${configDir}/gimp"; recursive = true; };
     };
+
+    # Fix krita styling
+    env.KRITA_NO_STYLE_OVERRIDE = "1";
   };
 }

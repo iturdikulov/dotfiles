@@ -21,6 +21,8 @@ in {
         exfat     # Windows drives
         ntfs3g    # Windows drives
         hfsprogs  # MacOS drives
+        simple-mtpfs  # Android devices, used in mounter script
+        cryptsetup  # LUKS for dm-crypt, encryption support
       ];
     }
 

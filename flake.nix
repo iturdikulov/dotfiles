@@ -10,7 +10,7 @@
 {
   description = "A grossly incandescent nixos config.";
 
-  inputs = 
+  inputs =
     {
       # Core dependencies.
       nixpkgs.url = "nixpkgs/nixos-unstable";             # primary nixpkgs
@@ -23,6 +23,7 @@
       # Extras
       emacs-overlay.url  = "github:nix-community/emacs-overlay";
       nixos-hardware.url = "github:nixos/nixos-hardware";
+      rust-overlay.url = "github:oxalica/rust-overlay";
     };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:
@@ -34,6 +35,13 @@
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
         config.allowUnfree = true;  # forgive me Stallman senpai
+
+        # Allos some insecure packages
+        # TODO: potentially need remove all this
+        config.permittedInsecurePackages = [
+          "python-2.7.18.6"
+        ];
+
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
       };
       pkgs  = mkPkgs nixpkgs [ self.overlay ];
@@ -50,8 +58,10 @@
           my = self.packages."${system}";
         };
 
+
       overlays =
         mapModules ./overlays import;
+
 
       packages."${system}" =
         mapModules ./packages (p: pkgs.callPackage p {});

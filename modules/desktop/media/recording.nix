@@ -21,8 +21,19 @@ in {
 
     user.packages = with pkgs;
       # for recording and remastering audio
-      (if cfg.audio.enable then [ unstable.audacity-gtk3 unstable.ardour ] else []) ++
+      (if cfg.audio.enable then [ unstable.audacity unstable.ardour ] else []) ++
       # for longer term streaming/recording the screen
-      (if cfg.video.enable then [ unstable.obs-studio unstable.handbrake ] else []);
+      (if cfg.video.enable then [
+         unstable.handbrake
+         unstable.ffmpeg-full
+        (pkgs.writeScriptBin "latest_record" ''
+        #!/bin/sh
+        RECORDINGS_DIR="$HOME/Videos/record"
+        [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
+        RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
+        echo "$RECORDING"| xclip -sel c
+        mpv --loop-file=yes "$RECORDING"
+        '')
+      ] else []);
   };
 }

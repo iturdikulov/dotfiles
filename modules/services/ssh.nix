@@ -11,13 +11,14 @@ in {
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      kbdInteractiveAuthentication = false;
-      passwordAuthentication = false;
+      settings = {
+        PasswordAuthentication = true;  # TODO: DISABLE THIS IN FUTURE, used for testing
+      };
     };
 
     user.openssh.authorizedKeys.keys =
-      if config.user.name == "hlissner"
-      then [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB71rSnjuC06Qq3NLXQJwSz7jazoB+umydddrxL6vg1a hlissner" ]
+      if config.user.name == "inom"
+      then [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+98UauMXllELyhSNhTTJPITI2OmJSNf1HUXxjiv6V Inom M. Turdikulov inom@iturdikulov.org" ]
       else [];
   };
 }

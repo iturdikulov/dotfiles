@@ -1,8 +1,12 @@
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias -- -='cd -'
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
 
+# Programs remap
+# ===============
 alias q=exit
 alias clr=clear
 alias sudo='sudo '
@@ -11,11 +15,21 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -pv'
 alias wget='wget -c'
-alias path='echo -e ${PATH//:/\\n}'
+alias wget_img='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
+
+alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias info='info --vi-keys' # Info vi mode
+alias watch='watch --color' # Color using watch
+alias chown="chown --preserve-root" # Do not do chown for root directory
+alias chmod="chmod --preserve-root"
+alias E="SUDO_EDITOR=nvim sudo -e"
 
 alias mk=make
 alias gurl='curl --compressed'
+alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
 
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
@@ -56,6 +70,7 @@ if (( $+commands[exa] )); then
   alias llm='ll --sort=modified'
   alias la="LC_COLLATE=C exa -ablF";
   alias tree='exa --tree'
+  alias tree_bat='exa --color=always --tree|bat'
 fi
 
 if (( $+commands[fasd] )); then
@@ -78,7 +93,67 @@ function zman {
 }
 
 # Create a reminder with human-readable durations, e.g. 15m, 1h, 40s, etc
+# Used the zsh/sched module
+# TODO: add examples, check ding
 function r {
   local time=$1; shift
+  echo $time
   sched "$time" "notify-send --urgency=critical 'Reminder' '$@'; ding";
 }; compdef r=sched
+
+
+alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
+alias urldecode='python3 -c "import sys, urllib.parse as ul; print (ul.unquote_plus(sys.argv[1]))"'
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# fd .env | map dirname
+alias map="xargs -n1"
+
+
+alias latest_dir='ls -tad */ | head -n1'
+alias oldest_files='ls -Atr | head -n10'
+alias broken_symlinks='find / -xtype l -print'
+alias fc-list-mono='fc-list :spacing=mono'
+alias cpu_hogs='ps axch -o cmd:15,%cpu --sort=-%cpu | head'
+alias memory_hogs='ps_mem -p $(pgrep -d, -u $USER)'
+
+# Print colors from 1 to 255, 0 is background
+function print_colors {
+  for colour in {1..225}
+      do echo -en "\033[38;5;${colour}m38;5;${colour} \n"
+  done | column -x
+}
+
+function abspath {
+  if [ -d "$1" ]; then
+      echo "$(cd $1; pwd)"
+  elif [ -f "$1" ]; then
+      if [[ $1 == */* ]]; then
+          echo "$(cd ${1%/*}; pwd)/${1##*/}"
+      else
+          echo "$(pwd)/$1"
+      fi
+  fi
+}
+
+# The following bash function will compare the file listings from the zip files.
+# The listings include verbose output (unzip -v), so checksums can be compared.
+# Output is sorted by filename (sort -k8) to allow side by side comparison and
+# the diff output expanded (W200) so the filenames are visible int he side by
+# side view.
+function zipdiff {
+  diff -W200 -y <(unzip -vql "$1" | sort -k8) <(unzip -vql "$2" | sort -k8);
+}
+
+# TODO: use quick-emu here, test on actual system
+function vmconnect {
+  local vm_running=$(virsh --connect qemu:///system  list --name --state-running)
+  # If $1 not in $vm_running list start
+  if [[ ! " $vm_running " =~ " $1 " ]]; then
+    echo "Starting virtual machine: $1"
+    virsh --connect qemu:///system start "$1"
+  fi
+
+  virt-viewer -c qemu:///system --attach -f "$1"
+}

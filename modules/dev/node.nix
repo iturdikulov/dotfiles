@@ -18,9 +18,21 @@ in {
   config = mkMerge [
     (let node = pkgs.nodejs_latest;
      in mkIf cfg.enable {
-      user.packages = [
+      user.packages = with pkgs; [
         node
-        pkgs.yarn
+        nodePackages.typescript
+        nodePackages.node2nix
+        yarn
+
+        # LSP
+        nodePackages.pyright  # NOTE: sync this with python.nix
+        nodePackages.typescript-language-server
+        nodePackages.vscode-langservers-extracted
+
+        # Formatters
+        # TODO check vim enabled
+        nodePackages.prettier
+        nodePackages.eslint_d
       ];
 
       # Run locally installed bin-script, e.g. n coffee file.coffee

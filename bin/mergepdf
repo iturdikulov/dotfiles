@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Merge PDF files, preserving hyperlinks
+#
+# Usage:
+#   mergepdf inupt{1,2,3}.pdf, [TARGET]
+#
+# Requires: ghostscript (gs)
+
+merge() {
+  gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile="$2" "$1"
+}
+
+src="$1"
+dest="_merged.pdf"
+merge "$src" "$dest" || exit $?

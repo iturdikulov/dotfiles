@@ -1,3 +1,6 @@
+!! TODO: paremetrize in modules/themes/alucard/default.nix
+Xcursor.theme: Adwaita
+
 !! Colors
 *.cursorColor: mag
 ! greys
@@ -11,12 +14,12 @@
 
 
 !! general
-st.scratch.font: monospace:pixelsize=16
+st.scratch.font: monospace:pixelsize=24:antialias=false:autohint=true
 
 
 !! xst
-st.font: monospace:pixelsize=12
-st.borderpx: 10
+st.font: monospace:pixelsize=24:antialias=false:autohint=true
+st.borderpx: 5
 
 
 !! urxvt
@@ -24,7 +27,7 @@ URxvt*depth:                   32
 URxvt*.borderless:             1
 URxvt*.buffered:               true
 URxvt*.cursorBlink:            true
-URxvt*.font:                   xft:monospace:pixelsize=12
+URxvt*.font:                   xft:monospace:pixelsize=18
 URxvt*.internalBorder:         10
 URxvt*.letterSpace:            0
 URxvt*.lineSpace:              0

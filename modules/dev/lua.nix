@@ -23,7 +23,7 @@ in {
       user.packages = with pkgs; [
         lua
         luaPackages.moonscript
-        (mkIf cfg.love2D.enable love2d)
+        (mkIf cfg.love2D.enable love)
       ];
     })
 

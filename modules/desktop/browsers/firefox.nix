@@ -70,7 +70,8 @@ in {
         # https://wiki.mozilla.org/Privacy/Reviews/New_Tab
         # https://support.mozilla.org/en-US/kb/new-tab-page-show-hide-and-customize-top-sites#w_how-do-i-turn-the-new-tab-page-off
         "browser.newtabpage.enabled" = false;
-        "browser.newtab.url" = "about:blank";
+        "browser.newtab.url" = "file:///home/inom/Templates/new_tab.html";
+        "browser.startup.homepage" = "file:///home/inom/Templates/new_tab.html";
         # Disable Activity Stream
         # https://wiki.mozilla.org/Firefox/Activity_Stream
         "browser.newtabpage.activity-stream.enabled" = false;
@@ -107,6 +108,7 @@ in {
         "browser.onboarding.enabled" = false;      # "New to Firefox? Let's get started!" tour
         "browser.aboutConfig.showWarning" = false; # Warning when opening about:config
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
+        "media.hardware-video-decoding.force-enabled" = true; # Force enable hardware-video-decoding, TODO: review in future, maybe not required
         "extensions.pocket.enabled" = false;
         "extensions.shield-recipe-client.enabled" = false;
         "reader.parse-on-load.enabled" = false;  # "reader view"

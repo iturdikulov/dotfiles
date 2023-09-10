@@ -5,21 +5,18 @@
 
 SCRID=scratch
 CMD=${1:-'tmux new-session -A -s scratch -n scratch'}
-focused=$(xdotool getactivewindow)
-scratch=$(xdotool search --onlyvisible --classname $SCRID)
-if [[ -n $scratch ]]; then
-    if [[ $focused == $scratch ]]; then
-        xdotool windowkill $scratch
-    else
-        xdotool windowactivate $scratch
+if command -v xst >/dev/null; then
+    scratch_font="$(xrdb -query | grep 'scratch\.font' | cut -f2)"
+    if [ -z "$scratch_font" ]; then
+        scratch_font='monospace:pixelsize=28'
     fi
+
+    xst -t $SCRID -n $SCRID -c $SCRID \
+        -f $scratch_font \
+        -e $SHELL -c "$CMD"
 elif command -v urxvt >/dev/null; then
     urxvt -name $SCRID \
           -e $SHELL -c "$CMD"
-elif command -v xst >/dev/null; then
-    xst -t $SCRID -n $SCRID -c $SCRID \
-        -f "$(xrdb -query | grep 'scratch\.font' | cut -f2)" \
-        -e $SHELL -c "$CMD"
 else
     >&2 echo "No shell to launch the scratch terminal with"
     exit 1

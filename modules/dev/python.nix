@@ -19,20 +19,23 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        python37
-        python37Packages.pip
-        python37Packages.ipython
-        python37Packages.black
-        python37Packages.setuptools
-        python37Packages.pylint
-        python37Packages.poetry
+        jetbrains.pycharm-community  # YES it's IDE, maybe someday I can replace it
+        ruff # Linter
+        python310
+        (unstable.python310.withPackages(ps: with ps; [
+          pip
+          setuptools
+          ipython
+          pandas
+          scipy
+          numpy
+        ]))
       ];
 
       environment.shellAliases = {
         py     = "python";
         py2    = "python2";
-        py3    = "python3";
-        po     = "poetry";
+        py3    = "python310";
         ipy    = "ipython --no-banner";
         ipylab = "ipython --pylab=qt5 --no-banner";
       };

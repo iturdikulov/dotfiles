@@ -41,12 +41,9 @@ in {
       nix-zsh-completions
       bat
       exa
-      fasd
-      fd
       fzf
       jq
-      ripgrep
-      tldr
+      tealdeer
     ];
 
     env = {
@@ -82,6 +79,10 @@ in {
     system.userActivationScripts.cleanupZgen = ''
       rm -rf $ZSH_CACHE
       rm -fv $ZGEN_DIR/init.zsh{,.zwc}
+    '';
+
+    system.userActivationScripts.updateTealdeer = ''
+      ${pkgs.tealdeer}/bin/tldr --update
     '';
   };
 }

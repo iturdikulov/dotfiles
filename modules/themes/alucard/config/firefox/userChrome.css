@@ -58,6 +58,12 @@
     height: 28px !important;
   }
 
+  /*** Hide title bar contorols ***/
+  .titlebar-min {display:none!important;}
+  .titlebar-max {display:none!important;}
+  .titlebar-restore {display:none!important;}
+  .titlebar-close {display:none!important;}
+
   /*** Load local overrides ***/
   @import url(./userChrome.local.css);
 }

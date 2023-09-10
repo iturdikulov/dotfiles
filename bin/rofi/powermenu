@@ -3,11 +3,11 @@
 rofi_command="rofi -theme theme/powermenu.rasi"
 
 ### Options ###
-power_off="\tShutdown"
-reboot="\tReboot"
-lock="\tLock"
-suspend="鈴\tSleep"
-log_out="\tLogout"
+power_off="Shutdown"
+reboot="Reboot"
+lock="Lock"
+suspend="Sleep"
+log_out="Logout"
 # Variable passed to rofi
 options="$power_off\n$reboot\n$lock\n$suspend\n$log_out"
 
@@ -26,6 +26,7 @@ case "$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)" in
         systemctl suspend
         ;;
     $log_out)
-        bspc quit
+        session=$(loginctl session-status | awk 'NR==1{print $1}')
+        loginctl terminate-session $session
         ;;
 esac

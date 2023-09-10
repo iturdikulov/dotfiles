@@ -13,11 +13,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # This env mostly used in scripts, to auto-pause player in some cases
+    env.AUDIO_PLAYER = "spotify";  # TODO parametrize this?
+
     user.packages = with pkgs; [
       # spotify-tui is fine for selecting and playing music, but incomplete. We
       # still occasionally need the official client for more sophisticated
       # search and the "made for you" playlists.
-      spotify
+      spotify   # controlling my media library
+      playerctl # for global shortcuts controlling
 
       # # services.spotifyd doesn't work so we'll have to roll our own spotifyd +
       # # spotify-tui solution. The dbus interface doesn't work, though, so we

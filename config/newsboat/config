@@ -1,0 +1,45 @@
+auto-reload yes
+
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key ^D pagedown
+bind-key ^U pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key ^N next-unread
+bind-key ^P prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+
+browser $BROWSER
+macro m set browser "playerctl -p $AUDIO_PLAYER pause & mpv --no-resume-playback %u" ; open-in-browser ; set browser $BROWSER
+macro c set browser "echo %u | xclip -r -sel c" ; open-in-browser ; set browser $BROWSER
+
+color background          color15    default
+color listnormal          color248   default
+color listnormal_unread   color10    default
+color listfocus           color15    color9
+color listfocus_unread    color15    color9   bold
+color info                color12    color0
+color article             color248   default
+
+# highlights
+highlight all "---.*---" yellow
+highlight article "[a-z]+://[^ ]+" green default underline
+highlight feedlist ".*(0/0))" black
+highlight article "(^Feed:|^Title:|^Date:|^Link:|^Author:)" cyan default bold
+highlight article "https?://[^ ]+" yellow default
+highlight article "\\[[0-9][0-9]*\\]" magenta default bold
+highlight article "\\[image\\ [0-9]+\\]" green default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
+highlight article ":.*\\(link\\)$" cyan default
+highlight article ":.*\\(image\\)$" blue default
+highlight article ":.*\\(embedded flash\\)$" magenta default

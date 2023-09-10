@@ -1,9 +1,8 @@
 /* -*- mode: css; -*- */
 configuration {
-  icon-theme:       "Paper";
+  icon-theme:       "Papirus-Dark";
   cycle:            true;
   disable-history:  false;
-  monitor:          "-4";
 
   /* Vim-esque C-j/C-k as up/down in rofi */
   kb-accept-entry: "Return,Control+m,KP_Enter";
@@ -13,7 +12,7 @@ configuration {
 }
 
 * {
-  accent:   #bd93f9;
+  accent:   #604c7e;
   bg:       #1E2029FA;
   bg-light: #1c1c1c;
   bg-focus: #282a36;
@@ -41,7 +40,8 @@ configuration {
 /**** Layout ****/
 window {
   width:    1000px;
-  y-offset: -50px;
+  height:   50%;
+  y-offset: -10%;
   anchor:   north;
   location: center;
   border: 1px;
@@ -132,6 +132,5 @@ element {
   text-color: @fg;
 }
 element selected {
-  background-color: @bg-dark;
-  text-color: @accent;
+  background-color: @accent;
 }

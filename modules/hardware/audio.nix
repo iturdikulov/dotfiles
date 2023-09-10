@@ -9,6 +9,22 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.noisetorch.enable = true;  # Echo cancelation
+
+    systemd.user.services.noisetorch = {
+      after = [ "default.target" ];
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.noisetorch}/bin/noisetorch -i";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+      environment = {
+        PULSE_SERVER = "/run/user/1000/pulse/native";
+      };
+    };
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -18,23 +34,9 @@ in {
 
     security.rtkit.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      easyeffects
+    user.packages = with pkgs; [
+      pavucontrol
     ];
-
-    # HACK Prevents ~/.esd_auth files by disabling the esound protocol module
-    #      for pulseaudio, which I likely don't need. Is there a better way?
-    hardware.pulseaudio.configFile =
-      let inherit (pkgs) runCommand pulseaudio;
-          paConfigFile =
-            runCommand "disablePulseaudioEsoundModule"
-              { buildInputs = [ pulseaudio ]; } ''
-                mkdir "$out"
-                cp ${pulseaudio}/etc/pulse/default.pa "$out/default.pa"
-                sed -i -e 's|load-module module-esound-protocol-unix|# ...|' "$out/default.pa"
-              '';
-      in mkIf config.hardware.pulseaudio.enable
-        "${paConfigFile}/default.pa";
 
     user.extraGroups = [ "audio" ];
   };
