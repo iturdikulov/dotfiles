@@ -11,18 +11,27 @@ fi
 # Create the lock file
 echo $$ > "$LOCK_FILE"
 
-# Core logic
-active_window=$(xdotool getactivewindow)
+speak(){
+    piper --length_scale 1.2 --model\
+      ~/.local/share/piper_model/en_US-lessac-medium.onnx \
+      --output-raw | aplay -f S16_LE -c1 -r22050 -
+}
 
-if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "xst" ]]; then
-    xdotool getactivewindow key ctrl+shift+c
+if [ $# -eq 0 ]
+  then
+    # Core logic
+    active_window=$(xdotool getactivewindow)
+
+    if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "xst" ]]; then
+        xdotool getactivewindow key ctrl+shift+c
+    else
+        xdotool getactivewindow key ctrl+c
+    fi
+
+    xclip -o -selection clipboard | speak
 else
-    xdotool getactivewindow key ctrl+c
+    echo "$@" | speak
 fi
-
-xclip -o -selection clipboard | piper --length_scale 1.2 --model\
-  ~/.local/share/piper_model/en_US-lessac-medium.onnx \
-  --output-raw | aplay -f S16_LE -c1 -r22050 -
 
 # Remove the lock file
 rm "$LOCK_FILE"
