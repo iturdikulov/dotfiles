@@ -142,6 +142,10 @@ function abspath {
   fi
 }
 
+function pomodoro {
+    termdown "$1" --exec-cmd "if [ '{0}' == '60' -o '{0}' == '10' ]; then piper_speak Termdown timer - {1} left; fi"
+}
+
 # The following bash function will compare the file listings from the zip files.
 # The listings include verbose output (unzip -v), so checksums can be compared.
 # Output is sorted by filename (sort -k8) to allow side by side comparison and
