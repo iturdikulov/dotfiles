@@ -68,6 +68,9 @@
       network.enable = true;
       db.enable       = true;  # database CLI's
       files.enable    = true;  # files utilites
+
+      AI.enable       = true;  # ChatGPT, wolfram-alpha
+
       editorconfig.enable = true;
 
       gnupg = {
@@ -76,11 +79,11 @@
 
       pass.enable   = true;
 
+      ddgr.enable     = true;
       w3m.enable    = true;
       xh.enable     = true;
       ytfzf.enable  = true;
       newsboat.enable  = true;
-      chatgpt-cli.enable = true;
 
       adl.enable    = true;
       direnv.enable = true;

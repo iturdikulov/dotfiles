@@ -82,6 +82,11 @@ if (( $+commands[fasd] )); then
   }
 fi
 
+if (( $+commands[ddgr] )); then
+    alias ddgr="ddgr -n 8";
+    alias bang="ddgr --gb --np"
+fi
+
 autoload -U zmv
 
 function take {
