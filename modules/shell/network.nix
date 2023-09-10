@@ -18,7 +18,10 @@ in {
       cloudflared
     ];
 
-    # wget configuration
+    # Configurations
     home.configFile."wgetrc".source = "${configDir}/wget/wgetrc";
+    home.configFile."yt-dlp/config".text = ''
+    --format bestvideo[ext=mp4]+bestaudio[ext=m4a]
+    '';
   };
 }
