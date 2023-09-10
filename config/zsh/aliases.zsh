@@ -83,7 +83,7 @@ if (( $+commands[fasd] )); then
 fi
 
 if (( $+commands[ddgr] )); then
-    alias ddgr="ddgr -n 8";
+    alias ddgr="ddgr -n 7";
     alias bang="ddgr --gb --np"
 fi
 
