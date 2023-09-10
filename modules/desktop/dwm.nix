@@ -15,7 +15,7 @@ in {
     user.packages = with pkgs; [
         (pkgs.writeScriptBin "chatgpt-cli" ''
         #!/bin/sh
-        API_KEY=~/.chatgpt_api_key && test -f $API_KEY && OPENAI_API_KEY=$(cat $API_KEY) && unset API_KEY
+        API_KEY=~/.chatgpt_api_key && test -f $API_KEY && export OPENAI_API_KEY=$(cat $API_KEY) && unset API_KEY
         xst -c chatgpt -e chatgpt
         '')
         (pkgs.writeScriptBin "wiki" ''
