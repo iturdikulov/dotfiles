@@ -113,7 +113,6 @@ in {
                  comment-nvim
                  undotree
                  nvim-ufo
-                 gitsigns-nvim
                  nvim-surround
                  trouble-nvim
 
