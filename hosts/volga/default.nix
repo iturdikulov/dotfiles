@@ -104,6 +104,7 @@
       syncthing.enable = true;
       virt-manager.enable = true;
       nginx.enable = true;
+      calibre.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
@@ -118,5 +119,16 @@
   services.openssh.settings.X11Forwarding = true;
   services.pcscd.enable = true;     # for gpg-agent
   services.timesyncd.enable = true; # to sync time
+
+  ## Taskwarrior config
+  # networking.firewall.allowedTCPPorts = [ 53589 ];
+  # services.taskserver = {
+  #   enable = true;
+  #   trust = "allow all";
+  #   listenHost = "192.168.0.103";
+  #   fqdn = "192.168.0.103";
+  #   organisations.home.users = [ "${config.user.name}" ];
+  # };
+
   networking.networkmanager.enable = true;
 }
