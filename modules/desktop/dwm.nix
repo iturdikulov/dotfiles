@@ -10,6 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    security.polkit.enable = true; # to promt root password in GUI programs
     programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
 
     user.packages = with pkgs; [
@@ -110,16 +111,32 @@ separator = " / "
 format = "%A, %d.%m [%B], %H:%M"
 	'';
       };
-      gvfs.enable = true;
+      # gvfs.enable = true;
     };
 
-    systemd.user.services."dunst" = {
+
+    systemd = {
+    user.services."dunst" = {
       enable = true;
       description = "";
       wantedBy = [ "default.target" ];
       serviceConfig.Restart = "always";
       serviceConfig.RestartSec = 2;
       serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
+    };
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+      };
     };
 
     # link recursively so other modules can link files in their folders
