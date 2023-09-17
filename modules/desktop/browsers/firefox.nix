@@ -52,6 +52,8 @@ in {
         "privacy.donottrackheader.enabled" = true;
         "privacy.donottrackheader.value" = 1;
         "privacy.purge_trackers.enabled" = true;
+        # Allow change density of UI elements
+        "browser.compactmode.show" = true;
         # Your customized toolbar settings are stored in
         # 'browser.uiCustomization.state'. This tells firefox to sync it between
         # machines. WARNING: This may not work across OSes. Since I use NixOS on
