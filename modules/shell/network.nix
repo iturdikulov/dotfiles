@@ -10,12 +10,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      wget
+    user.packages = with pkgs; [
+      qbittorrent
+      cloudflared
       aria
       yt-dlp
       gallery-dl
-      cloudflared
+      wget
     ];
 
     # Configurations
