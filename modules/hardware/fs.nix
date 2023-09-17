@@ -8,7 +8,6 @@ in {
     enable = mkBoolOpt false;
     zfs.enable = mkBoolOpt false;
     ssd.enable = mkBoolOpt false;
-    # TODO automount.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -23,6 +22,8 @@ in {
         hfsprogs  # MacOS drives
         simple-mtpfs  # Android devices, used in mounter script
         cryptsetup  # LUKS for dm-crypt, encryption support
+        smartmontools # Tools for monitoring the health of hard drives
+        fdupes        # Identifies duplicate files residing within specified directories
       ];
     }
 
