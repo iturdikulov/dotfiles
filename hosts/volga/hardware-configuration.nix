@@ -81,6 +81,7 @@
   # NixOS hardware options
   hardware = {
     xpadneo.enable = true;      # Xbox controller support
+    onlykey.enable = true;      # Enable OnlyKey device
   };
 
   # Custom hardware options
@@ -102,7 +103,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
+      options = [ "subvol=root" "compress=zstd" ];
     };
 
   fileSystems."/boot" =
@@ -113,13 +114,37 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
-      options = [ "subvol=home" ];
+      options = [ "subvol=home" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
-      options = [ "subvol=nix" ];
+      options = [ "subvol=nix" "compress=zstd" ];
+    };
+
+  fileSystems."/games" =
+    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+      fsType = "btrfs";
+      options = [ "subvol=games" "compress=zstd" ];
+    };
+
+  fileSystems."${config.user.home}/Downloads" =
+    { device = "/dev/disk/by-uuid/908dd11f-7265-425f-8b6e-f041fe69b0ba";
+      fsType = "btrfs";
+      options = [ "subvol=downloads" ];
+    };
+
+  fileSystems."${config.user.home}/Virtual_Machines" =
+    { device = "/dev/disk/by-uuid/908dd11f-7265-425f-8b6e-f041fe69b0ba";
+      fsType = "btrfs";
+      options = [ "subvol=virtual-machines" ];
+    };
+
+  fileSystems."/archive" =
+    { device = "/dev/disk/by-uuid/ff1ddb67-6528-49b3-8159-3d26eb97d431";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" ];
     };
 
   swapDevices = [ ];
