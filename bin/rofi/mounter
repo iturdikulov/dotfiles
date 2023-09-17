@@ -64,13 +64,13 @@ getmount(){
 	test -n "$mp"
 	if [ ! -d "$mp" ]; then
 		mkdiryn=$(printf "No\\nYes" | rofi -theme theme/filemenu.rasi -dmenu -i -p "$mp does not exist. Create it?")
-		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || sudo -A mkdir -p "$mp")
+		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || pkexec mkdir -p "$mp")
 	fi
 }
 
 attemptmount(){
 		# Attempt to mount without a mountpoint, to see if drive is in fstab.
-		sudo -A mount "$chosen" || return 1
+		pkexec mount "$chosen" || return 1
 		notify-send "💾Drive Mounted." "$chosen mounted."
 		exit
 }
@@ -80,7 +80,7 @@ case "$chosen" in
 		chosen="${chosen%% *}"
 		chosen="${chosen:1}"	# This is a bashism.
 		attemptmount || getmount
-		sudo -A mount "$chosen" "$mp" -o uid="$(id -u)",gid="$(id -g)"
+		pkexec mount "$chosen" "$mp" -o uid="$(id -u)",gid="$(id -g)"
 		notify-send "💾Drive Mounted." "$chosen mounted to $mp."
 		;;
 
@@ -99,7 +99,7 @@ case "$chosen" in
 		test -b "/dev/mapper/usb$num"
 
 		attemptmount || getmount
-		sudo -A mount "/dev/mapper/usb$num" "$mp" -o uid="$(id -u)",gid="$(id -g)"
+		pkexec mount "/dev/mapper/usb$num" "$mp" -o uid="$(id -u)",gid="$(id -g)"
 		notify-send "🔓Decrypted drive Mounted." "$chosen decrypted and mounted to $mp."
 		;;
 
@@ -108,7 +108,7 @@ case "$chosen" in
 		getmount
 		number="${chosen%%:*}"
 		number="${chosen:1}"	# This is a bashism.
-		sudo -A simple-mtpfs -o allow_other -o fsname="simple-mtpfs-$(escape "$chosen")" --device "$number" "$mp"
+		pkexec simple-mtpfs -o allow_other -o fsname="simple-mtpfs-$(escape "$chosen")" --device "$number" "$mp"
 		notify-send "🤖 Android Mounted." "Android device mounted to $mp."
 		;;
 esac
