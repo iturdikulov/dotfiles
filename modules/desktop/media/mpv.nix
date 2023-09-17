@@ -24,7 +24,6 @@ in {
           thumbfast
           mpv-playlistmanager
           autoload
-          autocrop
           acompressor
         ];
       })
