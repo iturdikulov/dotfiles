@@ -40,7 +40,7 @@ in {
       zsh
       nix-zsh-completions
       bat
-      exa
+      eza
       fzf
       jq
       tealdeer
