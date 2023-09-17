@@ -21,6 +21,7 @@ in {
       # imgview dependencies
       nsxiv
 
+      file
       fd
       fasd
       ripgrep
