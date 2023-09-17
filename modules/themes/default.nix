@@ -182,9 +182,16 @@ in {
           icon-theme = "${cfg.gtk.iconTheme}";
       };
 
-      fonts.fontconfig.defaultFonts = {
-        sansSerif = [ cfg.fonts.sans.name ];
-        monospace = [ cfg.fonts.mono.name ];
+      # Styling
+      fonts = {
+        fontconfig = {
+          # Use embedded bitmaps in fonts like Terminess TTF (avoid blurring).
+          useEmbeddedBitmaps = true;
+          defaultFonts = {
+            sansSerif = [ cfg.fonts.sans.name ];
+            monospace = [ cfg.fonts.mono.name ];
+          };
+        };
       };
     }
 
