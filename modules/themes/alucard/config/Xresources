@@ -14,11 +14,11 @@ Xcursor.theme: Adwaita
 
 
 !! general
-st.scratch.font: monospace:pixelsize=24:antialias=false:autohint=true
+st.scratch.font: monospace:pixelsize=24
 
 
 !! xst
-st.font: monospace:pixelsize=24:antialias=false:autohint=true
+st.font: monospace:pixelsize=24
 st.borderpx: 5
 
 
