@@ -19,13 +19,21 @@
       defaultApplications = {
         # TODO: check raster/svg/etc enabled and only then apply associations?
 
-        # Default browser
+        # Default browser & html files
         "x-scheme-handler/http"    = "firefox.desktop";
         "x-scheme-handler/https"   = "firefox.desktop";
         "x-scheme-handler/about"   = "firefox.desktop";
         "x-scheme-handler/unknown" = "firefox.desktop";
+        "text/html" =              [ "firefox.desktop" ]; # html5.html
+        "application/xhtml+xml"  = [ "firefox.desktop" ]; # xhtml5.xhtml
 
         # Documents
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ]; # docx.docx
+        "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ]; # odt.odt
+
+        "application/epub+zip" = [ "com.github.johnfactotum.Foliate.desktop" ]; # epub.epub
+        "application/x-fictionbook+xml" = [ "com.github.johnfactotum.Foliate.desktop" ]; # fictionbook.fb2
+
         "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
         "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
         "application/vnd.comicbook-rar" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbr
@@ -34,14 +42,11 @@
         "application/postscript" = [ "org.pwmt.zathura-ps.desktop" ]; # ps.ps
         "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ]; # pdf.pdf
         "image/vnd.djvu+multipage"  = [ "org.pwmt.zathura-djvu.desktop" ]; # djvu.djvu
-        "application/x-fictionbook+xml" = [ "org.pwmt.zathura.desktop" ]; # fictionbook.fb2
-        "application/epub+zip" = [ "org.pwmt.zathura.desktop" ]; # epub.epub
 
         # Text Files Associated with nvim (and some other types)
         "text/x-adasrc" = ["nvim.desktop"]; # ada.adb
         "application/x-shellscript" = [ "nvim.desktop" ]; # shell.sh
         "application/toml" = [ "nvim.desktop" ]; # toml.toml
-        "application/xhtml+xml" = [ "nvim.desktop" ]; # xhtml5.xhtml
         "application/xml" = [ "nvim.desktop" ]; # xml-1.1.xml
         "application/x-yaml" = [ "nvim.desktop" ]; # yaml.yml
         "application/x-ruby" = [ "nvim.desktop" ]; # ruby.rb
@@ -65,7 +70,6 @@
         "text/x-go" = [ "nvim.desktop" ]; # go.go
         "text/x-groovy" = [ "nvim.desktop" ]; # groovy.groovy
         "text/x-haskell" = [ "nvim.desktop" ]; # haskell_loop.hs
-        "text/html" = [ "nvim.desktop" ]; # html5.html
         "text/x-java" = [ "nvim.desktop" ]; # java.java
         "text/x-lua" = [ "nvim.desktop" ]; # lua.lua
         "text/x-makefile" = [ "nvim.desktop" ]; # Makefile
@@ -80,6 +84,7 @@
 
         # Raster Images
         "image/webp" = [ "nsxiv.desktop" ]; # webp.webp
+        "image/x-eps" = [ "org.pwmt.zathura-cb.desktop" ]; # eps.eps
         "image/jpeg" = [ "nsxiv.desktop" ]; # jpeg.jpg
         "image/png" = [ "nsxiv.desktop" ]; # png-transparent.png
         "image/tiff" = [ "nsxiv.desktop" ]; # tiff.tif
@@ -100,8 +105,10 @@
         "image/svg+xml" = [ "org.inkscape.Inkscape.desktop" ]; # svg.svg
 
         # Multimedia
-        "application/x-cue" = [ "mpv.desktop" ];
+        "application/x-cue" = [ "mpv.desktop" ]; # cue.cue
         "application/vnd.adobe.flash.movie" = [ "mpv.desktop" ]; # flash.swf
+        "video/mpeg" = [ "mpv.desktop" ]; # video.mpg
+        "video/x-matroska" = [ "mpv.desktop" ]; # video.mkv
         "video/x-msvideo" = [ "mpv.desktop" ]; # AudioVideoInterleave.avi
         "video/x-flv" = [ "mpv.desktop" ]; # FlashVideo.flv
         "video/mp4" = [ "mpv.desktop" ]; # mp4-with-audio.mp4
