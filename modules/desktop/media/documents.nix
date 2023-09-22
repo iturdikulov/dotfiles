@@ -18,6 +18,7 @@ in {
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         xchm
+        sioyek
         zathura
         pandoc
         calibre
@@ -30,8 +31,8 @@ in {
       ] else [])++
 
       (if cfg.research.enable then [
+        unstable.obsidian # render markdown and learn flashcards
         papis # to store DOI stuff
-        obsidian # render markdown and learn flashcards
         wiki-tui # wikipedia in terminal
         taskwarrior # my daily tasks
         taskwarrior-tui # TUI to rare clean taskwarrior tasks
