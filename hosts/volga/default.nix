@@ -10,6 +10,7 @@
   modules = {
     desktop = {
       dwm.enable = true;
+      wine.enable = true;
       apps = {
         rofi.enable = true;
         godot.enable = true;
