@@ -5,6 +5,7 @@
 with lib;
 with lib.my;
 let cfg = config.modules.desktop.media.documents;
+    configDir = config.dotfiles.configDir;
 in {
   options.modules.desktop.media.documents = {
     enable = mkBoolOpt false;
@@ -15,6 +16,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Config files
+    # TODO parametrize this
+    home.configFile."zathura/zathurarc".source = "${configDir}/zathura/zathurarc";
+
+    # TODO thing about dotfiles for this packages
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         xchm
@@ -43,7 +49,5 @@ in {
         hunspell  # Spell checker
         hunspellDicts.ru_RU  # RU dictionary from LibreOffice
       ] else []);
-
-    # TODO thing about dotfiles for this packages
   };
 }

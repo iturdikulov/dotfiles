@@ -1,0 +1,11 @@
+# Zathura configuration file
+# See man `man zathurarc'
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# Font
+set font "Monospace 15"
+
+# Copy to system clipboard instead primary
+set selection-clipboard clipboard
