@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 LOCK_FILE="/tmp/my_script.lock"
+RU_PATTERN='[А-Яа-яЁё]+'  # Regex pattern for Cyrillic characters
 
 # Check if another instance is already running
 if [ -e "$LOCK_FILE" ] && kill -0 $(cat "$LOCK_FILE"); then
@@ -17,6 +18,12 @@ speak(){
       --output-raw | aplay -f S16_LE -c1 -r22050 -
 }
 
+speak_ru(){
+    piper --length_scale 1.2 --model\
+      ~/.local/share/piper_model/en_US-lessac-medium.onnx \
+      --output-raw | aplay -f S16_LE -c1 -r22050 -
+}
+
 if [ $# -eq 0 ]
   then
     # Core logic
@@ -28,9 +35,15 @@ if [ $# -eq 0 ]
         xdotool getactivewindow key ctrl+c
     fi
 
-    xclip -o -selection clipboard | speak
+    text=$(xclip -o -selection clipboard)
 else
-    echo "$@" | speak
+    text="$@"
+fi
+
+if [[ "$text" =~ $RU_PATTERN ]]; then
+    echo "$text" | speak_ru
+else
+    echo "$text" | speak
 fi
 
 # Remove the lock file
