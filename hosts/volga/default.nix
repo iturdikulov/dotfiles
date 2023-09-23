@@ -59,6 +59,7 @@
       lua.enable = true;
       lua.love2D.enable = true;
       haxe.enable = true;
+      dbeaver.enable = true;
     };
     editors = {
       default = "nvim";
