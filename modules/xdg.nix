@@ -33,6 +33,7 @@
 
         "application/epub+zip" = [ "com.github.johnfactotum.Foliate.desktop" ]; # epub.epub
         "application/x-fictionbook+xml" = [ "com.github.johnfactotum.Foliate.desktop" ]; # fictionbook.fb2
+        "application/x-mobipocket-ebook" = [ "com.github.johnfactotum.Foliate.desktop" ]; # mobi.mobi
 
         "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
         "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
