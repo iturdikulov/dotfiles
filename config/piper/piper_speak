@@ -13,15 +13,15 @@ fi
 echo $$ > "$LOCK_FILE"
 
 speak(){
-    piper --length_scale 1.2 --model\
-      ~/.local/share/piper_model/en_US-lessac-medium.onnx \
-      --output-raw | aplay -f S16_LE -c1 -r22050 -
-}
+    local lang="${1:-EN}"
 
-speak_ru(){
-    piper --length_scale 1.2 --model\
-      ~/.local/share/piper_model/en_US-lessac-medium.onnx \
-      --output-raw | aplay -f S16_LE -c1 -r22050 -
+    if [[ $lang == "RU" ]]; then
+        local model=~/.local/share/piper_model/ru_RU-ruslan-medium.onnx
+    else
+        local model=~/.local/share/piper_model/en_US-lessac-medium.onnx
+    fi
+
+    piper --length_scale 1.2 --model $model --output-raw | aplay -f S16_LE -c1 -r22050 -
 }
 
 if [ $# -eq 0 ]
@@ -37,11 +37,17 @@ if [ $# -eq 0 ]
 
     text=$(xclip -o -selection clipboard)
 else
-    text="$@"
+    if [[ $1 == "stdin" ]]; then
+        text=$(</dev/stdin)
+    else
+        text="$@"
+    fi
+
+    echo $text
 fi
 
 if [[ "$text" =~ $RU_PATTERN ]]; then
-    echo "$text" | speak_ru
+    echo "$text" | speak "RU"
 else
     echo "$text" | speak
 fi
