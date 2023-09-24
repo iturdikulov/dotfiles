@@ -14,6 +14,7 @@ export ZGEN_AUTOLOAD_COMPINIT=0
 # zsh-vi-mode
 export ZVM_INIT_MODE=sourcing
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+export ZVM_LINE_INIT_MODE=i
 
 # fasd
 export _FASD_DATA="$XDG_CACHE_HOME/fasd"
