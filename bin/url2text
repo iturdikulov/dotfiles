@@ -1,0 +1,19 @@
+#!/bin/sh
+
+BROWSER=brave
+format=${1:-markdown}
+url=${2:-$(xclip -o -selection clipboard)}
+
+# if pdf don't grab title
+if [[ $url == *.pdf ]]; then
+    title=""
+else
+    # Use curl to fetch the page and extract the title with sed
+    title=$($BROWSER --headless --dump-dom --disable-gpu "$url"|sed -n -e 's!.*<title>\(.*\)</title>.*!\1!p')
+fi
+
+if [[ $format == "title" ]]; then
+    printf "$url\n$title"
+else
+    echo "[$title]($url)"
+fi
