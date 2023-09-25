@@ -66,7 +66,7 @@ TODO: add screenshoot
    # Optional, set architecture (defaults to x86_64-linux)
    export NIX_SYSTEM=x86_64-linux # or aarch64-linux
 
-   git clone https://github.com/Inom-Turdikulov/nix_dotfiles /etc/dotfiles
+   git clone https://github.com/Inom-Turdikulov/dotfiles /etc/dotfiles
    cd /etc/dotfiles
 
    # Create a host config in `hosts/` and add it to the repo:
