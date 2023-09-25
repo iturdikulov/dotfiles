@@ -66,9 +66,11 @@ with lib.my;
     bind
     cached-nix-shell
     git
-    vim
     gnumake
     unzip
+  ];
+
+  user.packages = with pkgs; [
     neovim
   ];
 }
