@@ -63,6 +63,8 @@ TODO: add screenshoot
    export HOST=...
    # Set USER to your desired username (defaults to hlissner)
    export USER=...
+   # Optional, set architecture (defaults to x86_64-linux)
+   export NIX_SYSTEM=x86_64-linux # or aarch64-linux
 
    git clone https://github.com/Inom-Turdikulov/nix_dotfiles /etc/dotfiles
    cd /etc/dotfiles
