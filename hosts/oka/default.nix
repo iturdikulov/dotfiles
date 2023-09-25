@@ -18,9 +18,7 @@ with lib.my;
       zsh.enable = true;
     };
     services = {
-      fail2ban.enable = true;
       ssh.enable = true;
-      nginx.enable = true;
     };
 
     theme.active = "alucard";
