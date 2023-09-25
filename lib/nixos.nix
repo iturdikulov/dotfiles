@@ -2,7 +2,9 @@
 
 with lib;
 with lib.my;
-let sys = "x86_64-linux";
+let nix_system = builtins.getEnv "NIX_SYSTEM";
+    sys = if nix_system == "" then "x86_64-linux" else nix_system;
+
 in {
   mkHost = path: attrs @ { system ? sys, ... }:
     nixosSystem {

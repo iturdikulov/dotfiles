@@ -30,7 +30,8 @@
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
-      system = "x86_64-linux";
+      nix_system = builtins.getEnv "NIX_SYSTEM";
+      system = if nix_system == "" then "x86_64-linux" else nix_system;
 
       mkPkgs = pkgs: extraOverlays: import pkgs {
         inherit system;
