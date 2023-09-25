@@ -12,7 +12,7 @@ in {
     services.openssh = {
       enable = true;
       settings = {
-        PasswordAuthentication = true;  # TODO: DISABLE THIS IN FUTURE, used for testing
+        PasswordAuthentication = false;  # NOTE: use it only for testing
       };
     };
 
