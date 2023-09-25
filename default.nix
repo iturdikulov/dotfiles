@@ -69,5 +69,6 @@ with lib.my;
     vim
     gnumake
     unzip
+    neovim
   ];
 }
