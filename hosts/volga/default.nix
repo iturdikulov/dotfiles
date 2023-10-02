@@ -98,6 +98,8 @@
       maintenance.enable = true;
       termdown.enable    = true;
       vaultwarden.enable = false;
+
+      leetcode-cli.enable = true;
     };
     services = {
       dictd.enable = true;
@@ -118,10 +120,10 @@
   ## Local config
   programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
-  services.openssh.settings.X11Forwarding = true;
   services.pcscd.enable = true;     # for gpg-agent
   services.timesyncd.enable = true; # to sync time
 
+  #services.openssh.settings.X11Forwarding = true;
   ## Taskwarrior config
   # networking.firewall.allowedTCPPorts = [ 53589 ];
   # services.taskserver = {
