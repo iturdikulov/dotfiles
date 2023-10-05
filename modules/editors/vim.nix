@@ -30,6 +30,7 @@ in {
     env.DASHT_DOCSETS_DIR = "${config.user.home}/Reference/docsets";
 
     user.packages = with pkgs; [
+      vimgolf             # A game that tests Vim efficiency, train vim skills
       dasht               # to search in docsets
 
       git
@@ -84,8 +85,7 @@ in {
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-      package = pkgs.neovim-unwrapped;
-        configure = {
+      configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
          '';
@@ -97,6 +97,7 @@ in {
                  onedark-nvim
                  nvim-web-devicons
                  (fromGitHub "HEAD" "tjdevries/express_line.nvim")
+                 (fromGitHub "HEAD" "Glench/Vim-Jinja2-Syntax")
 
                  telescope-nvim
                  telescope-file-browser-nvim
@@ -117,6 +118,7 @@ in {
                  nvim-ufo
                  nvim-surround
                  trouble-nvim
+
 
                  popup-nvim
                  telescope-media-files-nvim  # required plenary-nvim, popup.nvim, telescope.nvim
