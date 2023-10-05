@@ -12,15 +12,13 @@ IFS='
 escape(){ echo "$@" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g" ;}
 
 # Check for phones.
-phones="$(simple-mtpfs -l 2>/dev/null | sed "s/^/📱/")"
-mountedphones="$(grep "simple-mtpfs" /etc/mtab)"
+phones="$(gio mount -li | awk -F= '{if(index($2,"mtp") == 1)system("echo "$2)}' | sed "s/^/📱/")"
+mountedphones="$(ls /run/user/1000/gvfs/|sed -E "s/mtp.*host=//")"
 # If there are already mounted phones, remove them from the list of mountables.
 [ -n "$mountedphones" ] && phones="$(for phone in $phones; do
 	for mounted in $mountedphones; do
-		escphone="$(escape "$phone")"
-		[[ "$mounted" =~ "$escphone" ]] && break 1
+		[[ "$mounted" =~ "$phone" ]] && break 1
 	done && continue 1
-	echo "$phone"
 done)"
 
 # Check for drives.
@@ -105,10 +103,10 @@ case "$chosen" in
 
 	📱*)
 		notify-send "❗Note" "Remember to allow file access on your phone now."
-		getmount
 		number="${chosen%%:*}"
 		number="${chosen:1}"	# This is a bashism.
-		pkexec simple-mtpfs -o allow_other -o fsname="simple-mtpfs-$(escape "$chosen")" --device "$number" "$mp"
-		notify-send "🤖 Android Mounted." "Android device mounted to $mp."
+        chosen="$(echo $chosen|sed "s/^📱//")"
+		gio mount "$chosen"
+		notify-send "🤖 Android Mounted." "Android device mounted to /run/user/1000/gvfs/$chosen"
 		;;
 esac
