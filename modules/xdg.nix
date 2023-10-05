@@ -19,6 +19,8 @@
       defaultApplications = {
         # TODO: check raster/svg/etc enabled and only then apply associations?
 
+        "inode/directory" = "nnn.desktop"; # directory
+
         # Default browser & html files
         "x-scheme-handler/http"    = "firefox.desktop";
         "x-scheme-handler/https"   = "firefox.desktop";
@@ -113,6 +115,7 @@
         "video/x-msvideo" = [ "mpv.desktop" ]; # AudioVideoInterleave.avi
         "video/x-flv" = [ "mpv.desktop" ]; # FlashVideo.flv
         "video/mp4" = [ "mpv.desktop" ]; # mp4-with-audio.mp4
+        "audio/x-m4b" = [ "mpv.desktop" ]; # m4b.m4b
         "video/x-ms-wmv" = [ "mpv.desktop" ]; # WindowsMediaVideo.wmv
         "video/webm" = [ "mpv.desktop" ]; # webm.webm
         "audio/flac" = [ "mpv.desktop" ]; # flac.flac
