@@ -68,9 +68,6 @@ with lib.my;
     git
     gnumake
     unzip
-  ];
-
-  user.packages = with pkgs; [
-    neovim
+    vim
   ];
 }
