@@ -95,8 +95,8 @@ spotify &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "442f9107ce96d3a8fbd4c6cc7dfbea6589771d3f";
-             hash = "sha256-WIKsj/eoyIOuYeeAhv6mfccdc+WthS5te7dY3qfnQCU=";
+             rev = "cd53d63c9943601296dc9700613b866a3b6e24b2";
+             hash = "sha256-mZeqsdexfmYTsdUJy9iXfvvlGWcLEh1vrq8NsTt9okk=";
           };
         });
         };
@@ -111,7 +111,7 @@ separator = " / "
 format = "%A, %d.%m [%B], %H:%M"
 	'';
       };
-      # gvfs.enable = true;
+      gvfs.enable = true;
     };
 
 
