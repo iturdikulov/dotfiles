@@ -20,7 +20,7 @@ in {
         exfat     # Windows drives
         ntfs3g    # Windows drives
         hfsprogs  # MacOS drives
-        simple-mtpfs  # Android devices, used in mounter script
+        glib       # To mount android devices, using gio
         cryptsetup  # LUKS for dm-crypt, encryption support
         smartmontools # Tools for monitoring the health of hard drives
         fdupes        # Identifies duplicate files residing within specified directories
