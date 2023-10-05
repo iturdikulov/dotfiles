@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
-    environment.systemPackages = with pkgs; [ virt-manager ];
+    environment.systemPackages = with pkgs; [ virt-manager  virtiofsd ];
     user.extraGroups = [ "libvirtd" ];
 
     # Fix Could not detect a default hypervisor. Make sure the appropriate
