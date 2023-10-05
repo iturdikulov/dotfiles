@@ -35,6 +35,7 @@ in {
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
+        max-cache-ttl     ${toString cfg.cacheTTL}
       '';
     };
   }
