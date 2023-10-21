@@ -21,8 +21,10 @@ in {
       user.packages = with pkgs; [
         node
         nodePackages.typescript
+        nodePackages.ts-node
         nodePackages.node2nix
         yarn
+        bun
 
         # LSP
         nodePackages.pyright  # NOTE: sync this with python.nix
