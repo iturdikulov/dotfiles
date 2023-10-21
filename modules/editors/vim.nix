@@ -12,12 +12,12 @@ let cfg = config.modules.editors.vim;
 
     # Looad plugin from github
     # usage (fromGitHub "HEAD" "user/repo")
-    fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+    fromGitHub = rev: repo: pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
-      version = ref;
+      version = rev;
       src = builtins.fetchGit {
         url = "https://github.com/${repo}.git";
-        ref = ref;
+        rev = rev;
       };
     };
 in {
@@ -96,14 +96,14 @@ in {
 
                  onedark-nvim
                  nvim-web-devicons
-                 (fromGitHub "HEAD" "tjdevries/express_line.nvim")
-                 (fromGitHub "HEAD" "Glench/Vim-Jinja2-Syntax")
+                 (fromGitHub "30f04edb9647d9ea7c08d0bdbfad33faf5bcda57" "tjdevries/express_line.nvim")
+                 (fromGitHub "2c17843b074b06a835f88587e1023ceff7e2c7d1" "Glench/Vim-Jinja2-Syntax")
 
                  telescope-nvim
                  telescope-file-browser-nvim
-                 (fromGitHub "HEAD" "renerocksai/telekasten.nvim")
+                 (fromGitHub "bd5d323581f24ee124b33688287e6a22244c6f2a" "renerocksai/telekasten.nvim")
 
-                 (fromGitHub "HEAD" "phelipetls/jsonpath.nvim")
+                 (fromGitHub "ea7e07e935f3f95deda97f9f6dc87f7bcf3fb69a" "phelipetls/jsonpath.nvim")
                  vim-fugitive
                  vim-rsi
                  vim-gnupg
@@ -124,8 +124,8 @@ in {
                  telescope-media-files-nvim  # required plenary-nvim, popup.nvim, telescope.nvim
 
                  sniprun
-                 (fromGitHub "HEAD" "antonk52/markdowny.nvim")
-                 (fromGitHub "HEAD" "cbochs/portal.nvim")
+                 (fromGitHub "083782f05e67cc08c6378affec9f55a913ac55f4" "antonk52/markdowny.nvim")
+                 (fromGitHub "a108a87639a43f5386dd70bdf512de3806a71f7d" "cbochs/portal.nvim")
 
                  copilot-lua
                  copilot-cmp
@@ -135,7 +135,7 @@ in {
                  nvim-dap-virtual-text
                  nvim-dap-python
                  telescope-dap-nvim
-                 (fromGitHub "HEAD" "mxsdev/nvim-dap-vscode-js")
+                 (fromGitHub "03bd29672d7fab5e515fc8469b7d07cc5994bbf6" "mxsdev/nvim-dap-vscode-js")
 
                  neotest
                  neotest-rust
@@ -151,7 +151,7 @@ in {
                  cmp_luasnip
                  friendly-snippets
                  ltex_extra-nvim
-                 (fromGitHub "HEAD" "creativenull/efmls-configs-nvim")
+                 (fromGitHub "082c4040c3d56c9ef56e1e7142000438eb542caf" "creativenull/efmls-configs-nvim")
              ];
          };
        };
