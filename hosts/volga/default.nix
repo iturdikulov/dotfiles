@@ -27,6 +27,7 @@
       };
       gaming = {
         steam.enable = true;
+        parsec.enable = true;
         # emulators.enable = true;
         # emulators.psx.enable = true;
         native_games.enable = true;
