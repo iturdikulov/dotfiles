@@ -54,11 +54,21 @@
     dev = {
       node.enable = true;
       rust.enable = true;
+      go.enable = true;
       python.enable = true;
       cc.enable = true;
       lua.enable = true;
       lua.love2D.enable = true;
+
+      clojure.enable = true;
       haxe.enable = true;
+      nasm.enable = true;
+      r.enable = true;
+      scala.enable = true;
+      pascal.enable = true;
+      common-lisp.enable = true;
+      php.enable = true;
+
       dbeaver.enable = true;
     };
     editors = {
