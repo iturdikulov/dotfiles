@@ -11,10 +11,6 @@ in {
   config = mkIf cfg.enable {
     services.dictd.enable = true;
 
-    # Ths is not dictd related package, but very useful to transalate
-    # full sentences/text good companion to dictd
-    user.packages = [pkgs.translate-shell];
-
     services.dictd.DBs = with pkgs.dictdDBs; [
       wordnet
       wiktionary

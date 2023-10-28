@@ -83,6 +83,7 @@
       files.enable    = true;  # files utilites
 
       AI.enable       = true;  # ChatGPT, wolfram-alpha
+      translate-shell.enable = true; # multilingual neural machine translation CLI
 
       editorconfig.enable = true;
 
@@ -113,7 +114,7 @@
       leetcode-cli.enable = true;
     };
     services = {
-      dictd.enable = true;
+      dictd.enable = false;
       ssh.enable = true;
       docker.enable = true;
       syncthing.enable = true;
