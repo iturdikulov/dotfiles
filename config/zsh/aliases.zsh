@@ -197,3 +197,7 @@ function vmconnect {
 
   virt-viewer -c qemu:///system --attach -f "$1"
 }
+
+function dic {
+    sdcv -n "$@" | bat
+}
