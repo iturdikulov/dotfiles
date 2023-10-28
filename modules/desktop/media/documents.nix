@@ -15,10 +15,12 @@ in {
     office.enable = mkBoolOpt false;
   };
 
+
   config = mkIf cfg.enable {
     # Config files
-    # TODO parametrize this
+    # TODO parametrize this, with mkMerge
     home.configFile."zathura/zathurarc".source = "${configDir}/zathura/zathurarc";
+    home.configFile."sioyek/keys_user.config".source = "${configDir}/sioyek/keys_user.config";
 
     # TODO thing about dotfiles for this packages
     user.packages = with pkgs;
