@@ -9,16 +9,27 @@
     ];
 
   boot = {
-    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+    initrd.availableKernelModules = [ "amdgpu" "vfio-pci" "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+
+    initrd.preDeviceCommands = ''
+  DEVS="0000:12:00.0 0000:12:00.1"
+  for DEV in $DEVS; do
+    echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+  done
+  modprobe -i vfio-pci
+    '';
+
     initrd.kernelModules = [];
     extraModulePackages = [];
-    kernelModules = [ "kvm-amd" ];
+    extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
+    kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" "kvm-amd" ];
     kernelParams = [
       # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
       #      vulnerabilities. Don't copy this blindly! And especially not for
       #      mission critical or server/headless builds exposed to the world.
       "mitigations=off"
       "amdgpu.noretry=0"
+      "amd_iommu=on"
     ];
 
     # Refuse ICMP echo requests on my desktop/laptop; nobody has any business
