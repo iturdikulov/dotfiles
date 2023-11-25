@@ -21,6 +21,7 @@ in {
       user.packages = with pkgs; [
         clang
         gcc
+        gfortran
         bear
         gdb
         cmake
