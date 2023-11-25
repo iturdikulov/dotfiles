@@ -199,5 +199,6 @@ function vmconnect {
 }
 
 function dic {
-    sdcv -n "$@" | bat
+    echo "- $@" >> ~/Reference/dictionary/Dictionary.md
+    sdcv -nc "$@" | bat
 }
