@@ -26,10 +26,7 @@
         qutebrowser.enable = true;
       };
       gaming = {
-        steam.enable = true;
         parsec.enable = true;
-        # emulators.enable = true;
-        # emulators.psx.enable = true;
         native_games.enable = true;
       };
       media = {
@@ -120,14 +117,12 @@
       syncthing.enable = true;
       virt-manager.enable = true;
       nginx.enable = true;
-      calibre.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
     };
     theme.active = "alucard";
   };
-
 
   ## Local config
   programs.ssh.startAgent = false;
