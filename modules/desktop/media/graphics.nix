@@ -46,14 +46,12 @@ in {
 
       # raster images workflow
       (if cfg.raster.enable then [
-        # nsxiv image viewer
-        nsxiv
+        nsxiv    # nsxiv image viewer
         libwebp  # required for animated webp playback
         giflib   # used for animated gif playback
-
+        pureref  # image reference board
         krita
         gimp
-        # gimpPlugins.resynthesizer  # content-aware scaling in gimp
       ] else []) ++
 
       # Sprite sheets & animation
@@ -64,6 +62,7 @@ in {
       # 3D modelling
       (if cfg.models.enable then [
         blender-hip
+        solvespace
       ] else []) ++
 
       # Photography workflow
