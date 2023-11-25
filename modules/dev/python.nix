@@ -10,6 +10,7 @@ with lib;
 with lib.my;
 let devCfg = config.modules.dev;
     cfg = devCfg.python;
+    configDir = config.dotfiles.configDir;
 in {
   options.modules.dev.python = {
     enable = mkBoolOpt false;
@@ -21,24 +22,25 @@ in {
       user.packages = with pkgs; [
         jetbrains.pycharm-community  # YES it's IDE, maybe someday I can replace it
         ruff # Linter
-        python310
-        (unstable.python310.withPackages(ps: with ps; [
+        (unstable.python3.withPackages(ps: with ps; [
           pip
           setuptools
           ipython
           pandas
           scipy
           numpy
+          matplotlib
         ]))
       ];
 
       environment.shellAliases = {
         py     = "python";
         py2    = "python2";
-        py3    = "python310";
+        py3    = "python311";
         ipy    = "ipython --no-banner";
         ipylab = "ipython --pylab=qt5 --no-banner";
       };
+      home.configFile."python/pythonrc".source = "${configDir}/python/pythonrc";
     })
 
     (mkIf cfg.xdg.enable {
