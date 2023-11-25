@@ -14,6 +14,7 @@ in
     user.packages = with pkgs; [
       arduino
       fritzing
+      qucs-s # not only for microcontrollers
     ];
   };
 }
