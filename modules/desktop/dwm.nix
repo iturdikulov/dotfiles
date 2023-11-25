@@ -57,6 +57,7 @@ thunderbird &
 slack &
 telegram-desktop &
 spotify &
+calibre &
 '';
         executable = true;
     };
