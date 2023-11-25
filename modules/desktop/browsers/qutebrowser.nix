@@ -29,9 +29,8 @@ in {
         exec = ''${pkg}/bin/qutebrowser -T -s content.private_browsing true'';
         categories = [ "Network" ];
       })
-      # For Brave adblock in qutebrowser, which is significantly better than the
       # built-in host blocking. Works on youtube and crunchyroll ads!
-      python39Packages.adblock
+      python311Packages.adblock
     ];
 
     home = {
