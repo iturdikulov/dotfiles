@@ -91,7 +91,7 @@
 
   # NixOS hardware options
   hardware = {
-    xpadneo.enable = true;      # Xbox controller support
+    xone.enable = true;         # Xbox controller support
     onlykey.enable = true;      # Enable OnlyKey device
   };
 
