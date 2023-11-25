@@ -40,8 +40,8 @@ indent_style = space
 indent_size = 1
 
 # Match json/lockfiles/markdown/nix/ruby files, set indent width of two
-[*.{json,lock,md,nix,rb}]
-indent_size = 2
+[*.{json,lock,nix,rb}]
+indent_size = 4
 
 # Match perl/python/shell scripts, set indent width of four
 [*.{pl,pm,py,sh}]
