@@ -28,6 +28,7 @@
       gaming = {
         parsec.enable = true;
         native_games.enable = true;
+        emulators.enable = true;
       };
       media = {
         archive.enable = true;
