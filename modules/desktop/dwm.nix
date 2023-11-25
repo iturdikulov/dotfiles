@@ -96,8 +96,8 @@ calibre &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "f6fb0a10d0db43c9d65219f8e7a99584d563c20a";
-             hash = "sha256-mjMY1KyA/hFvOntoCCZHLTHvgcCBV9HCpfw1OFlygSc=";
+             rev = "288cdc0eebdbbaf710299145e407a36b5cf099dd";
+             hash = "sha256-QbfV2UzM1BXSD7r68/HZgRHOhlkBkfhMZkGdXl8A7qc=";
           };
         });
         };
