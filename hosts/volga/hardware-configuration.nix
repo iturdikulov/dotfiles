@@ -141,18 +141,6 @@
       options = [ "subvol=games" "compress=zstd" ];
     };
 
-  fileSystems."${config.user.home}/Downloads" =
-    { device = "/dev/disk/by-uuid/908dd11f-7265-425f-8b6e-f041fe69b0ba";
-      fsType = "btrfs";
-      options = [ "subvol=downloads" ];
-    };
-
-  fileSystems."${config.user.home}/Virtual_Machines" =
-    { device = "/dev/disk/by-uuid/908dd11f-7265-425f-8b6e-f041fe69b0ba";
-      fsType = "btrfs";
-      options = [ "subvol=virtual-machines" ];
-    };
-
   fileSystems."/archive" =
     { device = "/dev/disk/by-uuid/ff1ddb67-6528-49b3-8159-3d26eb97d431";
       fsType = "btrfs";
