@@ -19,6 +19,7 @@ in {
       (mkIf config.modules.shell.gnupg.enable
         gitAndTools.git-crypt)
       act
+      git-lfs
     ];
 
     home.configFile = {
