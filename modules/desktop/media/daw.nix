@@ -17,10 +17,10 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      unstable.ardour  # recording, mixing, loops
-      lmms             # for making music
-      unstable.sunvox  # my favorite midi tracker
-      # audacity   # for recording and remastering audio
+      ardour  # recording, mixing, loops
+      lmms    # for making music
+      sunvox  # my favorite midi tracker
+      unstable.audacity   # for recording and remastering audio
     ];
   };
 }
