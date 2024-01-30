@@ -7,9 +7,9 @@ mkShell {
     # nodejs-12.x
     # nodejs-14.x
     # nodejs-16.x
-    nodejs-latest
     yarn
-    typescript-language-server
+    nodejs
+    nodePackages.typescript-language-server
   ];
   shellHook = ''
     export NPM_CONFIG_USERCONFIG = "$PWD/.npm/config";
