@@ -78,8 +78,10 @@ TODO: add screenshoot
 
    vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
 
-   # Optionally Check / adjust options file (default user name at least)
+   # Optionally Check / adjust options file (default user name and autorized
+   # keys at least)
    vim modules/options.nix
+   vim modules/services/ssh.nix
 
    git add hosts/$HOST
 
