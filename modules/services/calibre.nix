@@ -9,9 +9,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.calibre-server.enable = true;
-    services.calibre-server.libraries = [ "${config.user.home}/Arts_and_Entertainment/literature" ];
+    # I use built-in server in calibre
     networking.firewall.allowedTCPPorts = [ 8080 ];
-    services.calibre-server.user = "${config.user.name}";
+    user.packages = [ pkgs.calibre ];
   };
 }
