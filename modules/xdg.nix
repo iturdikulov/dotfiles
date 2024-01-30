@@ -3,11 +3,18 @@
 # Set up and enforce XDG compliance. Other modules will take care of their own,
 # but this takes care of the general cases.
 
-{ config, home-manager, ... }:
+{ config, home-manager, pkgs, ... }:
 {
   ### A tidy $HOME is a tidy mind
   home-manager.users.${config.user.name}.xdg = {
     enable = true;
+
+    # ImHex require this at least
+    portal = {
+      enable = true;
+      configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
 
     # Bind mimetypes to applications
     # you can get the mimetype with this command
@@ -33,9 +40,9 @@
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ]; # docx.docx
         "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ]; # odt.odt
 
-        "application/epub+zip" = [ "com.github.johnfactotum.Foliate.desktop" ]; # epub.epub
-        "application/x-fictionbook+xml" = [ "com.github.johnfactotum.Foliate.desktop" ]; # fictionbook.fb2
-        "application/x-mobipocket-ebook" = [ "com.github.johnfactotum.Foliate.desktop" ]; # mobi.mobi
+        "application/epub+zip" = [ "org.pwmt.zathura-cb.desktop" ]; # epub.epub
+        "application/x-fictionbook+xml" = [ "org.pwmt.zathura-cb.desktop" ]; # fictionbook.fb2
+        "application/x-mobipocket-ebook" = [ "org.pwmt.zathura-cb.desktop" ]; # mobi.mobi
 
         "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
         "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
@@ -119,8 +126,10 @@
         "video/x-ms-wmv" = [ "mpv.desktop" ]; # WindowsMediaVideo.wmv
         "video/webm" = [ "mpv.desktop" ]; # webm.webm
         "audio/flac" = [ "mpv.desktop" ]; # flac.flac
+        "audio/vnd.wav" = [ "mpv.desktop" ]; # wav.wav
         "audio/x-wav" = [ "mpv.desktop" ]; # wav.wav
         "audio/mpeg" = [ "mpv.desktop" ]; # mp3.mp3
+        "application/uproject" = [ "unreal-editor.desktop" ]; # unreal project
 
         # Archives and octet-stream
         "application/octet-stream" = [ "xarchiver.desktop" ]; # unknow files, TODO: better use here universal viewer tool?
