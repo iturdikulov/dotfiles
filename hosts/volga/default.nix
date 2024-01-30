@@ -4,6 +4,7 @@
     ../home.nix
     ./hardware-configuration.nix
     ./modules/dyndns.nix
+    # ./modules/backup.nix
   ];
 
   ## Modules
@@ -13,11 +14,13 @@
       wine.enable = true;
       apps = {
         rofi.enable = true;
-        godot.enable = true;
         slack.enable = true;
         thunderbird.enable = true;
         telegram.enable = true;
+        ripcord.enable = true;
         pidgin.enable = true;
+        godot.enable = true;
+        imhex.enable = true;
       };
       browsers = {
         default = "firefox";
@@ -28,6 +31,7 @@
       gaming = {
         parsec.enable = true;
         native_games.enable = true;
+        steam.enable = true;
         emulators.enable = true;
       };
       media = {
@@ -51,9 +55,11 @@
       };
     };
     dev = {
+      formatters.enable = true;
       node.enable = true;
       rust.enable = true;
       go.enable = true;
+      android.enable = true;
       python.enable = true;
       cc.enable = true;
       lua.enable = true;
@@ -69,10 +75,12 @@
       php.enable = true;
 
       dbeaver.enable = true;
+      mitmproxy.enable = true;
+      shell.enable = true;
     };
     editors = {
       default = "nvim";
-      emacs.enable = false;
+      emacs.enable = true;
       vim.enable = true;
     };
     shell = {
@@ -118,6 +126,12 @@
       syncthing.enable = true;
       virt-manager.enable = true;
       nginx.enable = true;
+      _3proxy.enable = true;
+      calibre.enable = true;
+      rustdesk.enable = false;
+      btrbk.enable = true;
+      borgbackup.enable = true;
+      tailscale.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
