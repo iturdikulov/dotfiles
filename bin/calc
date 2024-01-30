@@ -1,0 +1,2 @@
+#!/bin/sh
+xst -c calc -n calc -e qalc
