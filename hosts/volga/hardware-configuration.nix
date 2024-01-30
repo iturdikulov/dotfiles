@@ -11,17 +11,21 @@
   boot = {
     initrd.availableKernelModules = [ "amdgpu" "vfio-pci" "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
 
-    initrd.preDeviceCommands = ''
-  DEVS="0000:12:00.0 0000:12:00.1"
-  for DEV in $DEVS; do
-    echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
-  done
-  modprobe -i vfio-pci
-    '';
+    # TODO: make this configurable, required for IOMMU
+  #   initrd.preDeviceCommands = ''
+  # DEVS="0000:12:00.0 0000:12:00.1"
+  # for DEV in $DEVS; do
+  #   echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+  # done
+  # modprobe -i vfio-pci
+  #   '';
+
+    # Fix blender hip issue
+    kernelPackages = pkgs.linuxPackages_6_5;
 
     initrd.kernelModules = [];
     extraModulePackages = [];
-    extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
+    # extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
     kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" "kvm-amd" ];
     kernelParams = [
       # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
@@ -38,55 +42,18 @@
   };
 
   # Displays
-  # services.xserver = {
-  #   # This must be done manually to ensure my screen spaces are arranged exactly
-  #   # as I need them to be *and* the correct monitor is "primary". Using
-  #   # xrandrHeads does not work.
-  #   monitorSection = ''
-  #     VendorName     "Unknown"
-  #     ModelName      "Asus VZ239"
-  #     Option         "DPMS"
-  #     Modeline "1920x1080_60.00" 220.64 1920 2056 2264 2608 1080 1081 1084 1128 -HSync +Vsync
-  #     Option "PreferredMode" "1920x1080_60.00"
-  #   '';
-  #   screenSection = ''
-  #     SubSection "Display"
-  #       Modes "1920x1080_60.00"
-  #     EndSubSection
-  #   '';
-  # };
+  services.xserver = {
+    serverFlagsSection = ''
+        Option "StandbyTime" "0"
+        Option "SuspendTime" "0"
+        Option "OffTime" "0"
+        Option "BlankTime" "0"
+    '';
 
-  services.autorandr = {
-    enable = true;
-    profiles =   {
-      "default" = {
-        fingerprint = {
-          HDMI-1 = "00ffffffffffff0006b3cc2301010101101f010380331d78ead905a557519e270f5054afcf80714f8180818fb30081409500a9408bc0023a801871382d40582c4500fd1e1100001e000000fd00304c1e5511000a202020202020000000fc00565a3233390a20202020202020000000ff004d344c4d52533030383639390a0145020315f14a900403011412051f101365030c0010002a4480a07038274030203500fd1e1100001a011d8018711c1620582c2500fd1e1100009e011d007251d01e206e285500fd1e1100001e8c0ad08a20e02d10103e9600fd1e110000180000000000000000000000000000000000000000000000000000000000000000000055";
-        };
-        config = {
-          HDMI-1 = {
-            enable = true;
-            primary = true;
-            position = "0x0";
-            mode = "1920x1080";
-            rate = "60.00";
-          };
-        };
-      };
-    };
-  };
-
-  systemd.user.services."autorandr_load" = {
-    description = "autorandr";
-    after = [ "graphical-session-pre.target" ];
-    partOf = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-
-    serviceConfig = {
-      # optionally add --ignore-lid
-      ExecStart = "${pkgs.autorandr}/bin/autorandr --change";
-      Type = "oneshot";
-    };
+     # configurations to adjust monitors
+     displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr -r 75
+     '';
   };
 
   # NixOS hardware options
