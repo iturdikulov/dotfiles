@@ -26,6 +26,7 @@ in {
       user.packages = with pkgs; [
         rust-bin.stable.latest.default
         rust-analyzer
+        pkg-config
       ];
       env.PATH = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
       environment.shellAliases = {

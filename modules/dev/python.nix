@@ -20,8 +20,7 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        jetbrains.pycharm-community  # YES it's IDE, maybe someday I can replace it
-        ruff # Linter
+        jetbrains.pycharm-community  # YES it's IDE, required to test modern Python
         (unstable.python3.withPackages(ps: with ps; [
           pip
           setuptools
@@ -36,7 +35,7 @@ in {
       environment.shellAliases = {
         py     = "python";
         py2    = "python2";
-        py3    = "python311";
+        py3    = "python3";
         ipy    = "ipython --no-banner";
         ipylab = "ipython --pylab=qt5 --no-banner";
       };

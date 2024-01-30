@@ -9,6 +9,7 @@ with lib;
 with lib.my;
 let devCfg = config.modules.dev;
     cfg = devCfg.node;
+    configDir = config.dotfiles.configDir;
 in {
   options.modules.dev.node = {
     enable = mkBoolOpt false;
@@ -31,10 +32,8 @@ in {
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
 
-        # Formatters
         # TODO check vim enabled
-        nodePackages.prettier
-        nodePackages.eslint_d
+        nodePackages.eslint_d  # TODO move into linters
       ];
 
       # Run locally installed bin-script, e.g. n coffee file.coffee
@@ -44,6 +43,9 @@ in {
       };
 
       env.PATH = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
+
+      # Prettierrc config
+      home.file.".prettierrc".source = "${configDir}/prettier/.prettierrc";
     })
 
     (mkIf cfg.xdg.enable {
