@@ -13,5 +13,21 @@ in {
 
     # better for steam proton games
     systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+
+    user.packages = with pkgs; [
+      # require for some games (BeamNG.drive)
+      gamemode
+
+      # launch unreal engine (custom compiled)
+      (makeDesktopItem {
+        name = "unreal-editor";
+        desktopName = "Unreal Editor";
+        genericName = "Open Unreal Editor";
+        icon = "ubinary";
+        exec = "${steam-run}/bin/steam-run /games/UnrealEngine/Engine/Binaries/Linux/UnrealEditor %f";
+        categories = [ "Graphics" ];
+      })
+    ];
+
   };
 }
