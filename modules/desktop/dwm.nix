@@ -57,7 +57,6 @@ thunderbird &
 slack &
 telegram-desktop &
 spotify &
-calibre &
 '';
         executable = true;
     };
@@ -96,8 +95,8 @@ calibre &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "288cdc0eebdbbaf710299145e407a36b5cf099dd";
-             hash = "sha256-QbfV2UzM1BXSD7r68/HZgRHOhlkBkfhMZkGdXl8A7qc=";
+             rev = "d664d6b96483f81cd002685046db085f0f203c06";
+             hash = "sha256-H5CUXCnUprRzf6vgGB6i1r8GMT9RGKWmLlaL0MbZyW0=";
           };
         });
         };
