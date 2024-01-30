@@ -41,7 +41,8 @@ in {
 
       # replaces illustrator & indesign
       (if cfg.vector.enable then [
-        unstable.inkscape
+        inkscape
+        fontforge-gtk
       ] else []) ++
 
       # raster images workflow
@@ -61,8 +62,9 @@ in {
 
       # 3D modelling
       (if cfg.models.enable then [
-        blender-hip
+        unstable.blender-hip
         solvespace
+        freecad
       ] else []) ++
 
       # Photography workflow
