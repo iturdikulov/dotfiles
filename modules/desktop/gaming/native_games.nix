@@ -21,6 +21,7 @@ in {
       superTux       # Classic 2D jump'n run sidescroller game
       openmw         # An unofficial open source engine reimplementation of the game Morrowind
       mari0          # Crossover between Super Mario Bros. and Portal
+      colobot        # Gold Edition is a real-time strategy game, where you can program your bots
     ];
   };
 }
