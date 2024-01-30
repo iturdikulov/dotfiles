@@ -11,6 +11,8 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
+      socat # to remote control mpv
+
       # Web-torrent integration
       jq
       xidel
@@ -35,6 +37,8 @@ in {
       "mpv/mpv.conf".source   = "${configDir}/mpv/mpv.conf";
       "mpv/input.conf".source = "${configDir}/mpv/input.conf";
       "mpv/scripts" = { source = "${configDir}/mpv/scripts"; recursive = true; };
+
+      "mpv/script-opts/uosc.conf".source   = "${configDir}/mpv/uosc.conf";
     };
   };
 }
