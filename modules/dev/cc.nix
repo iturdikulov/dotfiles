@@ -19,14 +19,34 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        clang
         gcc
         gfortran
-        bear
-        gdb
-        cmake
-        lldb
         llvmPackages.libcxx
+
+        # builder
+        gnumake
+        cmake
+        bear
+
+        # debugger
+        lldb
+        gdb
+
+        # fix headers not found
+        clang-tools
+
+        # LSP and compiler
+        libstdcxx5
+
+        # other tools
+        cppcheck
+        libllvm
+        valgrind
+
+        # libs
+        glm
+        SDL2
+        SDL2_gfx
       ];
     })
 
