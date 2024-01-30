@@ -75,6 +75,7 @@ indent_size = unset
 [*.md]
 trim_trailing_whitespace = true
 max_line_length = 80
+indent_size = 2
 
 # binaries
 [*.nib]
