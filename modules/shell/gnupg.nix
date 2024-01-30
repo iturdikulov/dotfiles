@@ -6,7 +6,8 @@ let cfg = config.modules.shell.gnupg;
 in {
   options.modules.shell.gnupg = with types; {
     enable   = mkBoolOpt false;
-    cacheTTL = mkOpt int 3600;  # 1hr
+    cacheTTL = mkOpt int (3600 * 4);
+    maxCacheTTL = mkOpt int (3600 * 24);
     sshKeys = mkOption {
       type = types.nullOr (types.listOf types.str);
       default = null;
@@ -32,10 +33,22 @@ in {
     # HACK Without this config file you get "No pinentry program" on 20.03.
     #      programs.gnupg.agent.pinentryFlavor doesn't appear to work, and this
     #      is cleaner than overriding the systemd unit.
+    # --default-cache-ttl n
+    #   Set the time a cache entry is valid to n seconds. The default is 600
+    #   seconds. Each time a cache entry is accessed, the entry’s timer is reset.
+    #   To set an entry’s maximum lifetime, use max-cache-ttl. Note that a cached
+    #   passphrase may not be evicted immediately from memory if no client
+    #   requests a cache operation. This is due to an internal housekeeping
+    #   function which is only run every few seconds.
+    # --max-cache-ttl n
+    #   Set the maximum time a cache entry is valid to n seconds. After this time
+    #   a cache entry will be expired even if it has been accessed recently or
+    #   has been set using gpg-preset-passphrase. The default is 2 hours (7200
+    #   seconds).
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
-        max-cache-ttl     ${toString cfg.cacheTTL}
+        max-cache-ttl     ${toString cfg.maxCacheTTL}
       '';
     };
   }
