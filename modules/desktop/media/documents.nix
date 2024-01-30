@@ -29,8 +29,6 @@ in {
         sioyek
         zathura
         pandoc
-        calibre
-        foliate
       ] else [])++
 
       (if cfg.pdf.enable then [
