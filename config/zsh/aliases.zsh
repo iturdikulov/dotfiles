@@ -195,10 +195,10 @@ function vmconnect {
     virsh --connect qemu:///system start "$1"
   fi
 
-  virt-viewer -c qemu:///system --attach -f "$1"
+  looking-glass-client
 }
 
 function dic {
     echo "- $@" >> ~/Reference/dictionary/Dictionary.md
-    sdcv -nc "$@" | bat
+    sdcv -nc "$@" | bat --style=grid
 }
