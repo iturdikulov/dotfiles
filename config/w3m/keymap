@@ -97,8 +97,6 @@ keymap i NULL
 keymap gC-g NULL
 keymap C-g NULL
 keymap ";" NULL
-keymap M NULL
-keymap ESC-M NULL
 keymap F NULL
 keymap ESC-u NULL
 keymap t NULL
