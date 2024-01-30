@@ -69,5 +69,9 @@ with lib.my;
     gnumake
     unzip
     vim
+
+    # Basic tools for backup and restore
+    borgbackup
+    rclone
   ];
 }
