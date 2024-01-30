@@ -19,7 +19,7 @@ in {
     # maybe you need also to set nvram (I think when used quemu only config)
     # nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
 
-    virtualisation.libvirtd.qemuVerbatimConfig = ''
+    virtualisation.libvirtd.qemu.verbatimConfig = ''
       nographics_allow_host_audio = 1
       user = "${config.user.name}"
       group = "libvirtd"
