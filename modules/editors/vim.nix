@@ -37,6 +37,8 @@ in {
       gnutls              # for TLS connectivity
       fd                  # faster projectile indexing
 
+      xkb-switch          # for better keyborad layout switching
+
       # required for telescope-media-files-nvim
       chafa
       poppler_utils
@@ -85,75 +87,11 @@ in {
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+      package = pkgs.unstable.neovim-unwrapped;
       configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
          '';
-
-         packages.neovimPlugins = with pkgs.vimPlugins; {
-             start = [
-                 plenary-nvim
-
-                 onedark-nvim
-                 nvim-web-devicons
-                 (fromGitHub "30f04edb9647d9ea7c08d0bdbfad33faf5bcda57" "tjdevries/express_line.nvim")
-                 (fromGitHub "2c17843b074b06a835f88587e1023ceff7e2c7d1" "Glench/Vim-Jinja2-Syntax")
-
-                 telescope-nvim
-                 telescope-file-browser-nvim
-                 (fromGitHub "bd5d323581f24ee124b33688287e6a22244c6f2a" "renerocksai/telekasten.nvim")
-
-                 (fromGitHub "ea7e07e935f3f95deda97f9f6dc87f7bcf3fb69a" "phelipetls/jsonpath.nvim")
-                 vim-fugitive
-                 vim-rsi
-                 vim-gnupg
-
-                 refactoring-nvim
-                 vim-dasht
-                 nvim-treesitter.withAllGrammars
-                 harpoon
-                 which-key-nvim
-                 comment-nvim
-                 undotree
-                 nvim-ufo
-                 nvim-surround
-                 trouble-nvim
-
-
-                 popup-nvim
-                 telescope-media-files-nvim  # required plenary-nvim, popup.nvim, telescope.nvim
-
-                 sniprun
-                 (fromGitHub "083782f05e67cc08c6378affec9f55a913ac55f4" "antonk52/markdowny.nvim")
-                 (fromGitHub "a108a87639a43f5386dd70bdf512de3806a71f7d" "cbochs/portal.nvim")
-
-                 copilot-lua
-                 copilot-cmp
-
-                 nvim-dap
-                 nvim-dap-ui
-                 nvim-dap-virtual-text
-                 nvim-dap-python
-                 telescope-dap-nvim
-                 (fromGitHub "03bd29672d7fab5e515fc8469b7d07cc5994bbf6" "mxsdev/nvim-dap-vscode-js")
-
-                 neotest
-                 neotest-rust
-                 neotest-python
-
-                 # LSP, autocomplete and snippets
-                 nvim-lspconfig
-                 nvim-cmp
-                 cmp-buffer
-                 cmp-path
-                 cmp-nvim-lsp
-                 luasnip
-                 cmp_luasnip
-                 friendly-snippets
-                 ltex_extra-nvim
-                 (fromGitHub "082c4040c3d56c9ef56e1e7142000438eb542caf" "creativenull/efmls-configs-nvim")
-             ];
-         };
        };
     };
 
