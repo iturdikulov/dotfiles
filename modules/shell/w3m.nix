@@ -15,8 +15,22 @@ in {
     ];
 
     home.file = {
-      ".w3m/config".source = "${configDir}/w3m/config";
       ".w3m/keymap".source = "${configDir}/w3m/keymap";
+
+      ".w3m/config".text = ''
+        confirm_qq false
+        # Open page in the default browser or brave
+        extbrowser xdg-open %s
+        extbrowser2 brave %s
+
+        # Auto enable VIM html file type for editor command
+        editor vim -c "set filetype=html"
+
+        # run external viewers/commands in background
+        bgextviewer 1
+      '';
+
     };
+
   };
 }
