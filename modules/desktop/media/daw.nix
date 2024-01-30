@@ -19,7 +19,7 @@ in {
     user.packages = with pkgs; [
       ardour  # recording, mixing, loops
       lmms    # for making music
-      sunvox  # my favorite midi tracker
+      reaper
       unstable.audacity   # for recording and remastering audio
     ];
   };
