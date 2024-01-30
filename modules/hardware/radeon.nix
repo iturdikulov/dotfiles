@@ -22,9 +22,24 @@ in {
       corectrl
     ];
 
-    hardware.opengl.extraPackages = [
-      pkgs.rocm-opencl-icd
-      pkgs.rocm-opencl-runtime
+    services.xserver.videoDrivers = [ "amdgpu" ];
+
+    hardware.opengl.extraPackages = with pkgs; [
+      amdvlk
+      rocmPackages.clr.icd
+    ];
+
+    # For 32 bit applications
+    hardware.opengl.extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
+
+    # Force radv
+    environment.variables.AMD_VULKAN_ICD = "RADV";
+
+    # Most software has the HIP libraries hard-coded. You can work around it on NixOS by using
+    systemd.tmpfiles.rules = [
+      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
   };
 }
