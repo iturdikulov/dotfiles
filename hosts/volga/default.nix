@@ -4,7 +4,7 @@
     ../home.nix
     ./hardware-configuration.nix
     ./modules/dyndns.nix
-    # ./modules/backup.nix
+    ./modules/backup.nix
   ];
 
   ## Modules
@@ -130,7 +130,6 @@
       calibre.enable = true;
       rustdesk.enable = false;
       btrbk.enable = true;
-      borgbackup.enable = true;
       tailscale.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
