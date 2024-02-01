@@ -13,6 +13,7 @@ in {
     programs.browserpass.enable = true;
 
     user.packages = with pkgs; [
+      xkcdpass  # alternative to complex passwords
       (pass.withExtensions (exts: [
         exts.pass-otp
         exts.pass-genphrase
