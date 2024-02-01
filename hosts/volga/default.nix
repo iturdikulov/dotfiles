@@ -129,7 +129,6 @@
       _3proxy.enable = true;
       calibre.enable = true;
       rustdesk.enable = false;
-      btrbk.enable = true;
       tailscale.enable = true;
 
       # Needed occasionally to help the parental units with PC problems

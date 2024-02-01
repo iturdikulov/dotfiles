@@ -1,6 +1,7 @@
 { options, config, pkgs, lib, ... }:
 
 {
+    # BORG
     services.borgbackup.jobs =
       let common-excludes = [
             # Largest cache dirs
@@ -72,4 +73,28 @@
         unitConfig.OnFailure = "notify-problems@%i.service";
       }
     );
+
+
+    # BTRBK
+    services.btrbk = {
+      instances."kama" = {
+        onCalendar = "weekly";
+        settings = {
+          ssh_user = config.user.name;
+          ssh_identity = "${config.user.home}/.ssh/kama"; # NOTE: must be readable by user/group
+          stream_compress = "lz4";
+
+          snapshot_preserve_min = "2d";
+          snapshot_preserve = "14d";
+          target_preserve_min = "no"; # use target_preserve config
+          target_preserve = "20d 10w 12m"; # keep backups daily 20d, weekly 10w, monthly 12m
+
+          volume."/" = {
+            subvolume = "home";
+            target = "ssh://kama/media/backup/snapshot";
+          };
+        };
+      };
+      extraPackages = [ pkgs.lz4 ];
+    };
 }
