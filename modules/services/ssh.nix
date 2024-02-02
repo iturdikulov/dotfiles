@@ -18,7 +18,7 @@ in {
 
     user.openssh.authorizedKeys.keys =
       if config.user.name == "inom"
-      then [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+98UauMXllELyhSNhTTJPITI2OmJSNf1HUXxjiv6V Inom M. Turdikulov inom@iturdikulov.org" ]
+      then ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+98UauMXllELyhSNhTTJPITI2OmJSNf1HUXxjiv6V Inom M. Turdikulov inom@iturdikulov.org"]
       else [];
   };
 }
