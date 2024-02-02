@@ -15,6 +15,15 @@ in
 
     user.packages = with pkgs; [
       scrcpy
+
+      # Custom scrcpy desktop item
+      (makeDesktopItem {
+        name = "scrcpy (custom)";
+        desktopName = "scrcpy (custom)";
+        genericName = "Android remote control";
+        icon = "scrcpy";
+        exec = "/bin/sh -c \"\\$SHELL -i -c scrcpy --hid-keyboard\"";
+      })
     ];
   };
 }
