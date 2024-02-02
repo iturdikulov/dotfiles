@@ -81,7 +81,7 @@
         onCalendar = "weekly";
         settings = {
           ssh_user = config.user.name;
-          ssh_identity = "${config.user.home}/.ssh/kama"; # NOTE: must be readable by user/group
+          ssh_identity = "/etc/btrbk_kama_key"; # NOTE: must be readable by user/group
           stream_compress = "lz4";
 
           snapshot_preserve_min = "2d";
