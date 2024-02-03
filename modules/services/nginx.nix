@@ -12,7 +12,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      networking.firewall.allowedTCPPorts = [ 80 443 14988 ];
+      networking.firewall.allowedTCPPorts = [ 80 443];
 
       user.extraGroups = [ "nginx" ];
 

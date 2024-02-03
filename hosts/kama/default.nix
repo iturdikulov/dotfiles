@@ -3,6 +3,11 @@
   imports = [
     ../home.nix
     ./hardware-configuration.nix
+    ./modules/adguard.nix
+    ./modules/calibre.nix
+    ./modules/gitea.nix
+    ./modules/miniflux.nix
+    ./modules/syncthing.nix
   ];
 
   ## Modules
@@ -55,11 +60,7 @@
       dictd.enable = true;
       ssh.enable = true;
       docker.enable = true;
-      syncthing.enable = true;
       nginx.enable = true;
-      miniflux.enable = true;
-      gitea.enable = true;
-      calibre.enable = true;
       tailscale.enable = true;
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
