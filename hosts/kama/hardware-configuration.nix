@@ -41,6 +41,11 @@
       fsType = "btrfs";
     };
 
+  fileSystems."/var/lib/private/photoprism/originals" =
+  { device = "${config.user.home}/Pictures/photos";
+    options = [ "bind" ];
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

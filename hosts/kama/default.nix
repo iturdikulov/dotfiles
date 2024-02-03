@@ -8,6 +8,7 @@
     ./modules/gitea.nix
     ./modules/miniflux.nix
     ./modules/syncthing.nix
+    ./modules/photoprism.nix
   ];
 
   ## Modules
@@ -62,6 +63,7 @@
       docker.enable = true;
       nginx.enable = true;
       tailscale.enable = true;
+      mysql.enable = true; # for photoprism
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
     };
