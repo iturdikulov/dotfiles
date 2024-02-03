@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./modules/dyndns.nix
     ./modules/backup.nix
+    ./modules/smb.nix
   ];
 
   ## Modules
