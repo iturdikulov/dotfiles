@@ -9,6 +9,7 @@
     ./modules/miniflux.nix
     ./modules/syncthing.nix
     ./modules/photoprism.nix
+    ./modules/taskwarrior.nix
   ];
 
   ## Modules
