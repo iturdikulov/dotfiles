@@ -246,8 +246,11 @@ Options:
 [agenix]: https://github.com/ryantm/agenix
 
 ## TODO
+
 - [ ] ngnix bind 80 port and set root url
 - [ ] set root path for all services (www/..)
+- [ ] Make git sign. optional
+- [ ] GIT use different key by default (Hostname config?)
 - [ ] taskwarrior workflow
 - [ ] weechat workflow
 - [ ] isync and himalaya workflow
