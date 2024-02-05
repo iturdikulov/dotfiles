@@ -19,14 +19,14 @@
     address = "127.0.0.1";
     passwordFile = config.age.secrets.photoprism.path;
     settings = {
-      PHOTOPRISM_ADMIN_USER = "inom";
+      PHOTOPRISM_ADMIN_USER = "admin";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
       PHOTOPRISM_DATABASE_NAME = "photoprism";
       PHOTOPRISM_DATABASE_SERVER = "/run/mysqld/mysqld.sock";
       PHOTOPRISM_DATABASE_USER = "photoprism";
       PHOTOPRISM_SITE_URL = "http://photo.home.arpa";
-      PHOTOPRISM_SITE_TITLE = "My PhotoPrism";
+      PHOTOPRISM_SITE_TITLE = "Photo Archive";
     };
   };
 
