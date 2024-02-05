@@ -127,7 +127,6 @@
       syncthing.enable = true;
       virt-manager.enable = true;
       nginx.enable = true;
-      _3proxy.enable = true;
       calibre.enable = true;
       rustdesk.enable = false;
       tailscale.enable = true;
