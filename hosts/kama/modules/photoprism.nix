@@ -17,9 +17,9 @@
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
     address = "127.0.0.1";
+    passwordFile = config.age.secrets.photoprism.path;
     settings = {
-      PHOTOPRISM_ADMIN_USER = "admin";
-      PHOTOPRISM_ADMIN_PASSWORD = ''$(cat "${config.age.secrets.photoprism.path}")'';
+      PHOTOPRISM_ADMIN_USER = "inom";
       PHOTOPRISM_DEFAULT_LOCALE = "en";
       PHOTOPRISM_DATABASE_DRIVER = "mysql";
       PHOTOPRISM_DATABASE_NAME = "photoprism";

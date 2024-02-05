@@ -247,6 +247,7 @@ Options:
 
 ## TODO
 
+- [x] fix agenix secrets
 - [ ] ngnix bind 80 port and set root url
 - [ ] set root path for all services (www/..)
 - [ ] Make git sign. optional
