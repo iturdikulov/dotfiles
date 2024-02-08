@@ -59,7 +59,7 @@ in {
       unstable.emmet-ls
 
       ## Formatting
-      luaformatter
+      stylua
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
