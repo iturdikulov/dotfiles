@@ -22,8 +22,8 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-if (( $+commands[fzf] )); then
-  bindkey '^R' fzf-history-widget
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh)"
 fi
 
 # Omni-Completion

@@ -38,6 +38,7 @@ in {
 
     user.packages = with pkgs; [
       zsh
+      atuin
       nix-zsh-completions
       bat
       eza

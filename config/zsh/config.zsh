@@ -56,6 +56,10 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000   # Max events to store in internal history.
 SAVEHIST=100000   # Max events to store in history file.
 
+if (( $+commands[autin] )); then
+    atuin import auto # History manager
+fi
+
 setopt BANG_HIST                 # Don't treat '!' specially during expansion.
 setopt EXTENDED_HISTORY          # Include start time in history records
 setopt APPEND_HISTORY            # Appends history to history file on exit
