@@ -32,19 +32,15 @@ insert_final_newline = unset
 trim_trailing_whitespace = unset
 
 # Match json/lockfiles/markdown/nix/perl/python/ruby/shell/docbook files, set indent to spaces
-[*.{json,lock,md,nix,pl,pm,py,rb,sh,xml}]
+[*.{json,lock,md,nix,pl,pm,py,rb,sh,xml,lua}]
 indent_style = space
 
 # Match docbook files, set indent width of one
 [*.xml]
 indent_size = 1
 
-# Match json/lockfiles/markdown/nix/ruby files, set indent width of two
-[*.{json,lock,nix,rb}]
-indent_size = 4
-
-# Match perl/python/shell scripts, set indent width of four
-[*.{pl,pm,py,sh}]
+# Set indent width of four spaces
+[*.{json,lock,nix,rb,lua,pl,pm,py,sh}]
 indent_size = 4
 
 # Match gemfiles, set indent to spaces with width of two
