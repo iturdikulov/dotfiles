@@ -95,8 +95,8 @@ spotify &
            src = pkgs.fetchFromGitHub {
              owner = "Inom-Turdikulov";
              repo = "dwm-flexipatch";
-             rev = "d664d6b96483f81cd002685046db085f0f203c06";
-             hash = "sha256-H5CUXCnUprRzf6vgGB6i1r8GMT9RGKWmLlaL0MbZyW0=";
+             rev = "9b9a5d9c789947d9f41f30d2b26591c197974e71";
+             hash = "sha256-1cZ798rYaZAI0Zyam3ljrvjs7LcRN7HTdSYDN3VswhE=";
           };
         });
         };
