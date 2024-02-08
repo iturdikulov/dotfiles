@@ -44,6 +44,10 @@ in {
       env.XDG_DESKTOP_DIR = "$HOME/";
 
       modules.desktop.browsers.firefox.settings = {
+        # Reduce File IO / SSD abuse
+        # Otherwise, Firefox bombards the HD with writes. Not so nice for SSDs.
+        # This forces it to write every 30 minutes, rather than 15 seconds.
+        "browser.sessionstore.interval" = "1800000";
         # Default to dark theme in DevTools panel
         "devtools.theme" = "dark";
         # Enable ETP for decent security (makes firefox containers and many
@@ -64,7 +68,7 @@ in {
         # Enable userContent.css and userChrome.css for our theme modules
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         # Stop creating ~/Downloads!
-        "browser.download.dir" = "${config.user.home}/downloads";
+        "browser.download.dir" = "${config.user.home}/Downloads";
         # Don't use the built-in password manager. A nixos user is more likely
         # using an external one (you are using one, right?).
         "signon.rememberSignons" = false;
@@ -134,10 +138,6 @@ in {
         "extensions.htmlaboutaddons.discover.enabled" = false;
         "extensions.getAddons.showPane" = false;  # uses Google Analytics
         "browser.discovery.enabled" = false;
-        # Reduce File IO / SSD abuse
-        # Otherwise, Firefox bombards the HD with writes. Not so nice for SSDs.
-        # This forces it to write every 30 minutes, rather than 15 seconds.
-        "browser.sessionstore.interval" = "1800000";
         # Disable battery API
         # https://developer.mozilla.org/en-US/docs/Web/API/BatteryManager
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1313580
