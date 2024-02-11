@@ -22,7 +22,6 @@ in {
         youtubeSupport = true;
         scripts = with mpvScripts; [
           mpris
-          uosc
           thumbfast
           mpv-playlistmanager
           autoload
