@@ -19,7 +19,7 @@ st.scratch.font: monospace:pixelsize=24
 
 !! xst
 st.font: monospace:pixelsize=24
-st.borderpx: 5
+st.borderpx: 6
 
 
 !! urxvt
