@@ -20,6 +20,7 @@ let cfg = config.modules.editors.vim;
         rev = rev;
       };
     };
+
 in {
   options.modules.editors.vim = {
     enable = mkBoolOpt false;
@@ -57,6 +58,7 @@ in {
       nil             # Yet another language server for Nix
       efm-langserver  # for formatting
       unstable.emmet-ls
+      my.codeium
 
       ## Formatting
       stylua
@@ -87,12 +89,11 @@ in {
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-      package = pkgs.unstable.neovim-unwrapped;
       configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
          '';
-       };
+      };
     };
 
     environment.shellAliases = {
