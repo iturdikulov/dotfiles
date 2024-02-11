@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$((find ~/Work ~/Science/* ~/Computer/* ~/Arts_and_Entertainment/* -mindepth 1 -maxdepth 1 -type d; echo /etc/dotfiles; echo ~/Wiki) | fzf)
+    selected=$((find ~/Work ~/Science/* ~/Computer/* ~/Arts_and_Entertainment/* ! -path "*literature/*" -mindepth 1 -maxdepth 1 -type d; echo /etc/dotfiles; echo ~/Wiki) | fzf)
 fi
 
 if [[ -z $selected ]]; then
