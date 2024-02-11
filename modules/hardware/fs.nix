@@ -24,6 +24,7 @@ in {
         cryptsetup  # LUKS for dm-crypt, encryption support
         smartmontools # Tools for monitoring the health of hard drives
         fdupes        # Identifies duplicate files residing within specified directories
+        sysbench      # Test suite
       ];
     }
 

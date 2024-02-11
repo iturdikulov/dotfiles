@@ -13,6 +13,8 @@ in {
       dmidecode
       geekbench
       lshw
+      pciutils
+      usbutils
     ];
   };
 }
