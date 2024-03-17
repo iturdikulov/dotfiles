@@ -2,13 +2,13 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.termdown;
+let cfg = config.modules.shell.timer;
 in {
-  options.modules.shell.termdown = {
+  options.modules.shell.timer = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.termdown ];
+    user.packages = [ pkgs.timer ];
   };
 }

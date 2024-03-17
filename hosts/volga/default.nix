@@ -117,7 +117,7 @@
       sc-im.enable  = true;
       weechat.enable     = true;
       maintenance.enable = true;
-      termdown.enable    = true;
+      timer.enable       = true;
       vaultwarden.enable = false;
 
       leetcode-cli.enable = true;

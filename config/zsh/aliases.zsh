@@ -174,7 +174,7 @@ function abspath {
 }
 
 function pomodoro {
-    termdown "$1" --exec-cmd "if [ '{0}' == '60' -o '{0}' == '10' ]; then piper_speak Termdown timer - {1} left; fi"
+    timer "$1" && piper_speak "Hey Inom, something important is happening now."
 }
 
 # The following bash function will compare the file listings from the zip files.
