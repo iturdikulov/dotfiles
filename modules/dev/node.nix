@@ -28,12 +28,11 @@ in {
         bun
 
         # LSP
-        nodePackages.pyright  # NOTE: sync this with python.nix
         nodePackages.typescript-language-server
         nodePackages.vscode-langservers-extracted
 
-        # TODO check vim enabled
-        nodePackages.eslint_d  # TODO move into linters
+        # Analysis
+        nodePackages.eslint_d  # Statically analyzes JS to find problems
       ];
 
       # Run locally installed bin-script, e.g. n coffee file.coffee

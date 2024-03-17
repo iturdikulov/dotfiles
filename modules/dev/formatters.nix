@@ -16,8 +16,9 @@ in {
   config = {
     user.packages = with pkgs; [
       ruff
-      prettierd
       deno
+      prettierd
+      nixpkgs-fmt
     ];
   };
 }

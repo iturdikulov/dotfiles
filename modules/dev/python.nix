@@ -20,8 +20,8 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        jetbrains.pycharm-community  # YES it's IDE, required to test modern Python
-        (unstable.python3.withPackages(ps: with ps; [
+        nodePackages.pyright         # Static Type Checker for Python
+        (python3.withPackages(ps: with ps; [
           pip
           setuptools
           ipython
