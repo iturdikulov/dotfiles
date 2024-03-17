@@ -24,7 +24,7 @@ def db file, command
   begin
     # Copy the sqlite database because history/bookmark info is usually small
     # and may be locked by an open browser.
-    unless File.exists? copy
+    unless File.exist? copy
       FileUtils.cp file, copy
       FileUtils.chmod 0400, copy, verbose: true
     end
@@ -60,7 +60,7 @@ def get_bookmarks browser
     ["#{ENV['HOME']}/.mozilla/firefox/#{user}.default",
      "#{ENV['XDG_CONFIG_HOME']}/firefox/.mozilla/firefox/#{user}.default",
      "#{ENV['XDG_DATA_HOME']}/mozilla/firefox/#{user}.default"].each do |dir|
-      if Dir.exists? dir
+      if Dir.exist? dir
         db "#{dir}/places.sqlite",
            ["SELECT DISTINCT mb.title, mp.url FROM moz_bookmarks mb",
             "INNER JOIN moz_places mp ON mp.id = mb.fk",
@@ -89,7 +89,7 @@ def get_history browser
     ["#{ENV['HOME']}/.mozilla/firefox/#{user}.default",
      "#{ENV['XDG_CONFIG_HOME']}/firefox/.mozilla/firefox/#{user}.default",
      "#{ENV['XDG_DATA_HOME']}/mozilla/firefox/#{user}.default"].each do |dir|
-      if Dir.exists? dir
+      if Dir.exist? dir
         return db "#{dir}/places.sqlite",
                   ["SELECT title, url",
                    "FROM moz_places",
