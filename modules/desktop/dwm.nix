@@ -62,7 +62,6 @@ spotify &
     };
 
     environment.systemPackages = with pkgs; [
-      dunst
       libnotify
       dmenu
       alsa-utils   # for dwm-status
@@ -116,14 +115,6 @@ format = "%A, %d.%m [%B], %H:%M"
 
 
     systemd = {
-    user.services."dunst" = {
-      enable = true;
-      description = "";
-      wantedBy = [ "default.target" ];
-      serviceConfig.Restart = "always";
-      serviceConfig.RestartSec = 2;
-      serviceConfig.ExecStart = "${pkgs.dunst}/bin/dunst";
-    };
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];

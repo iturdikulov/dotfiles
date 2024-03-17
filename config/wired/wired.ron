@@ -1,0 +1,3896 @@
+(
+	debug: false,
+	history_length: 60,
+	idle_threshold: 180,
+	layout_blocks: [
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TR),
+			name: "general_root",
+			offset: Vec2 (x: -50, y: 50),
+			params: NotificationBlock ((
+				background_color: Color (hex: "#101419"),
+				border_color: Color (hex: "#485263"),
+				border_color_critical: Color (hex: "#e05f65"),
+				border_color_low: Color (hex: "#485263"),
+				border_color_paused: Color (hex: "#f9a872"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				gap: Vec2 (x: 0.000000, y: 9.600000),
+				monitor: 0,
+				notification_hook: Hook (parent_anchor: BR, self_anchor: TR)
+			)),
+			parent: "",
+			render_criteria: [Not (Or ([Tag ("indicator")]))]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_size",
+			offset: Vec2 (x: 0, y: 0),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 1, min: 1), width: (max: 720, min: 720)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_root"
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_time",
+			offset: Vec2 (x: 600.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#b6beca"),
+				dimensions: (height: (max: 33, min: 33), width: (max: 120, min: 120)),
+				ellipsize: End,
+				font: "Monospace Bold 18.00000",
+				padding: Padding (bottom: 4.800000, left: 0.000000, right: 19.200000, top: 14.400000),
+				text: "%t(%a %H:%M)"
+			)),
+			parent: "general_root"
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_app_image",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ImageBlock ((
+				filter_mode: Lanczos3,
+				image_type: App,
+				min_height: 28,
+				min_width: 28,
+				padding: Padding (bottom: 7.200000, left: 19.200000, right: -9.600000, top: 14.400000),
+				rounding: 14.400000,
+				scale_height: 28,
+				scale_width: 28
+			)),
+			parent: "general_root",
+			render_criteria: [And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_app_name",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#b6beca"),
+				dimensions: (height: (max: 33, min: 33), width: (max: 420, min: 420)),
+				ellipsize: End,
+				font: "Monospace 18.00000",
+				padding: Padding (bottom: 0.000000, left: 19.200000, right: 0.000000, top: 14.400000),
+				text: "%n"
+			)),
+			parent: "general_app_image",
+			render_criteria: [And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_notop_hint",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ImageBlock ((
+				filter_mode: Lanczos3,
+				image_type: Hint,
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 0.000000, top: 14.400000),
+				rounding: 10.800000,
+				scale_height: 153,
+				scale_width: 153
+			)),
+			parent: "general_root",
+			render_criteria: [Not (And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			]))]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_notop_summary",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 36, min: 0), width: (max: 542, min: 542)),
+				dimensions_image_both: (height: (max: 36, min: 0), width: (max: 374, min: 374)),
+				dimensions_image_hint: (height: (max: 36, min: 0), width: (max: 374, min: 374)),
+				ellipsize: End,
+				font: "Terminess Nerd Font Mono Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 19.200000, right: 19.200000, top: 9.600000),
+				text: "%s"
+			)),
+			parent: "general_notop_hint",
+			render_criteria: [Not (And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			]))]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_notop_body",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 105, min: 0), width: (max: 681, min: 681)),
+				dimensions_image_both: (height: (max: 105, min: 0), width: (max: 513, min: 513)),
+				dimensions_image_hint: (height: (max: 105, min: 0), width: (max: 513, min: 513)),
+				ellipsize: End,
+				font: "Terminess Nerd Font Mono 18.0",
+				padding: Padding (bottom: 14.400000, left: 19.200000, right: 19.200000, top: -4.800000),
+				text: "%b"
+			)),
+			parent: "general_notop_summary",
+			render_criteria: [And ([
+				Or ([Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]))]),
+				Body
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_hint_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.00000",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: -4.800000),
+				text: "%p%"
+			)),
+			parent: "general_notop_hint",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				HintImage
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_hint_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 4.800000),
+				width: 628.800000
+			)),
+			parent: "general_notop_hint",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				HintImage
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_notop_hint_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_notop_hint_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_notop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_notop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_notop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_notop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_notop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_notop_hint_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					HintImage
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_body_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "general_notop_body",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				Body,
+				Not (HintImage)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_body_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 9.600000),
+				width: 628.800000
+			)),
+			parent: "general_notop_body",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				Body,
+				Not (HintImage)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_notop_body_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_notop_body_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_notop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_notop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_notop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_notop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_notop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_notop_body_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_summary_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "general_notop_summary",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				Summary,
+				Not (Or ([
+					Body,
+					HintImage
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_notop_summary_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 9.600000),
+				width: 628.800000
+			)),
+			parent: "general_notop_summary",
+			render_criteria: [And ([
+				Not (And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])),
+				Progress,
+				Summary,
+				Not (Or ([
+					Body,
+					HintImage
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_notop_summary_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_notop_summary_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_notop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_notop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_notop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_notop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_notop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_notop_summary_text",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_notop_hint",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_notop_hint",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_notop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_notop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_notop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_notop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_notop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_notop_hint",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_notop_body",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_notop_body",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_notop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_notop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_notop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_notop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_notop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_notop_body",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_notop_summary",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_notop_summary",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_notop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_notop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_notop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_notop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_notop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_notop_summary",
+			render_criteria: [And ([
+				And ([
+					Not (And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					])),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_withtop_hint",
+			offset: Vec2 (x: 0.000000, y: 43.200000),
+			params: ImageBlock ((
+				filter_mode: Lanczos3,
+				image_type: Hint,
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 0.000000, top: 14.400000),
+				rounding: 10.800000,
+				scale_height: 153,
+				scale_width: 153
+			)),
+			parent: "general_root",
+			render_criteria: [And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_withtop_summary",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 36, min: 0), width: (max: 681, min: 681)),
+				dimensions_image_both: (height: (max: 36, min: 0), width: (max: 513, min: 513)),
+				dimensions_image_hint: (height: (max: 36, min: 0), width: (max: 513, min: 513)),
+				ellipsize: End,
+				font: "Terminess Nerd Font Mono Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 19.200000, right: 19.200000, top: 9.600000),
+				text: "%s"
+			)),
+			parent: "general_withtop_hint",
+			render_criteria: [And ([
+				AppImage,
+				Not (Or ([
+					AppName (""),
+					AppName ("notify-send")
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_withtop_body",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 105, min: 0), width: (max: 681, min: 681)),
+				dimensions_image_both: (height: (max: 105, min: 0), width: (max: 513, min: 513)),
+				dimensions_image_hint: (height: (max: 105, min: 0), width: (max: 513, min: 513)),
+				ellipsize: End,
+				font: "Terminess Nerd Font Mono 18.0",
+				padding: Padding (bottom: 14.400000, left: 19.200000, right: 19.200000, top: -4.800000),
+				text: "%b"
+			)),
+			parent: "general_withtop_summary",
+			render_criteria: [And ([
+				Or ([And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				])]),
+				Body
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_hint_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: -4.800000),
+				text: "%p%"
+			)),
+			parent: "general_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				HintImage
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_hint_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 4.800000),
+				width: 628.800000
+			)),
+			parent: "general_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				HintImage
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_withtop_hint_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_withtop_hint_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					HintImage
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_body_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "general_withtop_body",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				Body,
+				Not (HintImage)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_body_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 9.600000),
+				width: 628.800000
+			)),
+			parent: "general_withtop_body",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				Body,
+				Not (HintImage)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_withtop_body_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_withtop_body_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_withtop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_withtop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_withtop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_withtop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_withtop_body_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_withtop_body_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_summary_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Right,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 28, min: 28), width: (max: 57, min: 57)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 14.400000, left: 14.400000, right: 19.200000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "general_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				Summary,
+				Not (Or ([
+					Body,
+					HintImage
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_progress_withtop_summary_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 4.800000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#70a5eb"),
+				fill_rounding: 4.800000,
+				height: 14.400000,
+				padding: Padding (bottom: 14.400000, left: 81.600000, right: 19.200000, top: 9.600000),
+				width: 628.800000
+			)),
+			parent: "general_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					AppImage,
+					Not (Or ([
+						AppName (""),
+						AppName ("notify-send")
+					]))
+				]),
+				Progress,
+				Summary,
+				Not (Or ([
+					Body,
+					HintImage
+				]))
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_progress_withtop_summary_text",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_progress_withtop_summary_text",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Progress,
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_withtop_hint",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_withtop_hint",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_withtop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_withtop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_withtop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_withtop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_withtop_hint",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_withtop_hint",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					HintImage
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_withtop_body",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_withtop_body",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_withtop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_withtop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_withtop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_withtop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_withtop_body",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_withtop_body",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Body,
+					Not (HintImage)
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: BL, self_anchor: TL),
+			name: "general_button_bar_for_withtop_summary",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 52, min: 52), width: (max: 681, min: 681)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "general_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				Or ([
+					ActionOther (0),
+					ActionOther (1),
+					ActionOther (2),
+					ActionOther (3),
+					ActionOther (4),
+					ActionOther (5)
+				])
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "general_action_0_for_withtop_summary",
+			offset: Vec2 (x: 19.200000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (0),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_button_bar_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (0)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_1_for_withtop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (1),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_0_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (1)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_2_for_withtop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (2),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_1_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (2)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_3_for_withtop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (3),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_2_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (3)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_4_for_withtop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (4),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_3_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (4)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: TR, self_anchor: TL),
+			name: "general_action_5_for_withtop_summary",
+			offset: Vec2 (x: 9.600000, y: 0.000000),
+			params: ButtonBlock ((
+				action: OtherAction (5),
+				background_color: Color (hex: "#171b20"),
+				background_color_hovered: Color (hex: "#21262e"),
+				border_color: Color (hex: "#485263"),
+				border_color_hovered: Color (hex: "#9378de"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				dimensions: (height: (max: 28, min: 28), width: (max: 172, min: 38)),
+				ellipsize: End,
+				font: "Monospace Bold 18.0",
+				padding: Padding (bottom: 4.800000, left: 9.600000, right: 9.600000, top: 4.800000),
+				text: "%a",
+				text_color: Color (hex: "#dee1e6"),
+				text_color_hovered: Color (hex: "#dee1e6")
+			)),
+			parent: "general_action_4_for_withtop_summary",
+			render_criteria: [And ([
+				And ([
+					And ([
+						AppImage,
+						Not (Or ([
+							AppName (""),
+							AppName ("notify-send")
+						]))
+					]),
+					Not (Progress),
+					Summary,
+					Not (Or ([
+						Body,
+						HintImage
+					]))
+				]),
+				ActionOther (5)
+			])]
+		),
+		(
+			hook: Hook (parent_anchor: MM, self_anchor: MM),
+			name: "indicator_root",
+			offset: Vec2 (x: 0, y: 0),
+			params: NotificationBlock ((
+				background_color: Color (hex: "#101419"),
+				border_color: Color (hex: "#485263"),
+				border_color_critical: Color (hex: "#e05f65"),
+				border_color_low: Color (hex: "#485263"),
+				border_color_paused: Color (hex: "#f9a872"),
+				border_rounding: 0.000000,
+				border_width: 2.400000,
+				gap: Vec2 (x: 0.000000, y: 0.000000),
+				monitor: 0,
+				notification_hook: Hook (parent_anchor: MM, self_anchor: MM)
+			)),
+			parent: "",
+			render_criteria: [And ([Tag ("indicator")])]
+		),
+		(
+			hook: Hook (parent_anchor: TL, self_anchor: TL),
+			name: "indicator_size",
+			offset: Vec2 (x: 0, y: 0),
+			params: TextBlock ((
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 160, min: 160), width: (max: 460, min: 460)),
+				font: "Monospace 1",
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: ""
+			)),
+			parent: "indicator_root"
+		),
+		(
+			hook: Hook (parent_anchor: TM, self_anchor: TM),
+			name: "indicator_summary",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Center,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 38, min: 38), width: (max: 360, min: 360)),
+				font: "Terminess Nerd Font Mono Bold 18.00000",
+				padding: Padding (bottom: 9.600000, left: 0.000000, right: 0.000000, top: 9.600000),
+				text: "%s"
+			)),
+			parent: "indicator_size"
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_hint",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ImageBlock ((
+				filter_mode: Lanczos3,
+				image_type: Hint,
+				min_height: 60,
+				min_width: 216,
+				padding: Padding (bottom: 51.600000, left: 0.000000, right: 0.000000, top: 42.000000),
+				rounding: 10.800000,
+				scale_height: 60,
+				scale_width: 216
+			)),
+			parent: "indicator_summary"
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_anything_value_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Center,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 18, min: 18), width: (max: 76, min: 76)),
+				font: "Monospace Bold 24.000000",
+				padding: Padding (bottom: 14.400000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "indicator_hint",
+			render_criteria: [Not (Or ([
+				Note ("brightness"),
+				Note ("volume")
+			]))]
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_anything_value_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 7.200000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#9378de"),
+				fill_rounding: 7.200000,
+				height: 19.200000,
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				width: 414.720000
+			)),
+			parent: "indicator_anything_value_text",
+			render_criteria: [Not (Or ([
+				Note ("brightness"),
+				Note ("volume")
+			]))]
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_brightness_value_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Center,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 38, min: 38), width: (max: 76, min: 76)),
+				font: "Monospace Bold 24.00000",
+				padding: Padding (bottom: 14.400000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "indicator_hint",
+			render_criteria: [And ([Note ("brightness")])]
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_brightness_value_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 7.200000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#f1cf8a"),
+				fill_rounding: 7.200000,
+				height: 19.200000,
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				width: 414.720000
+			)),
+			parent: "indicator_brightness_value_text",
+			render_criteria: [And ([Note ("brightness")])]
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_volume_value_text",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: TextBlock ((
+				align: Center,
+				color: Color (hex: "#dee1e6"),
+				dimensions: (height: (max: 18, min: 38), width: (max: 76, min: 76)),
+				font: "Monospace Bold 24.00000",
+				padding: Padding (bottom: 14.400000, left: 0.000000, right: 0.000000, top: 0.000000),
+				text: "%p%"
+			)),
+			parent: "indicator_hint",
+			render_criteria: [And ([Note ("volume")])]
+		),
+		(
+			hook: Hook (parent_anchor: BM, self_anchor: TM),
+			name: "indicator_volume_value_bar",
+			offset: Vec2 (x: 0.000000, y: 0.000000),
+			params: ProgressBlock ((
+				background_color: Color (hex: "#242931"),
+				border_color: Color (hex: "#242931"),
+				border_rounding: 7.200000,
+				border_width: 0.000000,
+				fill_color: Color (hex: "#78dba9"),
+				fill_rounding: 7.200000,
+				height: 19.200000,
+				padding: Padding (bottom: 0.000000, left: 0.000000, right: 0.000000, top: 0.000000),
+				width: 414.720000
+			)),
+			parent: "indicator_volume_value_text",
+			render_criteria: [And ([Note ("volume")])]
+		)
+	],
+	max_notifications: 10,
+	min_window_height: 24,
+	min_window_width: 24,
+	poll_interval: 6,
+	replacing_enabled: true,
+	replacing_resets_timeout: true,
+	shortcuts: ShortcutsConfig (notification_action1: 3, notification_close: 2, notification_interact: 1, notification_pause: 1),
+	timeout: 10000
+)
