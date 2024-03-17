@@ -1,3 +1,0 @@
-#!/usr/bin/env cached-nix-shell
-#! nix-shell -p rxvt-unicode ttyper
-urxvt -fn 'xft:Monospace:pixelsize=32' -e ttyper
