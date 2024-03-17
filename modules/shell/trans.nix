@@ -2,13 +2,20 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.shell.translate-shell;
+let cfg = config.modules.shell.crow-translate;
 in {
-  options.modules.shell.translate-shell = {
+  options.modules.shell.crow-translate = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.translate-shell ];
+    user.packages = with pkgs; [
+      pkgs.crow-translate
+
+      (writeScriptBin "_1" ''
+        #!/bin/sh
+        crow -t ru+en "$@"|bat --style=grid
+       '')
+    ];
   };
 }
