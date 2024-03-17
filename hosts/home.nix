@@ -25,10 +25,10 @@ in {
   '';
 
   ## Location config -- since Toronto is my 127.0.0.1
-  time.timeZone = mkDefault "Asia/Almaty";
+  time.timeZone = mkDefault "Asia/Bishkek";
   i18n.defaultLocale = mkDefault "en_US.UTF-8";
   # For redshift, mainly
-  location = (if config.time.timeZone == "Asia/Almaty" then {
+  location = (if config.time.timeZone == "Asia/Bishkek" then {
     latitude = 43.238949;
     longitude = 76.889709;
   } else if config.time.timeZone == "Europe/Moscow" then {
