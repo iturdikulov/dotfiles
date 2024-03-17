@@ -73,5 +73,14 @@ with lib.my;
     # Basic tools for backup and restore
     borgbackup
     rclone
+
+    kbd
   ];
+
+  # Console setup
+  console.font = "ter-i32b";
+  console.packages = with pkgs; [
+    terminus_font
+  ];
+  console.keyMap = "mod-dh-ansi-us";
 }
