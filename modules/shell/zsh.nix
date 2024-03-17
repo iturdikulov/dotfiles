@@ -41,10 +41,9 @@ in {
       atuin
       nix-zsh-completions
       bat
+      bat-extras.batman
       eza
       fzf
-      jq
-      tealdeer
       starship
     ];
 
@@ -55,6 +54,7 @@ in {
     };
 
     home.configFile = {
+      "starship.toml".source = "${configDir}/starship/starship.toml";
       # Write it recursively so other modules can write files to it
       "zsh" = { source = "${configDir}/zsh"; recursive = true; };
 
@@ -69,6 +69,7 @@ in {
            ${concatStringsSep "\n" aliasLines}
            ${concatMapStrings (path: "source '${path}'\n") cfg.rcFiles}
            ${cfg.rcInit}
+           eval "$(starship init zsh)"
         '';
 
       "zsh/extra.zshenv".text = ''
