@@ -13,6 +13,10 @@
     desktop = {
       dwm.enable = true;
       wine.enable = true;
+      term = {
+        default = "wezterm";
+        wezterm.enable = true;
+      };
       apps = {
         rofi.enable = true;
         slack.enable = true;
@@ -47,9 +51,6 @@
         espeak.enable = true;
         useless.enable = true;
       };
-      term = {
-        default = "xst";
-        st.enable = true;
       };
       vm = {
         qemu.enable = true;
