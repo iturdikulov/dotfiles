@@ -104,6 +104,7 @@
       w3m.enable    = true;
       xh.enable     = true;
       ytfzf.enable  = true;
+      yewtube.enable  = true;
       newsboat.enable  = true;
 
       adl.enable    = true;
