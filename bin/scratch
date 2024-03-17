@@ -5,15 +5,8 @@
 
 SCRID=scratch
 CMD=${1:-'tmux new-session -A -s scratch -n scratch'}
-if command -v xst >/dev/null; then
-    scratch_font="$(xrdb -query | grep 'scratch\.font' | cut -f2)"
-    if [ -z "$scratch_font" ]; then
-        scratch_font='monospace:pixelsize=28'
-    fi
-
-    xst -t $SCRID -n $SCRID -c $SCRID \
-        -f $scratch_font \
-        -e $SHELL -c "$CMD"
+if command -v wezterm >/dev/null; then
+    wezterm start --class=scratch -e $SHELL -c "$CMD"
 elif command -v urxvt >/dev/null; then
     urxvt -name $SCRID \
           -e $SHELL -c "$CMD"
