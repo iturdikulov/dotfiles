@@ -33,7 +33,6 @@
         spotify.enable = true;
       };
       term = {
-        default = "xst";
         st.enable = true;
       };
       vm = {
