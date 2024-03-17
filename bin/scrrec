@@ -55,12 +55,19 @@ countdown() {
 }
 
 recording-start() {
-  local ffmpeg_opts="-y -f x11grab -show_region 1 -ss $delay -s ${4}x${5} -i :0.0+${2},${3} -framerate ${fps}"
+  # Check aviable HW accelerated encoders
+  # https://gist.github.com/Brainiarc7/95c9338a737aa36d9bb2931bed379219#encoding-with-vaapi
+  local ffmpeg_opts="""-y -hwaccel vaapi -vaapi_device /dev/dri/renderD128 -hwaccel_output_format vaapi
+-framerate ${fps} -video_size 1920x1080 -f x11grab -show_region 1 -ss $delay -s ${4}x${5} -i :0.0+${2},${3}
+-f pulse -ac 2 -i 1
+-vf format=nv12,hwupload -threads 12
+-vcodec h264_vaapi -bf 0 -acodec pcm_s16le"""
+
   local dest=${1:-./rec.mp4}
   local mp4dest=
   [[ $dest == *.gif ]] && mp4dest="${dest%.*}.mp4"
   countdown
-  ffmpeg $ffmpeg_opts "${mp4dest:-$dest}" &
+  DRI_PRIME=1 LIBVA_DRIVER_NAME=radeonsi ffmpeg $ffmpeg_opts "${mp4dest:-$dest}" &
   pid=$!
   echo $pid >$stopfile
   wait $pid
