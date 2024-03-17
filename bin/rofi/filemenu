@@ -6,6 +6,6 @@ if [ -d "$DIR" ]; then
   if [[ $1 == "-x" ]]; then
     scratch
   else
-    xst
+    $TERMINAL
   fi
 fi
