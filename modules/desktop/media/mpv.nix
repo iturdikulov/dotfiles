@@ -18,6 +18,9 @@ in {
       xidel
       nodePackages.webtorrent-cli
 
+      # Playback control (for mpris)
+      playerctl
+
       (mpv.override {
         youtubeSupport = true;
         scripts = with mpvScripts; [
@@ -26,6 +29,7 @@ in {
           mpv-playlistmanager
           autoload
           acompressor
+          vr-reversal
         ];
       })
 
@@ -36,8 +40,6 @@ in {
       "mpv/mpv.conf".source   = "${configDir}/mpv/mpv.conf";
       "mpv/input.conf".source = "${configDir}/mpv/input.conf";
       "mpv/scripts" = { source = "${configDir}/mpv/scripts"; recursive = true; };
-
-      "mpv/script-opts/uosc.conf".source   = "${configDir}/mpv/uosc.conf";
     };
   };
 }
