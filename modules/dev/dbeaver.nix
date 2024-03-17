@@ -12,6 +12,7 @@ in {
   config = {
       user.packages = with pkgs; [
         dbeaver
+        mariadb # allowing dump database
       ];
   };
 }
