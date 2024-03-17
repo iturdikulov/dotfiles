@@ -87,7 +87,7 @@
           snapshot_preserve_min = "2d";
           snapshot_preserve = "14d";
           target_preserve_min = "no"; # use target_preserve config
-          target_preserve = "20d 10w 12m"; # keep backups daily 20d, weekly 10w, monthly 12m
+          target_preserve = "1d 4w 12m"; # keep backups daily 1d, weekly 4w, monthly 12m
 
           volume."/" = {
             subvolume = "home";
