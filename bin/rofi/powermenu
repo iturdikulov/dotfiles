@@ -7,26 +7,20 @@ power_off="Shutdown"
 reboot="Reboot"
 lock="Lock"
 suspend="Sleep"
-log_out="Logout"
 # Variable passed to rofi
-options="$power_off\n$reboot\n$lock\n$suspend\n$log_out"
+options="$suspend\n$lock\n$reboot\n$power_off"
 
-case "$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)" in
+case "$(echo -e "$options" | $rofi_command -dmenu)" in
     $power_off)
         systemctl poweroff
         ;;
     $reboot)
         systemctl reboot
         ;;
-    $lock)
-        zzz
-        ;;
     $suspend)
-        dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
         systemctl suspend
         ;;
-    $log_out)
-        session=$(loginctl session-status | awk 'NR==1{print $1}')
-        loginctl terminate-session $session
+    $lock)
+        zzz
         ;;
 esac

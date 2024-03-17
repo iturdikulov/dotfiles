@@ -7,6 +7,8 @@
 window {
   children: [ listview ];
   width: 500px;
+  height: 354px;
+  y-offset: -221px;
 }
 
 listview {
@@ -15,9 +17,4 @@ listview {
 
 element {
   padding: 30px;
-  background-color: @bg-light;
-}
-element.selected {
-  background-color: @accent;
-  text-color: @bg;
 }
