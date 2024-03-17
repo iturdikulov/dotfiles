@@ -55,6 +55,14 @@ in {
 
     home.configFile = {
       "starship.toml".source = "${configDir}/starship/starship.toml";
+
+      "atuin/config.toml".text = ''
+        style = "compact"
+        update_check = false
+        show_help = false
+        inline_height = 20
+      '';
+
       # Write it recursively so other modules can write files to it
       "zsh" = { source = "${configDir}/zsh"; recursive = true; };
 
