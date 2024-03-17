@@ -1,0 +1,43 @@
+format = """
+$username\
+$directory\
+$git_branch\
+$git_commit\
+$git_status\
+$python\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+style = "blue"
+read_only = " ro"
+
+[character]
+success_symbol = "[ \\$](fg)"
+error_symbol = "[ \\$](red)"
+vimcmd_symbol = "[ N](cyan)"
+
+[git_branch]
+style = "fg"
+format = "[$branch]($style) "
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+style = "fg"
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+symbol = "py "
+style = "bright-black"

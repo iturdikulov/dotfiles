@@ -45,6 +45,7 @@ in {
       fzf
       jq
       tealdeer
+      starship
     ];
 
     env = {
