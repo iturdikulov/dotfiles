@@ -27,13 +27,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # dasht docsets path
-    env.DASHT_DOCSETS_DIR = "${config.user.home}/Reference/docsets";
-
     user.packages = with pkgs; [
       vimgolf             # A game that tests Vim efficiency, train vim skills
-      dasht               # to search in docsets
-
       git
       gnutls              # for TLS connectivity
       fd                  # faster projectile indexing

@@ -79,6 +79,7 @@
       dbeaver.enable = true;
       mitmproxy.enable = true;
       shell.enable = true;
+      docs.enable  = true;  # dev man pages and docsets tools (zeal, dasht)
     };
     editors = {
       default = "nvim";
