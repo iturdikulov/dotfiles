@@ -60,6 +60,7 @@ recording-start() {
   local ffmpeg_opts="""-y -hwaccel vaapi -vaapi_device /dev/dri/renderD128 -hwaccel_output_format vaapi
 -framerate ${fps} -video_size 1920x1080 -f x11grab -show_region 1 -ss $delay -s ${4}x${5} -i :0.0+${2},${3}
 -f pulse -ac 2 -i 1
+-color_trc smpte2084 -color_primaries bt2020
 -vf format=nv12,hwupload -threads 12
 -vcodec h264_vaapi -bf 0 -acodec pcm_s16le"""
 
