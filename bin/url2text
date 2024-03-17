@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env cached-nix-shell
+#! nix-shell -i sh -p xidel
 
-BROWSER=brave
 format=${1:-markdown}
 url=${2:-$(xclip -o -selection clipboard)}
 
@@ -8,8 +8,8 @@ url=${2:-$(xclip -o -selection clipboard)}
 if [[ $url == *.pdf ]]; then
     title=""
 else
-    # Use curl to fetch the page and extract the title with sed
-    title=$($BROWSER --headless --dump-dom --disable-gpu "$url"|sed -n -e 's!.*<title>\(.*\)</title>.*!\1!p')
+    # Use xidel to fetch the page and extract the title with sed
+    title=$(xidel "$url" -e //title)
 fi
 
 if [[ $format == "title" ]]; then
