@@ -35,9 +35,9 @@ in {
       xkb-switch          # for better keyborad layout switching
 
       # required for telescope-media-files-nvim
-      chafa
+      unstable.chafa
       poppler_utils
-      imagemagick
+      unstable.imagemagick
 
       ## Module dependencies
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
@@ -52,7 +52,8 @@ in {
       nil             # Yet another language server for Nix
       efm-langserver  # for formatting
       unstable.emmet-ls
-      my.codeium
+      ruff-lsp
+      gopls
 
       ## Formatting
       stylua
@@ -91,7 +92,6 @@ in {
     };
 
     environment.shellAliases = {
-      vim = "nvim";
       v   = "nvim";
     };
 
