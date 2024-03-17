@@ -28,7 +28,6 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      vimgolf             # A game that tests Vim efficiency, train vim skills
       git
       gnutls              # for TLS connectivity
       fd                  # faster projectile indexing
