@@ -16,12 +16,14 @@ in {
       moon-buggy     # A simple character graphics game
       nethack        # Rogue-like game
       pokete         # A terminal based Pokemon like game
-      dwarf-fortress # Not really useless ;-) A single-player fantasy game
-      superTuxKart   # A Free 3D kart racing game
-      superTux       # Classic 2D jump'n run sidescroller game
-      openmw         # An unofficial open source engine reimplementation of the game Morrowind
       mari0          # Crossover between Super Mario Bros. and Portal
-      colobot        # Gold Edition is a real-time strategy game, where you can program your bots
+      pacvim         # Game that teaches you vim commands
+      vimgolf        # A game that tests Vim efficiency, train vim skills
     ];
+
+    # Special wrapper to fix -Z issues
+    # TODO: maybe not actual anymore: https://github.com/igrigorik/vimgolf/issues/304
+    # remove also vim_golf_fix binary from bin, when it's became not actual
+    environment.variables.GOLFVIM = "vim_golf_fix";
   };
 }
