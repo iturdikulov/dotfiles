@@ -22,7 +22,7 @@ with lib;
     let result = "result.png";
         filteredImage =
           pkgs.runCommand "filterWallpaper"
-            { buildInputs = [ pkgs.imagemagick ]; } ''
+            { buildInputs = [ pkgs.unstable.imagemagick ]; } ''
               mkdir "$out"
               convert ${options} ${imageFile} $out/${result}
             '';
