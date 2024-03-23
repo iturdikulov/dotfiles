@@ -39,8 +39,8 @@ in {
             brightcyan    = "#56B6C2"; # 14
             white         = "#C8CCD4"; # 15
 
-            types.bg      = "#1F2329";
-            types.fg      = "#A0A8B7";
+            types.bg      = "#0E1415";
+            types.fg      = "#CECECE";
           };
         };
 
