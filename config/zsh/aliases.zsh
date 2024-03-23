@@ -28,6 +28,10 @@ alias chown="chown --preserve-root" # Do not do chown for root directory
 alias chmod="chmod --preserve-root"
 alias E="SUDO_EDITOR=nvim sudo -e"
 
+# disable globbing for some specific programs
+alias c="noglob qalc"
+alias tplay="noglob tplay"
+
 alias mk=make
 alias gurl='curl --compressed'
 alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
