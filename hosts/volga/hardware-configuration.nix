@@ -116,6 +116,10 @@
 
   swapDevices = [ ];
 
+  # Enable btrfs auto scrubbing
+  # checking file consistency
+  services.btrfs.autoScrub.enable = true;
+
   # CPU
   nix.settings.max-jobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "performance";
