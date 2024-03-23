@@ -204,7 +204,7 @@ function vmconnect {
   looking-glass-client
 }
 
-function dic {
+function _2 {
     echo "- $@" >> ~/Reference/dictionary/Dictionary.md
     sdcv -nc "$@" | bat --style=grid
 }
