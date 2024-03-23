@@ -17,6 +17,9 @@ in {
       # Support for more filesystems, mostly to support external drives
       environment.systemPackages = with pkgs; [
         sshfs
+        detox     # Tames problematic filenames
+        entr      # Run arbitrary commands when files change
+        watchman  # Watch files and record when they change. It can also trigger actions
         exfat     # Windows drives
         ntfs3g    # Windows drives
         hfsprogs  # MacOS drives
