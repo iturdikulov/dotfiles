@@ -50,6 +50,7 @@
         espeak.enable = true;
         useless.enable = true;
       };
+        music.enable = true;
       };
       vm = {
         qemu.enable = true;
