@@ -45,7 +45,6 @@
         recording.enable = true;
         espeak.enable = true;
         useless.enable = true;
-      };
         music.enable = true;
       };
       vm = {
