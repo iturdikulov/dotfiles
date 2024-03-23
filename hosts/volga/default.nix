@@ -26,7 +26,7 @@
       };
       browsers = {
         default = "firefox";
-        brave.enable = true;
+        brave.enable = true;  # Fallback browser, which required sometims
         firefox.enable = true;
         qutebrowser.enable = true;
       };
