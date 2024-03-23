@@ -38,6 +38,10 @@ in {
           categories = [ "Network" ];
         })
       ];
+      programs.firefox = {
+        enable = true;
+        nativeMessagingHosts.browserpass = true;
+      };
 
       # Prevent auto-creation of ~/Desktop. The trailing slash is necessary; see
       # https://bugzilla.mozilla.org/show_bug.cgi?id=1082717

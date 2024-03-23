@@ -10,8 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.browserpass.enable = true;
-
     user.packages = with pkgs; [
       xkcdpass  # alternative to complex passwords
       (pass.withExtensions (exts: [
