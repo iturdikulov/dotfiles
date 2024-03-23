@@ -11,6 +11,7 @@ alias q=exit
 alias clr=clear
 alias sudo='sudo '
 alias rm='rm -i'
+alias trash='gio trash'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -pv'
