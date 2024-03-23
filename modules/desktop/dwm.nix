@@ -2,71 +2,68 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.dwm;
-    configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.desktop.dwm;
+  configDir = config.dotfiles.configDir;
+  wCfg = config.services.xserver.desktopManager.wallpaper;
+in
+{
   options.modules.desktop.dwm = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     security.polkit.enable = true; # to promt root password in GUI programs
-    programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
+      programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
 
-    user.packages = with pkgs; [
-        (pkgs.writeScriptBin "chatgpt-cli" ''
-        #!/bin/sh
-        API_KEY=~/.chatgpt_api_key && test -f $API_KEY && export OPENAI_API_KEY=$(cat $API_KEY) && unset API_KEY
-        xst -c chatgpt -e chatgpt
-        '')
-        (pkgs.writeScriptBin "wiki" ''
-        #!/bin/sh
-        cd ~/Wiki && xst -c wiki -e nvim Now.md
-        '')
-        (pkgs.writeScriptBin "trans-ru" ''
-        #!/bin/sh
-        xst -c trans -e trans -shell ru:en
-        '')
-        (pkgs.writeScriptBin "newsboat-cli" ''
-        #!/bin/sh
-        xst -c newsboat -e newsboat
-        '')
-        (pkgs.writeScriptBin "weechat-cli" ''
-        #!/bin/sh
-        xst -c weechat -e weechat
-        '')
-    ];
+    # Auto-lock on suspend
+    programs.xss-lock.enable = true;
+    programs.xss-lock.lockerCommand = "/run/wrappers/bin/slock";
+
     home.dataFile."dwm/autostart.sh" = {
-        text = ''
-#!/bin/sh
+      text = ''
+        #!/bin/sh
+        # Load theme specific settings
+        [[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
 
-# Exit if spotify already running (we already started...)
-pgrep spotify && exit 1
+        # Bind F13 (XF86Tools) to mod3mask key
+        xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
 
-# Load theme specific settings
-[[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
+        # Exit if programs  are already running
+        pgrep wezterm && exit 1
+        pgrep slack && exit 1
+        pgrep firefox && exit 1
 
-# Bind F13 (XF86Tools) to mod3mask key
-xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
+        if [ -e "$XDG_DATA_HOME/wallpaper" ]; then
+         ${pkgs.feh}/bin/feh --bg-${wCfg.mode} \
+           ${optionalString wCfg.combineScreens "--no-xinerama"} \
+           --no-fehbg \
+           $XDG_DATA_HOME/wallpaper
+        fi
 
-# Set cursor shape
-xsetroot -cursor_name left_ptr
+        # Set cursor shape
+        xsetroot -cursor_name left_ptr
 
-# Load some IRL-sensentive apps and bloatware ;-)
-thunderbird &
-slack &
-telegram-desktop &
-spotify &
-'';
-        executable = true;
+        # Layout per window
+        kbdd
+
+        # Load some GUI apps
+        notify-send -t 5000 "System" "Поехали!" &
+        firefox &
+        slack &
+        wezterm &
+        sleep 2 && wezterm start --class=cmus cmus &
+      '';
+      executable = true;
     };
 
     environment.systemPackages = with pkgs; [
       libnotify
       dmenu
-      alsa-utils   # for dwm-status
+      kbdd
+      alsa-utils # for dwm-status
       xorg.xmodmap # to set mod3 key
-      jumpapp      # quick switch between apps
+      jumpapp # quick switch between apps
     ];
 
     # My custom dmenu scripts
@@ -79,9 +76,9 @@ spotify &
         enable = true;
 
         # Configure keymap in X11
-        layout = "us,ru";
-        xkbVariant = "colemak_dh,";
-        xkbOptions = "grp:menu_toggle,lv5:ralt_switch";
+        xkb.layout = "us,ru";
+        xkb.variant = "colemak_dh,";
+        xkb.options = "grp:menu_toggle,lv5:ralt_switch,compose:rwin";
 
         displayManager = {
           defaultSession = "none+dwm";
@@ -91,36 +88,43 @@ spotify &
         windowManager.dwm = {
           enable = true;
           package = pkgs.dwm.overrideAttrs (old: {
-           src = pkgs.fetchFromGitHub {
-             owner = "Inom-Turdikulov";
-             repo = "dwm-flexipatch";
-             rev = "9b9a5d9c789947d9f41f30d2b26591c197974e71";
-             hash = "sha256-1cZ798rYaZAI0Zyam3ljrvjs7LcRN7HTdSYDN3VswhE=";
-          };
-        });
+            src =
+              if builtins.pathExists /home/inom/Computer/software/dwm-flexipatch
+              then
+                builtins.fetchGit
+                  {
+                    url = "file:///home/inom/Computer/software/dwm-flexipatch/";
+                  }
+              else
+                pkgs.fetchpath {
+                  repo = "dwm-flexipatch";
+                  rev = "0db92acb1e38483216845cf6c600c44c8d7c33ac";
+                  hash = "sha256-YmmlP6XGKS/i89M5skLBfYpktZ91vnMhdKs9fBAgQnc=";
+                };
+          });
         };
       };
       dwm-status = {
         enable = true;
-        order = ["time"];
-	extraConfig = ''
-separator = " / "
+        order = [ "time" ];
+        extraConfig = ''
+          separator = " / "
 
-[time]
-format = "%A, %d.%m [%B], %H:%M"
-	'';
+          [time]
+          format = "%A, %d.%m [%B], %H:%M"
+          	'';
       };
       gvfs.enable = true;
     };
 
 
     systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
+      user.services.polkit-gnome-authentication-agent-1 = {
+        description = "polkit-gnome-authentication-agent-1";
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
           Restart = "on-failure";
