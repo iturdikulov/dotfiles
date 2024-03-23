@@ -10,20 +10,20 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      du-dust
-
       # NNN
       (nnn.override {withNerdIcons = true;})
       xdragon  # supporting dragdrop nnn plugin
-      ffmpeg   # extract media
+      ffmpeg-full # ffmpeg-full
       ffmpegthumbnailer
       rsync    # better copy/paste
       # imgview dependencies
       nsxiv
 
+      ncdu
       file
       fd
       fasd
+      zoxide
       ripgrep
     ];
 
