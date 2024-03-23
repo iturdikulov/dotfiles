@@ -12,32 +12,21 @@ Xcursor.theme: Adwaita
 *.color240: #6272a4
 *.color241: #b6b6b2
 
-
-!! general
-st.scratch.font: monospace:pixelsize=24
-
-
-!! xst
-st.font: monospace:pixelsize=24
-st.borderpx: 6
-
-
-!! urxvt
-URxvt*depth:                   32
-URxvt*.borderless:             1
-URxvt*.buffered:               true
-URxvt*.cursorBlink:            true
-URxvt*.font:                   xft:monospace:pixelsize=18
-URxvt*.internalBorder:         10
-URxvt*.letterSpace:            0
-URxvt*.lineSpace:              0
-URxvt*.loginShell:             false
-URxvt*.matcher.button:         1
-URxvt*.matcher.rend.0:         Uline Bold fg5
-URxvt*.saveLines:              5000
-URxvt*.scrollBar:              false
-URxvt*.underlineColor:         grey
-URxvt.clipboard.autocopy:      true
-URxvt.iso14755:                false
-URxvt.iso14755_52:             false
-URxvt.perl-ext-common:         default,matcher
+!! xterm
+XTerm*faceName: Monospace
+XTerm*faceSize: 18
+XTerm*termName: xterm-256color
+XTerm*internalBorder: 0
+XTerm*clientDecoration: none
+!! Enable SIXEL support
+XTerm*decTerminalID: 340
+XTerm*numColorRegisters: 256
+!! Make 'Alt' key behave as on other terminal emulators
+XTerm.vt100.metaSendsEscape: true
+!! Fix the backspace key
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+!! Key bindings similar to other terminals copy and paste behavior
+XTerm.vt100.translations: #override \n\
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
