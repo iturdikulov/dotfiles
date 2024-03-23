@@ -20,6 +20,10 @@ bindkey '\eOA' history-substring-search-up
 bindkey '\e[B' history-substring-search-down
 bindkey '\eOB' history-substring-search-down
 
+# C-p/C-n previous and next command
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+
 # C-z to toggle current process (background/foreground)
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
