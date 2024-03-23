@@ -29,7 +29,7 @@ if [ $# -eq 0 ]
     # Core logic
     active_window=$(xdotool getactivewindow)
 
-    if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "xst" ]]; then
+    if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "$TERMINAL" ]]; then
         xdotool getactivewindow key ctrl+shift+c
     else
         xdotool getactivewindow key ctrl+c
