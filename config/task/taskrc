@@ -1,0 +1,36 @@
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+# Use the command 'task show' to see all defaults and overrides
+
+news.version=2.6.0
+
+# Files
+data.location=~/.config/task
+include ~/.config/task/serverrc
+
+# Datetime settings
+weekstart=Monday
+
+# Default project
+default.project=inbox
+
+# Estimate attribute
+uda.estimate.type=numeric
+uda.estimate.label=Estimate
+
+# Copied from taskwarrior source code
+# https://github.com/GothenburgBitFactory/taskwarrior
+# taskwarrior/src/Context.cpp#379
+# Adjust reporting
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,estimate
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Estimate
+report.next.filter=status:pending limit:18 -Buy
+
+report.in.columns           = id,description
+report.in.description       = Inbox
+report.in.filter            = status:pending limit:page (project:inbox)
+report.in.labels            = ID,Description
+report.in.filter            = status:pending limit:18 -Buy

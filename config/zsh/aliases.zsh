@@ -39,37 +39,6 @@ alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
 alias shutdown='sudo shutdown'
 alias reboot='sudo reboot'
 
-# Taskwarrior aliases
-alias t=task
-alias tui=taskwarrior-tui
-alias ti="task in"
-alias tn="clear;task next"
-alias ta="task add"
-alias tan="task add scheduled:today"
-alias tm="task modify"
-alias trol="task sch:yes status:pending modify sch:tod"
-alias td='clear;task next +ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H; calcurse -r; timew | grep -v "no active time"'
-alias tal='task add dep:"$(task +LATEST uuids)"'
-alias rnd='ta +rnd +@computer'
-
-# Add tickle task function
-# Usage example
-# tat Monday Count from 1 to 10
-tat () {
-    local deadline=$1; shift
-    task add +tickle wait:$deadline $@
-}
-alias think='tat +1d'
-
-# Research and review, requires url2text
-# usage: rnr http://cs-syd.eu/posts/2015-07-05-gtd-with-taskwarrior-part-4-processing.html
-rnr (){
-    local text=$(url2text text "$1")
-    local descr="\"Read and review: $text\""
-    local id=$(task add +next +rnr "$descr" | sed -n 's/Created task \(.*\)./\1/p')
-    task $id|grep Description
-}
-
 # An rsync that respects gitignore
 rcp() {
   # -a = -rlptgoD

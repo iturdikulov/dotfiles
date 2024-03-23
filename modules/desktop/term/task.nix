@@ -6,6 +6,7 @@
 with lib;
 with lib.my;
 let cfg = config.modules.shell.task;
+    configDir = config.dotfiles.configDir;
 in {
   options.modules.shell.task = {
     enable = mkBoolOpt false;
@@ -17,6 +18,9 @@ in {
       timewarrior # time tracking
       taskwarrior-tui # TUI to rare clean taskwarrior tasks
     ];
+
+    home.configFile."task/taskrc".source = "${configDir}/task/taskrc";
+    modules.shell.zsh.rcFiles = [ "${configDir}/task/aliases.zsh" ];
 
     systemd.timers."timew_track" = {
       wantedBy = [ "timers.target" ];
