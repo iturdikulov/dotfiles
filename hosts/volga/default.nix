@@ -83,7 +83,7 @@
       files.enable    = true;  # files utilites
 
       AI.enable       = true;  # ChatGPT, wolfram-alpha
-      translate-shell.enable = true; # multilingual neural machine translation CLI
+      crow-translate.enable = true; # multilingual neural machine translation GUI/CLI
 
       editorconfig.enable = true;
 
