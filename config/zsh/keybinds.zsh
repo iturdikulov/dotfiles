@@ -1,3 +1,7 @@
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # Other conveniences
 bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^d' push-line-or-edit
