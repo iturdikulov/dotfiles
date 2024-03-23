@@ -4,7 +4,8 @@ export KEYTIMEOUT=1
 
 # Other conveniences
 bindkey -M viins '^a' beginning-of-line
-bindkey -M viins '^d' push-line-or-edit
+bindkey -M viins '^x^x' push-line-or-edit
+
 # Exit with C-D
 exit_zsh() { exit }
 zle -N exit_zsh
