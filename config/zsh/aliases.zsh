@@ -101,7 +101,7 @@ alias ssc='sudo systemctl'
 
 if (( $+commands[eza] )); then
   alias eza="eza --group-directories-first --git";
-  alias l="eza -blF";
+  alias l="eza -bl";
   alias ll="eza -abghilmu";
   alias llm='ll --sort=modified'
   alias la="LC_COLLATE=C eza -ablF";
