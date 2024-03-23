@@ -40,7 +40,7 @@ in {
       ];
       programs.firefox = {
         enable = true;
-        nativeMessagingHosts.browserpass = true;
+        nativeMessagingHosts.packages = [ pkgs.browserpass ];
       };
 
       # Prevent auto-creation of ~/Desktop. The trailing slash is necessary; see
