@@ -58,6 +58,8 @@
     };
     dev = {
       formatters.enable = true;
+      analysis.enable = true;
+
       node.enable = true;
       rust.enable = true;
       go.enable = true;
