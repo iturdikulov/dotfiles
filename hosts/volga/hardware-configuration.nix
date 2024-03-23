@@ -111,7 +111,11 @@
   fileSystems."/archive" =
     { device = "/dev/disk/by-uuid/ff1ddb67-6528-49b3-8159-3d26eb97d431";
       fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" ];
+      options = [
+        "subvol=root"
+        "compress=zstd"
+        "nofail" # Prevent system from failing if this drive doesn't mount
+      ];
     };
 
   swapDevices = [ ];
