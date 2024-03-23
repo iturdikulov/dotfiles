@@ -99,8 +99,13 @@ function take {
   mkdir "$1" && cd "$1";
 }; compdef take=mkdir
 
+# Documentation related aliases
+alias man='batman'
 function zman {
   PAGER="less -g -I -s '+/^       "$1"'" man zshall;
+}
+function tman {
+  tldr --color=always "$@"|bat --style=plain
 }
 
 # Create a reminder with human-readable durations, e.g. 15m, 1h, 40s, etc
