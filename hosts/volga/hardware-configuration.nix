@@ -26,7 +26,7 @@
     initrd.kernelModules = [];
     extraModulePackages = [];
     # extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
-    kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" "kvm-amd" ];
+    kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "kvm-amd" ];
     kernelParams = [
       # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
       #      vulnerabilities. Don't copy this blindly! And especially not for
