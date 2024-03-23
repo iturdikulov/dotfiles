@@ -132,21 +132,13 @@
   };
 
   ## Local config
+  time.timeZone = "Asia/Bishkek";
   programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
   services.pcscd.enable = true;     # for gpg-agent
   services.timesyncd.enable = true; # to sync time
 
   #services.openssh.settings.X11Forwarding = true;
-  ## Taskwarrior config
-  # networking.firewall.allowedTCPPorts = [ 53589 ];
-  # services.taskserver = {
-  #   enable = true;
-  #   trust = "allow all";
-  #   listenHost = "192.168.0.103";
-  #   fqdn = "192.168.0.103";
-  #   organisations.home.users = [ "${config.user.name}" ];
-  # };
 
   networking.networkmanager.enable = true;
 }
