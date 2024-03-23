@@ -4,9 +4,11 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.media.documents;
-    configDir = config.dotfiles.configDir;
-in {
+let
+  cfg = config.modules.desktop.media.documents;
+  configDir = config.dotfiles.configDir;
+in
+{
   options.modules.desktop.media.documents = {
     enable = mkBoolOpt false;
     pdf.enable = mkBoolOpt true;
@@ -29,25 +31,23 @@ in {
         sioyek
         zathura
         pandoc
-      ] else [])++
+      ] else [ ]) ++
 
       (if cfg.pdf.enable then [
         zathura
         ghostscript
-      ] else [])++
+      ] else [ ]) ++
 
       (if cfg.research.enable then [
         unstable.obsidian # render markdown and learn flashcards
         papis # to store DOI stuff
         wiki-tui # wikipedia in terminal
-        taskwarrior # my daily tasks
-        taskwarrior-tui # TUI to rare clean taskwarrior tasks
-      ] else [])++
+      ] else [ ]) ++
 
       (if cfg.office.enable then [
-        libreoffice-fresh  # Sometimes I need edit MS-office documents
-        hunspell  # Spell checker
-        hunspellDicts.ru_RU  # RU dictionary from LibreOffice
-      ] else []);
+        libreoffice-fresh # Sometimes I need edit MS-office documents
+        hunspell # Spell checker
+        hunspellDicts.ru_RU # RU dictionary from LibreOffice
+      ] else [ ]);
   };
 }

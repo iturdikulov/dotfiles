@@ -121,6 +121,7 @@
       vaultwarden.enable = false;
 
       leetcode-cli.enable = true;
+      task.enable         = true;
     };
     services = {
       dictd.enable = false;
