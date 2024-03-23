@@ -22,10 +22,7 @@
         slack.enable = true;
         thunderbird.enable = true;
         telegram.enable = true;
-        ripcord.enable = true;
-        pidgin.enable = true;
         godot.enable = true;
-        imhex.enable = true;
       };
       browsers = {
         default = "firefox";
@@ -34,7 +31,6 @@
         qutebrowser.enable = true;
       };
       gaming = {
-        parsec.enable = true;
         native_games.enable = true;
         steam.enable = true;
         emulators.enable = true;
@@ -63,17 +59,11 @@
       node.enable = true;
       rust.enable = true;
       go.enable = true;
-      android.enable = true;
       python.enable = true;
       cc.enable = true;
       lua.enable = true;
-      lua.love2D.enable = true;
 
-      clojure.enable = true;
-      haxe.enable = true;
       nasm.enable = true;
-      r.enable = true;
-      scala.enable = true;
       pascal.enable = true;
       common-lisp.enable = true;
       php.enable = true;
@@ -107,7 +97,6 @@
       ddgr.enable     = true;
       w3m.enable    = true;
       xh.enable     = true;
-      ytfzf.enable  = true;
       yewtube.enable  = true;
       newsboat.enable  = true;
 
@@ -134,7 +123,6 @@
       virt-manager.enable = true;
       nginx.enable = true;
       calibre.enable = true;
-      rustdesk.enable = false;
       tailscale.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
