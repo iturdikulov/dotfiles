@@ -27,7 +27,7 @@ in {
     user.packages = with pkgs;
       (if cfg.tools.enable then [
         font-manager   # so many damned fonts...
-        imagemagick    # for image manipulation from the shell
+        unstable.imagemagick    # for image manipulation from the shell
         tesseract4     # OCR engine
         maim           # A command-line screenshot utility
         (pkgs.writeScriptBin "scrcap_ocr" ''
