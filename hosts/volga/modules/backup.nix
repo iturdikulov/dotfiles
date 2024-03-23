@@ -95,6 +95,5 @@
           };
         };
       };
-      extraPackages = [ pkgs.lz4 ];
     };
 }
