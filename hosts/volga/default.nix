@@ -11,6 +11,7 @@
   modules = {
     desktop = {
       dwm.enable = true;
+      wired.enable = true;
       wine.enable = true;
       term = {
         default = "wezterm";
