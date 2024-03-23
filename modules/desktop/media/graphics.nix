@@ -50,7 +50,6 @@ in {
         nsxiv    # nsxiv image viewer
         libwebp  # required for animated webp playback
         giflib   # used for animated gif playback
-        pureref  # image reference board
         krita
         gimp
       ] else []) ++
