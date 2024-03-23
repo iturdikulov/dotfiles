@@ -1,6 +1,12 @@
 # Other conveniences
 bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^d' push-line-or-edit
+# Exit with C-D
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey -M emacs '^D' exit_zsh
+bindkey -M vicmd '^D' exit_zsh
+bindkey -M viins '^D' exit_zsh
 
 # Up arrow:
 bindkey '\e[A' history-substring-search-up
