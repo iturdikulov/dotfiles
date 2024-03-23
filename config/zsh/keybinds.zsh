@@ -37,16 +37,6 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-if (( $+commands[atuin] )); then
-  eval "$(atuin init zsh)"
-fi
-
-# Omni-Completion
-if (( $+commands[fasd] )); then
-  bindkey -M viins '^x^f' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
-  bindkey -M viins '^x^d' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
-fi
-
 # Completing words in buffer in tmux
 if [ -n "$TMUX" ]; then
   _tmux_pane_words() {
@@ -78,3 +68,20 @@ history-beginning-search-backward-then-append() {
 }
 zle -N history-beginning-search-backward-then-append
 bindkey -M viins '^x^l' history-beginning-search-backward-then-append
+
+# fzf
+if (( $+commands[fd] )); then
+  export FZF_DEFAULT_OPTS="--reverse --ansi"
+  export FZF_DEFAULT_COMMAND="fd ."
+fi
+if [ -n "${commands[fzf-share]}" ]; then
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+  export FZF_CTRL_R_COMMAND=
+  source "$(fzf-share)/key-bindings.zsh"
+fi
+
+# atuin
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh)"
+fi

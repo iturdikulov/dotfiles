@@ -79,15 +79,6 @@ if (( $+commands[eza] )); then
   alias fd_non_ascii='fd "[^\u0000-\u007F]+"'  # find non-ascii filenames
 fi
 
-if (( $+commands[fasd] )); then
-  # fuzzy completion with 'z' when called without args
-  unalias z 2>/dev/null
-  function z {
-    [ $# -gt 0 ] && _z "$*" && return
-    cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
-  }
-fi
-
 if (( $+commands[ddgr] )); then
     alias ddgr="ddgr -n 7";
     alias bang="ddgr --gb --np"

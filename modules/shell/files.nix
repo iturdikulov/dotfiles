@@ -22,8 +22,6 @@ in {
       ncdu
       file
       fd
-      fasd
-      zoxide
       ripgrep
     ];
 
