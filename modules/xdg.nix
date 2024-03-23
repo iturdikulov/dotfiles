@@ -9,13 +9,6 @@
   home-manager.users.${config.user.name}.xdg = {
     enable = true;
 
-    # ImHex require this at least
-    portal = {
-      enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-gtk ];
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-
     # Bind mimetypes to applications
     # you can get the mimetype with this command
     # export XDG_UTILS_DEBUG_LEVEL=2
