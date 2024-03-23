@@ -45,6 +45,10 @@ in {
         name = mkOpt str "Sans";
         size = mkOpt int 10;
       };
+      emoji = {
+        name = mkOpt str "Unifont";
+        size = mkOpt int 10;
+      };
     };
 
     colors = {
@@ -82,7 +86,7 @@ in {
   config = mkIf (cfg.active != null) (mkMerge [
     # Read xresources files in ~/.config/xtheme/* to allow modular configuration
     # of Xresources.
-    (let xrdb = ''cat "$XDG_CONFIG_HOME"/xtheme/* | ${pkgs.xorg.xrdb}/bin/xrdb -load'';
+    (let xrdb = ''${pkgs.coreutils}/bin/cat "$XDG_CONFIG_HOME"/xtheme/* | ${pkgs.xorg.xrdb}/bin/xrdb -load'';
      in {
        home.configFile."xtheme.init" = {
          text = xrdb;
@@ -188,33 +192,20 @@ in {
           # Use embedded bitmaps in fonts like Terminess TTF (avoid blurring).
           useEmbeddedBitmaps = true;
           defaultFonts = {
-            sansSerif = [ cfg.fonts.sans.name ];
-            monospace = [ cfg.fonts.mono.name ];
+            sansSerif = [ cfg.fonts.sans.name cfg.fonts.emoji.name ];
+            monospace = [ cfg.fonts.mono.name cfg.fonts.emoji.name ];
           };
         };
       };
     }
 
-    (mkIf (cfg.wallpaper != null)
+    (mkIf (cfg.wallpaper != null) {
       # Set the wallpaper ourselves so we don't need .background-image and/or
       # .fehbg polluting $HOME
-      (let wCfg = config.services.xserver.desktopManager.wallpaper;
-           command = ''
-             if [ -e "$XDG_DATA_HOME/wallpaper" ]; then
-               ${pkgs.feh}/bin/feh --bg-${wCfg.mode} \
-                 ${optionalString wCfg.combineScreens "--no-xinerama"} \
-                 --no-fehbg \
-                 $XDG_DATA_HOME/wallpaper
-             fi
-          '';
-       in {
-         services.xserver.displayManager.sessionCommands = command;
-         modules.theme.onReload.wallpaper = command;
-
-         home.dataFile = mkIf (cfg.wallpaper != null) {
-           "wallpaper".source = cfg.wallpaper;
-         };
-       }))
+      home.dataFile = mkIf (cfg.wallpaper != null) {
+        "wallpaper".source = cfg.wallpaper;
+      };
+    })
 
     (mkIf (cfg.loginWallpaper != null) {
       services.xserver.displayManager.lightdm.background = cfg.loginWallpaper;
@@ -233,9 +224,6 @@ in {
              '');
        in {
          user.packages = [ reloadTheme ];
-         system.userActivationScripts.reloadTheme = ''
-           [ -z "$NORELOAD" ] && ${reloadTheme}/bin/reloadTheme
-         '';
        }))
   ]);
 }
