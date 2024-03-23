@@ -107,6 +107,7 @@ if (( $+commands[eza] )); then
   alias la="LC_COLLATE=C eza -ablF";
   alias tree='eza --tree'
   alias tree_bat='eza --color=always --tree|bat'
+  alias fd_non_ascii='fd "[^\u0000-\u007F]+"'  # find non-ascii filenames
 fi
 
 if (( $+commands[fasd] )); then
