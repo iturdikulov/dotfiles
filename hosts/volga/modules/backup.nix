@@ -41,11 +41,8 @@
               monthly = 6;
             };
 
-            # TODO: parametrize rclone?
             postPrune = ''
-              ${pkgs.rclone}/bin/rclone sync -v --check-first -c --config ${config.user.home}/.config/rclone/rclone.conf \
-              --bwlimit 5M \
-              /archive/backup/file/${name} repo:${name}
+              ls -l /archive/backup/file/${name}
             '';
           };
     in {
