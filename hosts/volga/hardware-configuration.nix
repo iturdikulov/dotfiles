@@ -49,11 +49,6 @@
         Option "OffTime" "0"
         Option "BlankTime" "0"
     '';
-
-     # configurations to adjust monitors
-     displayManager.setupCommands = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr -r 75
-     '';
   };
 
   # NixOS hardware options
