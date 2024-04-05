@@ -4,6 +4,9 @@
 # This scripts iterate over text files, extract char and description
 # then user can select char and scirpt will copy it into clipboard
 
+# TODO: import https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
+#       and cheatsheet
+
 # Source: /usr/share/X11/locale/en_US.UTF-8/Compose
 compose_chars_path="$(dirname $0)/compose_chars.txt"
 
