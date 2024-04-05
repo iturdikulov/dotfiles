@@ -19,7 +19,7 @@ in {
           };
           fonts = {
             sans.name = "Noto Sans";
-            mono.name = "Terminess Nerd Font Mono";
+            mono.name = "FiraCode Nerd Font Mono";
           };
           colors = {
             black         = "#0E1013"; # 0
@@ -73,7 +73,7 @@ in {
         packages = with pkgs; [
           noto-fonts
           noto-fonts-emoji
-          fira-code
+          fira-code-nerdfont
           fira-code-symbols
           open-sans
           jetbrains-mono
