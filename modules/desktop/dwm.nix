@@ -74,7 +74,7 @@ in
         # Configure keymap in X11
         xkb.layout = "us,ru";
         xkb.variant = "colemak_dh,";
-        xkb.options = "grp:menu_toggle,lv5:ralt_switch,compose:rwin";
+        xkb.options = "grp:menu_toggle,compose:paus";
 
         displayManager = {
           defaultSession = "none+dwm";
