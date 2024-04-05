@@ -3,6 +3,7 @@ configuration {
   icon-theme:       "Papirus-Dark";
   cycle:            true;
   disable-history:  false;
+  dpi:              1;
 
   /* Vim-esque C-j/C-k as up/down in rofi */
   kb-accept-entry: "Return,Control+m,KP_Enter";
@@ -25,9 +26,9 @@ configuration {
   magenta: #bd93f9;
   blue:    #61bfff;
 
-  text-font:      "Monospace 18";
-  text-mono-font: "Monospace 18";
-  icon-font:      "Monospace 24";
+  text-font:      "Sans-serif 18";
+  text-mono-font: "Sans-serif 18";
+  icon-font:      "Sans-serif 24";
 
   background-color: transparent;
   text-color: @fg-list;
@@ -38,14 +39,12 @@ configuration {
 
 /**** Layout ****/
 window {
-  width:    1000px;
-  height: 50%;
+  width:  36%;
   y-offset: -10%;
   anchor:   north;
   location: center;
   border-radius: 6px;
   children: [ inputbar, listview ];
-
 }
 
 listview {
@@ -85,11 +84,15 @@ textbox-icon, prompt {
   border: 0 1px 0 0;
   margin: 0 -2px 0 0;
 }
+element-icon {
+  size: 2ch;
+  padding: 0 0.5ch 0 0;
+}
 textbox-icon {
-  padding: 7px 4px 0;
+  padding: 14px 4px 0;
 }
 entry, element {
-  padding: 10px 13px;
+  padding: 0.5ch 0.7ch;
 }
 textbox {
   padding: 24px;

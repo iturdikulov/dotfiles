@@ -6,13 +6,11 @@
 
 window {
   children: [ listview ];
-  width: 500px;
-  height: 354px;
-  y-offset: -221px;
 }
 
 listview {
   scrollbar: false;
+  lines: 4;
 }
 
 element {
