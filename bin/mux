@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+(tmux ls | grep -qEv 'attached|scratch' && tmux at) || tmux
