@@ -44,9 +44,6 @@ in
         # Set cursor shape
         xsetroot -cursor_name left_ptr
 
-        # Layout per window
-        kbdd
-
         # Load some GUI apps
         notify-send -t 5000 "System" "Поехали!" &
         firefox &
@@ -60,7 +57,6 @@ in
     environment.systemPackages = with pkgs; [
       libnotify
       dmenu
-      kbdd
       alsa-utils # for dwm-status
       xorg.xmodmap # to set mod3 key
       jumpapp # quick switch between apps
