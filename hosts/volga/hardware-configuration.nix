@@ -5,26 +5,27 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot = {
     initrd.availableKernelModules = [ "amdgpu" "vfio-pci" "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
 
     # TODO: make this configurable, required for IOMMU
-  #   initrd.preDeviceCommands = ''
-  # DEVS="0000:12:00.0 0000:12:00.1"
-  # for DEV in $DEVS; do
-  #   echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
-  # done
-  # modprobe -i vfio-pci
-  #   '';
+    #   initrd.preDeviceCommands = ''
+    # DEVS="0000:12:00.0 0000:12:00.1"
+    # for DEV in $DEVS; do
+    #   echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+    # done
+    # modprobe -i vfio-pci
+    #   '';
 
     # Fix blender hip issue
     kernelPackages = pkgs.linuxPackages_6_5;
 
-    initrd.kernelModules = [];
-    extraModulePackages = [];
+    initrd.kernelModules = [ ];
+    extraModulePackages = [ ];
     # extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
     kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "kvm-amd" ];
     kernelParams = [
@@ -44,17 +45,17 @@
   # Displays
   services.xserver = {
     serverFlagsSection = ''
-        Option "StandbyTime" "0"
-        Option "SuspendTime" "0"
-        Option "OffTime" "0"
-        Option "BlankTime" "0"
+      Option "StandbyTime" "0"
+      Option "SuspendTime" "0"
+      Option "OffTime" "0"
+      Option "BlankTime" "0"
     '';
   };
 
   # NixOS hardware options
   hardware = {
-    xone.enable = true;         # Xbox controller support
-    onlykey.enable = true;      # Enable OnlyKey device
+    xone.enable = true; # Xbox controller support
+    onlykey.enable = true; # Enable OnlyKey device
   };
 
   # Custom hardware options
@@ -68,43 +69,49 @@
     android.enable = true;
     fs = {
       enable = true;
-      ssd.enable = false;  # I use instead discard=async with BTRFS
+      ssd.enable = false; # I use instead discard=async with BTRFS
     };
     sensors.enable = true;
     utilites.enable = true; # hardware utilities like lshw and geekbench
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+    {
+      device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=root" "compress=zstd" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EF8C-D8DA";
+    {
+      device = "/dev/disk/by-uuid/EF8C-D8DA";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+    {
+      device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=home" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+    {
+      device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=nix" "compress=zstd" ];
     };
 
   fileSystems."/games" =
-    { device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
+    {
+      device = "/dev/disk/by-uuid/be3fc6b1-d2d0-4c37-ab40-53567d54e67d";
       fsType = "btrfs";
       options = [ "subvol=games" "compress=zstd" ];
     };
 
   fileSystems."/archive" =
-    { device = "/dev/disk/by-uuid/ff1ddb67-6528-49b3-8159-3d26eb97d431";
+    {
+      device = "/dev/disk/by-uuid/ff1ddb67-6528-49b3-8159-3d26eb97d431";
       fsType = "btrfs";
       options = [
         "subvol=root"
@@ -123,6 +130,23 @@
   nix.settings.max-jobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = "performance";
   hardware.cpu.amd.updateMicrocode = true;
+
+  # UPS
+  power.ups = {
+    enable = true;
+    ups."apcBX950U" = {
+        driver = "usbhid-ups";
+        port = "auto";
+        description = "APC Back-UPS BX950U";
+    };
+
+    users.upsmon = {
+      passwordFile = config.age.secrets.upsmon.path;
+      upsmon = "master";
+    };
+
+    upsmon.monitor."apcBX950U".user = "upsmon";
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
