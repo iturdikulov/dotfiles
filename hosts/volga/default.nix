@@ -23,6 +23,7 @@
         thunderbird.enable = true;
         telegram.enable = true;
         godot.enable = true;
+        parsec.enable = true;
       };
       browsers = {
         default = "firefox";
