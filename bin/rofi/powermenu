@@ -8,7 +8,7 @@ reboot="Reboot"
 lock="Lock"
 suspend="Sleep"
 # Variable passed to rofi
-options="$suspend\n$lock\n$reboot\n$power_off"
+options="$lock\n$suspend\n$reboot\n$power_off"
 
 case "$(echo -e "$options" | $rofi_command -dmenu)" in
     $power_off)
