@@ -25,6 +25,5 @@ with lib.my;
   };
 
   ## Local config
-  time.timeZone = "Asia/Bishkek";
   networking.networkmanager.enable = true;
 }

@@ -135,7 +135,6 @@
   };
 
   ## Local config
-  time.timeZone = "Asia/Bishkek";
   programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
   services.pcscd.enable = true;     # for gpg-agent
