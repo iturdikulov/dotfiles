@@ -10,6 +10,7 @@
   ## Modules
   modules = {
     desktop = {
+      high-dpi.enable = true;
       dwm.enable = true;
       wired.enable = true;
       wine.enable = true;
