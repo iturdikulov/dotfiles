@@ -126,6 +126,7 @@
       nginx.enable = true;
       calibre.enable = true;
       tailscale.enable = true;
+      tailscale.routingFeatures = "client";
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
