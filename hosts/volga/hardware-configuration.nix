@@ -132,6 +132,12 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   # UPS
+  # generate password file, just use passwordFile is not enough in some reason
+  system.activationScripts."upsmon-secret" = ''
+    SECRET="${config.age.secrets.upsmon.path}"
+    CONFIG_FILE="${config.user.home}/.secrets/upsmon"
+    ${pkgs.coreutils-full}/bin/cat "$SECRET" > "$CONFIG_FILE"
+  '';
   power.ups = {
     enable = true;
     ups."apcBX950U" = {
@@ -141,7 +147,7 @@
     };
 
     users.upsmon = {
-      passwordFile = config.age.secrets.upsmon.path;
+      passwordFile = "${config.user.home}/.secrets/upsmon";
       upsmon = "master";
     };
 
