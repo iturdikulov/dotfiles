@@ -14,6 +14,7 @@
       dwm.enable = true;
       wired.enable = true;
       wine.enable = true;
+      appimage.enable = true;
       term = {
         default = "wezterm";
         wezterm.enable = true;
