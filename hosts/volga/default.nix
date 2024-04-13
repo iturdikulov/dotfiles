@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
     ./modules/backup.nix
     ./modules/smb.nix
-    ./modules/printing.nix
   ];
 
   ## Modules
