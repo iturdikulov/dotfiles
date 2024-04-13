@@ -26,7 +26,7 @@
         thunderbird.enable = true;
         telegram.enable = true;
         godot.enable = true;
-        parsec.enable = true;
+        rustdesk.enable = true;
       };
       browsers = {
         default = "firefox";

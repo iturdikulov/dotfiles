@@ -2,15 +2,15 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.apps.parsec;
+let cfg = config.modules.desktop.apps.rustdesk;
 in {
-  options.modules.desktop.apps.parsec = {
+  options.modules.desktop.apps.rustdesk = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      parsec-bin
+      rustdesk
     ];
   };
 }
