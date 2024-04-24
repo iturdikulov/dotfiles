@@ -189,6 +189,19 @@ in {
       # Styling
       fonts = {
         fontconfig = {
+
+          # Fixes pixelation
+          antialias = true;
+
+          # Fixes antialiasing blur
+          hinting = {
+            enable = true;
+          };
+
+          subpixel = {
+            rgba = "rgb";
+          };
+
           # Use embedded bitmaps in fonts like Terminess TTF (avoid blurring).
           useEmbeddedBitmaps = true;
           defaultFonts = {
