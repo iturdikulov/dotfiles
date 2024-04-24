@@ -2,4 +2,5 @@ let key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZ+98UauMXllELyhSNhTTJPITI2OmJSN
 in {
   "dns-env.age".publicKeys = [key];
   "upsmon.age".publicKeys = [key];
+  "samba.age".publicKeys = [key];
 }
