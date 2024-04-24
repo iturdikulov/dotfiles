@@ -111,6 +111,7 @@
       sdcv.enable        = true;
       sc-im.enable       = true;
       weechat.enable     = true;
+      visidata.enable = true;
       maintenance.enable = true;
       timer.enable       = true;
       vaultwarden.enable = false;
