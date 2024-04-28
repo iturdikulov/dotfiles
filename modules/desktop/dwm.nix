@@ -68,19 +68,22 @@ in
     services = {
       picom.enable = true;
       redshift.enable = true;
+      displayManager = {
+        defaultSession = "none+dwm";
+      };
       xserver = {
         enable = true;
+
+        displayManager = {
+          lightdm.enable = true;
+          lightdm.greeters.mini.enable = true;
+        };
 
         # Configure keymap in X11
         xkb.layout = "us,ru";
         xkb.variant = "colemak_dh,";
         xkb.options = "grp:menu_toggle,compose:paus";
 
-        displayManager = {
-          defaultSession = "none+dwm";
-          lightdm.enable = true;
-          lightdm.greeters.mini.enable = true;
-        };
         windowManager.dwm = {
           enable = true;
           package = pkgs.dwm.overrideAttrs (old: {
