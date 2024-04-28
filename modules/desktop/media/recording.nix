@@ -24,6 +24,7 @@ in {
       (if cfg.audio.enable then [ unstable.audacity unstable.ardour ] else []) ++
       # for longer term streaming/recording the screen
       (if cfg.video.enable then [
+         obs-studio
          unstable.handbrake
          unstable.ffmpeg-full
         (pkgs.writeScriptBin "latest_record" ''
