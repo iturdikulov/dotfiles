@@ -12,6 +12,10 @@ in {
     environment.systemPackages = with pkgs; [
       wineWowPackages.staging # wine-staging (version with experimental features)
       winetricks
+
+      # for msvc-wine
+      msitools
+
       protontricks
       protonup-qt
       # native wayland support (unstable)
