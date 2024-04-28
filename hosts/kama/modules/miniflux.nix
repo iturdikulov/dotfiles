@@ -4,6 +4,9 @@
     services.miniflux = {
       enable = true;
       config = {
+        CLEANUP_ARCHIVE_UNREAD_DAYS = "-1";
+        CLEANUP_ARCHIVE_READ_DAYS = "-1";
+        FILTER_ENTRY_MAX_AGE_DAYS = "36500";
         CLEANUP_FREQUENCY = "48";
         LISTEN_ADDR = "localhost:8081";
       };
