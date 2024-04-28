@@ -10,13 +10,14 @@
     ./modules/syncthing.nix
     ./modules/photoprism.nix
     ./modules/taskwarrior.nix
+    ./modules/jupyenv.nix
     ./modules/autologin.nix
+    ./modules/smb.nix
   ];
 
   ## Modules
   modules = {
     desktop = {
-      dwm.enable = true;
       apps = {
         rofi.enable = true;
       };
