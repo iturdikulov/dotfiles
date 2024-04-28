@@ -9,7 +9,7 @@ alias rnd='ta +rnd +@computer'
 
 # Report
 alias ti="task in -next"
-alias tn="clear;task next"
+alias tn="task +now"
 alias td='task next +ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H'
 
 # Add tickle task function
