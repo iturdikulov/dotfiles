@@ -29,6 +29,7 @@ in {
           scipy
           numpy
           matplotlib
+          pynvim
         ]))
       ];
 

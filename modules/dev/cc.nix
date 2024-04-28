@@ -20,8 +20,11 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         gcc
+        lld
         gfortran
         llvmPackages.libcxx
+        llvmPackages.libcxxStdenv
+        llvmPackages.clang
 
         # builder
         gnumake

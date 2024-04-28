@@ -13,6 +13,7 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         go
+        gotools
       ];
     })
   ];
