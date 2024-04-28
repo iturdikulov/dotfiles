@@ -21,9 +21,6 @@
     # modprobe -i vfio-pci
     #   '';
 
-    # Fix blender hip issue
-    kernelPackages = pkgs.linuxPackages_6_5;
-
     initrd.kernelModules = [ ];
     extraModulePackages = [ ];
     # extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
