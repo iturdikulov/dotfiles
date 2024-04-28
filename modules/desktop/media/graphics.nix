@@ -47,9 +47,7 @@ in {
 
       # raster images workflow
       (if cfg.raster.enable then [
-        nsxiv    # nsxiv image viewer
-        libwebp  # required for animated webp playback
-        giflib   # used for animated gif playback
+        qview
         krita
         gimp
       ] else []) ++
