@@ -67,6 +67,7 @@
       nginx.enable = true;
       tailscale.enable = true;
       mysql.enable = true; # for photoprism
+      qbittorrent.enable = true;
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
     };
