@@ -16,6 +16,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       unstable.godot_4
+      gdtoolkit
     ];
   };
 }
