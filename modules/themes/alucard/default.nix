@@ -79,8 +79,6 @@ in {
           jetbrains-mono
           siji
           font-awesome
-          terminus_font_ttf
-          terminus-nerdfont
           paratype-pt-sans
         ];
       };
