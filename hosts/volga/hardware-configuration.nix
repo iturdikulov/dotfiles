@@ -130,6 +130,7 @@
 
   # UPS
   # generate password file, just use passwordFile is not enough in some reason
+  # TODO: need replace secrets file with agenix
   system.activationScripts."upsmon-secret" = ''
     SECRET="${config.age.secrets.upsmon.path}"
     CONFIG_FILE="${config.user.home}/.secrets/upsmon"

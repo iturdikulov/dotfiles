@@ -17,6 +17,7 @@
     port = 2342;
     originalsPath = "/var/lib/private/photoprism/originals";
     address = "127.0.0.1";
+    # TODO: replace with ageniex, require some fixes?
     passwordFile = "${config.user.home}/.secrets/photoprism";
     settings = {
       PHOTOPRISM_ADMIN_USER = "admin";
