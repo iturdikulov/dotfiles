@@ -29,7 +29,7 @@
       };
       browsers = {
         default = "firefox";
-        brave.enable = true;  # Fallback browser, which required sometims
+        brave.enable = true; # Fallback browser, which required sometims
         firefox.enable = true;
         qutebrowser.enable = true;
       };
@@ -74,7 +74,7 @@
       mitmproxy.enable = true;
       shell.enable = true;
       data_serialization.enable = true;
-      docs.enable  = true;  # dev man pages and docsets tools (zeal, dasht)
+      docs.enable = true; # dev man pages and docsets tools (zeal, dasht)
     };
     editors = {
       default = "nvim";
@@ -82,10 +82,10 @@
     };
     shell = {
       network.enable = true;
-      db.enable       = true;  # database CLI's
-      files.enable    = true;  # files utilites
+      db.enable = true; # database CLI's
+      files.enable = true; # files utilites
 
-      AI.enable       = true;  # ChatGPT, wolfram-alpha
+      AI.enable = true; # ChatGPT, wolfram-alpha
       crow-translate.enable = true; # multilingual neural machine translation GUI/CLI
 
       editorconfig.enable = true;
@@ -94,30 +94,29 @@
         enable = true;
       };
 
-      pass.enable   = true;
+      pass.enable = true;
 
-      ddgr.enable     = true;
-      w3m.enable    = true;
-      xh.enable     = true;
-      yewtube.enable  = true;
-      newsboat.enable  = true;
+      ddgr.enable = true;
+      w3m.enable = true;
+      xh.enable = true;
+      yewtube.enable = true;
+      newsboat.enable = true;
       ttyper.enable = true;
 
-      adl.enable         = true;
-      direnv.enable      = true;
-      git.enable         = true;
-      tmux.enable        = true;
-      zsh.enable         = true;
-      sdcv.enable        = true;
-      sc-im.enable       = true;
-      weechat.enable     = true;
+      adl.enable = true;
+      direnv.enable = true;
+      git.enable = true;
+      tmux.enable = true;
+      zsh.enable = true;
+      sdcv.enable = true;
       visidata.enable = true;
+      weechat.enable = true;
       maintenance.enable = true;
-      timer.enable       = true;
+      timer.enable = true;
       vaultwarden.enable = false;
 
       leetcode-cli.enable = true;
-      task.enable         = true;
+      task.enable = true;
     };
     services = {
       dictd.enable = false;
@@ -136,10 +135,32 @@
     theme.active = "alucard";
   };
 
+  ## GTK bookmarks
+  home.configFile."gtk-3.0/bookmarks".text = ''
+    file://${config.user.home}/Downloads
+    file://${config.user.home}/Work
+    file://${config.user.home}/Arts_and_Entertainment
+    file://${config.user.home}/Computer
+    file://${config.user.home}/Desktop
+    file://${config.user.home}/Documents
+    file://${config.user.home}/Media
+    file://${config.user.home}/Music
+    file://${config.user.home}/People
+    file://${config.user.home}/Pictures
+    file://${config.user.home}/Reference
+    file://${config.user.home}/Science
+    file://${config.user.home}/Shopping
+    file://${config.user.home}/Temp
+    file://${config.user.home}/Templates
+    file://${config.user.home}/Videos
+    file://${config.user.home}/Virtual_Machines
+    file://${config.user.home}/Wiki
+  '';
+
   ## Local config
   programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
-  services.pcscd.enable = true;     # for gpg-agent
+  services.pcscd.enable = true; # for gpg-agent
   services.timesyncd.enable = true; # to sync time
 
   #services.openssh.settings.X11Forwarding = true;
