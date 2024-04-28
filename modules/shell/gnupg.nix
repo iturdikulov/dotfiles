@@ -23,16 +23,13 @@ in {
 
     programs.gnupg.agent.enable = true;
     programs.gnupg.agent.enableSSHSupport = true;
-    programs.gnupg.agent.pinentryFlavor = "qt";
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
 
     user.packages = with pkgs; [
       tomb      # File encryption on GNU/Linux
       paperkey  # Store OpenPGP or GnuPG on paper
     ];
 
-    # HACK Without this config file you get "No pinentry program" on 20.03.
-    #      programs.gnupg.agent.pinentryFlavor doesn't appear to work, and this
-    #      is cleaner than overriding the systemd unit.
     # --default-cache-ttl n
     #   Set the time a cache entry is valid to n seconds. The default is 600
     #   seconds. Each time a cache entry is accessed, the entry’s timer is reset.
