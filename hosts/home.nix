@@ -9,10 +9,8 @@ in {
 
     # Hosts
     ${optionalString (config.time.timeZone == "Europe/Moscow") ''
-        192.168.1.10  volga.home
-      ''}
-    ${optionalString (config.time.timeZone == "Asia/Almaty") ''
-        192.168.1.10  volga.home
+        192.168.0.190  kama
+        192.168.0.191  volga
       ''}
 
     # Block garbage
