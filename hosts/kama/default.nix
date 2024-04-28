@@ -10,6 +10,7 @@
     ./modules/syncthing.nix
     ./modules/photoprism.nix
     ./modules/taskwarrior.nix
+    ./modules/autologin.nix
   ];
 
   ## Modules
