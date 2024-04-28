@@ -31,6 +31,7 @@ in {
       git
       gnutls              # for TLS connectivity
       fd                  # faster projectile indexing
+      tree-sitter         # a parser generator tool and an incremental parsing library
 
       xkb-switch          # for better keyborad layout switching
 
