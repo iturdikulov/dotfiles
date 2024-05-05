@@ -28,6 +28,7 @@
     { device = "/dev/disk/by-uuid/454ecdd1-dfb4-4453-88b1-3b06d5412123";
       fsType = "btrfs";
       options = [ "subvol=home" ];
+      neededForBoot = true; # required to load ssh key with agenix early
     };
 
   fileSystems."/nix" =
