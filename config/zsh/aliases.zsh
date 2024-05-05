@@ -35,9 +35,6 @@ alias mk=make
 alias gurl='curl --compressed'
 alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
 
-alias shutdown='sudo shutdown'
-alias reboot='sudo reboot'
-
 # An rsync that respects gitignore
 rcp() {
   # -a = -rlptgoD
