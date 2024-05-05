@@ -14,6 +14,9 @@ in {
       lshw
       pciutils
       usbutils
+      phoronix-test-suite
+      mlc
+      bandwidth
     ];
   };
 }
