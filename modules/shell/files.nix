@@ -23,6 +23,7 @@ in {
       file
       fd
       ripgrep
+      trash-cli
     ];
 
     # NNN plugins setup
