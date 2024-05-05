@@ -15,6 +15,7 @@ elif [[ $1 == -f ]]; then
 else
   echo "Shutting my eyes..."
   if command -v slock >/dev/null; then
+    playerctl --all-players pause &
     pgrep slock >/dev/null || slock &
   fi
   sleep 1
