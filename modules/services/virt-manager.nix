@@ -15,6 +15,9 @@ in {
     # Starts all guests that were running prior to shutdown regardless of their autostart settings.
     virtualisation.libvirtd.onBoot = "start";
 
+    # Enable usb redirection
+    virtualisation.spiceUSBRedirection.enable = true;
+
     # SUPPORT UEFI with qemu
     # CHANGE: use
     #     ls /nix/store/*OVMF*/FV/OVMF{,_VARS}.fd | tail -n2 | tr '\n' : | sed -e 's/:$//'
