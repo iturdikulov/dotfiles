@@ -14,9 +14,11 @@ in {
       lshw
       pciutils
       usbutils
-      phoronix-test-suite
+      sysbench
       mlc
       bandwidth
+      hwinfo
+      stress-ng
     ];
   };
 }

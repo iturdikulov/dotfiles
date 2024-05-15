@@ -69,7 +69,9 @@
       ssd.enable = false; # I use instead discard=async with BTRFS
     };
     sensors.enable = true;
-    utilites.enable = true; # hardware utilities like lshw and geekbench
+
+    # hardware utilities to benchmark, stress test, get hardware info, etc.
+    utilites.enable = true;
   };
 
   fileSystems."/" =
