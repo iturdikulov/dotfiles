@@ -4,6 +4,10 @@ with lib;
 with lib.my;
 {
   options = with types; {
+    hardware = {
+      mainDisplayOutput = mkOpt str "DisplayPort-0";
+    };
+
     user = mkOpt attrs {};
 
     dotfiles = {
