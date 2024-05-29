@@ -11,14 +11,6 @@ in
 
   config = mkIf cfg.enable {
     # For my intuos4
-    services.xserver.wacom.enable = true;
-    # TODO Move this to udev
-    system.userActivationScripts.wacom = ''
-      # lock tablet to main display
-      if xinput list --id-only "Wacom Intuos BT M Pen stylus" 2>&1 >/dev/null; then
-        xinput map-to-output $(xinput list --id-only "Wacom Intuos BT M Pen stylus") ${config.hardware.mainDisplayOutput}
-        xinput map-to-output $(xinput list --id-only "Wacom Intuos BT M Pad pad") ${config.hardware.mainDisplayOutput}
-      fi
-    '';
+    hardware.opentabletdriver.enable = true;
   };
 }
