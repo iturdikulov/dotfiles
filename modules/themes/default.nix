@@ -21,6 +21,7 @@ in {
     };
 
     wallpaper = mkOpt (either path null) null;
+    wallpaper_vertical = mkOpt (either path null) null;
 
     loginWallpaper = mkOpt (either path null)
       (if cfg.wallpaper != null
@@ -215,9 +216,14 @@ in {
     (mkIf (cfg.wallpaper != null) {
       # Set the wallpaper ourselves so we don't need .background-image and/or
       # .fehbg polluting $HOME
-      home.dataFile = mkIf (cfg.wallpaper != null) {
-        "wallpaper".source = cfg.wallpaper;
-      };
+      home.dataFile = mkMerge [
+        (mkIf (cfg.wallpaper != null) {
+          "wallpaper".source = cfg.wallpaper;
+        })
+        (mkIf (cfg.wallpaper_vertical != null) {
+          "wallpaper_vertical".source = cfg.wallpaper_vertical;
+        })
+      ];
     })
 
     (mkIf (cfg.loginWallpaper != null) {

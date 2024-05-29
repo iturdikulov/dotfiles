@@ -12,6 +12,7 @@ in {
       modules = {
         theme = {
           wallpaper = mkDefault ./config/wallpaper.png;
+          wallpaper_vertical = mkDefault ./config/wallpaper_vertical.png;
           gtk = {
             theme = "Dracula";
             iconTheme = "Papirus-Dark";
