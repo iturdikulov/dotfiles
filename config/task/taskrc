@@ -22,6 +22,9 @@ default.project=inbox
 uda.estimate.type=numeric
 uda.estimate.label=Estimate
 
+# Urgency
+urgency.user.project.salesloop.coefficient=15.0
+
 # Copied from taskwarrior source code
 # https://github.com/GothenburgBitFactory/taskwarrior
 # taskwarrior/src/Context.cpp#379
