@@ -6,12 +6,11 @@ else
     selected=$((fd --type=directory --max-depth=1 --exclude='_*' --no-follow --full-path $HOME \
 ~/Science/* \
 ~/Computer/* \
-~/Arts_and_Entertainment/english \
-~/Arts_and_Entertainment/russian \
-~/Arts_and_Entertainment/photography \
-~/Arts_and_Entertainment/visual_arts; \
+~/Arts_and_Entertainment/ \
+~/Arts_and_Entertainment/audiovisual/ \
+echo /mnt/share/kama; \
+echo /mnt/share/baikal; \
 echo ~/Music; \
-echo ~/Arts_and_Entertainment/literature/; \
 echo /etc/dotfiles; \
 ls -d ~/Work/*; echo ~/Wiki;) | fzf --tac)
 fi
