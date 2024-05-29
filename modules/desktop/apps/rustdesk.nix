@@ -10,7 +10,17 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      rustdesk
+      unstable.rustdesk
+
+      # Custom scrcpy desktop item
+      (makeDesktopItem {
+        name = "rustdesk";
+        desktopName = "Rustdesk";
+        genericName = "Open Source Remote Desktop";
+        icon = "rustdesk";
+        exec = "${unstable.rustdesk}/bin/rustdesk";
+        categories = [ "Network" ];
+      })
     ];
   };
 }
