@@ -20,13 +20,17 @@ alias gf='git fetch'
 alias gi='git init'
 alias gl='git log --graph --pretty="format:%C(yellow)%h%Creset %C(red)%G?%Creset%C(green)%d%Creset %s %Cblue(%cr) %C(bold blue)<%aN>%Creset"'
 alias gll='git log --pretty="format:%C(yellow)%h%Creset %C(red)%G?%Creset%C(green)%d%Creset %s %Cblue(%cr) %C(bold blue)<%aN>%Creset"'
+
+# Recent files
+alias gr='git log --pretty="" --name-only | awk \"!seen[$0]++\"'
+alias gR='git diff-index      --name-only --diff-filter=A @'
+
 alias gL='gl --stat'
 alias gp='git push'
 alias gpl='git pull --rebase --autostash'
 alias gss='git status'
 alias gsS='git status --short .'
 alias gst='git stash'
-alias gr='git reset HEAD'
 alias gv='git rev-parse'
 
 alias git_sub='git submodule update --init --recursive --remote'
