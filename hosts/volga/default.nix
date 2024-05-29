@@ -28,9 +28,9 @@
         rustdesk.enable = true;
       };
       browsers = {
-        default = "firefox";
-        brave.enable = true; # Fallback browser, which required sometims
-        firefox.enable = true;
+        default = "brave";
+        brave.enable = true;
+        firefox.enable = true; # Fallback browser
         qutebrowser.enable = true;
       };
       gaming = {
