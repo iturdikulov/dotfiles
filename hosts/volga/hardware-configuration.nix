@@ -155,6 +155,14 @@
     upsmon.monitor."apcBX950U".user = "upsmon";
   };
 
+  # Disable wakeup by mouse
+  services.udev.extraRules = ''
+  ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="248a", ATTRS{idProduct}=="5b2f", ATTR{power/wakeup}="disabled", ATTR{driver/3-3.3/power/wakeup}="disabled"
+'';
+
+  # Disable mouse acceleration
+  services.xserver.libinput.mouse.accelProfile = "flat";
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
