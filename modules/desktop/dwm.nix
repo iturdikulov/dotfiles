@@ -26,6 +26,9 @@ in
         # Load theme specific settings
         [[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
 
+        # Cursor theme
+        ${pkgs.xorg.xsetroot}/bin/xsetroot -xcf ${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/cursors/left_ptr 48 &
+
         # Bind F13 (XF86Tools) to mod3mask key
         xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
 
@@ -41,15 +44,14 @@ in
            $XDG_DATA_HOME/wallpaper_vertical
         fi
 
-        # Set cursor shape
-        xsetroot -cursor_name left_ptr
-
         # Load some GUI apps
         notify-send -t 5000 "System" "Поехали!" &
         $TERMINAL &
         $BROWSER &
         slack &
+        thunderbird &
         sleep 2 && wezterm start --class=cmus cmus &
+
       '';
       executable = true;
     };
