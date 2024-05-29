@@ -15,6 +15,7 @@ in {
       pciutils
       usbutils
       sysbench
+      kdiskmark
       mlc
       bandwidth
       hwinfo
