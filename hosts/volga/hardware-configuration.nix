@@ -163,6 +163,13 @@
   # Disable mouse acceleration
   services.xserver.libinput.mouse.accelProfile = "flat";
 
+  # Custom monitor settings
+  services.xserver.displayManager.setupCommands = ''
+    LEFT='DisplayPort-0'
+    RIGHT='DisplayPort-1'
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $RIGHT --auto --right-of $LEFT --rotate right
+  '';
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
