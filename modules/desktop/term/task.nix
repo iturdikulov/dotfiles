@@ -25,8 +25,8 @@ in {
     systemd.timers."timew_track" = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "15m";
-        OnUnitActiveSec = "15m";
+        OnBootSec = "25m";
+        OnUnitActiveSec = "25m";
         Unit = "timew_track.service";
       };
     };
