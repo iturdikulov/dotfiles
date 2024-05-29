@@ -30,15 +30,15 @@ in
         xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
 
         # Exit if programs  are already running
-        pgrep wezterm && exit 1
+        pgrep $TERMINAL && exit 1
         pgrep slack && exit 1
-        pgrep firefox && exit 1
 
         if [ -e "$XDG_DATA_HOME/wallpaper" ]; then
          ${pkgs.feh}/bin/feh --bg-${wCfg.mode} \
            ${optionalString wCfg.combineScreens "--no-xinerama"} \
            --no-fehbg \
-           $XDG_DATA_HOME/wallpaper
+           $XDG_DATA_HOME/wallpaper \
+           $XDG_DATA_HOME/wallpaper_vertical
         fi
 
         # Set cursor shape
@@ -46,9 +46,9 @@ in
 
         # Load some GUI apps
         notify-send -t 5000 "System" "Поехали!" &
-        firefox &
+        $TERMINAL &
+        $BROWSER &
         slack &
-        wezterm &
         sleep 2 && wezterm start --class=cmus cmus &
       '';
       executable = true;
