@@ -7,9 +7,15 @@ let devCfg = config.modules.dev;
 in {
   options.modules.dev.go = {
     enable = mkBoolOpt false;
+    xdg.enable = mkBoolOpt devCfg.xdg.enable;
   };
 
   config = mkMerge [
+    (mkIf cfg.xdg.enable {
+      env.GOPATH = "$XDG_DATA_HOME/go";
+      env.PATH = [ "$GOPATH/bin" ];
+    })
+
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         go
