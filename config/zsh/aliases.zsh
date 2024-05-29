@@ -141,7 +141,8 @@ function abspath {
 }
 
 function pomodoro {
-    timer "$1" && piper_speak "Hey Inom, something important is happening now."
+  time="${1:-25m}"
+  timer "$time" && piper_speak "Hey Inom, something important is happening now."
 }
 
 # The following bash function will compare the file listings from the zip files.
