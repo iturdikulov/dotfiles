@@ -7,7 +7,7 @@ else
 ~/Science/* \
 ~/Computer/* \
 ~/Arts_and_Entertainment/ \
-~/Arts_and_Entertainment/audiovisual/ \
+~/Arts_and_Entertainment/audiovisual/; \
 echo /mnt/share/kama; \
 echo /mnt/share/baikal; \
 echo ~/Music; \
