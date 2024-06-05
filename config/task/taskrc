@@ -22,8 +22,9 @@ default.project=inbox
 uda.estimate.type=numeric
 uda.estimate.label=Estimate
 
-# Urgency
+# [Urgency](https://taskwarrior.org/docs/urgency/)
 urgency.user.project.salesloop.coefficient=15.0
+urgency.user.tag.next.coefficient=15.0
 
 # Copied from taskwarrior source code
 # https://github.com/GothenburgBitFactory/taskwarrior
