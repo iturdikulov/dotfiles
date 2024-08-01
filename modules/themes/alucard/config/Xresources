@@ -1,5 +1,5 @@
 !! TODO: paremetrize in modules/themes/alucard/default.nix
-Xcursor.theme: Adwaita
+Xcursor.theme: Volantes Cursors
 
 !! Colors
 *.cursorColor: mag
@@ -11,6 +11,7 @@ Xcursor.theme: Adwaita
 *.color239: #565761
 *.color240: #6272a4
 *.color241: #b6b6b2
+*.font: Monospace:size=17:antialias=true:autohint=true;
 
 !! xterm
 XTerm*faceName: Monospace
