@@ -20,7 +20,10 @@ in {
     '';
 
     user.packages = with pkgs; [
-      xst  # st + nice-to-have extensions
+      # st + nice-to-have extensions
+      xst
+      xurls # to extract urls and launch with mod1 + u
+
       (makeDesktopItem {
         name = "xst";
         desktopName = "Suckless Terminal";

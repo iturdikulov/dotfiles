@@ -9,7 +9,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.qmk ];
+    user.packages = with pkgs; [
+      qmk
+      hidapi  # To interact with the keyboard
+    ];
 
     hardware.keyboard.qmk.enable = true;
 

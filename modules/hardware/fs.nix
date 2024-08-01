@@ -17,13 +17,21 @@ in {
       # Support for more filesystems, mostly to support external drives
       environment.systemPackages = with pkgs; [
         sshfs
-        detox     # Tames problematic filenames
+        detox     # Tames problematic filenames, normalize filenames
         entr      # Run arbitrary commands when files change
         watchman  # Watch files and record when they change. It can also trigger actions
+        progress  # Tool that shows the progress of coreutils programs
         exfat     # Windows drives
         ntfs3g    # Windows drives
         hfsprogs  # MacOS drives
-        glib       # To mount android devices, using gio
+
+        # To mount android devices using gio, trash cli
+        glib
+        (writeScriptBin "trash" ''
+         #!/bin/sh
+         ${pkgs.glib}/bin/gio trash "$@"
+         '')
+
         cryptsetup  # LUKS for dm-crypt, encryption support
         smartmontools # Tools for monitoring the health of hard drives
         fdupes        # Identifies duplicate files residing within specified directories

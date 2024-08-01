@@ -20,9 +20,11 @@ in {
       vulkan-loader
       vulkan-tools
       corectrl
+      clinfo  # OpenCL info
     ];
 
     services.xserver.videoDrivers = [ "amdgpu" ];
+    services.xserver.deviceSection = ''Option "TearFree" "true"'';  # Fix tearing for amdgpu.
 
     hardware.opengl.extraPackages = with pkgs; [
       amdvlk

@@ -12,9 +12,9 @@ in {
     user.packages = with pkgs; [
       pkgs.crow-translate
 
-      (writeScriptBin "_1" ''
+      (writeScriptBin "trans" ''
         #!/bin/sh
-        crow -t ru+en "$@"|bat --style=grid
+        crow -t ru+en "$@"|bat --style=grid --terminal-width=80
        '')
     ];
   };

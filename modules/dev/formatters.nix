@@ -19,6 +19,7 @@ in {
       deno
       prettierd
       nixpkgs-fmt
+      djlint
     ];
   };
 }

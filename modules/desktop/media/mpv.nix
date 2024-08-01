@@ -34,6 +34,12 @@ in {
       })
 
       mpvc  # CLI controller for mpv
+
+      # Open files with mpv in the background without blocking the terminal
+      (writeScriptBin "nmpv" ''
+        #!/bin/sh
+        ${pkgs.mpv}/bin/mpv "$@" > /dev/null 2>&1 &
+      '')
     ];
 
     home.configFile = {

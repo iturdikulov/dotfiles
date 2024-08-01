@@ -14,6 +14,9 @@ in {
       user.packages = with pkgs; [
         android-studio
       ];
+
+      env.ANDROID_HOME = "$XDG_DATA_HOME/android";
+      env.PATH = [ "$ANDROID_HOME/tools" "$ANDROID_HOME/platform-tools" ];
     })
   ];
 }

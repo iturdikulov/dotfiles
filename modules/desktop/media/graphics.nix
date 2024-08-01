@@ -28,8 +28,20 @@ in {
       (if cfg.tools.enable then [
         font-manager   # so many damned fonts...
         unstable.imagemagick    # for image manipulation from the shell
+        image_optim    # Optimize images using multiple utilities
         tesseract4     # OCR engine
         maim           # A command-line screenshot utility
+        gpick          # An advanced color picker
+
+        pureref        # A reference image viewer
+        (makeDesktopItem {
+          name = "pureref";
+          desktopName = "pureref";
+          genericName = "A reference image viewer";
+          icon = "pureref";
+          exec = "${pkgs.pureref}/bin/pureref %F";
+        })
+
         (pkgs.writeScriptBin "scrcap_ocr" ''
         #!/bin/sh
         maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
@@ -41,15 +53,18 @@ in {
 
       # replaces illustrator & indesign
       (if cfg.vector.enable then [
-        inkscape
+        inkscape-with-extensions
         fontforge-gtk
       ] else []) ++
 
       # raster images workflow
       (if cfg.raster.enable then [
         qview
+        geeqie
+        librsvg
         krita
         gimp
+        nodePackages.svgo
       ] else []) ++
 
       # Sprite sheets & animation
@@ -60,6 +75,7 @@ in {
       # 3D modelling
       (if cfg.models.enable then [
         unstable.blender-hip
+        f3d  # Fast and minimalist 3D viewer using VTK
         solvespace
         freecad
       ] else []) ++
@@ -71,7 +87,8 @@ in {
 
       # Video editing
       (if cfg.videos.enable then [
-        olive-editor
+        losslesscut-bin
+        kdenlive
         natron
       ] else []);
 

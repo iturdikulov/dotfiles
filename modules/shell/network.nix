@@ -17,6 +17,7 @@ in {
       yt-dlp
       gallery-dl
       wget
+      nmap
     ];
 
     # Configurations

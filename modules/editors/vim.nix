@@ -21,6 +21,24 @@ let cfg = config.modules.editors.vim;
       };
     };
 
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-medium
+      supertabular paracol fira
+      adjustbox alegreya babel bookcover catchfile chngcntr
+      collectbox currfile emptypage enumitem environ fgruler
+      fontaxes framed fvextra idxlayout ifmtarg ifnextok
+      ifplatform imakeidx import inconsolata l3packages lettrine
+      libertine libertinus-fonts listings mdframed microtype
+      minifp minted mweights needspace newtx noindentafter
+      nowidow subfigure subfiles textpos tcolorbox
+      tikz-cd titlecaps titlesec todonotes trimspaces upquote
+      xifthen xpatch xstring zref
+      dvisvgm dvipng # for preview and export as html
+      wrapfig amsmath ulem hyperref capt-of;
+      #(setq org-latex-compiler "lualatex")
+      #(setq org-preview-latex-default-process 'dvisvgm)
+  });
+
 in {
   options.modules.editors.vim = {
     enable = mkBoolOpt false;
@@ -44,7 +62,8 @@ in {
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
       editorconfig-core-c
       sqlite
-      texlive.combined.scheme-medium
+
+      tex
 
       ## LSP
       lua-language-server
@@ -53,6 +72,7 @@ in {
       nil             # Yet another language server for Nix
       efm-langserver  # for formatting
       unstable.emmet-ls
+      texlab
       ruff-lsp
       gopls
 

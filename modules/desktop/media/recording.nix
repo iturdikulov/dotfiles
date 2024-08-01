@@ -21,7 +21,7 @@ in {
 
     user.packages = with pkgs;
       # for recording and remastering audio
-      (if cfg.audio.enable then [ unstable.audacity unstable.ardour ] else []) ++
+      (if cfg.audio.enable then [ unstable.audacity reaper ] else []) ++
       # for longer term streaming/recording the screen
       (if cfg.video.enable then [
          obs-studio

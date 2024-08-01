@@ -36,7 +36,7 @@ in {
           # DBUS is optimized for dwm-desktop, you need to tune it for your DE
           export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u $USER)/bus
           export DISPLAY=:0
-          ${pkgs.timewarrior}/bin/timew|grep Tracking && ${pkgs.libnotify}/bin/notify-send --expire-time=1000 "Timewarrior" "Tracking is active"
+          $(${pkgs.timewarrior}/bin/timew|grep Tracking && ${pkgs.libnotify}/bin/notify-send --expire-time=1000 "Timewarrior" "Tracking is active") || exit 0
       '';
       serviceConfig = {
         Type = "oneshot";

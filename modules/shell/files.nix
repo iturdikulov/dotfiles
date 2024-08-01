@@ -19,11 +19,12 @@ in {
       # imgview dependencies
       nsxiv
 
+      dos2unix  # text file format converters
       ncdu
       file
       fd
       ripgrep
-      trash-cli
+      redis
     ];
 
     # NNN plugins setup

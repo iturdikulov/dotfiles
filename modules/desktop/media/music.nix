@@ -14,7 +14,15 @@ in
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       beets
+
       cmus
+      (writeScriptBin "cmus-wr" ''
+        #!/bin/sh
+        ${pkgs.xst}/bin/xst -n cmus -e ${pkgs.cmus}/bin/cmus "$@"
+      '')
+
+      # To mount android devices using gio, trash cli
+      glib
       musikcube
       playerctl
 
@@ -66,7 +74,7 @@ in
       set color_win_title_fg=83
       bind -f common delete run trash {}
       update-cache
-      add ~/Music
+      add ~/Arts_and_Entertainment/music
     '';
   };
 }

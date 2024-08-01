@@ -30,6 +30,9 @@ in {
           numpy
           matplotlib
           pynvim
+          python-frontmatter
+
+          hid
         ]))
       ];
 
