@@ -4,15 +4,18 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$((fd --type=directory --max-depth=1 --exclude='_*' --no-follow --full-path $HOME \
+~/ \
 ~/Science/* \
 ~/Computer/* \
 ~/Arts_and_Entertainment/ \
 ~/Arts_and_Entertainment/audiovisual/; \
-echo /mnt/share/kama; \
+echo /home/inom; \
+echo ~/Arts_and_Entertainment/audiovisual/anime; \
+echo ~/Arts_and_Entertainment/audiovisual/audiobook/; \
+echo ~/Arts_and_Entertainment/audiovisual/movie/; \
 echo /mnt/share/baikal; \
-echo ~/Music; \
 echo /etc/dotfiles; \
-ls -d ~/Work/*; echo ~/Wiki;) | fzf --tac)
+ls -d ~/Work/*;) | fzf --tac)
 fi
 
 if [[ -z $selected ]]; then

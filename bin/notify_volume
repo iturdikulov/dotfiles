@@ -7,4 +7,4 @@ fi
 
 VOLUME="$(wpctl get-volume @DEFAULT_AUDIO_SINK@|grep --only-matching -E "[0-9].[0-9]{1,3}")"
 VOLUME=$(awk "BEGIN {print int($VOLUME * 100 + $POST_VOLUME_CHANGE)}")
-notify-send -r 1 -t 2000 -u low --hint int:value:$VOLUME --hint="string:wired-tag:indicator" --hint="string:wired-note:volume" "Volume"
+notify-send -r 1 -t 500 -u low --hint int:value:$VOLUME --hint="string:wired-tag:indicator" --hint="string:wired-note:volume" "Volume"

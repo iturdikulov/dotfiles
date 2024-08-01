@@ -9,7 +9,7 @@ if [[ $url == *.pdf ]]; then
     title=""
 else
     # Use xidel to fetch the page and extract the title with sed
-    title=$(xidel "$url" -e //title)
+    title=$(url2title "$url")
 fi
 
 if [[ $format == "title" ]]; then
