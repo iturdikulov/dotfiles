@@ -23,7 +23,12 @@
 
     initrd.kernelModules = [ ];
     extraModulePackages = [ ];
-    # extraModprobeConfig ="options vfio-pci ids=1002:73ff,1002:ab28";
+    extraModprobeConfig = ''
+# options vfio-pci ids=1002:73ff,1002:ab28
+options amdgpu          gpu_recovery=1
+options amdgpu          dpm=1
+options libata          allow_tpm=0
+        '';
     kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "kvm-amd" ];
     kernelParams = [
       # HACK Disables fixes for spectre, meltdown, L1TF and a number of CPU
@@ -40,9 +45,10 @@
   };
 
   # Displays
+
   services.xserver = {
     serverFlagsSection = ''
-      Option "StandbyTime" "0"
+      Option "StandbyTime" "32"
       Option "SuspendTime" "0"
       Option "OffTime" "0"
       Option "BlankTime" "0"
@@ -131,29 +137,29 @@
   powerManagement.cpuFreqGovernor = "performance";
   hardware.cpu.amd.updateMicrocode = true;
 
-  # UPS
-  # generate password file, just use passwordFile is not enough in some reason
-  # TODO: need replace secrets file with agenix
-  system.activationScripts."upsmon-secret" = ''
-    SECRET="${config.age.secrets.upsmon.path}"
-    CONFIG_FILE="${config.user.home}/.secrets/upsmon"
-    ${pkgs.coreutils-full}/bin/cat "$SECRET" > "$CONFIG_FILE"
-  '';
-  power.ups = {
-    enable = true;
-    ups."apcBX950U" = {
-        driver = "usbhid-ups";
-        port = "auto";
-        description = "APC Back-UPS BX950U";
-    };
-
-    users.upsmon = {
-      passwordFile = "${config.user.home}/.secrets/upsmon";
-      upsmon = "master";
-    };
-
-    upsmon.monitor."apcBX950U".user = "upsmon";
-  };
+  # # UPS
+  # # generate password file, just use passwordFile is not enough in some reason
+  # # TODO: need replace secrets file with agenix
+  # system.activationScripts."upsmon-secret" = ''
+  #   SECRET="${config.age.secrets.upsmon.path}"
+  #   CONFIG_FILE="${config.user.home}/.secrets/upsmon"
+  #   ${pkgs.coreutils-full}/bin/cat "$SECRET" > "$CONFIG_FILE"
+  # '';
+  # power.ups = {
+  #   enable = true;
+  #   ups."apcBX950U" = {
+  #       driver = "usbhid-ups";
+  #       port = "auto";
+  #       description = "APC Back-UPS BX950U";
+  #   };
+  #
+  #   users.upsmon = {
+  #     passwordFile = "${config.user.home}/.secrets/upsmon";
+  #     upsmon = "master";
+  #   };
+  #
+  #   upsmon.monitor."apcBX950U".user = "upsmon";
+  # };
 
   # Disable wakeup by mouse
   services.udev.extraRules = ''
