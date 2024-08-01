@@ -13,14 +13,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [
-        (self: super: {
-         brave = super.brave.override {
-           commandLineArgs = "--ignore-gpu-blocklist --enable-features=VaapiIgnoreDriverChecks --enable-features=VaapiVideoDecoder --disable-features=UseSkiaRenderer";
-         };
-         })
-    ];
-
     user.packages = with pkgs; [
       brave
       (makeDesktopItem {
