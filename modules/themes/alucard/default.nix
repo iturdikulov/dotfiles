@@ -76,6 +76,7 @@ in {
           noto-fonts-emoji
           fira-code-nerdfont
           fira-code-symbols
+          fira
           open-sans
           jetbrains-mono
           siji
