@@ -10,6 +10,7 @@
     enable = true;
 
     # Bind mimetypes to applications
+    # !IMPORTANT!
     # you can get the mimetype with this command
     # export XDG_UTILS_DEBUG_LEVEL=2
     # xdg-mime query default application/pdf
@@ -25,6 +26,7 @@
         "x-scheme-handler/http"    = "brave-browser.desktop";
         "x-scheme-handler/https"   = "brave-browser.desktop";
         "x-scheme-handler/about"   = "brave-browser.desktop";
+        "x-scheme-handler/ftp"     = "filezilla.desktop";
         "x-scheme-handler/unknown" = "brave-browser.desktop";
         "text/html"                = "brave-browser.desktop"; # html5.html
         "application/xhtml+xml"    = "brave-browser.desktop"; # xhtml5.xhtml
@@ -115,6 +117,8 @@
         "video/x-msvideo"                   = [ "mpv.desktop" ]; # AudioVideoInterleave.avi
         "video/x-flv"                       = [ "mpv.desktop" ]; # FlashVideo.flv
         "video/mp4"                         = [ "mpv.desktop" ]; # mp4-with-audio.mp4
+        "audio/mp4"                         = [ "mpv.desktop" ]; # m4a.m4a
+        "audio/x-m4a"                       = [ "mpv.desktop" ]; # m4a.m4a
         "audio/x-m4b"                       = [ "mpv.desktop" ]; # m4b.m4b
         "video/x-ms-wmv"                    = [ "mpv.desktop" ]; # WindowsMediaVideo.wmv
         "video/webm"                        = [ "mpv.desktop" ]; # webm.webm
