@@ -14,20 +14,22 @@ in
 
   config = mkIf cfg.enable {
     security.polkit.enable = true; # to promt root password in GUI programs
-      programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
+    programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
 
     # Auto-lock on suspend
     programs.xss-lock.enable = true;
     programs.xss-lock.lockerCommand = "/run/wrappers/bin/slock";
 
+    home.file.".icons/default".source = "${pkgs.volantes-cursors}/share/icons/volantes_cursors";
+
     home.dataFile."dwm/autostart.sh" = {
       text = ''
         #!/bin/sh
+        # Cursor theme
+        ${pkgs.xorg.xsetroot}/bin/xsetroot -xcf ${pkgs.volantes-cursors}/share/icons/volantes_cursors/cursors/left_ptr 48 &
+
         # Load theme specific settings
         [[ ! -f $XDG_CONFIG_HOME/xtheme.init ]] || $XDG_CONFIG_HOME/xtheme.init
-
-        # Cursor theme
-        ${pkgs.xorg.xsetroot}/bin/xsetroot -xcf ${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita/cursors/left_ptr 48 &
 
         # Bind F13 (XF86Tools) to mod3mask key
         xmodmap -e "clear mod3" -e "add mod3 = XF86Tools"
@@ -50,8 +52,7 @@ in
         $BROWSER &
         slack &
         thunderbird &
-        sleep 2 && wezterm start --class=cmus cmus &
-
+        sleep 2 && cmus-wr &
       '';
       executable = true;
     };
