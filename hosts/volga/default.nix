@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./modules/backup.nix
     ./modules/smb.nix
+    ./modules/iturdikulov.nix
   ];
 
   ## Modules
@@ -16,20 +17,24 @@
       wine.enable = true;
       appimage.enable = true;
       term = {
-        default = "wezterm";
+        default = "xst";
         wezterm.enable = true;
+        st.enable = true;
       };
       apps = {
         rofi.enable = true;
         slack.enable = true;
+        zoom.enable = true;
         thunderbird.enable = true;
         telegram.enable = true;
         godot.enable = true;
-        rustdesk.enable = true;
+        parsec.enable = true;
+        filezilla.enable = true;
+        stellarium.enable = true;
       };
       browsers = {
         default = "brave";
-        brave.enable = true;
+        brave.enable = false; # I install it with nix profile install nixpkgs/release-xxx#brave
         firefox.enable = true; # Fallback browser
         qutebrowser.enable = true;
       };
@@ -40,7 +45,6 @@
       };
       media = {
         archive.enable = true;
-        daw.enable = true;
         documents.enable = true;
         documents.office.enable = true;
         graphics.enable = true;
@@ -141,19 +145,9 @@
     file://${config.user.home}/Work
     file://${config.user.home}/Arts_and_Entertainment
     file://${config.user.home}/Computer
-    file://${config.user.home}/Desktop
     file://${config.user.home}/Documents
-    file://${config.user.home}/Media
-    file://${config.user.home}/Music
-    file://${config.user.home}/People
     file://${config.user.home}/Pictures
     file://${config.user.home}/Reference
-    file://${config.user.home}/Science
-    file://${config.user.home}/Shopping
-    file://${config.user.home}/Temp
-    file://${config.user.home}/Templates
-    file://${config.user.home}/Videos
-    file://${config.user.home}/Virtual_Machines
     file://${config.user.home}/Wiki
   '';
 
