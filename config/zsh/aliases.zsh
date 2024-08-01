@@ -34,6 +34,7 @@ alias tplay="noglob tplay"
 alias mk=make
 alias gurl='curl --compressed'
 alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
+alias yt-dlp-all="yt-dlp --embed-metadata --embed-subs --embed-chapters --embed-thumbnail --embed-info-json"
 
 # An rsync that respects gitignore
 rcp() {
@@ -145,6 +146,11 @@ function pomodoro {
   timer "$time" && piper_speak "Hey Inom, something important is happening now."
 }
 
+function relax {
+  # 5m break
+  timer "5m" && piper_speak "Hey Inom, time to back to work."
+}
+
 # The following bash function will compare the file listings from the zip files.
 # The listings include verbose output (unzip -v), so checksums can be compared.
 # Output is sorted by filename (sort -k8) to allow side by side comparison and
@@ -166,7 +172,16 @@ function vmconnect {
   looking-glass-client
 }
 
-function _2 {
-    echo "- $@" >> ~/Reference/dictionary/Dictionary.md
-    sdcv -nc "$@" | bat --style=grid
+alias latest_record='nmpv --script-opts=autoload-disabled=yes $(find ~/Videos/record -type f -printf "%T@ %p\n" | sort -nr | head -1 | cut -d" " -f2-)'
+
+function dict {
+    sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat --style=grid --terminal-width=80
+}
+
+function nullify {
+  "$@" >/dev/null 2>&1
+}
+
+function nopen {
+  nullify xdg-open "$@" &
 }

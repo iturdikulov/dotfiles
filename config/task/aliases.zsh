@@ -1,16 +1,15 @@
 # Taskwarrior aliases
 alias t=task
 alias ta="task add"
-alias tan="task add scheduled:today"
+alias tan="task add due:today"
 alias tm="task modify"
 alias trol="task sch:yes status:pending modify sch:tod"
 alias tal='task add dep:"$(task +LATEST uuids)"'
 alias rnd='ta +rnd +@computer'
 
 # Report
-alias ti="task in -next"
-alias tn="task +now"
-alias td='task next +ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H'
+alias ti="task in limit:20"
+alias td="task next status:pending -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'"
 
 # Add tickle task function
 # Usage example
@@ -23,11 +22,16 @@ alias think='tat +1d'
 
 # Research and review
 # usage: rnr http://cs-syd.eu/posts/2015-07-05-gtd-with-taskwarrior-part-4-processing.html
-rnr (){
-    local descr="\"Read and review: $1\""
-    local id=$(task add +next +rnr "$descr" | sed -n 's/Created task \(.*\)./\1/p')
-    task $id
+_read_and_review (){
+    title=$(url2title $1)
+    project=${2:-inbox}
+    echo "$title\n---"
+    descr="\"Read and review: $title\""
+    id=$(task add +rnr due:eow project:$project "$descr" | sed -n 's/Created task \(.*\)./\1/p')
+    task "$id" annotate "$1"
 }
+
+alias rnr=_read_and_review
 
 # Taskwarrior TUI
 alias tui=taskwarrior-tui

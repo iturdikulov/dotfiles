@@ -55,10 +55,10 @@ if [ -n "$TMUX" ]; then
 
   bindkey -M viins '^x^n' tmux-pane-words-prefix
   bindkey -M viins '^x^o' tmux-pane-words-anywhere
-
   zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_words
   zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
   zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+
 fi
 
 # Vim's C-x C-l in zsh

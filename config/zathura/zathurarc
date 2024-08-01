@@ -6,3 +6,7 @@ set font "Monospace 15"
 
 # Copy to system clipboard instead primary
 set selection-clipboard clipboard
+
+# Configure synctex with neovim
+set synctex true
+set synctex-editor-command "nvim --headless -c \"VimtexInverseSearch %{line} '%{input}'\""
