@@ -16,7 +16,7 @@ in {
           gtk = {
             theme = "Dracula";
             iconTheme = "Papirus-Dark";
-            cursorTheme = "Adwaita";
+            cursorTheme = "Volantes Cursors";
           };
           fonts = {
             sans.name = "Noto Sans";
