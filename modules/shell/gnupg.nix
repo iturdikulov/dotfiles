@@ -23,7 +23,7 @@ in {
 
     programs.gnupg.agent.enable = true;
     programs.gnupg.agent.enableSSHSupport = true;
-    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
+    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-rofi;
 
     user.packages = with pkgs; [
       tomb      # File encryption on GNU/Linux
