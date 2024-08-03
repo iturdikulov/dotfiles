@@ -167,7 +167,7 @@ options libata          allow_tpm=0
 '';
 
   # Disable mouse acceleration
-  services.xserver.libinput.mouse.accelProfile = "flat";
+  services.libinput.mouse.accelProfile = "flat";
 
   # Custom monitor settings
   services.xserver.displayManager.setupCommands = ''
