@@ -11,7 +11,7 @@ in {
 
   config = {
       user.packages = with pkgs; [
-        dbeaver
+        dbeaver-bin
         mariadb # allowing dump database
       ];
   };

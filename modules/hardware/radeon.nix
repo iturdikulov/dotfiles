@@ -9,10 +9,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -26,13 +25,13 @@ in {
     services.xserver.videoDrivers = [ "amdgpu" ];
     services.xserver.deviceSection = ''Option "TearFree" "true"'';  # Fix tearing for amdgpu.
 
-    hardware.opengl.extraPackages = with pkgs; [
+    hardware.graphics.extraPackages = with pkgs; [
       amdvlk
       rocmPackages.clr.icd
     ];
 
     # For 32 bit applications
-    hardware.opengl.extraPackages32 = with pkgs; [
+    hardware.graphics.extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
     ];
 

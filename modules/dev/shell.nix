@@ -21,7 +21,7 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         shellcheck
-        gnome.zenity # to display dialogs from the commandline and shell scripts
+        zenity     # to display dialogs from the commandline and shell scripts
       ];
     })
 
