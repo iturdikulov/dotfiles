@@ -18,7 +18,6 @@ in {
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         sbcl
-        lispPackages.quicklisp
       ];
     })
 
