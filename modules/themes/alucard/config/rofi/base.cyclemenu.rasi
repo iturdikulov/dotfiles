@@ -1,5 +1,5 @@
 /* -*- mode: css; -*- */
-@import "config.rasi"
+@theme "dracula.rasi"
 
 window {
   y-offset: 0;

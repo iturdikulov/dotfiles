@@ -1,6 +1,5 @@
 /* -*- mode: css; -*- */
-
-@import "config.rasi"
+@theme "dracula.rasi"
 
 textbox-icon {
   str: "  ";

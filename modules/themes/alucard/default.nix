@@ -64,7 +64,7 @@ in {
     # Desktop (X11) theming
     (mkIf config.services.xserver.enable {
       environment.systemPackages = with pkgs; [
-        gnome.adwaita-icon-theme
+        adwaita-icon-theme
       ];
       user.packages = with pkgs; [
         papirus-icon-theme
@@ -105,6 +105,7 @@ in {
         })
         (mkIf desktop.apps.rofi.enable {
           "rofi/theme" = { source = ./config/rofi; recursive = true; };
+          "rofi/config.rasi".source = ./config/rofi_config.rasi;
         })
         (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable || desktop.dwm.enable) {
           "polybar" = { source = ./config/polybar; recursive = true; };
