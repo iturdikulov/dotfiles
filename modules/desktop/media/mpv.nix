@@ -13,11 +13,6 @@ in {
     user.packages = with pkgs; [
       socat # to remote control mpv
 
-      # Web-torrent integration
-      jq
-      xidel
-      nodePackages.webtorrent-cli
-
       # Playback control (for mpris)
       playerctl
 
