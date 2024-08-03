@@ -26,8 +26,9 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs;
       (if cfg.tools.enable then [
-        font-manager   # so many damned fonts...
-        unstable.imagemagick    # for image manipulation from the shell
+        font-manager         # for easily toggling and previewing groups of fonts
+        unstable.imagemagick # for CLI image manipulation
+
         image_optim    # Optimize images using multiple utilities
         tesseract4     # OCR engine
         maim           # A command-line screenshot utility
@@ -51,19 +52,18 @@ in {
         '')
       ] else []) ++
 
-      # replaces illustrator & indesign
+      # Replaces Illustrator (maybe indesign?)
       (if cfg.vector.enable then [
         inkscape-with-extensions
-        fontforge-gtk
       ] else []) ++
 
-      # raster images workflow
+      # Raster images workflow
       (if cfg.raster.enable then [
+        krita
+        gimp
         qview
         geeqie
         librsvg
-        krita
-        gimp
         nodePackages.svgo
       ] else []) ++
 
@@ -74,10 +74,9 @@ in {
 
       # 3D modelling
       (if cfg.models.enable then [
+        f3d                   # Fast and minimalist 3D viewer using VTK
         unstable.blender-hip
-        f3d  # Fast and minimalist 3D viewer using VTK
         solvespace
-        freecad
       ] else []) ++
 
       # Photography workflow
@@ -89,7 +88,6 @@ in {
       (if cfg.videos.enable then [
         losslesscut-bin
         kdenlive
-        natron
       ] else []);
 
     home.configFile = mkIf cfg.raster.enable {
