@@ -19,12 +19,12 @@ in {
     environment.systemPackages = with pkgs; [
       (writeScriptBin "steam" ''
         #!${stdenv.shell}
-        exec ${pkgs.gamemode}/bin/gamemode ${config.programs.steam.package}/bin/steam "$@"
+        exec ${pkgs.gamemode}/bin/gamemoderun ${config.programs.steam.package}/bin/steam "$@"
       '')
       # for running GOG and humble bundle games
       (writeScriptBin "steam-run" ''
         #!${stdenv.shell}
-        exec ${pkgs.gamemode}/bin/gamemode ${config.programs.steam.package.run}/bin/steam-run "$@"
+        exec ${pkgs.gamemode}/bin/gamemoderun ${config.programs.steam.package.run}/bin/steam-run "$@"
       '')
     ] ++ (if cfg.mangohud.enable then [ pkgs.mangohud ] else []);
 
