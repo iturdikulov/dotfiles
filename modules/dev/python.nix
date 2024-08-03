@@ -20,7 +20,7 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        nodePackages.pyright         # Static Type Checker for Python
+        pyright         # Static Type Checker for Python
         (python3.withPackages(ps: with ps; [
           pip
           setuptools
