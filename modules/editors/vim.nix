@@ -81,7 +81,7 @@ in {
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
-      my.vscode-js-debug
+      unstable.vscode-js-debug
 
       # Desktop file
       (makeDesktopItem {
