@@ -34,6 +34,11 @@ in {
       cursorTheme = mkOpt str "";
     };
 
+    qt = {
+      platformTheme = mkOpt str "";
+      style= mkOpt str "";
+    };
+
     onReload = mkOpt (attrsOf lines) {};
 
     fonts = {
@@ -104,6 +109,13 @@ in {
     })
 
     {
+      # Enable qtct for Qt applications
+      qt = {
+        enable = true;
+        platformTheme = cfg.qt.platformTheme;
+        style = cfg.qt.style;
+      };
+
       home.configFile = {
         "xtheme/00-init".text = with cfg.colors; ''
           #define bg   ${types.bg}

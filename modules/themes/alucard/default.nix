@@ -5,6 +5,15 @@
 with lib;
 with lib.my;
 let cfg = config.modules.theme;
+    qtctConf = {
+      Appearance = {
+        custom_palette = false;
+        icon_theme = "Papirus-Dark";
+        standard_dialogs = "default";
+        style = "breeze";
+      };
+    };
+
 in {
   config = mkIf (cfg.active == "alucard") (mkMerge [
     # Desktop-agnostic configuration
@@ -14,9 +23,13 @@ in {
           wallpaper = mkDefault ./config/wallpaper.png;
           wallpaper_vertical = mkDefault ./config/wallpaper_vertical.png;
           gtk = {
-            theme = "Dracula";
+            theme = "Breeze-Dark";
             iconTheme = "Papirus-Dark";
             cursorTheme = "Volantes Cursors";
+          };
+          qt = {
+            platformTheme = "gnome";
+            style = "breeze";
           };
           fonts = {
             sans.name = "Noto Sans";
@@ -69,6 +82,7 @@ in {
       user.packages = with pkgs; [
         papirus-icon-theme
         unstable.dracula-theme
+        breeze-gtk
       ];
       fonts = {
         packages = with pkgs; [

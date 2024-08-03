@@ -87,19 +87,10 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      qgnomeplatform        # QPlatformTheme for a better Qt application inclusion in GNOME
-
       # SVG-based theme engine plus a config tool and extra theme
       libsForQt5.qtstyleplugin-kvantum
       qt6Packages.qtstyleplugin-kvantum
     ];
-
-    # Try really hard to get QT to respect my GTK theme.
-    environment.variables = {
-      QT_QPA_PLATFORMTHEME = "gnome";
-      QT_STYLE_OVERRIDE = "kvantum";
-      GTK_DATA_PREFIX = [ "${config.system.path}" ];
-    };
 
     services.xserver.displayManager.sessionCommands = ''
       # GTK2_RC_FILES must be available to the display manager.
