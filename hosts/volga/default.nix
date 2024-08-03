@@ -34,9 +34,8 @@
       };
       browsers = {
         default = "brave";
-        brave.enable = false; # I install it with nix profile install nixpkgs/release-xxx#brave
+        brave.enable = true;
         firefox.enable = true; # Fallback browser
-        qutebrowser.enable = true;
       };
       gaming = {
         native_games.enable = true;
