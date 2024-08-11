@@ -14,11 +14,6 @@ elif [[ $1 == -f ]]; then
   systemctl suspend
 else
   echo "Shutting my eyes..."
+  setxkbmap -layout "us(colemak_dh)" &
   playerctl --all-players pause &
-  stellarium --full-screen yes --startup-script screensaver.ssc > /dev/null 2>&1 &
-  stellarium_pid=$!
-  echo "Stellarium pid is: $stellarium_pid, will terminate in 10 minutes and I turn off display."
-
-  # Show screensaver for 120 seconds, then kill Stellarium.
-  sleep 600 && kill $stellarium_pid && xset dpms force standby &
 fi

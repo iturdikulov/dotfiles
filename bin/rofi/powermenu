@@ -7,8 +7,9 @@ power_off="Shutdown"
 reboot="Reboot"
 lock="Lock"
 suspend="Sleep"
+logout="Logout"
 # Variable passed to rofi
-options="$lock\n$suspend\n$reboot\n$power_off"
+options="$lock\n$logout\n$suspend\n$reboot\n$power_off"
 
 case "$(echo -e "$options" | $rofi_command -dmenu)" in
     $power_off)
@@ -19,6 +20,9 @@ case "$(echo -e "$options" | $rofi_command -dmenu)" in
         ;;
     $suspend)
         systemctl suspend
+        ;;
+    $logout)
+        kill -s TERM $(ps -o pid,cmd ax | awk '/dwm/{ if ($2 == "dwm") print $1 }')
         ;;
     $lock)
         zzz

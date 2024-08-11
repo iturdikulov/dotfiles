@@ -6,17 +6,4 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-if [ -z "$BROWSER" ]; then
-    BROWSER="chromium"
-fi
-
-$BROWSER --virtual-time-budget=10000 --timeout=10000\
-         --run-all-compositor-stages-before-draw --disable-gpu\
-         --headless --dump-dom\
-         --user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36"\
-         --enable-logging=false \
-         --noerrdialogs=true \
-         --password-store=basic \
-         --blink-settings=imagesEnabled=false \
-         $1 2> /dev/null |
-         awk -vRS="</title>" '/<title>/{gsub(/.*<title>|\n+/,"");print;exit}'
+curl $1 2> /dev/null | awk -vRS="</title>" '/<title>/{gsub(/.*<title>|\n+/,"");print;exit}'
