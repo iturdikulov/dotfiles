@@ -17,7 +17,7 @@ in {
 
     # Stop Steam from polluting $HOME
     environment.systemPackages = with pkgs; [
-      (writeScriptBin "steam" ''
+      (writeScriptBin "steam-gamemode" ''
         #!${stdenv.shell}
         exec ${pkgs.gamemode}/bin/gamemoderun ${config.programs.steam.package}/bin/steam "$@"
       '')
