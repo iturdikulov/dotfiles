@@ -15,8 +15,6 @@ in
       arduino-ide
       arduino-cli
       arduino-language-server
-      fritzing
-      qucs-s # not only for microcontrollers
     ];
 
     # Fix ttyACM0 permission
