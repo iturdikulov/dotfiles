@@ -123,7 +123,6 @@
       task.enable = true;
     };
     services = {
-      dictd.enable = false;
       ssh.enable = true;
       docker.enable = true;
       syncthing.enable = true;
