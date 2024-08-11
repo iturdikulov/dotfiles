@@ -17,16 +17,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.pipewire.jack.enable = true;
-
     user.packages = with pkgs;
       # for recording and remastering audio
       (if cfg.audio.enable then [ unstable.audacity reaper ] else []) ++
       # for longer term streaming/recording the screen
       (if cfg.video.enable then [
          obs-studio
-         unstable.handbrake
-         unstable.ffmpeg-full
+         ffmpeg-full
         (pkgs.writeScriptBin "latest_record" ''
         #!/bin/sh
         RECORDINGS_DIR="$HOME/Videos/record"
