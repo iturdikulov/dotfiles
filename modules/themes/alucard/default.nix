@@ -23,13 +23,13 @@ in {
           wallpaper = mkDefault ./config/wallpaper.png;
           wallpaper_vertical = mkDefault ./config/wallpaper_vertical.png;
           gtk = {
-            theme = "Breeze-Dark";
+            theme = "Dracula";
             iconTheme = "Papirus-Dark";
             cursorTheme = "Volantes Cursors";
           };
           qt = {
-            platformTheme = "gnome";
-            style = "breeze";
+            platformTheme = "gtk2";
+            style = "kvantum";
           };
           fonts = {
             sans.name = "Noto Sans";
@@ -76,13 +76,14 @@ in {
 
     # Desktop (X11) theming
     (mkIf config.services.xserver.enable {
+      env.GTK_THEME = config.modules.theme.gtk.theme;
+
       environment.systemPackages = with pkgs; [
         adwaita-icon-theme
       ];
       user.packages = with pkgs; [
         papirus-icon-theme
         unstable.dracula-theme
-        breeze-gtk
       ];
       fonts = {
         packages = with pkgs; [
