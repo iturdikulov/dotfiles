@@ -9,7 +9,7 @@ alias rnd='ta +rnd +@computer'
 
 # Report
 alias ti="task in limit:20"
-alias td="task next status:pending -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'"
+alias td="task next status:pending -BLOCKED -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'"
 
 # Add tickle task function
 # Usage example
@@ -19,6 +19,10 @@ tat () {
     task add +tickle wait:$deadline $@
 }
 alias think='tat +1d'
+finish (){
+    task $@ done
+    td
+}
 
 # Research and review
 # usage: rnr http://cs-syd.eu/posts/2015-07-05-gtd-with-taskwarrior-part-4-processing.html
@@ -26,7 +30,7 @@ _read_and_review (){
     title=$(url2title $1)
     project=${2:-inbox}
     echo "$title\n---"
-    descr="\"Read and review: $title\""
+    descr="\"$title\""
     id=$(task add +rnr due:eow project:$project "$descr" | sed -n 's/Created task \(.*\)./\1/p')
     task "$id" annotate "$1"
 }
