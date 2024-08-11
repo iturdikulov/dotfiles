@@ -20,6 +20,9 @@ in {
       bandwidth
       hwinfo
       stress-ng
+
+      furmark
+      unigine-superposition
     ];
   };
 }
