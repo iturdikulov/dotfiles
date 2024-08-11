@@ -35,18 +35,17 @@
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ]; # docx.docx
         "application/vnd.oasis.opendocument.text"                                 = [ "writer.desktop" ]; # odt.odt
 
-        "application/epub+zip"           = [ "org.pwmt.zathura-cb.desktop" ]; # epub.epub
-        "application/x-fictionbook+xml"  = [ "org.pwmt.zathura-cb.desktop" ]; # fictionbook.fb2
-        "application/x-mobipocket-ebook" = [ "org.pwmt.zathura-cb.desktop" ]; # mobi.mobi
-
-        "application/vnd.ms-htmlhelp"   = [ "xchm.desktop" ]; # compiledhtml.chm
-        "application/x-cb7"             = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
-        "application/vnd.comicbook-rar" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbr
-        "application/x-cbt"             = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbt
-        "application/vnd.comicbook+zip" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbz
-        "application/postscript"        = [ "org.pwmt.zathura-ps.desktop" ]; # ps.ps
-        "application/pdf"               = [ "org.pwmt.zathura-pdf-mupdf.desktop" ]; # pdf.pdf
-        "image/vnd.djvu+multipage"      = [ "org.pwmt.zathura-djvu.desktop" ]; # djvu.djvu
+        "application/pdf"                = [ "sioyek.desktop" ];                # pdf.pdf
+        "application/epub+zip"           = [ "org.pwmt.zathura-cb.desktop" ];   # epub.epub
+        "application/x-fictionbook+xml"  = [ "org.pwmt.zathura-cb.desktop" ];   # fictionbook.fb2
+        "application/x-mobipocket-ebook" = [ "org.pwmt.zathura-cb.desktop" ];   # mobi.mobi
+        "application/vnd.ms-htmlhelp"    = [ "xchm.desktop" ];                  # compiledhtml.chm
+        "application/x-cb7"              = [ "org.pwmt.zathura-cb.desktop" ];   # comix.cb7
+        "application/vnd.comicbook-rar"  = [ "org.pwmt.zathura-cb.desktop" ];   # comix.cbr
+        "application/x-cbt"              = [ "org.pwmt.zathura-cb.desktop" ];   # comix.cbt
+        "application/vnd.comicbook+zip"  = [ "org.pwmt.zathura-cb.desktop" ];   # comix.cbz
+        "application/postscript"         = [ "org.pwmt.zathura-ps.desktop" ];   # ps.ps
+        "image/vnd.djvu+multipage"       = [ "org.pwmt.zathura-djvu.desktop" ]; # djvu.djvu
 
         # Text Files Associated with nvim (and some other types)
         "text/x-adasrc"                = ["nvim.desktop"]; # ada.adb
