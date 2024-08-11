@@ -17,7 +17,6 @@ in {
       msitools
 
       protontricks
-      protonup-qt
       # native wayland support (unstable)
       # wineWowPackages.waylandFull
     ];
