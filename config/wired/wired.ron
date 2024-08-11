@@ -1,8 +1,9 @@
 (
 	max_notifications: 10,
-	timeout: 20000,
-	idle_threshold: 19800,
 	unpause_on_input: true,
+	notifications_spawn_paused: true,
+	timeout: 5000,
+	idle_threshold: 3600,
 	poll_interval: 16,
 	shortcuts: (
 		notification_interact: 2,
