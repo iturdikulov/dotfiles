@@ -21,13 +21,15 @@ in {
       text = ''
         Wiktionary (En-Ru)
         LingvoUniversal (En-Ru)
-        Abbrev
         LingvoComputer (En-Ru)
         New Oxford American Dictionary. Angus Stevenson and Christine A. Lindberg (En-En)
+        CollinsCobuild (En-En)
         WordNet
+        Abbrev
         LingvoComputer (Ru-En)
         LingvoUniversal (Ru-En)
         TechAbrreviations (Ru-Ru)
+        Oxford English Collocation Dictionary
         Словарь русского языка. Unknown (Ru-Ru)
         Большой словарь иностранных слов (Ru-Ru)
         Новый словарь русского языка. Толково-словообразовательный. Ефремова Т.Ф. (Ru-Ru)
