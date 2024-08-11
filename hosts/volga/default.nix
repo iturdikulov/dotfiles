@@ -28,9 +28,11 @@
         thunderbird.enable = true;
         telegram.enable = true;
         godot.enable = true;
-        parsec.enable = true;
         filezilla.enable = true;
         stellarium.enable = true;
+
+        parsec.enable = true;
+        remmina.enable = true;
       };
       browsers = {
         default = "brave";
