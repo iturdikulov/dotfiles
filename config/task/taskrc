@@ -27,18 +27,6 @@ urgency.user.project.work.coefficient=15.0
 urgency.user.tag.next.coefficient=15.0
 urgency.user.tag.rnr.coefficient=10.0
 
-# Taskwarior TUI config
-# https://kdheepak.com/taskwarrior-tui/configuration/advanced/
-uda.taskwarrior-tui.selection.dim=yes
-uda.taskwarrior-tui.mark.indicator=
-uda.taskwarrior-tui.mark-selection.indicator=x
-uda.taskwarrior-tui.unmark-selection.indicator=.
-uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING limit:page (+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)
-
-# Copied from taskwarrior source code
-# https://github.com/GothenburgBitFactory/taskwarrior
-# taskwarrior/src/Context.cpp#379
-
 # Adjust reporting
 report.in.columns           = id,priority,tags,description
 report.in.labels            = ID,Pri,Tags,Description

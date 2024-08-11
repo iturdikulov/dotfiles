@@ -16,7 +16,6 @@ in {
     user.packages = with pkgs; [
       taskwarrior # my daily tasks
       timewarrior # time tracking
-      taskwarrior-tui # TUI to rare clean taskwarrior tasks
     ];
 
     home.configFile."task/taskrc".source = "${configDir}/task/taskrc";
