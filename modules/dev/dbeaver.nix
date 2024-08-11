@@ -11,7 +11,9 @@ in {
 
   config = {
       user.packages = with pkgs; [
-        dbeaver-bin
+        # TODO: replace this with dbeaver-bin, temporary workaround to avoid launch error
+        inputs.dbeaver-last.legacyPackages.x86_64-linux.pkgs.dbeaver-bin
+
         mariadb # allowing dump database
       ];
   };
