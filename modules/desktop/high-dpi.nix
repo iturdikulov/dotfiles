@@ -18,6 +18,8 @@ in
       GDK_SCALE = "2";
       GDK_DPI_SCALE = "0.5";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_ENABLE_HIGHDPI_SCALING = "1";
+      QT_FONT_DPI = 192;
       _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
       XCURSOR_SIZE = "48";
     };
@@ -25,7 +27,6 @@ in
     # link recursively so other modules can link files in their folders
     home.configFile."xtheme/80-high-dpi".text = ''
       Xcursor.size: 48
-      Xft.dpi: 192
     '';
   };
 }
