@@ -115,7 +115,6 @@
       zsh.enable = true;
       sdcv.enable = true;
       visidata.enable = true;
-      weechat.enable = true;
       maintenance.enable = true;
       timer.enable = true;
       vaultwarden.enable = false;
