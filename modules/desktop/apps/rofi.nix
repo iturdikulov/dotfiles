@@ -9,11 +9,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+
+    environment.variables.ROFI_PLUGIN_PATH = [
+      "$XDG_CONFIG_HOME/rofi/plugins"  # for local development
+      "${pkgs.rofi-calc}/lib/rofi"
+    ];
+
     user.packages = with pkgs; [
-      (writeScriptBin "rofi" ''
-        #!${stdenv.shell}
-        exec ${pkgs.rofi}/bin/rofi -terminal="wezterm start" -m -1 "$@"
-      '')
+      rofi-unwrapped
 
       # Fake rofi dmenu entries
       (makeDesktopItem {
