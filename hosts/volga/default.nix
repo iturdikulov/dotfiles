@@ -124,13 +124,16 @@
     };
     services = {
       ssh.enable = true;
-      docker.enable = true;
       syncthing.enable = true;
       virt-manager.enable = true;
-      nginx.enable = true;
-      calibre.enable = true;
+      # calibre.enable = true;
       tailscale.enable = true;
       tailscale.routingFeatures = "client";
+
+      nginx.enable = true;
+      docker.enable = true;
+      rabbitmq.enable = true;
+      postgresql.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
