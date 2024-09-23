@@ -38,6 +38,7 @@
       browsers = {
         default = "brave";
         brave.enable = true;
+        chrome.enable = true;
         firefox.enable = true; # Fallback browser
       };
       gaming = {
@@ -80,7 +81,7 @@
       mitmproxy.enable = true;
       shell.enable = true;
       data_serialization.enable = true;
-      docs.enable = true; # dev man pages and docsets tools (zeal, dasht)
+      docs.enable = true; # dev man pages and docsets tools
     };
     editors = {
       default = "nvim";
