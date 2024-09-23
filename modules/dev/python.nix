@@ -20,17 +20,37 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        pyright         # Static Type Checker for Python
+        unstable.basedpyright
+
+        # # Tools for refactoring and alternative code checking
+        jetbrains.pycharm-community-bin
+
+        # Some pre-installed python packages
+        # to avoid pip installing them every time
+        poetry
         (python3.withPackages(ps: with ps; [
           pip
           setuptools
           ipython
+
+          pygame
+          nuitka
+
           pandas
+
           scipy
           numpy
           matplotlib
+
           pynvim
           python-frontmatter
+          libcst
+
+          pydantic
+          mypy
+
+          requests
+          sqlalchemy
 
           hid
         ]))
