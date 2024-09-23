@@ -1,6 +1,7 @@
 format = """
 $username\
 $directory\
+$jobs\
 $git_branch\
 $git_commit\
 $git_status\
@@ -17,6 +18,9 @@ read_only = " ro"
 success_symbol = "[ \\$](fg)"
 error_symbol = "[ \\$](red)"
 vimcmd_symbol = "[ N](cyan)"
+
+[jobs]
+symbol = '🚀'
 
 [git_branch]
 style = "fg"
