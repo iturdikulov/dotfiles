@@ -16,4 +16,5 @@ else
   echo "Shutting my eyes..."
   setxkbmap -layout "us(colemak_dh)" &
   playerctl --all-players pause &
+  xset dpms force off
 fi
