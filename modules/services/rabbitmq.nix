@@ -9,6 +9,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    env.RABBITMQ_NODENAME = "rabbit@127.0.0.1";
     services.rabbitmq = {
       enable = true;
     };
