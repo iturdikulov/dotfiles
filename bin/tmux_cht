@@ -65,7 +65,8 @@ make
 END
 )
 
-selected=`echo "$LANGUAGES\n$COMMANDS" | fzf`
+# FZF act's as dmenu, on C-RET we print query instead selection
+selected=`echo "$LANGUAGES\n$COMMANDS" | fzf --bind=enter:replace-query+print-query`
 if [[ -z $selected ]]; then
     exit 0
 fi
