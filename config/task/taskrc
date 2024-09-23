@@ -25,7 +25,9 @@ uda.estimate.label=Estimate
 # [Urgency](https://taskwarrior.org/docs/urgency/)
 urgency.user.project.work.coefficient=15.0
 urgency.user.tag.next.coefficient=15.0
+urgency.user.tag.foundation.coefficient=11.0
 urgency.user.tag.rnr.coefficient=10.0
+urgency.user.tag.learn.coefficient=5.0
 
 # Adjust reporting
 report.in.columns           = id,priority,tags,description
