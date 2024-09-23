@@ -7,9 +7,12 @@ else
 ~/ \
 ~/Science/* \
 ~/Computer/* \
+~/Computer/programming/*Tutorials/ \
 ~/Arts_and_Entertainment/ \
-~/Arts_and_Entertainment/audiovisual/; \
+~/Arts_and_Entertainment/audiovisual/ \
+~/Arts_and_Entertainment/video-editing/; \
 echo /home/inom; \
+echo ~/Wiki/competitive_programming/; \
 echo ~/Arts_and_Entertainment/audiovisual/anime; \
 echo ~/Arts_and_Entertainment/audiovisual/audiobook/; \
 echo ~/Arts_and_Entertainment/audiovisual/movie/; \
