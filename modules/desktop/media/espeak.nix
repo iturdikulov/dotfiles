@@ -14,7 +14,6 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-       (pkgs.writeScriptBin "piper_speak" (readFile "${configDir}/piper/piper_speak"))
        unstable.piper-tts
        xdotool
        xclip
