@@ -8,8 +8,14 @@ url=${2:-$(xclip -o -selection clipboard)}
 if [[ $url == *.pdf ]]; then
     title=""
 else
-    # Use xidel to fetch the page and extract the title with sed
+    # Use curl to fetch the page and extract the title with sed
     title=$(url2title "$url")
+
+    # If failed to get title try to use primary clipboard
+    if [[ -z $title ]]; then
+        url=$(xclip -o -selection primary)
+        title=$(url2title "$url")
+    fi
 fi
 
 if [[ $format == "title" ]]; then
