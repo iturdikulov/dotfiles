@@ -50,9 +50,13 @@ in
         notify-send -t 5000 "System" "Поехали!" &
         $TERMINAL &
         $BROWSER &
-        slack &
         thunderbird &
+        telegram-desktop &
         sleep 2 && cmus-wr &
+
+        slack &
+        crow &
+        obsidian &
       '';
       executable = true;
     };
