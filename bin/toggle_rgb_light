@@ -11,12 +11,10 @@ import hid
 import subprocess
 
 vendor_id = 0x4B42
-product_id = 0x6061
 
 usage_page = 0xFF60
 usage = 0x61
 report_length = 32
-
 
 def toggle_layout():
     """Toggles the keyboard layout between English and Russian using xkb-switch."""
@@ -35,7 +33,7 @@ def toggle_layout():
 
 
 def get_raw_hid_interface():
-    device_interfaces = hid.enumerate(vendor_id, product_id)
+    device_interfaces = hid.enumerate(vendor_id)
     raw_hid_interfaces = [
         i
         for i in device_interfaces
