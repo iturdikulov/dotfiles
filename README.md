@@ -247,8 +247,8 @@ Options:
 
 ## TODO
 
-https://github.com/hlissner/dotfiles/commits/master/?after=1e2ca74b02d2d92005352bf328acc86abb10efbd+174
-https://github.com/hlissner/dotfiles/commit/b9c4e9258797bca6d7be6f6338b19d71dc10bd79
+https://github.com/hlissner/dotfiles/commits/master/?after=1e2ca74b02d2d92005352bf328acc86abb10efbd+209
+
 - [x] fix agenix secrets
 - [ ] ngnix bind 80 port and set root url
 - [ ] set root path for all services (www/..)
@@ -271,5 +271,4 @@ https://github.com/hlissner/dotfiles/commit/b9c4e9258797bca6d7be6f6338b19d71dc10
 - [x] check/fix kvantum theme
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
-- [x] fix dashit error
 - [x] W3m intgeration
