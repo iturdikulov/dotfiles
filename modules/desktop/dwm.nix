@@ -6,6 +6,7 @@ let
   cfg = config.modules.desktop.dwm;
   configDir = config.dotfiles.configDir;
   wCfg = config.services.xserver.desktopManager.wallpaper;
+  localDWMSrc = "${config.user.home}/Computer/software/dwm-flexipatch/";
 in
 {
   options.modules.desktop.dwm = {
@@ -14,11 +15,20 @@ in
 
   config = mkIf cfg.enable {
     security.polkit.enable = true; # to promt root password in GUI programs
-    programs.slock.enable = true; # Use slock to quick lock system, less issues with screen and it's faster
 
     # Auto-lock on suspend
     programs.xss-lock.enable = true;
-    programs.xss-lock.lockerCommand = "/run/wrappers/bin/slock";
+    # NEXT: maybe we can better resolve this path
+    programs.xss-lock.lockerCommand = "/etc/profiles/per-user/${config.user.name}/bin/i3lock-custom";
+
+    user.packages = with pkgs; [
+      (writeScriptBin "i3lock-custom" ''
+        #!${stdenv.shell}
+        exec ${pkgs.xorg.setxkbmap}/bin/setxkbmap -layout "us(colemak_dh)" || true &
+        exec ${pkgs.playerctl}/bin/playerctl --all-players pause || true &
+        exec ${pkgs.i3lock-fancy-rapid}/bin/i3lock-fancy-rapid 3 3
+      '')
+    ];
 
     home.file.".icons/default".source = "${pkgs.volantes-cursors}/share/icons/volantes_cursors";
 
@@ -95,11 +105,10 @@ in
           enable = true;
           package = pkgs.dwm.overrideAttrs (old: {
             src =
-              if builtins.pathExists /home/inom/Computer/software/dwm-flexipatch
-              then
-                builtins.fetchGit
+              if builtins.pathExists localDWMSrc
+              then builtins.fetchGit
                   {
-                    url = "file:///home/inom/Computer/software/dwm-flexipatch/";
+                    url = "file://${localDWMSrc}";
                   }
               else
                 pkgs.fetchpath {
@@ -112,13 +121,17 @@ in
       };
       dwm-status = {
         enable = true;
-        order = [ "time" ];
+        order = [ "cpu_load" "time" ];
         extraConfig = ''
           separator = " / "
 
+          [cpu_load]
+          template = "{CL1} {CL5} {CL15}"
+          update_interval = 30
+
           [time]
           format = "%A, %d.%m [%B], %H:%M"
-          	'';
+        '';
       };
       gvfs.enable = true;
     };
