@@ -24,6 +24,7 @@ in {
         nodePackages.typescript
         nodePackages.ts-node
         nodePackages.node2nix
+        nodePackages.browser-sync
         yarn
         bun
 
