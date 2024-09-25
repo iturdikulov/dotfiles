@@ -33,8 +33,10 @@ let cfg = config.modules.editors.vim;
       nowidow subfigure subfiles textpos tcolorbox
       tikz-cd titlecaps titlesec todonotes trimspaces upquote
       xifthen xpatch xstring zref
+      pdfjam # manipulating PDF files
       dvisvgm dvipng # for preview and export as html
-      wrapfig amsmath ulem hyperref capt-of;
+      wrapfig amsmath ulem hyperref capt-of
+      kurier opensans cantarell babel-russian collection-langcyrillic;
       #(setq org-latex-compiler "lualatex")
       #(setq org-preview-latex-default-process 'dvisvgm)
   });
@@ -75,9 +77,12 @@ in {
       texlab
       ruff-lsp
       gopls
+      marksman
 
       ## Formatting
       stylua
+      sqlfluff
+      shfmt
 
       ## Debugging
       vscode-extensions.vadimcn.vscode-lldb
@@ -104,18 +109,11 @@ in {
       enable = true;
       defaultEditor = true;
       viAlias = true;
-      vimAlias = true;
       configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
          '';
       };
     };
-
-    environment.shellAliases = {
-      v   = "nvim";
-    };
-
-    # fonts.packages = [ pkgs.vim-all-the-icons-fonts ];
   };
 }
