@@ -21,8 +21,6 @@
     # modprobe -i vfio-pci
     #   '';
 
-    initrd.kernelModules = [ ];
-    extraModulePackages = [ ];
     extraModprobeConfig = ''
 # options vfio-pci ids=1002:73ff,1002:ab28
 options amdgpu          gpu_recovery=1
@@ -48,7 +46,7 @@ options libata          allow_tpm=0
 
   services.xserver = {
     serverFlagsSection = ''
-      Option "StandbyTime" "32"
+      Option "StandbyTime" "30"
       Option "SuspendTime" "0"
       Option "OffTime" "0"
       Option "BlankTime" "0"
@@ -173,7 +171,7 @@ options libata          allow_tpm=0
   services.xserver.displayManager.setupCommands = ''
     LEFT='DisplayPort-0'
     RIGHT='DisplayPort-1'
-    ${pkgs.xorg.xrandr}/bin/xrandr --output $RIGHT --auto --right-of $LEFT --rotate right
+    ${pkgs.xorg.xrandr}/bin/xrandr --output $RIGHT --auto
   '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
