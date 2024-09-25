@@ -20,48 +20,25 @@ root = true
 
 # Unix-style newlines with a newline ending every file, utf-8 charset
 [*]
+charset = utf-8
 end_of_line = lf
+indent_size = 4
+indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
-charset = utf-8
+max_line_length = 80
 
-# Ignore diffs/patches
-[*.{diff,patch}]
-end_of_line = unset
-insert_final_newline = unset
-trim_trailing_whitespace = unset
+[*.py]
+quote_type = double
 
-# Match json/lockfiles/markdown/nix/perl/python/ruby/shell/docbook files, set indent to spaces
-[*.{json,lock,md,nix,pl,pm,py,rb,sh,xml,lua}]
+# Web files
+[*.{js,json,yml,html,md,css,scss,less,Gemfile}]
 indent_style = space
-
-# Match docbook files, set indent width of one
-[*.xml]
-indent_size = 1
-
-# Set indent width of four spaces
-[*.{json,lock,nix,rb,lua,pl,pm,py,sh}]
-indent_size = 4
-
-# Match gemfiles, set indent to spaces with width of two
-[Gemfile]
 indent_size = 2
-indent_style = space
 
-# Disable file types or individual files
-# some of these files may be auto-generated and/or require significant changes
-
-[*.{c,h}]
-insert_final_newline = unset
-trim_trailing_whitespace = unset
-
-[*.{asc,key,ovpn}]
-insert_final_newline = unset
-end_of_line = unset
-trim_trailing_whitespace = unset
-
-[*.lock]
-indent_size = unset
+# Makefiles
+[{Makefile,**.mk}]
+indent_style = tab
 
 # Although Markdown/CommonMark allows using two trailing spaces to denote
 # a hard line break, I do not use that feature since
@@ -69,11 +46,27 @@ indent_size = unset
 # does not wrap reasonably.
 # Instead of a hard line break, start a new paragraph by inserting a blank line.
 [*.md]
-trim_trailing_whitespace = true
-max_line_length = 80
-indent_size = 2
+trim_trailing_whitespace = false
 
-# binaries
+# Ignore diffs/patches
+[*.{diff,patch}]
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+
+# Ignore c/headers, some of them can have own indentation style
+# we use auto-detection for these
+[*.{c,h}]
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+
+# Same for confi/encrypted files/etc.
+[*.{asc,key,ovpn,cfg,config,lock}]
+insert_final_newline = unset
+end_of_line = unset
+trim_trailing_whitespace = unset
+
+# Binaries
 [*.nib]
 end_of_line = unset
 insert_final_newline = unset
