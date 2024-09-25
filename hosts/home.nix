@@ -5,13 +5,12 @@ with lib;
 let blocklist = fetchurl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
 in {
   networking.extraHosts = ''
-    192.168.1.1   router.home
+    192.168.0.1   router.home
 
     # Hosts
     ${optionalString (config.time.timeZone == "Europe/Moscow") ''
         192.168.0.190  kama
-        192.168.0.191  baikal
-        192.168.0.192  volga
+        192.168.0.191  volga
       ''}
 
     # Block garbage
