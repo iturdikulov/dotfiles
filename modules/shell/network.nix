@@ -19,6 +19,10 @@ in {
       gallery-dl
       wget
       nmap
+      whois
+      unstable.copilot-cli
+      unstable.awscli2
+      unstable.ssm-session-manager-plugin
     ];
 
     # Configurations
