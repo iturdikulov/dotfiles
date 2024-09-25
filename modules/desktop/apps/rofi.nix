@@ -14,6 +14,7 @@ in {
     environment.variables.ROFI_PLUGIN_PATH = [
       "$XDG_CONFIG_HOME/rofi/plugins"  # for local development
       "${pkgs.rofi-calc}/lib/rofi"
+      "${pkgs.rofi-file-browser}/lib/rofi"
     ];
 
     user.packages = with pkgs; [
@@ -31,6 +32,12 @@ in {
         desktopName = "Open Browser History";
         icon = "accessories-clock";
         exec = "${config.dotfiles.binDir}/rofi/browsermenu history";
+      })
+      (makeDesktopItem {
+        name = "rofi-open-file";
+        desktopName = "Open File ->";
+        icon = "folder";
+        exec = "${pkgs.rofi}/bin/rofi -show filebrowser";
       })
       (makeDesktopItem {
         name = "lock-display";
