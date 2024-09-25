@@ -33,6 +33,7 @@ in {
         tesseract4     # OCR engine
         maim           # A command-line screenshot utility
         gpick          # An advanced color picker
+        flameshot      # Screenshots
 
         pureref        # A reference image viewer
         (makeDesktopItem {
@@ -77,12 +78,13 @@ in {
         f3d                   # Fast and minimalist 3D viewer using VTK
         unstable.blender-hip
         solvespace
+        fspy                  # Quick and easy still image camera matching
       ] else []) ++
 
       # Photography workflow
       (if cfg.photos.enable then [
         darktable
-      ] else [])++
+      ] else []) ++
 
       # Video editing
       (if cfg.videos.enable then [
