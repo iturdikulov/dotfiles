@@ -16,7 +16,8 @@ in {
   config = {
     user.packages = with pkgs; [
       ruff
-      deno
+      deno # TODO: maybe not needed
+      biome
       prettierd
       nixpkgs-fmt
       djlint
