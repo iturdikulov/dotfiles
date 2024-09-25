@@ -23,6 +23,10 @@ finish (){
     task $@ done
     td
 }
+delay (){
+    local delay=$1; shift
+    task "$@" modify wait:$delay
+}
 
 # Research and review
 # usage: rnr http://cs-syd.eu/posts/2015-07-05-gtd-with-taskwarrior-part-4-processing.html
