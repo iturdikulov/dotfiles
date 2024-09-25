@@ -12,6 +12,15 @@ in {
     user.packages = with pkgs; [
       # NNN
       (nnn.override {withNerdIcons = true;})
+      (makeDesktopItem {
+        name = "nnn-xst";
+        desktopName = "NNN xst";
+        genericName = "NNN xst";
+        icon = "utilities-terminal";
+        exec = "${xst}/bin/xst -e nnn %F";
+        categories = [ "Development" "System" "Utility" ];
+      })
+
       xdragon  # supporting dragdrop nnn plugin
       ffmpeg-full # ffmpeg-full
       ffmpegthumbnailer
