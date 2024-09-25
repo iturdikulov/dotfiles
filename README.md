@@ -248,6 +248,7 @@ Options:
 ## TODO
 
 https://github.com/hlissner/dotfiles/commits/master/?after=1e2ca74b02d2d92005352bf328acc86abb10efbd+209
+refactor(video): merge video modules into one
 
 - [x] fix agenix secrets
 - [ ] ngnix bind 80 port and set root url
