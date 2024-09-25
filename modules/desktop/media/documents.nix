@@ -29,6 +29,8 @@ in
       (if cfg.ebook.enable then [
         xchm
         sioyek
+        xournalpp
+        calibre
         zathura
         pandoc
       ] else [ ]) ++
