@@ -28,7 +28,7 @@ in {
             cursorTheme = "Volantes Cursors";
           };
           qt = {
-            platformTheme = "gtk2";
+            platformTheme = "qt5ct";
             style = "kvantum";
           };
           fonts = {
@@ -88,6 +88,7 @@ in {
       fonts = {
         packages = with pkgs; [
           noto-fonts
+          noto-fonts-cjk-serif
           noto-fonts-emoji
           fira-code-nerdfont
           fira-code-symbols
@@ -97,6 +98,7 @@ in {
           siji
           font-awesome
           paratype-pt-sans
+          kdePackages.qt6ct
         ];
       };
 
