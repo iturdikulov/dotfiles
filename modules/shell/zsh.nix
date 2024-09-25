@@ -45,6 +45,7 @@ in {
       eza
       fzf
       starship
+      zoxide
     ];
 
     env = {
@@ -77,7 +78,18 @@ in {
            ${concatStringsSep "\n" aliasLines}
            ${concatMapStrings (path: "source '${path}'\n") cfg.rcFiles}
            ${cfg.rcInit}
-           eval "$(starship init zsh)"
+
+           if (( $+commands[starship] )); then
+             eval "$(starship init zsh)"
+           fi
+
+           if (( $+commands[zoxide] )); then
+             eval "$(zoxide init zsh)"
+           fi
+
+           if (( $+commands[leetcode] )); then
+             eval "$(leetcode completions)"
+           fi
         '';
 
       "zsh/extra.zshenv".text = ''
