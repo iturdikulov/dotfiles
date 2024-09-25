@@ -46,9 +46,7 @@
         # Allos some insecure packages
         # TODO: potentially need remove all this
         config.permittedInsecurePackages = [
-          "python-2.7.18.6"
-          "libxls-1.6.2"
-          "electron-25.9.0"
+          "fspy-1.0.3"
         ];
 
         overlays = extraOverlays ++ (lib.attrValues self.overlays);
