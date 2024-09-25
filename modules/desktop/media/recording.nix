@@ -17,13 +17,25 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Virtual cam settings: see https://wiki.nixos.org/wiki/OBS_Studio#Using_the_Virtual_Camera
+    boot.extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
+    boot.extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="Web Cam" exclusive_caps=1
+    '';
+    boot.kernelModules = with config.boot.kernelModules; [
+      "v4l2loopback"
+    ];
+    security.polkit.enable = true;
+
     user.packages = with pkgs;
       # for recording and remastering audio
       (if cfg.audio.enable then [ unstable.audacity reaper ] else []) ++
       # for longer term streaming/recording the screen
       (if cfg.video.enable then [
-         obs-studio
-         ffmpeg-full
+        obs-studio
+        ffmpeg-full
         (pkgs.writeScriptBin "latest_record" ''
         #!/bin/sh
         RECORDINGS_DIR="$HOME/Videos/record"
