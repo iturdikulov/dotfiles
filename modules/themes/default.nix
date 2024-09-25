@@ -7,6 +7,20 @@
 with lib;
 with lib.my;
 let cfg = config.modules.theme;
+    qtctConf = {
+      Appearance = {
+        custom_palette = false;
+        icon_theme = "Papirus-Dark";
+        standard_dialogs = "gtk3";
+        style = "kvantum-dark";
+      };
+
+      Fonts = {
+        fixed = "\"Monospace,10,-1,5,50,0,0,0,0,0\"";
+        general = "\"Sans Serif,10,-1,5,50,0,0,0,0,0\"";
+      };
+    };
+
 in {
   options.modules.theme = with types; {
     active = mkOption {
@@ -52,7 +66,7 @@ in {
         size = mkOpt int 10;
       };
       emoji = {
-        name = mkOpt str "Unifont";
+        name = mkOpt str "Noto Color Emoji";
         size = mkOpt int 10;
       };
     };
@@ -198,7 +212,8 @@ in {
           color-scheme = "prefer-dark";
           icon-theme = "${cfg.gtk.iconTheme}";
       };
-
+      home.configFile."qt5ct/qt5ct.conf".text = lib.generators.toINI { } qtctConf;
+      home.configFile."qt6ct/qt6ct.conf".text = lib.generators.toINI { } qtctConf;
       # Styling
       fonts = {
         fontconfig = {
