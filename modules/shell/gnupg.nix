@@ -19,7 +19,7 @@ in {
 
   config = mkIf cfg.enable (
   {
-    environment.variables.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
+    env.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
     programs.gnupg.agent.enable = true;
     programs.gnupg.agent.enableSSHSupport = true;

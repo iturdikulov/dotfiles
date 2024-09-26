@@ -36,7 +36,10 @@ in {
 
     (mkIf cfg.cuda.enable {
       environment = {
-        variables.CUDA_PATH="${pkgs.cudatoolkit}";
+        variables = {
+          CUDA_PATH="${pkgs.cudatoolkit}";
+          CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+        };
         systemPackages = [ pkgs.cudatoolkit ];
       };
 
