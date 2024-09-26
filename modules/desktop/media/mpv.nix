@@ -34,7 +34,7 @@ in {
         [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
         RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
         echo "$RECORDING"| xclip -sel c
-        ${pkgs.mpv}/bin/mpv --loop-file=yes "$RECORDING"
+        nmpv --loop-file=yes "$RECORDING"
       '')
 
       # Open files with mpv in the background without blocking the terminal

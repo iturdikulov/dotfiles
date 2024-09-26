@@ -172,8 +172,6 @@ function vmconnect {
   looking-glass-client
 }
 
-alias latest_record='nmpv --script-opts=autoload-disabled=yes $(find ~/Videos/record -type f -printf "%T@ %p\n" | sort -nr | head -1 | cut -d" " -f2-)'
-
 function dict {
     sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat --style=grid --terminal-width=80
 }
