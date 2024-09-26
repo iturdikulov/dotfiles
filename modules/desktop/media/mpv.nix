@@ -11,10 +11,9 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      socat # to remote control mpv
-
-      # Playback control (for mpris)
-      playerctl
+      socat     # to remote control mpv
+      playerctl # playback control (for mpris)
+      mpvc  # CLI controller for mpv
 
       (mpv.override {
         youtubeSupport = true;
@@ -28,7 +27,15 @@ in {
         ];
       })
 
-      mpvc  # CLI controller for mpv
+      # Script to open the latest recording in mpv
+      (pkgs.writeScriptBin "latest_record" ''
+        #!/bin/sh
+        RECORDINGS_DIR="$HOME/Videos/record"
+        [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
+        RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
+        echo "$RECORDING"| xclip -sel c
+        ${pkgs.mpv}/bin/mpv --loop-file=yes "$RECORDING"
+      '')
 
       # Open files with mpv in the background without blocking the terminal
       (writeScriptBin "nmpv" ''

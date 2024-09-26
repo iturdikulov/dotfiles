@@ -12,38 +12,41 @@ let cfg = config.modules.desktop.media.recording;
 in {
   options.modules.desktop.media.recording = {
     enable = mkBoolOpt false;
+    capture.enable = mkBoolOpt false;
     audio.enable = mkBoolOpt true;
-    video.enable = mkBoolOpt true;
+    tools.enable = mkBoolOpt true;
   };
 
-  config = mkIf cfg.enable {
-    # Virtual cam settings: see https://wiki.nixos.org/wiki/OBS_Studio#Using_the_Virtual_Camera
-    boot.extraModulePackages = with config.boot.kernelPackages; [
-      v4l2loopback
-    ];
-    boot.extraModprobeConfig = ''
-      options v4l2loopback devices=1 video_nr=1 card_label="Web Cam" exclusive_caps=1
-    '';
-    boot.kernelModules = with config.boot.kernelModules; [
-      "v4l2loopback"
-    ];
-    security.polkit.enable = true;
+  config = mkIf cfg.enable (mkMerge [
+    (mkIf cfg.capture.enable {
+      # Virtual cam settings: see https://wiki.nixos.org/wiki/OBS_Studio#Using_the_Virtual_Camera
+      boot.extraModulePackages = with config.boot.kernelPackages; [
+        v4l2loopback
+      ];
+      boot.extraModprobeConfig = ''
+        options v4l2loopback devices=1 video_nr=1 card_label="Web Cam" exclusive_caps=1
+      '';
+      boot.kernelModules = with config.boot.kernelModules; [
+        "v4l2loopback"
+      ];
+      security.polkit.enable = true;
 
-    user.packages = with pkgs;
-      # for recording and remastering audio
-      (if cfg.audio.enable then [ unstable.audacity reaper ] else []) ++
-      # for longer term streaming/recording the screen
-      (if cfg.video.enable then [
-        obs-studio
+      user.packages = with pkgs.unstable; [
+        obs-studio  # For recording footage
+      ];
+    })
+
+    (mkIf cfg.audio.enable {
+      user.packages = with pkgs; [
+        unstable.audacity
+        reaper
+      ];
+    })
+
+    (mkIf cfg.tools.enable {
+      user.packages = with pkgs; [
         ffmpeg-full
-        (pkgs.writeScriptBin "latest_record" ''
-        #!/bin/sh
-        RECORDINGS_DIR="$HOME/Videos/record"
-        [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
-        RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
-        echo "$RECORDING"| xclip -sel c
-        mpv --loop-file=yes "$RECORDING"
-        '')
-      ] else []);
-  };
+      ];
+    })
+  ]);
 }
