@@ -20,7 +20,6 @@ in
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_ENABLE_HIGHDPI_SCALING = "1";
       QT_FONT_DPI = 192;
-      _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
       XCURSOR_SIZE = "48";
     };
 
