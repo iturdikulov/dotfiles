@@ -62,6 +62,8 @@ in {
       (if cfg.raster.enable then [
         krita
         gimp
+        gimpPlugins.gmic
+        gimpPlugins.bimp
         qview
         geeqie
         librsvg
