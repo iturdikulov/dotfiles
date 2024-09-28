@@ -3,13 +3,14 @@
 rofi_command="rofi -theme theme/powermenu.rasi"
 
 ### Options ###
-power_off="Shutdown"
-reboot="Reboot"
-lock="Lock"
-suspend="Sleep"
-logout="Logout"
+power_off="	Shutdown"
+reboot="	Reboot"
+rebootinto="	Reboot into..."
+lock="	Lock"
+suspend="⏾	Sleep"
+logout="󰍃	Logout"
 # Variable passed to rofi
-options="$lock\n$logout\n$suspend\n$reboot\n$power_off"
+options="$lock\n$logout\n$suspend\n$reboot\n$rebootinto\n$power_off"
 
 case "$(echo -e "$options" | $rofi_command -dmenu)" in
     $power_off)
@@ -17,6 +18,10 @@ case "$(echo -e "$options" | $rofi_command -dmenu)" in
         ;;
     $reboot)
         systemctl reboot
+        ;;
+    $rebootinto)
+        entry=$(systemctl reboot --boot-loader-entry=help | rofi -dmenu -i -p "Reboot into...")
+        [[ -n "$entry" ]] && systemctl reboot --boot-loader-entry="$entry"
         ;;
     $suspend)
         systemctl suspend
