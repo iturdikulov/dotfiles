@@ -73,7 +73,7 @@ in {
             repl $XDG_CONFIG_HOME/aspell/en.prepl;
           '';
           DVDCSS_CACHE = "$XDG_DATA_HOME/dvdcss";
-          HISTFILE = "$XDG_DATA_HOME/bash/history";
+          HISTFILE = ''$XDG_STATE_HOME/''${SHELL##*/}/history'';
           INPUTRC = "$XDG_CONFIG_HOME/readline/inputrc";
           LESSHISTFILE = "$XDG_STATE_HOME/less/history";
           LESSKEY = "$XDG_CONFIG_HOME/less/keys";
