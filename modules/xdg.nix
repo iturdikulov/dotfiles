@@ -3,7 +3,7 @@
 # Set up and enforce XDG compliance. Other modules will take care of their own,
 # but this takes care of the general cases.
 
-{ options, config, lib, home-manager, ... }:
+{ options, config, pkgs, lib, home-manager, ... }:
 
 with lib;
 with lib.my;
@@ -19,21 +19,32 @@ in {
       ### A tidy $HOME is a tidy mind
       home-manager.users.${config.user.name}.xdg.enable = true;
 
+      # Auto-create XDG directories and ensure correct permissions. Some tools
+      # may auto-create them with overly permissive defaults OR may not create
+      # them at all when trying to write them, causing errors. Best to do it
+      # right from the start.
+      system.userActivationScripts.wacom = ''
+        for dir in $XDG_STATE_HOME $XDG_DATA_HOME $XDG_CACHE_HOME $XDG_BIN_HOME $XDG_CONFIG_HOME; do
+          mkdir -p $dir
+          chmod 700 $dir
+        done
+      '';
+
       environment = {
         sessionVariables = {
           # Prevent auto-creation of XDG user directories (like Desktop,
           # Documents, etc), we move it to $XDG_DATA_HOME. The trailing slash is
           # necessary for some apps (like Firefox) to respect it. See
           # https://bugzilla.mozilla.org/show_bug.cgi?id=1082717
-          XDG_DESKTOP_DIR = "$HOME/.local/share/desktop/";
+          XDG_DESKTOP_DIR = "$HOME/.local/share/xdg/desktop/";
 
           # These are the defaults, and xdg.enable does set them, but due to load
           # order, they're not set before environment.variables are set, which could
           # cause race conditions.
           XDG_CACHE_HOME = "$HOME/.cache";
           XDG_CONFIG_HOME = "$HOME/.config";
-          XDG_DATA_HOME = "$HOME/.local/share";
           XDG_BIN_HOME = "$HOME/.local/bin";
+          XDG_DATA_HOME = "$HOME/.local/share";
           XDG_STATE_HOME = "$HOME/.local/state";
         };
 
@@ -88,16 +99,16 @@ in {
       ## dbus-broker doesn't produce a $HOME/.dbus like the dbus daemon does.
       services.dbus.implementation = "broker";
 
-      # NixOS genereates a $HOME/.xsession-errors file whether or not there were any
-      # errors, so delete it if it's empty.
-      services.xserver.displayManager.job.environment = {
-        # Move ~/.Xauthority out of $HOME.
-        XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
-        # See https://kdemonkey.blogspot.com/2008/04/magic-trick.html
-        # Then https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/x11/display-managers/default.nix#L74-L83
-        # Which would otherwise create $HOME/.compose-cache.
-        XCOMPOSECACHE = "$XDG_RUNTIME_DIR/xcompose";
-      };
+      # Ensure legacy GTK2 apps read/write its config to an XDG directory.
+      # services.xserver.displayManager.job.environment.GTK2_RC_FILES = "$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
+      # The authoritative way to inform the display manager of this file's new
+      # location, and soon enough.
+      # systemd.globalEnvironment.XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+      # services.xserver.displayManager.job.environment.XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+      # See https://kdemonkey.blogspot.com/2008/04/magic-trick.html, then
+      # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/x11/display-managers/default.nix#L74-L83
+      # which would otherwise create $HOME/.compose-cache.
+      services.xserver.displayManager.job.environment.XCOMPOSECACHE = "$XDG_RUNTIME_DIR/xcompose";
     }
 
     (mkIf cfg.mimeapps.enable {
