@@ -12,8 +12,17 @@ in {
     services.openssh = {
       enable = true;
       settings = {
-        PasswordAuthentication = false;  # NOTE: use it only for testing
+        kbdInteractiveAuthentication = false;
+        # Require keys over passwords. Ensure target machines are provisioned
+        # with authorizedKeys!
+        PasswordAuthentication = false;
       };
+      # Suppress superfluous TCP traffic on new connections. Undo if using SSSD.
+      extraConfig = ''GSSAPIAuthentication no'';
+      # Deactive short moduli
+      moduliFile = pkgs.runCommand "filterModuliFile" {} ''
+        awk '$5 >= 3071' "${config.programs.ssh.package}/etc/ssh/moduli" >"$out"
+      '';
     };
 
     user.openssh.authorizedKeys.keys =
