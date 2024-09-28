@@ -247,8 +247,8 @@ Options:
 
 ## TODO
 
-https://github.com/hlissner/dotfiles/commits/master/?after=1e2ca74b02d2d92005352bf328acc86abb10efbd+209
-refactor: add profiles for relational/layered config
+https://github.com/hlissner/dotfiles/commits/master/?after=1e2ca74b02d2d92005352bf328acc86abb10efbd+175
+refactor: minor refactors and comment revision
 
 - [x] fix agenix secrets
 - [ ] ngnix bind 80 port and set root url
