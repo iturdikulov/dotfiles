@@ -1,4 +1,4 @@
-{ options, config, lib, ... }:
+{ options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -12,7 +12,6 @@ in {
     services.openssh = {
       enable = true;
       settings = {
-        kbdInteractiveAuthentication = false;
         # Require keys over passwords. Ensure target machines are provisioned
         # with authorizedKeys!
         PasswordAuthentication = false;

@@ -31,8 +31,8 @@ in {
       ];
       security.polkit.enable = true;
 
-      user.packages = with pkgs.unstable; [
-        obs-studio  # For recording footage
+      user.packages = [
+        pkgs.unstable.obs-studio  # For recording footage
       ];
     })
 

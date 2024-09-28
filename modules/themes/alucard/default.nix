@@ -83,7 +83,7 @@ in {
       ];
       user.packages = with pkgs; [
         papirus-icon-theme
-        unstable.dracula-theme
+        dracula-theme
       ];
       fonts = {
         packages = with pkgs; [
@@ -104,10 +104,17 @@ in {
 
       # Login screen theme
       services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
+        [greeter]
+        show-password-label = false
+
+        [greeter-theme]
         text-color = "${cfg.colors.white}"
         password-background-color = "${cfg.colors.black}"
         window-color = "${cfg.colors.types.border}"
         border-color = "${cfg.colors.types.border}"
+        password-border-radius = 0.01em
+        font = "${cfg.fonts.sans.name}"
+        font-size = 1.4em
       '';
 
       # Other dotfiles
@@ -129,7 +136,7 @@ in {
           "dunst/dunstrc".text = import ./config/dunstrc cfg;
           "Dracula-purple-solid-kvantum" = {
             recursive = true;
-            source = "${pkgs.unstable.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
+            source = "${pkgs.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
             target = "Kvantum/Dracula-purple-solid";
           };
           "kvantum.kvconfig" = {
