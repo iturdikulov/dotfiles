@@ -1,0 +1,5 @@
+[Bookmarks]
+/home/inom/Computer/graphics/assets/
+/home/inom/Computer/graphics/modelling/
+[Recent]
+/home/inom/Downloads/
