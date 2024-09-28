@@ -14,6 +14,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    modules.desktop.type = "x11";
     security.polkit.enable = true; # to promt root password in GUI programs
 
     # Auto-lock on suspend
