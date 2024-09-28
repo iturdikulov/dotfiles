@@ -59,7 +59,7 @@ in {
         "0:_NET_WM_STATE@[3]:32a *= '_NET_WM_STATE_HIDDEN'"
         "0:_NET_WM_STATE@[4]:32a *= '_NET_WM_STATE_HIDDEN'"
         "99:class_g = 'xst-256color'"
-        "90:class_g = 'xst-scratch'"
+        "90:class_g = 'scratch'"
       ];
 
       settings = {
