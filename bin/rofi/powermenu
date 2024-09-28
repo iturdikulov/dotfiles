@@ -9,27 +9,30 @@ rebootinto="	Reboot into..."
 lock="	Lock"
 suspend="⏾	Sleep"
 logout="󰍃	Logout"
+
 # Variable passed to rofi
 options="$lock\n$logout\n$suspend\n$reboot\n$rebootinto\n$power_off"
+choice=$(echo -e "$options" | $rofi_command -dmenu)
+choice="${choice#*	}"
 
-case "$(echo -e "$options" | $rofi_command -dmenu)" in
-    $power_off)
+case $choice in
+    ${power_off#*	})
         systemctl poweroff
         ;;
-    $reboot)
+    ${reboot#*	})
         systemctl reboot
         ;;
-    $rebootinto)
+    ${rebootinto#*	})
         entry=$(systemctl reboot --boot-loader-entry=help | rofi -dmenu -i -p "Reboot into...")
         [[ -n "$entry" ]] && systemctl reboot --boot-loader-entry="$entry"
         ;;
-    $suspend)
-        systemctl suspend
+    ${suspend#*	})
+        $DOTFILES_BIN/zzz -f
         ;;
-    $logout)
+    ${logout#*	})
         kill -s TERM $(ps -o pid,cmd ax | awk '/dwm/{ if ($2 == "dwm") print $1 }')
         ;;
-    $lock)
+    ${lock#*	})
         zzz
         ;;
 esac
