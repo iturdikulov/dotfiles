@@ -21,12 +21,19 @@ in {
   {
     env.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
-    programs.gnupg.agent.enable = true;
-    programs.gnupg.agent.enableSSHSupport = true;
-    programs.gnupg.agent.pinentryPackage = pkgs.pinentry-rofi;
+    systemd.user.services.gpg-agent.serviceConfig.Environment = [
+      "GNUPGHOME=/home/${config.user.name}/.config/gnupg"
+    ];
+
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      # Don't specify any pinentry flavor in the gpg-agent's service, otherwise
+      # it could potentially overwrite our dotfiles.
+      pinentryPackage = null;
+    };
 
     user.packages = with pkgs; [
-      tomb      # File encryption on GNU/Linux
       paperkey  # Store OpenPGP or GnuPG on paper
     ];
 
@@ -42,12 +49,20 @@ in {
     #   a cache entry will be expired even if it has been accessed recently or
     #   has been set using gpg-preset-passphrase. The default is 2 hours (7200
     #   seconds).
+
+    # HACK: Passing GTK2_RC_FILES to the service's Environment didn't work. And
+    #   setting GTK2_RC_FILES globally in
+    #   services.xserver.displayManager.sessionCommands is too nuclear an
+    #   option. This is a clumsy workaround, but is the most targeted.
+
     home.configFile."gnupg/gpg-agent.conf" = {
       text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
         default-cache-ttl-ssh ${toString cfg.cacheTTL}
         max-cache-ttl     ${toString cfg.maxCacheTTL}
         max-cache-ttl-ssh ${toString cfg.maxCacheTTL}
+
+        pinentry-program ${pkgs.pinentry-rofi}/bin/pinentry-rofi
       '';
     };
   }
