@@ -36,20 +36,15 @@ button {
     color:      rgba(238, 46, 36, 1);
 }
 
+#battery,
+#memory,
+#language,
+#network,
 #wireplumber,
 #bat,
 #tray,
 #usage,
 #net {
-    background-color: @background-alt;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    margin-left: 0.3em;
-}
-
-#battery,
-#memory,
-#language,
-#network {
-    margin-right: 0.8em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
 }
