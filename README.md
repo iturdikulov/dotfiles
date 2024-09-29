@@ -53,7 +53,8 @@ TODO: add screenshoot
 3. Switch to root user: `sudo su -`
 
 4. Do your partitions and mount your root.
-   TODO: add link to my note about NixOS base install (btrfs RAID1)
+
+   https://github.com/iturdikulov/notes/blob/main/NixOS_pre-install.md
 
 5. Install these dotfiles:
    ```sh
