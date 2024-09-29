@@ -68,6 +68,11 @@
       tailscale.enable = true;
       mysql.enable = true; # for photoprism
       qbittorrent.enable = true;
+
+      spoofdpi.enable = true;
+      spoofdpi.openFirewall = true;
+      spoofdpi.address = "192.168.0.190";
+
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
     };
