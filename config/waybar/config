@@ -8,16 +8,17 @@
     "modules-center": [
         "sway/window"
     ],
-    "modules-right": ["wireplumber", "group/bat", "group/net", "clock", "tray"],
+    "modules-right": [
+        "sway/language", "clock", "wireplumber", "battery", "group/net", "tray"
+    ],
 
-    "group/bat": {
-        "orientation": "horizontal",
-        "modules": ["battery", "backlight"]
+    "sway/window": {
+        "max-length": 20,
     },
 
     "group/net": {
         "orientation": "horizontal",
-        "modules": ["sway/language", "network", "bluetooth"]
+        "modules": ["network", "bluetooth"]
     },
 
     "sway/workspaces": {
@@ -34,25 +35,25 @@
         }
     },
 
+    "sway/language": {
+        "format": "{short} |"
+    },
+
     "clock": {
-        "format": "{:%d.%m.%Y | %H:%M}"
+        "format": "{:%d.%m.%Y | %H:%M |}"
     },
 
     "wireplumber": {
-        "format": "\udb81\udd7e  {volume}%",
+        "format": "\udb81\udd7e {volume}%",
         "max-volume": 100,
         "scroll-step": 5
     },
 
     "battery": {
-        "bat": "BAT1",
+        "bat": "BAT0",
         "interval": 60,
-        "format": "{icon}  {capacity}%",
+        "format": "{icon} {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
-    },
-
-    "backlight": {
-        "format": "\udb80\udcdf  {percent}%"
     },
 
     "memory": {
@@ -82,10 +83,6 @@
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
-
-    "sway/language": {
-        "format": "{short}"
     },
 
     "tray": {
