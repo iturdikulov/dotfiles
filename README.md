@@ -54,7 +54,8 @@ TODO: add screenshoot
 
 4. Do your partitions and mount your root.
 
-   https://github.com/iturdikulov/notes/blob/main/NixOS_pre-install.md
+- Here is full walkthrough - https://iturdikulov.com/NixOS_pre-install
+- Backup link - https://github.com/iturdikulov/notes/blob/main/NixOS_pre-install.md
 
 5. Install these dotfiles:
    ```sh
