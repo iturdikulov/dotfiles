@@ -15,15 +15,20 @@ in {
   options.modules.dev.python = {
     enable = mkBoolOpt false;
     xdg.enable = mkBoolOpt devCfg.xdg.enable;
+    pycharm.enable = mkBoolOpt false;
   };
 
   config = mkMerge [
+    (mkIf cfg.pycharm.enable {
+      user.packages = with pkgs; [
+        # # Tools for refactoring and alternative code checking
+        jetbrains.pycharm-community-bin
+      ];
+    })
+
     (mkIf cfg.enable {
       user.packages = with pkgs; [
         unstable.basedpyright
-
-        # # Tools for refactoring and alternative code checking
-        jetbrains.pycharm-community-bin
 
         # Some pre-installed python packages
         # to avoid pip installing them every time
