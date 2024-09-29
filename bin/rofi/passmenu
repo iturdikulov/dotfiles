@@ -21,20 +21,6 @@ if [[ $1 == -r ]]; then
     resume=1; shift
 fi
 
-url=
-# Get qutebrowser's current url
-win=$(xdotool getactivewindow)
-if [[ -n $win ]]; then
-  winname=$(xdotool getwindowname $win)
-  if [[ $winname =~ " - Mozilla Firefox$" ]]; then
-    url=${winname% - Mozilla*}
-    url=${url##* - }
-    while (( ${#url//[^.]/} > 1 )); do
-      url=${url#*.}
-    done
-  fi
-fi
-
 LAST_ENTRY_FILE=/tmp/_upm
 if [[ -n $resume && -f $LAST_ENTRY_FILE ]]; then
   entry="$(<$LAST_ENTRY_FILE)"
@@ -43,7 +29,7 @@ else
   password_files=( "$prefix"/**/*.gpg  )
   password_files=( "${password_files[@]#"$prefix"/}"  )
   password_files=( "${password_files[@]%.gpg}" )
-  entry=$(printf "%s\n" "${password_files[@]}" | $ROFI_CMD -p "..." -filter "$url")
+  entry=$(printf "%s\n" "${password_files[@]}" | $ROFI_CMD -p "...")
 fi
 
 if [[ -z $entry ]]; then
