@@ -46,5 +46,28 @@ in {
       # $EXTRA_LDFLAGS and $EXTRA_CCFLAGS are sometimes necessary too, but I set
       # those in nix-shells instead.
     })
+
+    (mkIf (config.modules.desktop.type == "wayland") {
+    # see NixOS/nixos-hardware#348
+    # TODO: Try these!
+    environment.systemPackages = with pkgs; [
+      libva
+      # Fixes crashes in Electron-based apps?
+      # libsForQt5.qt5ct
+      # libsForQt5.qt5-wayland
+    ];
+
+    environment.sessionVariables = {
+      LIBVA_DRIVER_NAME = "nvidia";
+      WLR_NO_HARDWARE_CURSORS = "1";
+
+      # May cause Firefox crashes
+      GBM_BACKEND = "nvidia-drm";
+
+        # If you face problems with Discord windows not displaying or screen
+        # sharing not working in Zoom, remove or comment this:
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      };
+    })
   ]);
 }
