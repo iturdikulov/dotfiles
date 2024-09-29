@@ -84,7 +84,7 @@ in
         vt = 2;  # Avoid vt log messages conflict with tuigreet pseudo gui
         settings = rec {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'sway --unsupported-gpu'";
             user = "greeter";
           };
         };
@@ -92,7 +92,8 @@ in
 
      home.configFile = {
       "foot/foot.ini".text = ''
-        font=monospace:size=14
+        font=monospace:size=16
+        dpi-aware=no
 
         [colors]
         background=0e1415
