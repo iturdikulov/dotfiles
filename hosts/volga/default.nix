@@ -134,6 +134,8 @@
     };
     services = {
       ssh.enable = true;
+      wlsunset.enable = true;
+
       syncthing.enable = true;
       virt-manager.enable = true;
       # calibre.enable = true;
