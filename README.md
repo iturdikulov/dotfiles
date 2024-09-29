@@ -54,8 +54,14 @@ TODO: add screenshoot
 
 4. Do your partitions and mount your root.
 
+- Initial steps (network connection) - https://nixos.org/manual/nixos/stable/#sec-installation
 - Here is full walkthrough - https://iturdikulov.com/NixOS_pre-install
 - Backup link - https://github.com/iturdikulov/notes/blob/main/NixOS_pre-install.md
+
+OR
+
+- https://gist.github.com/iturdikulov/a359062a6f339a14d9863ae3af507801
+- https://github.com/hlissner/dotfiles/blob/master/hosts/udon/README.org
 
 5. Install these dotfiles:
    ```sh
