@@ -17,30 +17,8 @@
 
   ## Modules
   modules = {
-    desktop = {
-      apps = {
-        rofi.enable = true;
-      };
-      browsers = {
-        default = "firefox";
-        firefox.enable = true;
-      };
-      gaming = {
-        emulators.enable = true;
-      };
-      media = {
-        archive.enable = true;
-        documents.enable = true;
-      };
-      term = {
-        default = "xst";
-        st.enable = true;
-      };
-    };
     dev = {
       python.enable = true;
-      # node.enable = true;
-      # cc.enable = true;
     };
     editors = {
       default = "nvim";
