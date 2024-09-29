@@ -12,7 +12,7 @@
 	),
 	history_length: 100,
 	replacing_resets_timeout: true,
-	min_window_width: 1024,
+	min_window_width: 512,
 	layout_blocks: [
 		(
 			name: "root",
@@ -54,7 +54,7 @@
 			params: TextBlock((
 				text: "%s",
 				padding: (left: 18.0, right: 18.0, top: 18.0, bottom: 12.0),
-				font: "Monospace 32",
+				font: "Monospace 14",
 				color: Color(hex: "#f8f8f2"),
 				dimensions: (
 					width: (min: 1024, max: 1024),
@@ -76,7 +76,7 @@
 			params: ScrollingTextBlock((
 				text: "%b",
 				padding: (left: 18.0, right: 18.0, top: 0.0, bottom: 24.0),
-				font: "Monospace 32",
+				font: "Monospace 14",
 				color: (hex: "#f8f8f2"),
 				scroll_speed: 0.1,
 				lhs_dist: 24.0,

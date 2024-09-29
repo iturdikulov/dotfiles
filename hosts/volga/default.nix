@@ -13,7 +13,7 @@
     desktop = {
       high-dpi.enable = true;
       dwm.enable = true;
-      wired.enable = true;
+      wired.enable = false;
       wine.enable = true;
       appimage.enable = true;
       term = {
