@@ -26,7 +26,9 @@ set $browser brave
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg $XDG_DATA_HOME/wallpaper fill scale 2
+output * bg $XDG_DATA_HOME/wallpaper fill
+output eDP-1 scale 1.5
+output DP-1 scale 2
 
 #
 # Example configuration:
@@ -272,3 +274,5 @@ exec thunderbird
 exec slack
 exec crow
 exec obsidian
+
+include @sysconfdir@/sway/config.d/*
