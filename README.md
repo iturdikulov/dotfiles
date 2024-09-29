@@ -74,7 +74,7 @@ OR
    # Optional, set architecture (defaults to x86_64-linux)
    export NIX_SYSTEM=x86_64-linux # or aarch64-linux
 
-   git clone https://github.com/Inom-Turdikulov/dotfiles /etc/dotfiles
+   git clone https://github.com/iturdikulov/dotfiles /etc/dotfiles
    cd /etc/dotfiles
 
    # Create a host config in `hosts/` and add it to the repo:
@@ -84,7 +84,9 @@ OR
    cp hosts/volga/default.nix hosts/$HOST/default.nix
    # get some settings from hosts/volga/hardware-configuration.nix too!
 
-   vim hosts/$HOST/default.nix  # configure this for your system; don't use it verbatim!
+   # configure this for your system; don't use it verbatim!
+   # DON't forget about modules section!
+   vim hosts/$HOST/default.nix
 
    # Optionally Check / adjust options file (default user name and autorized
    # keys at least)
