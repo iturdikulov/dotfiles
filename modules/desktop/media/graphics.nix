@@ -69,14 +69,14 @@ in {
           gpick          # An advanced color picker
           flameshot      # Screenshots
 
-          pureref        # A reference image viewer
-          (makeDesktopItem {
-            name = "pureref";
-            desktopName = "pureref";
-            genericName = "A reference image viewer";
-            icon = "pureref";
-            exec = "${pkgs.pureref}/bin/pureref %F";
-          })
+          # pureref        # A reference image viewer
+          #(makeDesktopItem {
+          #  name = "pureref";
+          #  desktopName = "pureref";
+          #  genericName = "A reference image viewer";
+          #  icon = "pureref";
+          #  exec = "${pkgs.pureref}/bin/pureref %F";
+          #})
 
           (pkgs.writeScriptBin "scrcap_ocr" ''
           #!/bin/sh
