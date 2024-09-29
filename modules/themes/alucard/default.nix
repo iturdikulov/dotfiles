@@ -108,6 +108,28 @@ in {
         (mkIf desktop.sway.enable {
           "waybar/style.css".source = ./config/waybar/style.css;
         })
+        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable || desktop.dwm.enable || desktop.sway.enable) {
+          "polybar" = { source = ./config/polybar; recursive = true; };
+          "dunst/dunstrc".text = import ./config/dunstrc cfg;
+          "Dracula-purple-solid-kvantum" = {
+            recursive = true;
+            source = "${pkgs.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
+            target = "Kvantum/Dracula-purple-solid";
+          };
+          "kvantum.kvconfig" = {
+            text = ''
+            [General]
+            theme=Dracula-purple-solid
+            '';
+            target = "Kvantum/kvantum.kvconfig";
+          };
+        })
+        (mkIf desktop.media.graphics.vector.enable {
+          "inkscape/templates/default.svg".source = ./config/inkscape/default-template.svg;
+        })
+        (mkIf desktop.browsers.qutebrowser.enable {
+          "qutebrowser/extra/theme.py".source = ./config/qutebrowser/theme.py;
+        })
       ];
     })
       # Login screen theme

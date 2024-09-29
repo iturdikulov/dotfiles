@@ -20,6 +20,7 @@ in {
       ];
     })
 
+        swayimg       # feh (as an image previewer)
     (mkIf config.services.xserver.enable {
       assertions = [
         {

@@ -11,9 +11,17 @@
   ## Modules
   modules = {
     desktop = {
-      high-dpi.enable = true;
-      dwm.enable = true;
+      type = "wayland";
+      dwm.enable = false;
+
+      sway = rec {
+        enable = true;
+        monitors = [ { output = "DP-1"; primary = true; } ];
+      };
+
+      high-dpi.enable = false;
       wired.enable = false;
+
       wine.enable = true;
       appimage.enable = true;
       term = {
