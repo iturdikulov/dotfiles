@@ -73,7 +73,8 @@ in {
   config = mkIf cfg.enable {
     systemd.services.spoofdpi = {
       wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
+      after = ["network-online.target"];
+      requires = ["network-online.target"];
       serviceConfig = {
         Restart = "on-failure";
         ExecStart = ''
