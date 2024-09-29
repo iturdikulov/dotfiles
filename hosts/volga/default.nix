@@ -77,6 +77,7 @@
       rust.enable = true;
       go.enable = true;
       python.enable = true;
+      python.pycharm.enable = true;
       cc.enable = true;
       lua.enable = true;
 

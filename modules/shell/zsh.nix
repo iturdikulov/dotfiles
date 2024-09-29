@@ -110,9 +110,5 @@ in {
     system.userActivationScripts.cleanupZgen = ''
       rm -rfv $ZSH_CACHE $ZGEN_DIR/init.zsh{,.zwc}
     '';
-
-    system.userActivationScripts.updateTealdeer = ''
-      ${pkgs.tealdeer}/bin/tldr --update
-    '';
   };
 }
