@@ -16,13 +16,10 @@ in {
       usbutils
       sysbench
       kdiskmark
-      mlc
       bandwidth
       hwinfo
       stress-ng
-
       furmark
-      unigine-superposition
     ];
   };
 }
