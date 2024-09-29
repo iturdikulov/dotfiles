@@ -30,7 +30,11 @@ in {
       enableSSHSupport = true;
       # Don't specify any pinentry flavor in the gpg-agent's service, otherwise
       # it could potentially overwrite our dotfiles.
-      pinentryPackage = null;
+      pinentryPackage = pkgs.pinentry-rofi.override {
+          rofi = if config.modules.desktop.type == "wayland"
+                 then pkgs.rofi-wayland-unwrapped
+                 else pkgs.rofi;
+      };
     };
 
     user.packages = with pkgs; [
@@ -61,8 +65,6 @@ in {
         default-cache-ttl-ssh ${toString cfg.cacheTTL}
         max-cache-ttl     ${toString cfg.maxCacheTTL}
         max-cache-ttl-ssh ${toString cfg.maxCacheTTL}
-
-        pinentry-program ${pkgs.pinentry-rofi}/bin/pinentry-rofi
       '';
     };
   }

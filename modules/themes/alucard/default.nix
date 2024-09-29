@@ -74,8 +74,90 @@ in {
       };
     }
 
-    # Desktop (X11) theming
-    (mkIf config.services.xserver.enable {
+    {
+      modules.desktop.sway.mako.settings = {
+        background-color = "${cfg.colors.types.bg}f2";
+        border-color = "${cfg.colors.red}ee";
+        border-radius = 6;
+        border-size = 1;
+        default-timeout = 10000;
+        font = "${cfg.fonts.sans.name} ${toString cfg.fonts.sans.size}";
+        height = 300;
+        # icon-path =
+        #   let iconDir = "/etc/profiles/per-user/${config.user.name}/share/icons";
+        #   in concatStringsSep ":" [
+        #     "${iconDir}/${cfg.gtk.iconTheme.name}"
+        #     "${iconDir}/gnome"
+        #   ];
+        # layer = "top";
+        # max-history = 10;
+        # max-visible = 10;
+        # padding = 20;
+        # progress-color = "${cfg.colors.red}2f";
+        # sort = "-time";
+        # text-color = cfg.colors.types.fg;
+        # width = 420;
+        #
+        # "urgency=high" = {
+        #   background-color = "${cfg.colors.types.border}ee";
+        #   # border-color = "${cfg.colors.types.error}66";
+        #   default-timeout = 0;
+        #   text-color = "#ffffff";
+        # };
+        # "urgency=low" = {
+        #   background-color = "${cfg.colors.types.panelbg}dd";
+        #   # border-color = "${cfg.colors.types.border}BB";
+        #   # text-color = cfg.colors.types.panelfg;
+        #   default-timeout = 6000;
+        # };
+        #
+        # "app-name=Spotify" = {
+        #   # background-color = "${cfg.colors.types.border}DD";
+        #   group-by = "app-name";
+        #   max-icon-size = 150;
+        #   padding = "0,0,0,18";
+        #   icon-location = "right";
+        # };
+        #
+        # "category=preview" = {
+        #   group-by = "app-name";
+        #   max-icon-size = 150;
+        #   padding = "0,0,0,20";
+        #   icon-location = "right";
+        # };
+        #
+        # # For 'hey .osd ...' notifications
+        # "app-name=OSD" = {
+        #   anchor = "bottom-center";
+        #   border-color = "${cfg.colors.types.border}99";
+        #   border-radius = 48;
+        #   border-size = 1;
+        #   default-timeout = 1750;
+        #   font = "${cfg.fonts.icons.name} 32";
+        #   format = "%b";
+        #   group-by = "app-name";
+        #   height = 512;
+        #   on-button-left = "none";
+        #   outer-margin = "0,0,256,0";
+        #   padding = "18,0";
+        #   progress-color = "${cfg.colors.red}66";
+        #   text-alignment = "center";
+        #   width = 512;
+        # };
+        # "app-name=OSD category=mic" = {
+        #   progress-color = "${cfg.colors.red}44";
+        # };
+        # "app-name=OSD category=lcd" = {
+        #   progress-color = "${cfg.colors.brightred}99";
+        # };
+        # "app-name=OSD category=indicator" = {
+        #   width = 150;
+        #   padding = "32,0";
+        #   font = "${cfg.fonts.icons.name} 48";
+        # };
+      };
+    }
+
     (mkIf (config.modules.desktop.type != null) {
       env.GTK_THEME = config.modules.theme.gtk.theme;
 
@@ -86,22 +168,6 @@ in {
         papirus-icon-theme
         dracula-theme
       ];
-      fonts = {
-        packages = with pkgs; [
-          noto-fonts
-          noto-fonts-cjk-serif
-          noto-fonts-emoji
-          fira-code-nerdfont
-          fira-code-symbols
-          fira
-          open-sans
-          jetbrains-mono
-          siji
-          font-awesome
-          paratype-pt-sans
-          kdePackages.qt6ct
-        ];
-      };
 
       # Other dotfiles
       home.configFile = with config.modules; mkMerge [
@@ -132,6 +198,9 @@ in {
         })
       ];
     })
+
+    # Desktop (X11) theming
+    (mkIf config.services.xserver.enable {
       # Login screen theme
       services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
         [greeter]
@@ -156,32 +225,6 @@ in {
         (mkIf desktop.bspwm.enable {
           "bspwm/rc.d/00-theme".source = ./config/bspwmrc;
           "bspwm/rc.d/95-polybar".source = ./config/polybar/run.sh;
-        })
-        (mkIf desktop.apps.rofi.enable {
-          "rofi/theme" = { source = ./config/rofi; recursive = true; };
-          "rofi/config.rasi".source = ./config/rofi_config.rasi;
-        })
-        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable || desktop.dwm.enable) {
-          "polybar" = { source = ./config/polybar; recursive = true; };
-          "dunst/dunstrc".text = import ./config/dunstrc cfg;
-          "Dracula-purple-solid-kvantum" = {
-            recursive = true;
-            source = "${pkgs.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
-            target = "Kvantum/Dracula-purple-solid";
-          };
-          "kvantum.kvconfig" = {
-            text = ''
-            [General]
-            theme=Dracula-purple-solid
-            '';
-            target = "Kvantum/kvantum.kvconfig";
-          };
-        })
-        (mkIf desktop.media.graphics.vector.enable {
-          "inkscape/templates/default.svg".source = ./config/inkscape/default-template.svg;
-        })
-        (mkIf desktop.browsers.qutebrowser.enable {
-          "qutebrowser/extra/theme.py".source = ./config/qutebrowser/theme.py;
         })
       ];
     })

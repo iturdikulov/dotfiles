@@ -16,11 +16,72 @@ in {
         xdotool
         xorg.xwininfo
         xorg.xev
-        libqalculate # calculator cli w/ currency conversion
       ];
     })
 
+    (mkIf (cfg.type == "wayland") {
+      user.packages = with pkgs.unstable; [
+        # Program     Substitutes for
+        ripdrag       # xdragon (drag and drop)
+        wev           # xev
+        wl-clipboard  # xclip
+        wtype         # xdotool (sorta)
+        swappy        # swappy/Snappy/sharex
+        slurp         # slop (screenshot tool)
         swayimg       # feh (as an image previewer)
+        imv
+      ];
+
+      # Improves latency and reduces stuttering in high load scenarios
+      security.pam.loginLimits = [
+        { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+      ];
+    })
+
+    (mkIf (cfg.type != null) {
+      user.packages = with pkgs; [
+        libnotify
+      ];
+
+      security.polkit.enable = true; # to promt root password in GUI programs
+      systemd.user.services.polkit-gnome-authentication-agent-1 = {
+          description = "polkit-gnome-authentication-agent-1";
+          wantedBy = [ "graphical-session.target" ];
+          wants = [ "graphical-session.target" ];
+          after = [ "graphical-session.target" ];
+          serviceConfig = {
+            Type = "simple";
+            ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+            Restart = "on-failure";
+            RestartSec = 1;
+            TimeoutStopSec = 10;
+          };
+      };
+
+      fonts = {
+        fontDir.enable = true;
+        enableGhostscriptFonts = true;
+        packages = with pkgs; [
+          ubuntu_font_family
+          dejavu_fonts
+          symbola
+
+          noto-fonts
+          noto-fonts-cjk-serif
+          noto-fonts-emoji
+          fira-code-nerdfont
+          fira-code-symbols
+          fira
+          open-sans
+          jetbrains-mono
+          siji
+          font-awesome
+          paratype-pt-sans
+        ];
+      };
+    })
+
+
     (mkIf config.services.xserver.enable {
       assertions = [
         {
@@ -39,16 +100,6 @@ in {
           message = "Can't enable a desktop app without a desktop environment";
         }
       ];
-
-      fonts = {
-        fontDir.enable = true;
-        enableGhostscriptFonts = true;
-        packages = with pkgs; [
-          ubuntu_font_family
-          dejavu_fonts
-          symbola
-        ];
-      };
 
       ## Apps/Services
       services.xserver.displayManager.lightdm.greeters.mini.user = config.user.name;

@@ -15,7 +15,6 @@ in
 
   config = mkIf cfg.enable {
     modules.desktop.type = "x11";
-    security.polkit.enable = true; # to promt root password in GUI programs
 
     # Auto-lock on suspend
     programs.xss-lock.enable = true;
@@ -30,8 +29,6 @@ in
         exec ${pkgs.i3lock-fancy-rapid}/bin/i3lock-fancy-rapid 3 3
       '')
     ];
-
-    home.file.".icons/default".source = "${pkgs.volantes-cursors}/share/icons/volantes_cursors";
 
     home.dataFile."dwm/autostart.sh" = {
       text = ''
@@ -73,7 +70,6 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      libnotify
       dmenu
       alsa-utils # for dwm-status
       xorg.xmodmap # to set mod3 key
@@ -135,22 +131,6 @@ in
         '';
       };
       gvfs.enable = true;
-    };
-
-    systemd = {
-      user.services.polkit-gnome-authentication-agent-1 = {
-        description = "polkit-gnome-authentication-agent-1";
-        wantedBy = [ "graphical-session.target" ];
-        wants = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-      };
     };
 
     # link recursively so other modules can link files in their folders

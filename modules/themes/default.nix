@@ -208,16 +208,21 @@ in {
 
       # Fix icon theme in QT applications
       programs.dconf.enable = true;
+
+      # Other config
+      home.file.".icons/default".source = "${pkgs.volantes-cursors}/share/icons/volantes_cursors";
       home-manager.users.${config.user.name}.dconf.settings."org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
           icon-theme = "${cfg.gtk.iconTheme}";
+          cursor-theme = "${cfg.gtk.cursorTheme}";
+          cursor-size = 32;
       };
       home.configFile."qt5ct/qt5ct.conf".text = lib.generators.toINI { } qtctConf;
       home.configFile."qt6ct/qt6ct.conf".text = lib.generators.toINI { } qtctConf;
+
       # Styling
       fonts = {
         fontconfig = {
-
           # Fixes pixelation
           antialias = true;
 
