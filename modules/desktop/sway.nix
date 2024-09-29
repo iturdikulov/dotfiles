@@ -20,6 +20,7 @@ in
       pulseaudio # for volume control
       foot
       bemenu
+      waybar
     ];
 
     # # Enable the gnome-keyring secrets vault.
@@ -85,6 +86,7 @@ in
           xkb_variant "colemak_dh,"
       }
     '';
+    home.configFile."waybar/config".source = "${configDir}/waybar/config";
 
     # Enable brightness and volume
     user.extraGroups = [ "video" ];

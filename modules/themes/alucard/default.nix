@@ -76,6 +76,7 @@ in {
 
     # Desktop (X11) theming
     (mkIf config.services.xserver.enable {
+    (mkIf (config.modules.desktop.type != null) {
       env.GTK_THEME = config.modules.theme.gtk.theme;
 
       environment.systemPackages = with pkgs; [
@@ -102,6 +103,13 @@ in {
         ];
       };
 
+      # Other dotfiles
+      home.configFile = with config.modules; mkMerge [
+        (mkIf desktop.sway.enable {
+          "waybar/style.css".source = ./config/waybar/style.css;
+        })
+      ];
+    })
       # Login screen theme
       services.xserver.displayManager.lightdm.greeters.mini.extraConfig = ''
         [greeter]
