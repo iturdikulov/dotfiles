@@ -12,7 +12,7 @@ let inherit (inputs) agenix;
     # TODO: need understand how to use variables here or optimze this?
     # TODO: support only 2 architecures for now
     nix_system = builtins.getEnv "NIX_SYSTEM";
-    agenix_package = if nix_system == "" then agenix.packages.x86_64-linux.default else agenix.packages.aarch64-linux.default;
+    agenix_package = if nix_system == "aarch64-linux" then agenix.packages.aarch64-linux.default else agenix.packages.x86_64-linux.default;
 in {
   imports = [ agenix.nixosModules.default ];
   environment.systemPackages = [ agenix_package ];
