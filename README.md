@@ -26,12 +26,12 @@ TODO: add screenshoot
 |                |                                                          |
 |----------------|----------------------------------------------------------|
 | **Shell:**     | zsh                                                      |
-| **DM:**        | lightdm + lightdm-mini-greeter                           |
-| **WM:**        | dwm-flexipatch + dwm-status                              |
+| **DM:**        | greetd + tuigreet                                        |
+| **WM:**        | sway + swaybar                                           |
 | **Editor:**    | neovim                                                   |
-| **Terminal:**  | st                                                       |
-| **Launcher:**  | dmenu                                                    |
-| **Browser:**   | TODO: ungoogled-chromium                                 |
+| **Terminal:**  | foot                                                     |
+| **Launcher:**  | rofi                                                     |
+| **Browser:**   | brave + firefox                                          |
 | **GTK Theme:** | [Ant Dracula](https://github.com/EliverLara/Ant-Dracula) |
 
 -----
