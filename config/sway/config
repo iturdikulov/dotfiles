@@ -225,14 +225,30 @@ bindsym $mod+r mode "resize"
 
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioPlay exec playerctl -p $BROWSER play-pause
+    bindsym --locked XF86AudioPrev exec playerctl -p $BROWSER previous
+    bindsym --locked XF86AudioNext exec playerctl -p $BROWSER next
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec light -U 10
     bindsym --locked XF86MonBrightnessUp exec light -A 10
+
     # Special key to take a screenshot with grim
     bindsym Print exec grim -g "$(slurp -d)" - | wl-copy -t image/png
+
+#
+# Scratchpad
+#
+bindsym --to-code $mod+grave exec (swaymsg "[app_id=dropdown] scratchpad show") || exec $term -a dropdown
+for_window [app_id="dropdown"] floating enable, \
+    border pixel 5, \
+    resize set 70 ppt 60 ppt, \
+    move position center, \
+    move to scratchpad, \
+    scratchpad show
 
 #
 # Status Bar:
