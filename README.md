@@ -104,6 +104,12 @@ OR
 
    # Then move the dotfiles to the mounted drive!
    mv /etc/dotfiles /mnt/etc/dotfiles
+
+   # Reboot and change owner
+   chown -R ...
+
+   # NAS clients, create dedicated directory
+   mkidr /media
    ```
 
 6. Then reboot and you're good to go!
