@@ -8,6 +8,7 @@ in {
     enable = mkBoolOpt false;
     zfs.enable = mkBoolOpt false;
     ssd.enable = mkBoolOpt false;
+    nfs.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -37,6 +38,11 @@ in {
         fdupes        # Identifies duplicate files residing within specified directories
       ];
     }
+
+    (mkIf cfg.nfs.enable {
+      services.nfs.server.enable = true;
+      networking.firewall.allowedTCPPorts = [ 2049 ];
+    })
 
     (mkIf (!cfg.zfs.enable && cfg.ssd.enable) {
       services.fstrim.enable = true;

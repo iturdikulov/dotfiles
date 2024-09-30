@@ -71,6 +71,7 @@ options libata          allow_tpm=0
     fs = {
       enable = true;
       ssd.enable = false; # I use instead discard=async with BTRFS
+      nfs.enable = true;
     };
     sensors.enable = true;
 
@@ -123,6 +124,16 @@ options libata          allow_tpm=0
         "nofail" # Prevent system from failing if this drive doesn't mount
       ];
     };
+
+  # NFS
+  fileSystems."/export/Arts_and_Entertainment" = {
+    device = "${config.user.home}/Arts_and_Entertainment";
+    options = [ "bind" ];
+  };
+  services.nfs.server.exports = ''
+    /export                         192.168.0.191(rw,fsid=0,no_subtree_check)
+    /export/Arts_and_Entertainment  192.168.0.191(rw,nohide,insecure,no_subtree_check)
+  '';
 
   swapDevices = [ ];
 

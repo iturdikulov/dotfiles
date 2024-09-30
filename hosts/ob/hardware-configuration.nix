@@ -18,6 +18,12 @@
       fsType = "ext4";
     };
 
+  "/media/Arts_and_Entertainment" = {
+      device = "192.168.0.191:/Arts_and_Entertainment";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/e678bd4c-6c50-45be-90c2-137d6258c028";
 
   # tlp is enabled by nixos-hardware.asus-rog-strix-g513im
@@ -43,6 +49,8 @@
     android.enable = true;
     fs = {
       enable = true;
+      ssd.enable = false;
+      nfs.enable = true;
     };
     sensors.enable = true;
 
