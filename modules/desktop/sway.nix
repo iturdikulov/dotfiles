@@ -84,7 +84,7 @@ in
         vt = 2;  # Avoid vt log messages conflict with tuigreet pseudo gui
         settings = rec {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'sway --unsupported-gpu'";
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'dbus-run-session sway --unsupported-gpu'";
             user = "greeter";
           };
         };
