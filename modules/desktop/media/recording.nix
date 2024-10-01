@@ -12,7 +12,7 @@ let cfg = config.modules.desktop.media.recording;
 in {
   options.modules.desktop.media.recording = {
     enable = mkBoolOpt false;
-    capture.enable = mkBoolOpt false;
+    capture.enable = mkBoolOpt true;
     audio.enable = mkBoolOpt true;
     tools.enable = mkBoolOpt true;
   };
@@ -31,8 +31,8 @@ in {
       ];
       security.polkit.enable = true;
 
-      user.packages = [
-        pkgs.unstable.obs-studio  # For recording footage
+      user.packages = with pkgs; [
+        unstable.obs-studio  # For recording footage
       ];
     })
 

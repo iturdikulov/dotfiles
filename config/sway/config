@@ -3,10 +3,6 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-# https://github.com/swaywm/sway/wiki/Systemd-integration#managing-user-applications-with-systemd
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
-exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -55,6 +51,9 @@ exec swayidle -w \
          timeout 2000 'swaylock -f -c 000000' \
          timeout 3600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
+
+# Stop sway-session.target on shutdown event
+exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
 
 ### Input configuration
 input "1267:12699:ASUE120A:00_04F3:319B_Touchpad" {
@@ -291,4 +290,4 @@ exec slack
 exec crow
 exec obsidian
 
-include @sysconfdir@/sway/config.d/*
+include /etc/sway/config.d/*

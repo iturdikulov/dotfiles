@@ -96,9 +96,6 @@ in {
         };
       };
 
-      ## dbus-broker doesn't produce a $HOME/.dbus like the dbus daemon does.
-      services.dbus.implementation = "broker";
-
       # Ensure legacy GTK2 apps read/write its config to an XDG directory.
       # services.xserver.displayManager.job.environment.GTK2_RC_FILES = "$XDG_CONFIG_HOME/gtk-2.0/gtkrc";
       # The authoritative way to inform the display manager of this file's new

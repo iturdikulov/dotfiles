@@ -47,28 +47,85 @@ in
       gvfs.enable = true;
     };
 
+    environment.sessionVariables = {
+        # SDL:
+        SDL_VIDEODRIVER = "wayland";
+        # QT (needs qt5.qtwayland in systemPackages):
+        QT_QPA_PLATFORM = "wayland-egl";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        # # Fix for some Java AWT applications (e.g. Android Studio),
+        # # use this if they aren't displayed properly:
+        # _JAVA_AWT_WM_NONREPARENTING = "1";
+
+        ELECTRON_OZONE_PLATFORM_HINT = "auto";
+        NIXOS_OZONE_WL = "1";
+        MOZ_ENABLE_WAYLAND = "1";
+        XDG_CURRENT_DESKTOP = "sway";
+        XDG_SESSION_TYPE = "wayland";
+    };
+
     # enable Sway window manager
     programs.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
+      extraOptions = [
+        "--verbose"
+        "--unsupported-gpu"
+      ];
+      extraSessionCommands = ''
+      '';
     };
 
     xdg.portal = {
       enable = true;
       wlr.enable = true;
-      # gtk portal needed to make gtk apps happy
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      xdgOpenUsePortal = true;
+      # wlr.settings = {
+      #   screencast = {
+      #     output_name = "DP-1";
+      #     max_fps = 30;
+      #     chooser_type = "simple";
+      #     chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
+      #   };
+      # };
+      # config = {
+      #   common = {
+      #     default = [ "wlr" ];
+      #   };
+      # };
+      config = {
+        common = {
+          default = [ "gtk" ];
+        };
+        sway = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+        };
+      };
+      extraPortals = with pkgs; [
+        # xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
     };
 
-    environment.sessionVariables = {
-      ELECTRON_OZONE_PLATFORM_HINT = "auto";
-      NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      # SDL_VIDEODRIVER=wayland
-      # QT_QPA_PLATFORM=wayland
-      # QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      # _JAVA_AWT_WM_NONREPARENTING=1
-    };
+    # xdg.portal = {
+    #   enable = true;
+    #   wlr.enable = true;
+    #   wlr.settings = {
+    #
+    #   }
+    #   # xdgOpenUsePortal = true;
+    #   # gtk portal needed to make gtk apps happy
+    #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    #   config = {
+    #     common = {
+    #       default = [
+    #         "gtk"
+    #       ];
+    #     };
+    #   };
+    # };
 
     # configuring sway itself (assmung a display manager starts it)
     systemd.user.targets.sway-session = {
@@ -84,7 +141,7 @@ in
         vt = 2;  # Avoid vt log messages conflict with tuigreet pseudo gui
         settings = rec {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'dbus-run-session sway --unsupported-gpu'";
+            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'dbus-run-session sway '";
             user = "greeter";
           };
         };
