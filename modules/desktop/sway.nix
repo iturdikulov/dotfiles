@@ -92,8 +92,7 @@ in
 
      home.configFile = {
       "foot/foot.ini".text = ''
-        font=monospace:size=16
-        dpi-aware=no
+        font=Terminus (TTF):size=16
 
         [colors]
         background=0e1415

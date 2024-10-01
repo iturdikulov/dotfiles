@@ -71,6 +71,7 @@ in {
           fira-code-nerdfont
           fira-code-symbols
           fira
+          terminus_font_ttf
           open-sans
           jetbrains-mono
           siji
