@@ -9,8 +9,9 @@ in {
 
     # Hosts
     ${optionalString (config.time.timeZone == "Europe/Moscow") ''
-        192.168.0.190  kama
-        192.168.0.191  volga
+        192.168.0.190  kama.local
+        192.168.0.191  volga.local
+        192.168.0.192  ob.local
       ''}
 
     # Block garbage
