@@ -2,8 +2,7 @@
 
 with builtins;
 with lib;
-let blocklist = fetchurl https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts;
-in {
+{
   networking.extraHosts = ''
     192.168.0.1   router.home
 
@@ -13,9 +12,7 @@ in {
         192.168.0.191  volga.local
         192.168.0.192  ob.local
       ''}
-
-    # Block garbage
-    ${optionalString config.services.xserver.enable (readFile blocklist)}'';
+    '';
 
   ## Location config -- since Toronto is my 127.0.0.1
   time.timeZone = mkDefault "Europe/Moscow";

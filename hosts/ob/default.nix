@@ -5,7 +5,6 @@
     ../home.nix
     ./hardware-configuration.nix
     #./modules/backup.nix
-    #./modules/smb.nix
     #./modules/iturdikulov.nix
   ];
 
