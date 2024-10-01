@@ -4,8 +4,6 @@
     inputs.nixos-hardware.nixosModules.asus-rog-strix-g513im
     ../home.nix
     ./hardware-configuration.nix
-    #./modules/backup.nix
-    #./modules/iturdikulov.nix
   ];
 
   ## Modules
@@ -136,7 +134,6 @@
 
       syncthing.enable = true;
       virt-manager.enable = true;
-      # calibre.enable = true;
       tailscale.enable = true;
       tailscale.routingFeatures = "client";
 
@@ -144,9 +141,6 @@
       docker.enable = true;
       rabbitmq.enable = false;
       postgresql.enable = false;
-
-      # Needed occasionally to help the parental units with PC problems
-      # teamviewer.enable = true;
     };
     theme.active = "alucard";
   };
