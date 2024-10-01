@@ -25,9 +25,8 @@
       wine.enable = true;
       appimage.enable = true;
       term = {
-        default = "xst";
-        wezterm.enable = true;
-        st.enable = true;
+        default = "foot";
+        foot.enable = true;
       };
       apps = {
         rofi.enable = true;

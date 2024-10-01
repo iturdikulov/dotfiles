@@ -8,6 +8,7 @@ let cfg = config.modules.shell.tmux;
 in {
   options.modules.shell.tmux = with types; {
     enable = mkBoolOpt false;
+    term = mkOpt str "xterm-256color";
     rcFiles = mkOpt (listOf (either str path)) [];
   };
 
@@ -16,6 +17,8 @@ in {
       enable = true;
       keyMode = "vi";
       extraConfig = with pkgs.tmuxPlugins; ''
+        set -s default-terminal "${cfg.term}"
+
         source-file $TMUX_HOME/tmux.conf
         ${concatMapStrings (path: "source-file '${path}'\n") cfg.rcFiles}
 

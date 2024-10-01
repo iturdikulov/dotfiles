@@ -91,14 +91,6 @@ in
       };
 
      home.configFile = {
-      "foot/foot.ini".text = ''
-        font=Terminus (TTF):size=16
-
-        [colors]
-        background=0e1415
-        foreground=cecece
-      '';
-
       "mako/config".text =
         let toINI = mapAttrsToList (n: v: "${n}=${toString v}");
         in ''

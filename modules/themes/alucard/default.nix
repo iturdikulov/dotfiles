@@ -75,6 +75,36 @@ in {
     }
 
     {
+      modules.desktop.term.foot.settings = {
+        main = {
+          font = "${cfg.fonts.mono.name}:size=${toString cfg.fonts.mono.size}";
+        };
+        colors = mapAttrs (_: v: if isString v then removePrefix "#" v else v) {
+          alpha = 0.95;
+          background = cfg.colors.types.bg;
+          foreground = cfg.colors.types.fg;
+        #   selection-foreground = cfg.colors.types.panelfg;
+        #   selection-background = cfg.colors.types.panelbg;
+        #   urls = cfg.colors.types.highlight;
+          regular0 = cfg.colors.black;
+          regular1 = cfg.colors.red;
+          regular2 = cfg.colors.green;
+          regular3 = cfg.colors.yellow;
+          regular4 = cfg.colors.blue;
+          regular5 = cfg.colors.magenta;
+          regular6 = cfg.colors.cyan;
+          regular7 = cfg.colors.white;
+          bright0 = cfg.colors.grey;
+          bright1 = cfg.colors.brightred;
+          bright2 = cfg.colors.brightgreen;
+          bright3 = cfg.colors.brightyellow;
+          bright4 = cfg.colors.brightblue;
+          bright5 = cfg.colors.brightmagenta;
+          bright6 = cfg.colors.brightcyan;
+          bright7 = cfg.colors.silver;
+        };
+      };
+
       modules.desktop.sway.mako.settings = {
         background-color = "${cfg.colors.types.bg}f2";
         border-color = "${cfg.colors.red}ee";

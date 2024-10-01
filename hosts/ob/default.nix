@@ -27,6 +27,7 @@
       appimage.enable = true;
       term = {
         default = "foot";
+        foot.enable = true;
       };
       apps = {
         rofi.enable = true;
