@@ -99,11 +99,6 @@
 
   services.asusd = {
     enable = true;
-    asusdConfig = ''
-      {
-        "bat_charge_limit": 70
-      }
-    '';
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
