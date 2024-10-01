@@ -28,31 +28,31 @@
     [ { device = "/dev/disk/by-uuid/152943f9-cda2-46c3-9fe8-dd0efbf6f332"; }
     ];
 
-  fileSystems."/media/Arts_and_Entertainment" = {
+  fileSystems."${config.user.home}/Arts_and_Entertainment" = {
       device = "volga.local:/Arts_and_Entertainment";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."/media/Computer" = {
+  fileSystems."${config.user.home}/Computer" = {
       device = "volga.local:/Computer";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."/media/IRL" = {
+  fileSystems."${config.user.home}/IRL" = {
       device = "volga.local:/IRL";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."/media/Pictures" = {
+  fileSystems."${config.user.home}/Pictures" = {
       device = "volga.local:/Pictures";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."/media/Videos" = {
+  fileSystems."${config.user.home}/Videos" = {
       device = "volga.local:/Videos";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
