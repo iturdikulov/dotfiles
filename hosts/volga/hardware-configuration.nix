@@ -130,9 +130,30 @@ options libata          allow_tpm=0
     device = "${config.user.home}/Arts_and_Entertainment";
     options = [ "bind" ];
   };
+  fileSystems."/export/Computer" = {
+    device = "${config.user.home}/Computer";
+    options = [ "bind" ];
+  };
+  fileSystems."/export/IRL" = {
+    device = "${config.user.home}/IRL";
+    options = [ "bind" ];
+  };
+  fileSystems."/export/Pictures" = {
+    device = "${config.user.home}/Pictures";
+    options = [ "bind" ];
+  };
+  fileSystems."/export/Videos" = {
+    device = "${config.user.home}/Videos";
+    options = [ "bind" ];
+  };
+  services.rpcbind.enable = true;
   services.nfs.server.exports = ''
-    /export                         192.168.0.191(rw,fsid=0,no_subtree_check)
-    /export/Arts_and_Entertainment  192.168.0.191(rw,nohide,insecure,no_subtree_check)
+    /export                         volga(rw,fsid=0,no_subtree_check)          ob(rw,fsid=0,no_subtree_check)
+    /export/Arts_and_Entertainment  volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/Computer                volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/IRL                     volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/Pictures                volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/Videos                  volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
   '';
 
   swapDevices = [ ];
