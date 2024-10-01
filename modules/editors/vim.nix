@@ -73,11 +73,12 @@ in {
       ltex-ls
       nil             # Yet another language server for Nix
       efm-langserver  # for formatting
-      unstable.emmet-ls
-      texlab
-      ruff-lsp
-      gopls
-      marksman
+      unstable.emmet-ls  # HTML/XML/CSS completion
+      texlab    # LaTeX
+      ruff-lsp  # Python linter
+      gopls     # Go
+      marksman  # Markdown
+      nil       # Nix
 
       ## Formatting
       stylua

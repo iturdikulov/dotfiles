@@ -17,6 +17,11 @@ in {
       wireplumber.enable = true;  # for screencasting support
     };
 
+    # Auto-conncet trusted bluetooth devices
+    hardware.pulseaudio.extraConfig = "
+      load-module module-switch-on-connect
+    ";
+
     security.rtkit.enable = true;
 
     user.packages = with pkgs; [

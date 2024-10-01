@@ -30,6 +30,7 @@
       apps = {
         rofi.enable = true;
         slack.enable = true;
+        vesktop.enable = true;
         zoom.enable = true;
         thunderbird.enable = true;
         telegram.enable = true;

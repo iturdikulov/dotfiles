@@ -9,16 +9,11 @@
         "sway/window"
     ],
     "modules-right": [
-        "sway/language", "clock", "wireplumber", "battery", "group/net", "tray"
+        "sway/language", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
     ],
 
     "sway/window": {
         "max-length": 30,
-    },
-
-    "group/net": {
-        "orientation": "horizontal",
-        "modules": ["network", "bluetooth"]
     },
 
     "sway/workspaces": {
@@ -36,7 +31,7 @@
     },
 
     "sway/language": {
-        "format": "{short} |"
+        "format": "[{short}]"
     },
 
     "clock": {
@@ -67,9 +62,9 @@
 
     "network": {
         "format": "",
-        "format-ethernet": "\udb83\udc9d ",
-        "format-wifi": "{icon} ",
-        "format-disconnected": "\udb83\udc9c ",
+        "format-ethernet": " \udb83\udc9d ",
+        "format-wifi": " {icon} ",
+        "format-disconnected": " \udb83\udc9c ",
         "format-icons": ["\udb82\udd2f", "\udb82\udd1f", "\udb82\udd22", "\udb82\udd25", "\udb82\udd28"],
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}",
@@ -80,6 +75,7 @@
         "format": "\udb80\udcaf",
         "format-disabled": "\udb80\udcb2",
         "format-connected": "\udb80\udcb1",
+        "format-connected-battery": " {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"

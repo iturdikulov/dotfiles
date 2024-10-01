@@ -82,16 +82,11 @@ in {
     #   services.xserver.displayManager.sessionCommands is too nuclear an
     #   option. This is a clumsy workaround, but is the most targeted.
 
-    home.configFile."gnupg/gpg.conf".text = ''
-      pinentry-mode loopback
-    '';
-
     home.configFile."gnupg/gpg-agent.conf".text = ''
         default-cache-ttl ${toString cfg.cacheTTL}
         default-cache-ttl-ssh ${toString cfg.cacheTTL}
         max-cache-ttl     ${toString cfg.maxCacheTTL}
         max-cache-ttl-ssh ${toString cfg.maxCacheTTL}
-        allow-loopback-pinentry
 
         pinentry-program ${pinentryAuto}/bin/pinentry-auto
     '';
