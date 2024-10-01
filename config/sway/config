@@ -267,6 +267,8 @@ titlebar_padding 1
 # bindsym $mod+n exec wired --drop all
 # bindsym $mod+Shift+n exec wired --show 10
 
+seat seat0 xcursor_theme default 32
+
 input type:keyboard {
     xkb_layout "us,ru"
     xkb_options "grp:alt_shift_toggle,ctrl:nocaps,lv5:ralt_switch,compose:rwin"
@@ -282,7 +284,7 @@ assign [app_id="Slack"] workspace number 4
 assign [app_id="thunderbird"] workspace number 5
 
 # Load some GUI apps
-exec $term
+exec $term -e mux
 exec $browser
 exec thunderbird
 exec slack
