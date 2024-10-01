@@ -57,7 +57,7 @@ in {
       enableSSHSupport = true;
       # Don't specify any pinentry flavor in the gpg-agent's service, otherwise
       # it could potentially overwrite our dotfiles.
-      pinentryPackage = null;
+      pinentryPackage = pinentryPkg;
     };
 
     user.packages = with pkgs; [
@@ -90,7 +90,7 @@ in {
         max-cache-ttl-ssh ${toString cfg.maxCacheTTL}
         allow-loopback-pinentry
 
-        pinentry-program ${pinentryAuto}/bin/pinentry-auto
+        # pinentry-program ${pinentryAuto}/bin/pinentry-auto
       '';
     };
   }
