@@ -13,7 +13,7 @@
     ],
 
     "sway/window": {
-        "max-length": 20,
+        "max-length": 30,
     },
 
     "group/net": {
