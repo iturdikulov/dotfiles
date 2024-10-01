@@ -69,7 +69,6 @@ in
       enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = [
-        "--verbose"
         "--unsupported-gpu"
       ];
       extraSessionCommands = ''
