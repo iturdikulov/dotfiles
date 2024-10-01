@@ -25,8 +25,7 @@
 
 /**** Layout ****/
 window {
-  width: 60%;
-  max-width: 38em;
+  width: calc( 50% min 720 );
   y-offset: -10%;
   anchor:   north;
   location: center;

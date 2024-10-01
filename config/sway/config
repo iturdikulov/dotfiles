@@ -89,6 +89,7 @@ input "1267:12699:ASUE120A:00_04F3:319B_Touchpad" {
     bindsym $mod+c exec $DOTFILES_BIN/rofi/calcmenu
     bindsym $mod+a exec $DOTFILES_BIN/rofi/windowmenu
     bindsym $mod+backslash exec $DOTFILES_BIN/rofi/unicode
+    bindsym $mod+Shift+Control+delete exec $DOTFILES_BIN/rofi/powermenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

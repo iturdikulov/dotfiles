@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-rofi_command="rofi -theme theme/powermenu.rasi"
+rofi_command="rofi -dmenu"
 
 ### Options ###
 power_off="	Shutdown"
@@ -12,7 +12,7 @@ logout="󰍃	Logout"
 
 # Variable passed to rofi
 options="$lock\n$logout\n$suspend\n$reboot\n$rebootinto\n$power_off"
-choice=$(echo -e "$options" | $rofi_command -dmenu)
+choice=$(echo -e "$options" | $rofi_command )
 choice="${choice#*	}"
 
 case $choice in
@@ -30,7 +30,12 @@ case $choice in
         $DOTFILES_BIN/zzz -f
         ;;
     ${logout#*	})
-        kill -s TERM $(ps -o pid,cmd ax | awk '/dwm/{ if ($2 == "dwm") print $1 }')
+        if command -v swaymsg 2>&1 >/dev/null
+        then
+            swaymsg exit
+        else
+            kill -s TERM $(ps -o pid,cmd ax | awk '/dwm/{ if ($2 == "dwm") print $1 }')
+        fi
         ;;
     ${lock#*	})
         zzz
