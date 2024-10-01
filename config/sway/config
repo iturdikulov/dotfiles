@@ -286,9 +286,7 @@ assign [app_id="thunderbird"] workspace number 5
 # Load some GUI apps
 exec $term -e mux
 exec $browser
-exec thunderbird
 exec slack
-exec crow
 exec obsidian
 
 include /etc/sway/config.d/*
