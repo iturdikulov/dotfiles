@@ -98,6 +98,11 @@ in {
            if (( $+commands[leetcode] )); then
              eval "$(leetcode completions)"
            fi
+
+           if [ "$SSH_CLIENT" ]; then
+               # I have logged in via SSH, check pinentry-auto in gnupg.nix
+               export PINENTRY_USER_DATA=USE_CURSES
+           fi
         '';
 
       "zsh/extra.zshenv".text = ''
