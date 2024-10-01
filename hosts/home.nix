@@ -15,13 +15,7 @@ in {
       ''}
 
     # Block garbage
-    ${optionalString config.services.xserver.enable (readFile blocklist)}
-
-    # Cusom garbage
-    0.0.0.0 2ch.hk
-    0.0.0.0 pikabu.ru
-    0.0.0.0 danieldefo.ru
-  '';
+    ${optionalString config.services.xserver.enable (readFile blocklist)}'';
 
   ## Location config -- since Toronto is my 127.0.0.1
   time.timeZone = mkDefault "Europe/Moscow";
