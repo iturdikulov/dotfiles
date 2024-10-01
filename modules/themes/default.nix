@@ -215,7 +215,7 @@ in {
           color-scheme = "prefer-dark";
           icon-theme = "${cfg.gtk.iconTheme}";
           cursor-theme = "${cfg.gtk.cursorTheme}";
-          cursor-size = 24;
+          cursor-size = 32;
       };
       home.configFile."qt5ct/qt5ct.conf".text = lib.generators.toINI { } qtctConf;
       home.configFile."qt6ct/qt6ct.conf".text = lib.generators.toINI { } qtctConf;
