@@ -14,17 +14,51 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b6ba1d4c-03b2-459c-94fc-ac232c6c7014";
+    { device = "/dev/disk/by-uuid/9fde4312-021c-4fca-8107-d6c0df60eeea";
       fsType = "ext4";
     };
 
-  "/media/Arts_and_Entertainment" = {
-      device = "192.168.0.191:/Arts_and_Entertainment";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/90DC-343A";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/152943f9-cda2-46c3-9fe8-dd0efbf6f332"; }
+    ];
+
+  fileSystems."/media/Arts_and_Entertainment" = {
+      device = "volga.local:/Arts_and_Entertainment";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/e678bd4c-6c50-45be-90c2-137d6258c028";
+  fileSystems."/media/Computer" = {
+      device = "volga.local:/Computer";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
+  fileSystems."/media/IRL" = {
+      device = "volga.local:/IRL";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
+  fileSystems."/media/Pictures" = {
+      device = "volga.local:/Pictures";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
+  fileSystems."/media/Videos" = {
+      device = "volga.local:/Videos";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/9012aa88-25d2-47ff-836f-c7b4639cb5ba";
 
   # tlp is enabled by nixos-hardware.asus-rog-strix-g513im
   services.tlp.settings = {
@@ -71,16 +105,6 @@
       }
     '';
   };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0429-8336";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/9177da30-8ca8-422d-9b18-4e129caafd12"; }
-    ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
