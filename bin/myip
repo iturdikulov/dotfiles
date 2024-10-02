@@ -19,3 +19,5 @@ else
     exit 1
   fi
 fi
+
+dig +short "myip.opendns.com" "@resolver1.opendns.com"

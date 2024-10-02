@@ -1,3 +1,8 @@
 #!/usr/bin/env cached-nix-shell
-#! nix-shell -p qrencode xclip
-xclip -o -selection clipboard|qrencode -t ansiutf8
+#! nix-shell -p qrencode
+# Create a QR code from FILE or stdin.
+#
+# SYNOPSIS:
+#   echo TEXT | qcode
+
+cat $@ | qrencode -t ansiutf8

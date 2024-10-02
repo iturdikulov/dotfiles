@@ -15,8 +15,6 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
        unstable.piper-tts
-       xdotool
-       xclip
        alsa-utils
     ];
 
