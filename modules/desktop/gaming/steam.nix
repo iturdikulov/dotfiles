@@ -16,7 +16,19 @@ in {
         enable = true;
         remotePlay.openFirewall = true;
       };
+
+      # SteamOS session compositing window manager
+      # Steam > Game > Properties > Launch Options and add:
+      # run with resolution & fps & fullscreen & mangohud
+      # gamescope -W 3840 -H 2160 -r 60 -f -e -- mangohud gamemoderun %command%
+      # Options:
+      #   -W, --output-width             output width
+      #   -H, --output-height            output height
+      #   -r, --nested-refresh           game refresh rate (frames per second)
+      #   -e, --steam                    enable Steam integration
+      #   -f, --fullscreen               make the window fullscreen
       gamescope.enable = true;
+
       gamemode = {
         enable = true;
         settings = {
