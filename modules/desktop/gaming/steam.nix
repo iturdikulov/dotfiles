@@ -12,7 +12,11 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      steam.enable = true;
+      steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+      };
+      gamescope.enable = true;
       gamemode = {
         enable = true;
         settings = {
@@ -43,7 +47,7 @@ in {
       '')
     ] ++ (if cfg.mangohud.enable then [ pkgs.mangohud ] else []);
 
-    # better for steam proton games
+    # Better for steam proton games
     systemd.extraConfig = "DefaultLimitNOFILE=1048576";
   };
 }
