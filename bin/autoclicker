@@ -13,7 +13,7 @@ elif (( $+commands[ydotool] )); then
     ydotool click --repeat=30 --next-delay=30 0xC0
   }
 else
-  hey.error "No input backend available (xdotool or ydotool)"
+  notify-send "No input backend available (xdotool or ydotool)"
   exit 1
 fi
 

@@ -10,12 +10,18 @@ MSG_CMD='notify-send'
 set -e
 shopt -s nullglob globstar
 
-for prog in xclip pass; do
-  if ! command -v "$prog" >/dev/null; then
-    >&2 echo "$prog not installed, aborting"
-    exit 1
-  fi
-done
+if command -v xclip 3>&1 >/dev/null; then
+  _copy() {
+    xclip -selection clipboard -in
+  }
+elif command -v wl-copy 2>&1 >/dev/null; then
+  _copy() {
+    wl-copy
+  }
+else
+  notify-send "No clipboard backend available (xclip or ydotool)"
+  exit 1
+fi
 
 if [[ $1 == -r ]]; then
     resume=1; shift
@@ -45,9 +51,9 @@ if [[ -n $secrets ]]; then
   case $field in
     password) pass -c "$entry" ;;
     otp) printf "%s" "$(pass otp -c "$entry")" ;;
-    *) printf "%s" "$(awk -v "key=$field:" '$1 == key {print $2}' <<<"$secrets")" | xclip -selection clipboard -in ;;
+    *) printf "%s" "$(awk -v "key=$field:" '$1 == key {print $2}' <<<"$secrets")" | _copy ;;
   esac
-  $MSG_CMD "Success!" "Copied <b>$entry/$field</b> to clipboard for 45s"
+  $MSG_CMD "Success!" "Copied <b>$entry/$field</b> to clipboard"
 else
   $MSG_CMD "Error!" "Failed to retrieve $entry"
   exit 2
