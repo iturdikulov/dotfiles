@@ -2,6 +2,8 @@
 	name = Inom Turdikulov
 	email = i@inomoz.ru
 	signingKey = 8331DF2EC0A1DF71A8FA078C844195DA7DF99986
+[gpg]
+	program = pinentry-fugitive  # fix issue with gpg-agent for vim-fugutive, check related git.nix file
 [commit]
 	gpgSign = true
 [tag]

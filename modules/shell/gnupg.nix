@@ -8,6 +8,7 @@ let cfg = config.modules.shell.gnupg;
                    then pkgs.rofi-wayland-unwrapped
                    else pkgs.rofi;
     };
+    gnupgPkg = pkgs.gnupg;
 
     pinentryGUIbin = "${pinentryPkg}/bin/pinentry-rofi";
 
@@ -52,6 +53,7 @@ in {
       "GNUPGHOME=/home/${config.user.name}/.config/gnupg"
     ];
 
+    programs.gnupg.package = gnupgPkg;
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -62,6 +64,17 @@ in {
 
     user.packages = with pkgs; [
       paperkey  # Store OpenPGP or GnuPG on paper
+
+      # Fix signing in nvim
+      # https://github.com/tpope/vim-fugitive/issues/1836#issuecomment-918677504
+      (writeShellScriptBin "pinentry-fugitive" ''
+        #!/bin/sh
+
+        if [ -n "$FUGITIVE" ]; then
+          set -- --pinentry-mode loopback "$@"
+        fi
+        exec ${gnupgPkg}/bin/gpg "$@"
+      '')
     ];
 
     # --default-cache-ttl n
