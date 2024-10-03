@@ -11,12 +11,11 @@ if [[ $1 == -h ]]; then
   echo "  $bin -f    # put computer to sleep"
 elif [[ $1 == -f ]]; then
   echo "Going to sleep..."
-  setxkbmap -layout "us(colemak_dh)" &
   playerctl --all-players pause &
+  loginctl lock-session
   systemctl suspend
 else
   echo "Shutting my eyes..."
-  setxkbmap -layout "us(colemak_dh)" &
   playerctl --all-players pause &
   xset dpms force off
 fi
