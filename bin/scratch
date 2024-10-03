@@ -1,23 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-# Toggle a scratch terminal window. A scratch terminal is a disposable terminal
-# for one-off, quick commands that don't warrant a dedicated terminal.
+windows_in(){
+    hyprctl clients -j | jq ".[] | select(.workspace.name == \"special:$1\" )"
+}
 
-SCRID=scratch
-CMD=${1:-'tmux new-session -A -s scratch -n scratch'}
-if command -v xst >/dev/null; then
-    scratch_font="$(xrdb -query | grep 'scratch\.font' | cut -f2)"
-    if [ -z "$scratch_font" ]; then
-        scratch_font='monospace:size=20'
+toggle_scratchpad(){
+    workspace_name="$1"
+    cmd="$2"
+
+    windows=$( windows_in "$workspace_name" )
+    # If not on latest , check the edit history of this post
+    if [ -z "$windows" ];then
+        hyprctl dispatch "exec [workspace special:$workspace_name] $cmd"
+        else
+        hyprctl dispatch togglespecialworkspace "$workspace_name"
     fi
+}
 
-    xst -t $SCRID -n $SCRID -c $SCRID \
-        -f $scratch_font \
-        -e $SHELL -c "$CMD"
-elif command -v urxvt >/dev/null; then
-    urxvt -name $SCRID \
-          -e $SHELL -c "$CMD"
-else
-    >&2 echo "No shell to launch the scratch terminal with"
-    exit 1
-fi
+toggle_scratchpad "scratch" "$@"
