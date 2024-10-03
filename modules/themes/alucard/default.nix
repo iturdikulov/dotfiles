@@ -105,7 +105,7 @@ in {
         };
       };
 
-      modules.desktop.sway.mako.settings = {
+      modules.desktop.hyprland.mako.settings = {
         background-color = "${cfg.colors.types.bg}f2";
         border-color = "${cfg.colors.red}ee";
         border-radius = 6;
@@ -201,12 +201,10 @@ in {
 
       # Other dotfiles
       home.configFile = with config.modules; mkMerge [
-        (mkIf desktop.sway.enable {
-          "waybar/style.css".source = ./config/waybar/style.css;
-        })
-        (mkIf (desktop.bspwm.enable || desktop.stumpwm.enable || desktop.dwm.enable || desktop.sway.enable) {
-          "polybar" = { source = ./config/polybar; recursive = true; };
-          "dunst/dunstrc".text = import ./config/dunstrc cfg;
+        {
+          # NEXT: drop this config
+          # "polybar" = { source = ./config/polybar; recursive = true; };
+          # "dunst/dunstrc".text = import ./config/dunstrc cfg;
           "Dracula-purple-solid-kvantum" = {
             recursive = true;
             source = "${pkgs.dracula-theme}/share/Kvantum/Dracula-purple-solid/";
@@ -219,6 +217,9 @@ in {
             '';
             target = "Kvantum/kvantum.kvconfig";
           };
+        }
+        (mkIf (desktop.sway.enable || desktop.hyprland.enable) {
+          "waybar/style.css".source = ./config/waybar/style.css;
         })
         (mkIf desktop.media.graphics.vector.enable {
           "inkscape/templates/default.svg".source = ./config/inkscape/default-template.svg;
