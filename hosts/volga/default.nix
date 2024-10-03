@@ -10,17 +10,10 @@
   ## Modules
   modules = {
     desktop = {
-      type = "wayland";
-      dwm.enable = false;
-
-      sway = rec {
+      hyprland = {
         enable = true;
         monitors = [ { output = "DP-1"; primary = true; } ];
       };
-
-      high-dpi.enable = false;
-      wired.enable = false;
-
       wine.enable = true;
       appimage.enable = true;
       term = {
@@ -30,7 +23,6 @@
       apps = {
         rofi.enable = true;
         slack.enable = true;
-        discord.enable = true;
         zoom.enable = true;
         thunderbird.enable = true;
         telegram.enable = true;
