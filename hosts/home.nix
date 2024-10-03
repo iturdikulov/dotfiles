@@ -11,6 +11,7 @@ with lib;
         192.168.0.190  kama.local
         192.168.0.191  volga.local
         192.168.0.192  ob.local
+        192.168.0.193  baikal.local
       ''}
     '';
 
