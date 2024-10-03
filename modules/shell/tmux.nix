@@ -4,7 +4,6 @@ with lib;
 with lib.my;
 let cfg = config.modules.shell.tmux;
     configDir = config.dotfiles.configDir;
-    tmuxPackage = pkgs.tmux;
 in {
   options.modules.shell.tmux = with types; {
     enable = mkBoolOpt false;
@@ -17,8 +16,6 @@ in {
       enable = true;
       keyMode = "vi";
       extraConfig = with pkgs.tmuxPlugins; ''
-        set -s default-terminal "${cfg.term}"
-
         source-file $TMUX_HOME/tmux.conf
         ${concatMapStrings (path: "source-file '${path}'\n") cfg.rcFiles}
 

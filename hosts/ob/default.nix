@@ -49,6 +49,7 @@
         documents.enable = true;
         documents.office.enable = true;
         graphics.enable = true;
+        graphics.kritaScaleFactor = "1.5";  # actual for xwayland
         mpv.enable = true;
         recording.enable = true;
         espeak.enable = true;

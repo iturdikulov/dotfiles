@@ -17,8 +17,7 @@ in {
     models.enable  = mkBoolOpt true;
     photos.enable  = mkBoolOpt true;
     videos.enable  = mkBoolOpt true;
-
-    kritaHighDpi = mkBoolOpt false;
+    kritaScaleFactor = mkOpt types.str "1";
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -98,17 +97,17 @@ in {
           inkscape-with-extensions
         ] else []) ++
 
-        (if cfg.kritaHighDpi then [
+        (if cfg.kritaScaleFactor != null then [
             (makeDesktopItem {
                 name = "krita";
                 desktopName = "Krita";
                 genericName = "Digital Painting";
                 icon = "krita";
-                exec = "env QT_SCALE_FACTOR=2 ${krita}/bin/krita %F";
+                exec = "env QT_SCALE_FACTOR=${cfg.kritaScaleFactor} ${krita}/bin/krita %F";
                 categories = [ "Graphics" "Photography" ];
             })
             (writeShellScriptBin "krita" ''
-                export QT_SCALE_FACTOR=2  # fix on high DPI screens
+                export QT_SCALE_FACTOR=${cfg.kritaScaleFactor}  # fix on high DPI screens
                 exec ${krita}/bin/krita "$@"
             '')
         ] else [krita]) ++
