@@ -29,7 +29,6 @@ in {
       # 3D modelling
       user.packages = with pkgs; [
           f3d                   # Fast and minimalist 3D viewer using VTK
-          unstable.blender-hip
           # TODO: verify libcrypt-legacy is required
           # Blender itself doesn't need libxcrypt-legacy, but I use blenderkit,
           # which needs libcrypt.so.1, which libxcrypt no longer provides.
