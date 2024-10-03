@@ -77,7 +77,10 @@
   modules.hardware = {
     audio.enable = true;
     bluetooth.enable = true;
-    nvidia.enable = true;
+    nvidia = {
+      enable = true;
+      cuda.enable = true;
+    };
     microcontroller.enable = true;
     android.enable = true;
     fs = {
