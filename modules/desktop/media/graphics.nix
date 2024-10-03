@@ -6,6 +6,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.desktop.media.graphics;
     configDir = config.dotfiles.configDir;
+    blenderVersion = "4.2";
 in {
   options.modules.desktop.media.graphics = {
     enable         = mkBoolOpt false;
@@ -31,7 +32,7 @@ in {
           # TODO: verify libcrypt-legacy is required
           # Blender itself doesn't need libxcrypt-legacy, but I use blenderkit,
           # which needs libcrypt.so.1, which libxcrypt no longer provides.
-          blender_4_2
+          pkgs."blender_${builtins.replaceStrings ["."] ["_"] blenderVersion}"
           solvespace
           fspy                  # Quick and easy still image camera matching
       ];
@@ -41,7 +42,7 @@ in {
       # enough for me.
       system.userActivationScripts.setupBlenderConfig = ''
         # Copy config
-        destdir="$XDG_CONFIG_HOME/blender/4.2/config"
+        destdir="$XDG_CONFIG_HOME/blender/${blenderVersion}/config"
         mkdir -p "$destdir"
         for cfile in ${configDir}/blender/config/*; do
           basename="$(basename $cfile)"
