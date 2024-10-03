@@ -11,6 +11,9 @@ in
 
   config = mkIf cfg.enable {
     # For my intuos4
-    hardware.opentabletdriver.enable = true;
+    hardware.opentabletdriver = {
+      enable = true;
+      daemon.enable = true;
+    };
   };
 }
