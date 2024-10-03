@@ -14,8 +14,6 @@ let cfg = config.modules.shell.gnupg;
 
     # pinentry-auto based on https://superuser.com/a/1761740
     pinentryAuto = pkgs.writeShellScriptBin "pinentry-auto" ''
-        #!/bin/sh
-
         pe=${pinentryGUIbin}  # default
         bin=${pkgs.pinentry-all}/bin
         case "$PINENTRY_USER_DATA" in
@@ -68,8 +66,6 @@ in {
       # Fix signing in nvim
       # https://github.com/tpope/vim-fugitive/issues/1836#issuecomment-918677504
       (writeShellScriptBin "pinentry-fugitive" ''
-        #!/bin/sh
-
         if [ -n "$FUGITIVE" ]; then
           set -- --pinentry-mode loopback "$@"
         fi
