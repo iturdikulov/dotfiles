@@ -4,34 +4,20 @@
     "height": 24,
     "spacing": 5,
 
-    "modules-left": ["sway/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": [
-        "sway/window"
+        "hyprland/window"
     ],
     "modules-right": [
-        "sway/language", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
+        "hyprland/language", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
     ],
 
-    "sway/window": {
+    "hyprland/window": {
         "max-length": 30,
     },
 
-    "sway/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "icon-size": 20,
-        "sort-by-number": true,
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-        }
-    },
-
-    "sway/language": {
-        "format": "[{short}]"
+    "hyprland/language": {
+        "format": "[{short}]",
     },
 
     "clock": {
