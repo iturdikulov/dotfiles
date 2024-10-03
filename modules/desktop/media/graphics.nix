@@ -1,6 +1,6 @@
 # modules/desktop/media/graphics.nix
 
-{ config, options, lib, pkgs, ... }:
+{ config, options, inputs, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -19,12 +19,19 @@ in {
   };
 
   config = mkIf cfg.enable (mkMerge [
-
     (mkIf cfg.models.enable {
+      # Supplies newer versions of Blender with CUDA support baked in.
+      # @see https://github.com/edolstra/nix-warez/tree/master/blender
+      nixpkgs.overlays = [ inputs.blender-bin.overlays.default ];
+
       # 3D modelling
       user.packages = with pkgs; [
           f3d                   # Fast and minimalist 3D viewer using VTK
           unstable.blender-hip
+          # TODO: verify libcrypt-legacy is required
+          # Blender itself doesn't need libxcrypt-legacy, but I use blenderkit,
+          # which needs libcrypt.so.1, which libxcrypt no longer provides.
+          blender_4_2
           solvespace
           fspy                  # Quick and easy still image camera matching
       ];
@@ -33,11 +40,6 @@ in {
       # very stateful. Having a consistent starting point for new systems is good
       # enough for me.
       system.userActivationScripts.setupBlenderConfig = ''
-        # Copy scripts
-        scriptsDest="$XDG_CONFIG_HOME/blender/4.2/"
-        mkdir -p "$scriptsDest"
-        cp -r ${configDir}/blender/scripts "$scriptsDest"
-
         # Copy config
         destdir="$XDG_CONFIG_HOME/blender/4.2/config"
         mkdir -p "$destdir"
@@ -94,14 +96,36 @@ in {
 
         # Raster images workflow
         (if cfg.raster.enable then [
-          krita
-          gimp
-          gimpPlugins.gmic
-          gimpPlugins.bimp
+          (makeDesktopItem {
+            name = "krita";
+            desktopName = "Krita";
+            genericName = "Digital Painting";
+            icon = "krita";
+            exec = "env QT_SCALE_FACTOR=2 ${krita}/bin/krita %F";
+            categories = [ "Graphics" "Photography" ];
+          })
+          (writeShellScriptBin "krita" ''
+            export QT_SCALE_FACTOR=2  # fix on high DPI screens
+            exec ${krita}/bin/krita "$@"
+          '')
+          mypaint
           qview
           geeqie
           librsvg
           nodePackages.svgo
+
+          # FIXME: on some point need to remove this and add gimp 3.0
+          # this using manually gimp 2.99 build
+          # also this directory is exclued from VCS and you need to copy
+          # files manually across machines
+          (makeDesktopItem {
+            name = "gimp";
+            desktopName = "GIMP";
+            genericName = "GNU Image Manipulation Program";
+            icon = "gimp";
+            exec = "${config.dotfiles.binDir}/gimp/result/bin/gimp %F";
+            categories = [ "Graphics" "Photography" ];
+          })
         ] else []) ++
 
         # Sprite sheets & animation

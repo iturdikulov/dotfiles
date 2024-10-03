@@ -14,13 +14,16 @@ in
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       beets
-
       cmus
-      (writeScriptBin "cmus-wr" ''
-        #!/bin/sh
-        ${pkgs.xst}/bin/xst -n cmus -e ${pkgs.cmus}/bin/cmus "$@"
-      '')
-
+      cmusfm  # don't forget cmusfm init on first time
+      # TODO: parametrize terminal?
+      (makeDesktopItem {
+        name = "cmus";
+        desktopName = "cmus";
+        genericName = "Music Player";
+        icon = "cmus";
+        exec = "${foot}/bin/foot -a cmus -e ${cmus}/bin/cmus %F";
+      })
       # To mount android devices using gio, trash cli
       glib
       musikcube
