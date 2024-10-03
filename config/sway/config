@@ -281,12 +281,17 @@ input type:keyboard {
 assign [app_id="brave"] workspace number 2
 assign [app_id="obsidian"] workspace number 3
 assign [app_id="Slack"] workspace number 4
-assign [app_id="thunderbird"] workspace number 5
+assign [app_id="cmus"] workspace number 5
+assign [class="steam"] workspace number 6
 
 # Load some GUI apps
 exec $term
 exec $browser
 exec slack
 exec obsidian
+exec $term -a cmus -e cmus
 
 include /etc/sway/config.d/*
+
+# Autostart sway-session.target on login
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"
