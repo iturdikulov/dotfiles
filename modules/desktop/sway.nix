@@ -24,6 +24,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    modules.desktop.type = "wayland";
+
     environment.systemPackages = with pkgs; [
       pulseaudio # for volume control
       foot
@@ -47,23 +49,6 @@ in
       gvfs.enable = true;
     };
 
-    environment.sessionVariables = {
-        # SDL:
-        SDL_VIDEODRIVER = "wayland";
-        # QT (needs qt5.qtwayland in systemPackages):
-        QT_QPA_PLATFORM = "wayland-egl";
-        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        # # Fix for some Java AWT applications (e.g. Android Studio),
-        # # use this if they aren't displayed properly:
-        # _JAVA_AWT_WM_NONREPARENTING = "1";
-
-        ELECTRON_OZONE_PLATFORM_HINT = "auto";
-        NIXOS_OZONE_WL = "1";
-        MOZ_ENABLE_WAYLAND = "1";
-        XDG_CURRENT_DESKTOP = "sway";
-        XDG_SESSION_TYPE = "wayland";
-    };
-
     # enable Sway window manager
     programs.sway = {
       enable = true;
@@ -72,6 +57,20 @@ in
         "--unsupported-gpu"
       ];
       extraSessionCommands = ''
+        export ELECTRON_OZONE_PLATFORM_HINT=auto
+        export NIXOS_OZONE_WL=1
+        export MOZ_ENABLE_WAYLAND=1
+        export XDG_CURRENT_DESKTOP=sway
+        export XDG_SESSION_TYPE=wayland
+
+        # SDL:
+        export SDL_VIDEODRIVER=wayland
+        # QT (needs qt5.qtwayland in systemPackages):
+        # export QT_QPA_PLATFORM=wayland-egl
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        # Fix for some Java AWT applications (e.g. Android Studio),
+        # use this if they aren't displayed properly:
+        export _JAVA_AWT_WM_NONREPARENTING=1
       '';
     };
 
@@ -79,19 +78,6 @@ in
       enable = true;
       wlr.enable = true;
       xdgOpenUsePortal = true;
-      # wlr.settings = {
-      #   screencast = {
-      #     output_name = "DP-1";
-      #     max_fps = 30;
-      #     chooser_type = "simple";
-      #     chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-      #   };
-      # };
-      # config = {
-      #   common = {
-      #     default = [ "wlr" ];
-      #   };
-      # };
       config = {
         common = {
           default = [ "gtk" ];
@@ -103,28 +89,9 @@ in
         };
       };
       extraPortals = with pkgs; [
-        # xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
     };
-
-    # xdg.portal = {
-    #   enable = true;
-    #   wlr.enable = true;
-    #   wlr.settings = {
-    #
-    #   }
-    #   # xdgOpenUsePortal = true;
-    #   # gtk portal needed to make gtk apps happy
-    #   extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    #   config = {
-    #     common = {
-    #       default = [
-    #         "gtk"
-    #       ];
-    #     };
-    #   };
-    # };
 
     # configuring sway itself (assmung a display manager starts it)
     systemd.user.targets.sway-session = {
@@ -146,6 +113,7 @@ in
         };
       };
 
+     # NEXT: move into own module
      home.configFile = {
       "mako/config".text =
         let toINI = mapAttrsToList (n: v: "${n}=${toString v}");
@@ -169,8 +137,9 @@ in
         '';
     };
 
-    home.configFile."waybar/config".source = "${configDir}/waybar/config";
+    # NEXT: move into own module
     home.configFile."sway/config".source = "${configDir}/sway/config";
+    home.configFile."waybar/config".source = "${configDir}/waybar/config";
 
     # Enable brightness and volume
     user.extraGroups = [ "video" ];
