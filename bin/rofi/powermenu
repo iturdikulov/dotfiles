@@ -30,14 +30,9 @@ case $choice in
         $DOTFILES_BIN/zzz -f
         ;;
     ${logout#*	})
-        if command -v swaymsg 2>&1 >/dev/null
-        then
-            swaymsg exit
-        else
-            kill -s TERM $(ps -o pid,cmd ax | awk '/dwm/{ if ($2 == "dwm") print $1 }')
-        fi
+        loginctl terminate-session self
         ;;
     ${lock#*	})
-        zzz
+        loginctl lock-session
         ;;
 esac
