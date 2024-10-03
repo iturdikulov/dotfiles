@@ -50,6 +50,7 @@
         documents.enable = true;
         documents.office.enable = true;
         graphics.enable = true;
+        graphics.kritaHighDpi = true;
         mpv.enable = true;
         recording.enable = true;
         espeak.enable = true;

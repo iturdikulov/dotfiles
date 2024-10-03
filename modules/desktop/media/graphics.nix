@@ -17,6 +17,8 @@ in {
     models.enable  = mkBoolOpt true;
     photos.enable  = mkBoolOpt true;
     videos.enable  = mkBoolOpt true;
+
+    kritaHighDpi = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -81,6 +83,7 @@ in {
           #  exec = "${pkgs.pureref}/bin/pureref %F";
           #})
 
+          # TODO: rewrite this
           (pkgs.writeScriptBin "scrcap_ocr" ''
           #!/bin/sh
           maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
@@ -95,20 +98,23 @@ in {
           inkscape-with-extensions
         ] else []) ++
 
+        (if cfg.kritaHighDpi then [
+            (makeDesktopItem {
+                name = "krita";
+                desktopName = "Krita";
+                genericName = "Digital Painting";
+                icon = "krita";
+                exec = "env QT_SCALE_FACTOR=2 ${krita}/bin/krita %F";
+                categories = [ "Graphics" "Photography" ];
+            })
+            (writeShellScriptBin "krita" ''
+                export QT_SCALE_FACTOR=2  # fix on high DPI screens
+                exec ${krita}/bin/krita "$@"
+            '')
+        ] else [krita]) ++
+
         # Raster images workflow
         (if cfg.raster.enable then [
-          (makeDesktopItem {
-            name = "krita";
-            desktopName = "Krita";
-            genericName = "Digital Painting";
-            icon = "krita";
-            exec = "env QT_SCALE_FACTOR=2 ${krita}/bin/krita %F";
-            categories = [ "Graphics" "Photography" ];
-          })
-          (writeShellScriptBin "krita" ''
-            export QT_SCALE_FACTOR=2  # fix on high DPI screens
-            exec ${krita}/bin/krita "$@"
-          '')
           mypaint
           qview
           geeqie
