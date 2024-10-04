@@ -71,7 +71,6 @@
     # @see https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
     START_CHARGE_THRESH_BAT0=60;
     STOP_CHARGE_THRESH_BAT0=80;
-    RESTORE_THRESHOLDS_ON_BAT=1;
   };
 
   modules.hardware = {
