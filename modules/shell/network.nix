@@ -26,6 +26,21 @@ in {
       my.tun2proxy
     ];
 
+    # Allow tun2proxy to run without password request for sudo
+    security.sudo.extraRules = [{
+        commands = [
+          {
+            command = "${pkgs.my.tun2proxy}/bin/tun2proxy";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/etc/profiles/per-user/${config.user.name}/bin/tun2proxy";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+        groups = [ "wheel" ];
+    }];
+
     # Configurations
     home.configFile."wgetrc".source = "${configDir}/wget/wgetrc";
     home.configFile."yt-dlp/config".text = ''
