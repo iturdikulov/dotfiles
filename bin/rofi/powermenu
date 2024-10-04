@@ -30,7 +30,11 @@ case $choice in
         $DOTFILES_BIN/zzz -f
         ;;
     ${logout#*	})
-        loginctl terminate-session self
+        if ! command -v hyprctl >/dev/null; then
+            loginctl kill-user $(whoami)
+        else
+            hyprctl dispatch exit
+        fi
         ;;
     ${lock#*	})
         loginctl lock-session
