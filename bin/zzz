@@ -17,5 +17,5 @@ elif [[ $1 == -f ]]; then
 else
   echo "Shutting my eyes..."
   playerctl --all-players pause &
-  xset dpms force off
+  hyprctl dispatch dpms off
 fi
