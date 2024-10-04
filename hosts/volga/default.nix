@@ -169,4 +169,23 @@
   #services.openssh.settings.X11Forwarding = true;
 
   networking.networkmanager.enable = true;
+
+  # Allow some apps to run without password request for sudo
+  # TODO: merge this with oka into tun2proxy module?
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "${pkgs.my.tun2proxy}/bin/tun2proxy";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/etc/profiles/per-user/${config.user.name}/bin/tun2proxy";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+      groups = [ "wheel" ];
+    }];
+  };
 }

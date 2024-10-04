@@ -23,6 +23,7 @@ in {
       unstable.copilot-cli
       unstable.awscli2
       unstable.ssm-session-manager-plugin
+      my.tun2proxy
     ];
 
     # Configurations
