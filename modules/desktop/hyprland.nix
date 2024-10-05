@@ -70,6 +70,10 @@ in
 
     services.gvfs.enable = true;
 
+    # TODO: move into own module
+    services.hypridle.enable = true;
+    services.hypridle.package = pkgs.unstable.hypridle;
+
     # enable hyprland window manager
     programs.hyprland = {
       enable = true;
