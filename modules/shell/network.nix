@@ -24,7 +24,13 @@ in {
       unstable.awscli2
       unstable.ssm-session-manager-plugin
       my.tun2proxy
+      proxychains
     ];
+
+    ## Custom ENV variables
+    env.GLOBAL_SOCKS5_PROXY = (with config.networking.globalProxy; "${host}:${port}");
+    env.GLOBAL_HTTP_PROXY = (with config.networking.globalProxy; "${builtins.replaceStrings ["socks5"] ["http"] host}:${port}");
+    env.GLOBAL_SOCKS5H_PROXY = (with config.networking.globalProxy; "${builtins.replaceStrings ["socks5"] ["socks5h"] host}:${port}");
 
     # Allow tun2proxy to run without password request for sudo
     security.sudo.extraRules = [{

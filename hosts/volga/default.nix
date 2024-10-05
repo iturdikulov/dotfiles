@@ -37,6 +37,7 @@
       browsers = {
         default = "brave";
         brave.enable = true;
+        brave.proxy = "${config.networking.globalProxy.host}:${config.networking.globalProxy.port}";
         chrome.enable = true;
         firefox.enable = true; # Fallback browser
       };

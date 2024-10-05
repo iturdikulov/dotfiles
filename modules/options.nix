@@ -8,6 +8,13 @@ with lib.my;
       mainDisplayOutput = mkOpt str "DisplayPort-0";
     };
 
+    networking = {
+      globalProxy = {
+        host = mkOpt str "socks5://kama.local";
+        port = mkOpt str "1080";
+      };
+    };
+
     user = mkOpt attrs {};
 
     dotfiles = {

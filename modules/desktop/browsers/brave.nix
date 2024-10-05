@@ -10,11 +10,19 @@ let cfg = config.modules.desktop.browsers.brave;
 in {
   options.modules.desktop.browsers.brave = {
     enable = mkBoolOpt false;
+    proxy = with types; mkOpt (nullOr str) null;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      brave
+      (if cfg.proxy != null
+        then
+          (brave.override {
+            commandLineArgs = "--proxy-server=\"${cfg.proxy}\"";
+          })
+
+      else brave )
+
       (makeDesktopItem {
         name = "brave-private";
         desktopName = "Brave Web Browser";
