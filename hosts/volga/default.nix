@@ -131,9 +131,6 @@
 
       syncthing.enable = true;
       virt-manager.enable = true;
-      # calibre.enable = true;
-      tailscale.enable = true;
-      tailscale.routingFeatures = "client";
 
       nginx.enable = true;
       docker.enable = true;

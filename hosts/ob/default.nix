@@ -128,8 +128,6 @@
 
       syncthing.enable = true;
       virt-manager.enable = true;
-      tailscale.enable = true;
-      tailscale.routingFeatures = "client";
 
       nginx.enable = true;
       docker.enable = true;
