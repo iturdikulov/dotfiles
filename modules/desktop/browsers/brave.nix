@@ -10,17 +10,16 @@ let cfg = config.modules.desktop.browsers.brave;
 in {
   options.modules.desktop.browsers.brave = {
     enable = mkBoolOpt false;
-    proxy = with types; mkOpt (nullOr str) null;
+    proxy.enable = mkBoolOpt true;
   };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      (if cfg.proxy != null
+      (if cfg.proxy.enable
         then
           (brave.override {
-            commandLineArgs = "--proxy-server=\"${cfg.proxy}\"";
+            commandLineArgs = "--proxy-server=\"${config.networking.globalProxy.host}:${config.networking.globalProxy.port}\"";
           })
-
       else brave )
 
       (makeDesktopItem {
