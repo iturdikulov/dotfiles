@@ -27,7 +27,7 @@ case $choice in
         [[ -n "$entry" ]] && systemctl reboot --boot-loader-entry="$entry"
         ;;
     ${suspend#*	})
-        $DOTFILES_BIN/zzz -f
+        systemctl suspend
         ;;
     ${logout#*	})
         if ! command -v hyprctl >/dev/null; then
