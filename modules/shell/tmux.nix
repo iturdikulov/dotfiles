@@ -16,6 +16,7 @@ in {
       enable = true;
       keyMode = "vi";
       extraConfig = with pkgs.tmuxPlugins; ''
+        # set -g default-terminal "tmux-256color"  # try on issues with colors
         set -s default-terminal "${cfg.term}"
         source-file $TMUX_HOME/tmux.conf
         ${concatMapStrings (path: "source-file '${path}'\n") cfg.rcFiles}
