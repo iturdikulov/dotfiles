@@ -62,14 +62,24 @@
 
   # tlp is enabled by nixos-hardware.asus-rog-strix-g513im
   services.tlp.settings = {
-    CPU_MAX_PERF_ON_AC=100;
-    CPU_MAX_PERF_ON_BAT=80;
+    CPU_SCALING_GOVERNOR_ON_AC="performance";
+    CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+    CPU_ENERGY_PERF_POLICY_ON_BAT="power";
+    CPU_MIN_PERF_ON_BAT="0";
+    CPU_MAX_PERF_ON_BAT="60";
+    CPU_BOOST_ON_AC="1";
+    CPU_BOOST_ON_BAT="0";
+    PCIE_ASPM_ON_AC="powersupersave";
+    PCIE_ASPM_ON_BAT="powersupersave";
+    RADEON_POWER_PROFILE_ON_BAT="low";
+    RADEON_DPM_PERF_LEVEL_ON_BAT="low";
+    DEVICES_TO_DISABLE_ON_STARTUP="bluetooth wwan";
+    DEVICES_TO_DISABLE_ON_BAT="bluetooth wwan";
+    DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth wifi wwan";
+    DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan";
 
-    # My laptop is always plugged in wherever I'm willing to use it, so I'll
-    # value battery lifespan over runtime. Run `tlp fullcharge` to temporarily
-    # force full charge.
     # @see https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-    START_CHARGE_THRESH_BAT0=80;
+    START_CHARGE_THRESH_BAT0=75;
     STOP_CHARGE_THRESH_BAT0=80;
   };
 
