@@ -77,9 +77,7 @@
     DEVICES_TO_DISABLE_ON_BAT="bluetooth wwan";
     DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth wifi wwan";
     DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan";
-
-    # @see https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-    START_CHARGE_THRESH_BAT0=75;
+    START_CHARGE_THRESH_BAT0=80;
     STOP_CHARGE_THRESH_BAT0=80;
   };
 
