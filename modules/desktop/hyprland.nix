@@ -70,12 +70,15 @@ in
 
     services.gvfs.enable = true;
 
-    # enable hyprland window manager
+
+    # Enable hyprland window manager and related services/programs
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
       portalPackage = pkgs.xdg-desktop-portal-wlr;
     };
+    programs.waybar.enable = true;
+    services.hypridle.enable = true;
 
     # xdg.portal = {
     #   enable = true;
@@ -111,10 +114,13 @@ in
     services.greetd = {
         enable = true;
         vt = 2;  # Avoid vt log messages conflict with tuigreet pseudo gui
-        settings = rec {
+        settings = {
           default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'dbus-run-session Hyprland'";
-            user = "greeter";
+            command = toString (pkgs.writeShellScript "hyprland-wrapper" ''
+              trap 'systemctl --user stop hyprland-session.target; sleep 1' EXIT
+              ${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd 'dbus-run-session Hyprland'
+            '');
+            user = config.user.name;
           };
         };
     };
