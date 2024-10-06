@@ -157,9 +157,9 @@ in
 
     home.configFile."hypr/hypridle.conf".text = ''
       general {
-          lock_cmd = pidof swaylock || ${getExe pkgs.swaylock} -f -c 0E1415 # avoid starting multiple swaylock instances.
+          lock_cmd = ${getExe' pkgs.procps "pidof"} swaylock || ${getExe pkgs.swaylock} -f -c 0E1415 # avoid starting multiple swaylock instances.
           before_sleep_cmd = ${getExe pkgs.swaylock} -f -c 0E1415    # lock before suspend.
-          after_sleep_cmd = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
+          after_sleep_cmd = ${getExe' pkgs.hyprland "hyprctl"} dispatch dpms on  # to avoid having to press a key twice to turn on the display.
       }
 
       listener {
@@ -169,8 +169,8 @@ in
 
       listener {
           timeout = 2000
-          on-timeout = ${pkgs.hyprland}/bin/hyprctl dispatch dpms off  # screen off when timeout has passed
-          on-resume = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on    # screen on when activity is detected after timeout has fired.}
+          on-timeout = ${getExe' pkgs.hyprland "hyprctl"} dispatch dpms off  # screen off when timeout has passed
+          on-resume = ${getExe' pkgs.hyprland "hyprctl"} dispatch dpms on    # screen on when activity is detected after timeout has fired.}
       }
     '';
 
