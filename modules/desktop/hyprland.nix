@@ -153,10 +153,26 @@ in
     # NEXT: move into own module
     home.configFile."waybar/config".source = "${configDir}/waybar/config";
 
-    home.configFile."hypr" = {
-      recursive = true;
-      source = "${configDir}/hypr";
-    };
+    home.configFile."hypr/hyprland.conf".source = "${configDir}/hypr/hyprland.conf";
+
+    home.configFile."hypr/hypridle.conf".text = ''
+      general {
+          lock_cmd = pidof swaylock || ${getExe pkgs.swaylock} -f -c 0E1415 # avoid starting multiple swaylock instances.
+          before_sleep_cmd = ${getExe pkgs.swaylock} -f -c 0E1415    # lock before suspend.
+          after_sleep_cmd = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on  # to avoid having to press a key twice to turn on the display.
+      }
+
+      listener {
+          timeout = 1800
+          on-timeout = ${getExe pkgs.swaylock} -f -c 0E1415      # lock screen when timeout has passed
+      }
+
+      listener {
+          timeout = 2000
+          on-timeout = ${pkgs.hyprland}/bin/hyprctl dispatch dpms off  # screen off when timeout has passed
+          on-resume = ${pkgs.hyprland}/bin/hyprctl dispatch dpms on    # screen on when activity is detected after timeout has fired.}
+      }
+    '';
 
     # Enable brightness and volume
     user.extraGroups = [ "video" ];
