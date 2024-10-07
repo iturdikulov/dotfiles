@@ -49,7 +49,6 @@ in
       hyprpicker     # screen-space color picker
       hyprshade      # to apply shaders to the screen
       hyprshot       # instead of grim(shot) or maim/slurp
-      waybar         # NEXT: remove when move waybar into module
       hypridle
     ] ++ (with pkgs.unstable; [
       mako           # dunst for wayland
@@ -77,7 +76,9 @@ in
       xwayland.enable = true;
       portalPackage = pkgs.xdg-desktop-portal-wlr;
     };
-    programs.waybar.enable = true;
+    programs.waybar = {
+      enable = true;
+    };
     services.hypridle.enable = true;
 
     # xdg.portal = {
@@ -147,6 +148,10 @@ in
 
           [mode=dnd]
           invisible=1
+
+          [app-name=Slack]
+          default-timeout=0
+          ignore-timeout=true
         '';
     };
 
