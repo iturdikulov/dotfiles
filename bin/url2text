@@ -2,7 +2,7 @@
 #! nix-shell -i sh -p xidel
 
 format=${1:-markdown}
-url=${2:-$(xclip -o -selection clipboard)}
+url=${2:-$(wl-paste)}
 
 # if pdf don't grab title
 if [[ $url == *.pdf ]]; then
@@ -13,7 +13,7 @@ else
 
     # If failed to get title try to use primary clipboard
     if [[ -z $title ]]; then
-        url=$(xclip -o -selection primary)
+        url=$(wl-paste)
         title=$(url2title "$url")
     fi
 fi
