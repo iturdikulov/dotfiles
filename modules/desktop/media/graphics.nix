@@ -7,6 +7,7 @@ with lib.my;
 let cfg = config.modules.desktop.media.graphics;
     configDir = config.dotfiles.configDir;
     blenderVersion = "4.2";
+    screenScaleFactor = config.modules.desktop.high-dpi.scaleFactor;
 in {
   options.modules.desktop.media.graphics = {
     enable         = mkBoolOpt false;
@@ -17,7 +18,6 @@ in {
     models.enable  = mkBoolOpt true;
     photos.enable  = mkBoolOpt true;
     videos.enable  = mkBoolOpt true;
-    kritaScaleFactor = mkOpt types.str "1";
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -96,17 +96,17 @@ in {
           inkscape-with-extensions
         ] else []) ++
 
-        (if cfg.kritaScaleFactor != null then [
+        (if screenScaleFactor != null then [
             (makeDesktopItem {
                 name = "krita";
                 desktopName = "Krita";
                 genericName = "Digital Painting";
                 icon = "krita";
-                exec = "env QT_SCALE_FACTOR=${cfg.kritaScaleFactor} ${krita}/bin/krita %F";
+                exec = "env QT_SCALE_FACTOR=${screenScaleFactor} ${krita}/bin/krita %F";
                 categories = [ "Graphics" "Photography" ];
             })
             (writeShellScriptBin "krita" ''
-                export QT_SCALE_FACTOR=${cfg.kritaScaleFactor}  # fix on high DPI screens
+                export QT_SCALE_FACTOR=${screenScaleFactor}  # fix on high DPI screens
                 exec ${krita}/bin/krita "$@"
             '')
         ] else [krita]) ++

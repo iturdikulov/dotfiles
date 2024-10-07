@@ -13,6 +13,7 @@
         enable = true;
         monitors = [ { output = "eDP-1"; primary = true; } ];
       };
+      high-dpi.scaleFactor = 1.5;
       wine.enable = true;
       appimage.enable = true;
       term = {

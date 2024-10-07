@@ -14,6 +14,7 @@
         enable = true;
         monitors = [ { output = "DP-1"; primary = true; } ];
       };
+      high-dpi.scaleFactor = "2";
       wine.enable = true;
       appimage.enable = true;
       term = {
@@ -50,7 +51,6 @@
         documents.enable = true;
         documents.office.enable = true;
         graphics.enable = true;
-        graphics.kritaScaleFactor = "2";  # actual for xwayland
         mpv.enable = true;
         recording.enable = true;
         espeak.enable = true;

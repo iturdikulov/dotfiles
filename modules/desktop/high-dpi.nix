@@ -4,28 +4,15 @@ with lib;
 with lib.my;
 let
   cfg = config.modules.desktop.high-dpi;
-  configDir = config.dotfiles.configDir;
 in
 {
   options.modules.desktop.high-dpi = {
-    enable = mkBoolOpt false;
+    scaleFactor = with types; mkOpt (nullOr str) null;
   };
 
-  config = mkIf cfg.enable {
-    services.xserver.dpi = 192;
-    services.xserver.upscaleDefaultCursor = true;
+  config = mkIf (cfg.scaleFactor != null) {
     environment.variables = {
-      GDK_SCALE = "2";
-      GDK_DPI_SCALE = "0.5";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_ENABLE_HIGHDPI_SCALING = "1";
-      QT_FONT_DPI = 192;
-      XCURSOR_SIZE = "48";
+      GDK_SCALE = cfg.scaleFactor;
     };
-
-    # link recursively so other modules can link files in their folders
-    home.configFile."xtheme/80-high-dpi".text = ''
-      Xcursor.size: 48
-    '';
   };
 }
