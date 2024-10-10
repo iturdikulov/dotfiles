@@ -1,3 +1,5 @@
+# https://github.com/clearloop/leetcode-cli
+
 { config, options, pkgs, lib, ... }:
 
 with lib;
@@ -13,5 +15,14 @@ in {
     user.packages = with pkgs; [
       leetcode-cli
     ];
+
+    system.activationScripts."leetcode-cli-secret" = ''
+      CONFIG_FILE="${configDir}/leetcode-cli/leetcode.toml"
+      GENERATED_CONFIG_FILE="${config.user.home}/.leetcode/leetcode.toml"
+      ${getExe' pkgs.coreutils-full "cat"} "$CONFIG_FILE" > "$GENERATED_CONFIG_FILE"
+
+      COOKIES="${config.age.secrets.leetcode-cli.path}"
+      ${getExe' pkgs.coreutils-full "cat"} "$COOKIES" >> "$GENERATED_CONFIG_FILE"
+    '';
   };
 }

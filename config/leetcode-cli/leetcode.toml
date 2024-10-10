@@ -1,0 +1,19 @@
+[code]
+editor = 'nvim'
+# Optional environment variables (ex. [ "XDG_DATA_HOME=...", "XDG_CONFIG_HOME=...", "XDG_STATE_HOME=..." ])
+editor_envs = []
+lang = 'python'
+edit_code_marker = false
+start_marker = ""
+end_marker = ""
+# if include problem description
+comment_problem_desc = true
+# comment syntax
+comment_leading = "#"
+test = true
+
+[storage]
+cache = 'Problems'
+code = 'code'
+root = '~/Computer/programming/competitive/'
+scripts = 'scripts'
