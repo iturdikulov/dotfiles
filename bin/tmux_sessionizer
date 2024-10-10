@@ -3,22 +3,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$((fd --type=directory --max-depth=1 --exclude='_*' --no-follow --full-path $HOME \
+    selected=$((fd --type=directory --max-depth=1 \
+        --exclude='Arts_and_Entertainment/literature/*' --exclude='Arts_and_Entertainment/music/*' --exclude='_*' \
+        --no-follow --full-path $HOME \
 ~/ \
+~/IRL \
 ~/Science/* \
-~/Computer/* \
-~/Computer/programming/*Tutorials/ \
-~/Arts_and_Entertainment/ \
-~/Arts_and_Entertainment/audiovisual/ \
-~/Arts_and_Entertainment/video-editing/; \
-echo /home/inom; \
-echo ~/Wiki/competitive_programming/; \
-echo ~/Arts_and_Entertainment/audiovisual/anime; \
-echo ~/Arts_and_Entertainment/audiovisual/audiobook/; \
-echo ~/Arts_and_Entertainment/audiovisual/movie/; \
-echo /mnt/share/baikal; \
-echo /etc/dotfiles; \
-ls -d ~/Work/*;) | fzf --tac)
+~/Computer/*/ \
+~/Arts_and_Entertainment/* \
+echo /etc/dotfiles) | fzf --tac)
 fi
 
 if [[ -z $selected ]]; then
