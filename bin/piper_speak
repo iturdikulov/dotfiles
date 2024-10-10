@@ -24,19 +24,7 @@ speak(){
     piper --length_scale 1.2 --model $model --output-raw --quiet | aplay --quiet -f S16_LE -c1 -r22050 -
 }
 
-if [ "$1" == "clip" ]; then
-    # Core logic
-    active_window=$(xdotool getactivewindow)
-
-    if [[ $(xprop -id $active_window | grep WM_CLASS\(STRING\)) =~ "$TERMINAL" ]]; then
-        xdotool key ctrl+shift+c
-    else
-        xdotool key ctrl+c
-    fi
-
-    sleep 0.1
-    text=$(xclip -o -selection clipboard)
-elif [[ $1 == "stdin" ]]; then
+if [[ $1 == "stdin" ]]; then
     text=$(</dev/stdin)
 else
     text="$@"
