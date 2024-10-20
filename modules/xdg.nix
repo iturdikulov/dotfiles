@@ -105,7 +105,7 @@ in {
       # See https://kdemonkey.blogspot.com/2008/04/magic-trick.html, then
       # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/x11/display-managers/default.nix#L74-L83
       # which would otherwise create $HOME/.compose-cache.
-      services.xserver.displayManager.job.environment.XCOMPOSECACHE = "$XDG_RUNTIME_DIR/xcompose";
+      services.displayManager.environment.XCOMPOSECACHE = "$XDG_RUNTIME_DIR/xcompose";
     }
 
     (mkIf cfg.mimeapps.enable {
