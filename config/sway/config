@@ -17,7 +17,7 @@ set $term foot
 # Your preferred application launcher
 set $menu $DOTFILES_BIN/rofi/appmenu
 # Your preferred browser
-set $browser brave
+set $browser firefox
 
 ### Output configuration
 #
@@ -278,7 +278,6 @@ input type:keyboard {
 # Assign some GUI apps
 # You may like to use swaymsg -t get_tree for finding the values of these
 # properties in practice for your applications.
-assign [app_id="brave"] workspace number 2
 assign [app_id="obsidian"] workspace number 3
 assign [app_id="Slack"] workspace number 4
 assign [app_id="cmus"] workspace number 5

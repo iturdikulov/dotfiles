@@ -36,7 +36,7 @@
         remmina.enable = true;
       };
       browsers = {
-        default = "brave";
+        default = "firefox";
         brave.enable = true;
         chrome.enable = true;
         firefox.enable = true; # Fallback browser

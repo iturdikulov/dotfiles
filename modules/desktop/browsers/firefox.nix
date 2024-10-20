@@ -27,8 +27,12 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
+      programs.firefox = {
+        enable = true;
+        nativeMessagingHosts.packages = [ pkgs.browserpass ];
+      };
+
       user.packages = with pkgs; [
-        firefox-bin
         (makeDesktopItem {
           name = "firefox-private";
           desktopName = "Firefox (Private)";
@@ -38,11 +42,6 @@ in {
           categories = [ "Network" ];
         })
       ];
-      programs.firefox = {
-        enable = true;
-        nativeMessagingHosts.packages = [ pkgs.browserpass ];
-      };
-
       # Prevent auto-creation of ~/Desktop. The trailing slash is necessary; see
       # https://bugzilla.mozilla.org/show_bug.cgi?id=1082717
       env.XDG_DESKTOP_DIR = "$HOME/";
