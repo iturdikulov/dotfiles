@@ -10,6 +10,7 @@ else
 ~/IRL \
 ~/Science/* \
 ~/Computer/*/ \
+~/Computer/graphics/*/ \
 ~/Arts_and_Entertainment/* \
 echo /etc/dotfiles) | fzf --tac)
 fi
