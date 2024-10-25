@@ -18,6 +18,7 @@ in {
       (mkIf config.modules.shell.gnupg.enable git-crypt)
       act
       git-lfs
+      diffoscopeMinimal
     ];
 
     home.configFile = {
