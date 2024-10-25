@@ -5,7 +5,7 @@
   ];
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
     settings = {
       substituters = [
@@ -25,7 +25,7 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   environment.systemPackages = with pkgs; [
-    nixFlakes
+    nixVersions.stable
     zsh
     git
   ];

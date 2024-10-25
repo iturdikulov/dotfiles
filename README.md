@@ -65,7 +65,7 @@ OR
 
 5. Install these dotfiles:
    ```sh
-   nix-shell -p git nixFlakes
+   nix-shell -p git nixVersions.stable
 
    # Set HOST to the desired hostname of this system
    export HOST=...
