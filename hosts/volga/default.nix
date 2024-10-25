@@ -4,7 +4,6 @@
     ../home.nix
     ./hardware-configuration.nix
     ./modules/backup.nix
-    ./modules/iturdikulov.nix
   ];
 
   ## Modules
@@ -78,7 +77,7 @@
       common-lisp.enable = true;
       php.enable = true;
 
-      dbeaver.enable = true;
+      beekeeper.enable = true;
       mitmproxy.enable = true;
       shell.enable = true;
       data_serialization.enable = true;

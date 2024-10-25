@@ -76,7 +76,7 @@
       common-lisp.enable = true;
       php.enable = true;
 
-      dbeaver.enable = false;
+      beekeeper.enable = true;
       mitmproxy.enable = true;
       shell.enable = true;
       data_serialization.enable = true;
