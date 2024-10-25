@@ -59,6 +59,12 @@ options libata          allow_tpm=0
     onlykey.enable = true; # Enable OnlyKey device
   };
 
+  # Use u2f for sudo and login
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
   # Custom hardware options
   modules.hardware = {
     audio.enable = true;
