@@ -9,7 +9,8 @@ with lib.my;
 let cfg = config.modules.theme;
     qtctConf = {
       Appearance = {
-        custom_palette = false;
+        color_scheme_path="${pkgs.libsForQt5.qt5ct}/share/qt5ct/colors/darker.conf";
+        custom_palette = true;
         icon_theme = "Papirus-Dark";
         standard_dialogs = "gtk3";
         style = "kvantum-dark";
@@ -176,6 +177,20 @@ in {
           Emacs.font: ${name}:pixelsize=${toString(size)}
         '';
         # GTK
+        "gtk-4.0/settings.ini".text = ''
+          [Settings]
+          ${optionalString (cfg.gtk.theme != "")
+            ''gtk-theme-name=${cfg.gtk.theme}''}
+          ${optionalString (cfg.gtk.iconTheme != "")
+            ''gtk-icon-theme-name=${cfg.gtk.iconTheme}''}
+          ${optionalString (cfg.gtk.cursorTheme != "")
+            ''gtk-cursor-theme-name=${cfg.gtk.cursorTheme}''}
+          gtk-fallback-icon-theme=gnome
+          gtk-application-prefer-dark-theme=true
+          gtk-xft-hinting=1
+          gtk-xft-hintstyle=hintfull
+          gtk-xft-rgba=none
+        '';
         "gtk-3.0/settings.ini".text = ''
           [Settings]
           ${optionalString (cfg.gtk.theme != "")
