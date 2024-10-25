@@ -140,12 +140,8 @@
   ## GTK bookmarks
   home.configFile."gtk-3.0/bookmarks".text = ''
     file://${config.user.home}/Downloads
-    file://${config.user.home}/Work
     file://${config.user.home}/Arts_and_Entertainment
     file://${config.user.home}/Computer
-    file://${config.user.home}/Documents
-    file://${config.user.home}/Pictures
-    file://${config.user.home}/Reference
     file://${config.user.home}/Wiki
   '';
 
