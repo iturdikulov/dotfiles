@@ -14,7 +14,7 @@ in {
     ];
 
     env = {
-      STARDICT_DATA_DIR = "$HOME/Reference/dictionary";
+      STARDICT_DATA_DIR = "$HOME/Computer/reference/dictionary";
     };
 
     home.file.".sdcv_ordering" = {
