@@ -36,9 +36,10 @@ quote_type = double
 indent_style = space
 indent_size = 2
 
-# Makefiles
-[{Makefile,**.mk}]
+# Go/makefiles/.gitmodules use tab
+[{Makefile,**.mk,go.mod,go.sum,*.go,.gitmodules}]
 indent_style = tab
+indent_size = 4
 
 # Although Markdown/CommonMark allows using two trailing spaces to denote
 # a hard line break, I do not use that feature since
