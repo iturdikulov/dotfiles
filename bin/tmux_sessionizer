@@ -11,6 +11,7 @@ else
 ~/Science/* \
 ~/Computer/*/ \
 ~/Computer/graphics/*/ \
+~/Computer/reference/*/ \
 ~/Arts_and_Entertainment/* \
 echo /etc/dotfiles) | fzf --tac)
 fi
