@@ -41,7 +41,7 @@
 #      vim /mnt/etc/nixos/hardware-configuration.nix   # change uuids to labels
 #
 # 7. Install dotfiles:
-#      nix-env -iA nixos.git nixos.nixFlakes
+#      nix-env -iA nixos.git nixos.nixVersions.stable
 #      mkdir -p /mnt/home/hlissner/.config
 #      cd /mnt/home/hlissner/.config
 #      git clone https://github.com/hlissner/dotfiles
