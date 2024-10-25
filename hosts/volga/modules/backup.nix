@@ -70,27 +70,4 @@
         unitConfig.OnFailure = "notify-problems@%i.service";
       }
     );
-
-
-    # BTRBK
-    # services.btrbk = {
-    #   instances."kama" = {
-    #     onCalendar = "weekly";
-    #     settings = {
-    #       ssh_user = config.user.name;
-    #       ssh_identity = "/etc/btrbk_kama_key"; # NOTE: must be readable by user/group
-    #       stream_compress = "lz4";
-    #
-    #       snapshot_preserve_min = "2d";
-    #       snapshot_preserve = "14d";
-    #       target_preserve_min = "no"; # use target_preserve config
-    #       target_preserve = "1d 4w 12m"; # keep backups daily 1d, weekly 4w, monthly 12m
-    #
-    #       volume."/" = {
-    #         subvolume = "home";
-    #         target = "ssh://kama/media/backup/snapshot";
-    #       };
-    #     };
-    #   };
-    # };
 }
