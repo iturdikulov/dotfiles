@@ -26,6 +26,7 @@ in {
         wev           # xev
         wl-clipboard  # xclip
         wtype         # xdotool (sorta)
+        wlrctl        # wmctrl (sorta)
         swappy        # swappy/Snappy/sharex
         slurp         # slop (screenshot tool)
         swayimg       # feh (as an image previewer)
