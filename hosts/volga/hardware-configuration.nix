@@ -43,7 +43,6 @@ options libata          allow_tpm=0
   };
 
   # Displays
-
   services.xserver = {
     serverFlagsSection = ''
       Option "StandbyTime" "30"
@@ -144,22 +143,12 @@ options libata          allow_tpm=0
     device = "${config.user.home}/IRL";
     options = [ "bind" ];
   };
-  fileSystems."/export/Pictures" = {
-    device = "${config.user.home}/Pictures";
-    options = [ "bind" ];
-  };
-  fileSystems."/export/Videos" = {
-    device = "${config.user.home}/Videos";
-    options = [ "bind" ];
-  };
   services.rpcbind.enable = true;
   services.nfs.server.exports = ''
     /export                         volga.local(rw,fsid=0,no_subtree_check)          ob.local(rw,fsid=0,no_subtree_check)
     /export/Arts_and_Entertainment  volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
     /export/Computer                volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
     /export/IRL                     volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
-    /export/Pictures                volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
-    /export/Videos                  volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
   '';
 
   swapDevices = [ ];

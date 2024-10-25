@@ -46,18 +46,6 @@
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."${config.user.home}/Pictures" = {
-      device = "volga.local:/Pictures";
-      fsType = "nfs";
-      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
-  };
-
-  fileSystems."${config.user.home}/Videos" = {
-      device = "volga.local:/Videos";
-      fsType = "nfs";
-      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
-  };
-
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/9012aa88-25d2-47ff-836f-c7b4639cb5ba";
 
   # tlp is enabled by nixos-hardware.asus-rog-strix-g513im
