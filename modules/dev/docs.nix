@@ -18,7 +18,6 @@ in {
 
     user.packages = with pkgs; [
       unstable.zeal     # GUI for docsets, if need to render images
-      kiwix              # Wiki offline reader
       tealdeer # Simplified, example based and community-driven man pages.
       man-pages
       man-pages-posix
