@@ -56,8 +56,6 @@ in {
 
           requests
           sqlalchemy
-
-          hid
         ]))
       ];
 
