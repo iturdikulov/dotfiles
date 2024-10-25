@@ -20,6 +20,7 @@ in {
       user.packages = with pkgs; [
         go
         gotools
+        gore  # Yet another Go REPL that works nicely.
       ];
     })
   ];
