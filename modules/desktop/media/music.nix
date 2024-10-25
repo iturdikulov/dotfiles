@@ -21,7 +21,7 @@ in
         name = "cmus";
         desktopName = "cmus";
         genericName = "Music Player";
-        icon = "cmus";
+        icon = "audio-player";
         exec = "${foot}/bin/foot -a cmus -e ${cmus}/bin/cmus %F";
       })
       # To mount android devices using gio, trash cli
