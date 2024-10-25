@@ -22,22 +22,20 @@ in
     # Config files
     # TODO parametrize this, with mkMerge
     home.configFile."zathura/zathurarc".source = "${configDir}/zathura/zathurarc";
-    home.configFile."sioyek/keys_user.config".source = "${configDir}/sioyek/keys_user.config";
 
     # TODO thing about dotfiles for this packages
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         xchm
-        sioyek
-        xournalpp
         calibre
         zathura
         pandoc
-      ] else [ ]) ++
+      ] else []) ++
 
       (if cfg.pdf.enable then [
         zathura
         ghostscript
+        xournalpp
       ] else [ ]) ++
 
       (if cfg.research.enable then [

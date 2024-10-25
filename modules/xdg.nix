@@ -135,7 +135,7 @@ in {
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ]; # docx.docx
           "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ]; # odt.odt
 
-          "application/pdf" = [ "sioyek.desktop" ]; # pdf.pdf
+          "application/pdf" = [ "com.github.xournalpp.xournalpp.desktop" ]; # pdf.pdf
           "application/epub+zip" = [ "org.pwmt.zathura-cb.desktop" ]; # epub.epub
           "application/x-fictionbook+xml" = [ "org.pwmt.zathura-cb.desktop" ]; # fictionbook.fb2
           "application/x-mobipocket-ebook" = [ "org.pwmt.zathura-cb.desktop" ]; # mobi.mobi
