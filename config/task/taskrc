@@ -9,7 +9,6 @@ news.version=2.6.0
 
 # Files
 data.location=~/.config/task
-include ~/.config/task/serverrc
 include dark-green-256.theme
 
 # Datetime settings
