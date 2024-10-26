@@ -156,8 +156,5 @@
   services.openssh.startWhenNeeded = true;
   services.pcscd.enable = true; # for gpg-agent
   services.timesyncd.enable = true; # to sync time
-
-  #services.openssh.settings.X11Forwarding = true;
-
   networking.networkmanager.enable = true;
 }
