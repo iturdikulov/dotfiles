@@ -17,14 +17,13 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      # NNN
       (nnn.override {withNerdIcons = true;})
       (makeDesktopItem {
         name = "nnn-xst";
         desktopName = "NNN xst";
         genericName = "NNN xst";
         icon = "utilities-terminal";
-        exec = "${xst}/bin/xst -e nnn %F";
+        exec = "${getExe' xst "xst"} ${getExe' nnn "nnn"} %F";
         categories = [ "Development" "System" "Utility" ];
       })
 
