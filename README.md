@@ -289,3 +289,4 @@ refactor(lib): add and use mkWrapper & mkLauncherEntry
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] W3m intgeration
+- ~~[ ] [way-displays: Auto Manage Your Wayland Displays](https://github.com/alex-courtis/way-displays)~~
