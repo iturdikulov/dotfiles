@@ -69,17 +69,7 @@ in {
           image_optim    # Optimize images using multiple utilities
           tesseract4     # OCR engine
           maim           # A command-line screenshot utility
-          gpick          # An advanced color picker
           flameshot      # Screenshots
-
-          # pureref        # A reference image viewer
-          #(makeDesktopItem {
-          #  name = "pureref";
-          #  desktopName = "pureref";
-          #  genericName = "A reference image viewer";
-          #  icon = "pureref";
-          #  exec = "${pkgs.pureref}/bin/pureref %F";
-          #})
 
           # TODO: rewrite this
           (pkgs.writeScriptBin "scrcap_ocr" ''
@@ -113,7 +103,6 @@ in {
 
         # Raster images workflow
         (if cfg.raster.enable then [
-          qview
           geeqie
           librsvg
           nodePackages.svgo
