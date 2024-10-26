@@ -113,7 +113,6 @@ in {
 
         # Raster images workflow
         (if cfg.raster.enable then [
-          mypaint
           qview
           geeqie
           librsvg
