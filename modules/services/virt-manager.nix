@@ -53,7 +53,7 @@ in {
 
     # shmem files
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 inom libvirtd -"
+      "f /dev/shm/looking-glass 0660 ${config.user.name} libvirtd -"
     ];
  };
 }
