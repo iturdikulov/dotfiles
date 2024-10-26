@@ -17,4 +17,4 @@ toggle_scratchpad(){
     fi
 }
 
-toggle_scratchpad "scratch" "$@"
+toggle_scratchpad "$1" "$@"
