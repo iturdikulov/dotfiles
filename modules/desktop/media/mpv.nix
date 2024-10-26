@@ -30,10 +30,11 @@ in {
       # Script to open the latest recording in mpv
       (pkgs.writeScriptBin "latest_record" ''
         #!/bin/sh
-        RECORDINGS_DIR="$HOME/Videos/record"
+        RECORDINGS_DIR="$HOME/Arts_and_Entertainment/audiovisual/record"
         [ -d $RECORDINGS_DIR ] || echo "No $RECORDINGS_DIR directory found"
-        RECORDING="$HOME/Videos/record/$(ls -Art $HOME/Videos/record|tail -n 1)"
-        echo "$RECORDING"| xclip -sel c
+        RECORDING="$RECORDINGS_DIR/$(ls -Art $RECORDINGS_DIR|tail -n 1)"
+        echo "Opening $RECORDING and copying to clipboard"
+        echo "$RECORDING"| wl-copy
         nmpv --loop-file=yes "$RECORDING"
       '')
 
