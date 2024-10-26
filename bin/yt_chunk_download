@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#taken from https://unix.stackexchange.com/a/388148/48971
+# NOTE: taken from https://unix.stackexchange.com/a/388148/48971
 
 if [ $# -lt 4 ]; then
         echo "Usage: $0 <youtube's URL> <HH:mm:ss.milisecs from time> <HH:mm:ss.milisecs to time> <output_file_name>"

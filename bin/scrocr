@@ -12,9 +12,9 @@ delay=${1:-0}
 select tesseract_lang in eng rus equ ;do break;done
 
 # Delay for long enough that we can refocus the targeted window
-maim --delay=$delay -us |\
+hyprshot --mode region --raw |\
 convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - |\
 tesseract -l $tesseract_lang stdin stdout |\
 sed '$d' |\
 perl -0777 -pe 's/^(\s*\n)+|(\s*\n)+$//g' |\
-xclip -in -selection clipboard && notify-send "OCR completed" "Copied text to clipboard"
+wl-copy && notify-send "OCR completed" "Copied text to clipboard"

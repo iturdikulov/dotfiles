@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# TODO: convert to golang
 """
 Enables toggling the keyboard layout between English and Russian, toggle the RGB Light
 

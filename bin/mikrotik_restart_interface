@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env cached-nix-shell
+#! nix-shell -p zenity sshpass -i bash
+
 # Automatically restart microtik interface
 
-password=$(pass <enter password entry>)
+echo "Type password for admin@192.168.88.1"
+password=$(zenity --password --title="Password")
 sshpass -p $password ssh admin@192.168.88.1 <<EOF
 /interface disable lte1; delay 5; /interface enable lte1
 EOF

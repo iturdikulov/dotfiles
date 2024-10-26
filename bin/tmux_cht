@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 LANGUAGES=$(cat <<-END
-golang
-solidity
-vlang
-v
+go
 nodejs
 javascript
 tmux
@@ -17,14 +14,13 @@ python
 bash
 php
 haskell
-ArnoldC
 css
 html
-gdb
 END
 )
 
 COMMANDS=$(cat <<-END
+gdb
 find
 man
 tldr
