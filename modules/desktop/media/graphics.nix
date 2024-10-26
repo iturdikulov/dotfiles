@@ -127,7 +127,7 @@ in {
             desktopName = "GIMP";
             genericName = "GNU Image Manipulation Program";
             icon = "gimp";
-            exec = "${config.dotfiles.binDir}/gimp/result/bin/gimp %F";
+            exec = "${config.user.home}/.local/bin/gimp/result/bin/gimp %F";
             categories = [ "Graphics" "Photography" ];
           })
         ] else []) ++
