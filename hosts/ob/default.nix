@@ -29,7 +29,6 @@
         godot.enable = true;
         filezilla.enable = true;
         stellarium.enable = true;
-        wireshark.enable = true;
 
         parsec.enable = true;
         remmina.enable = true;

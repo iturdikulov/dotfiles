@@ -25,6 +25,7 @@ in {
       unstable.ssm-session-manager-plugin
       my.tun2proxy
       proxychains
+      tshark  # powerful network protocol analyzer
     ];
 
     ## Custom ENV variables
