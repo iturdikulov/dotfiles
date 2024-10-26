@@ -67,25 +67,7 @@ in
     };
     services.hypridle.enable = true;
 
-    xdg.portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-    #   wlr.enable = true;
-    #   config = {
-    #     common = {
-    #       default = [ "gtk" ];
-    #     };
-    #     hyperland = {
-    #       default = [ "gtk" ];
-    #       "org.freedesktop.impl.portal.Screencast" = [ "wlr" ];
-    #       "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-    #     };
-    #   };
-    # extraPortals = with pkgs; [
-    #   xdg-desktop-portal-gtk
-    #   xdg-desktop-portal-kde
-    # ];
-    };
+    xdg.portal.enable = true;
 
     # # Place in hyperland conf
     # # exec-once = systemctl --user restart hyprland-session.target
