@@ -285,7 +285,6 @@ refactor(lib): add and use mkWrapper & mkLauncherEntry
 - [ ] possible solution to fix QT styling: https://github.com/addy419/configurations/blob/master/modules/colorschemes/dracula.nix
 - [ ] parametrize $GNUPGHOME/sshcontrol
 - [x] polish and do various fixes for piper_speak script
-- [x] check/fix kvantum theme
 - [x] todo replace kuro with volga in README.md, add volga README.md
 - [x] fix wgetrc error
 - [x] W3m intgeration

@@ -20,12 +20,6 @@
       agenix.url = "github:ryantm/agenix";
       agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-      # Hyprland + core extensions
-      hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      hyprland.inputs.nixpkgs.follows = "nixpkgs-unstable";
-      waybar.url = "github:Alexays/Waybar";
-      waybar.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
       # TODO: remove this, temporary workaround to avoid launch proble
       dbeaver-last.url = "github:nixos/nixpkgs/4d10225ee46c0ab16332a2450b493e0277d1741a";
 

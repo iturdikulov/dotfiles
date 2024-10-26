@@ -144,12 +144,6 @@ in {
         };
       };
 
-      environment.systemPackages = with pkgs; [
-        # SVG-based theme engine plus a config tool and extra theme
-        libsForQt5.qtstyleplugin-kvantum
-        qt6Packages.qtstyleplugin-kvantum
-      ];
-
       services.xserver.displayManager.sessionCommands = ''
         # GTK2_RC_FILES must be available to the display manager.
         export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"

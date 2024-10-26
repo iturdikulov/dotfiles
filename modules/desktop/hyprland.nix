@@ -26,17 +26,6 @@ in
   config = mkIf cfg.enable {
     modules.desktop.type = "wayland";
 
-    # Retrieve the latest versions.
-    nixpkgs.overlays = [
-      # Avoiding the hyprland input overlays to avoid cachix misses (and not
-      # setting programs.hyprland.package because other packages, like
-      # pkgs.hyprshade, may reference pkgs.hyprland in their derivations).
-      (prev: final: {
-        hyprland = inputs.hyprland.packages.${final.system}.hyprland;
-        hyprshot = pkgs.unstable.hyprshot;
-      })
-    ];
-
     environment.sessionVariables = {
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       NIXOS_OZONE_WL = "1";
@@ -44,13 +33,12 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      # pkgs.unstable doesn't have nixpkgs.overlays applied, so any package
-      # referencing hyprland in their derivation must be installed from pkgs.
       hyprpicker     # screen-space color picker
       hyprshade      # to apply shaders to the screen
       hyprshot       # instead of grim(shot) or maim/slurp
       hypridle
-    ] ++ (with pkgs.unstable; [
+
+      waybar         # status bar
       mako           # dunst for wayland
       swaybg         # feh (as a wallpaper manager)
       swaylock
@@ -61,7 +49,7 @@ in
       wf-recorder    # screencasting
       wlr-randr      # for monitors that hyprctl can't handle
       xorg.xrandr    # for XWayland windows
-    ]);
+    ];
 
     # # Enable the gnome-keyring secrets vault.
     # # Will be exposed through DBus to programs willing to store secrets.
@@ -75,15 +63,13 @@ in
       enable = true;
       xwayland.enable = true;
       portalPackage = pkgs.xdg-desktop-portal-wlr;
-    };
-    programs.waybar = {
-      enable = true;
+      package = pkgs.unstable.hyprland;
     };
     services.hypridle.enable = true;
 
     xdg.portal = {
       enable = true;
-    # xdgOpenUsePortal = true;
+      xdgOpenUsePortal = true;
     #   wlr.enable = true;
     #   config = {
     #     common = {
@@ -95,10 +81,10 @@ in
     #       "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
     #     };
     #   };
-      # extraPortals = with pkgs; [
-      #   xdg-desktop-portal-gtk
-      #   xdg-desktop-portal-kde
-      # ];
+    # extraPortals = with pkgs; [
+    #   xdg-desktop-portal-gtk
+    #   xdg-desktop-portal-kde
+    # ];
     };
 
     # # Place in hyperland conf
