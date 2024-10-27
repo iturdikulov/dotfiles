@@ -17,6 +17,8 @@ in {
     ];
 
     system.activationScripts."leetcode-cli-secret" = ''
+      ${getExe' pkgs.coreutils-full "touch"} "$GENERATED_CONFIG_FILE"
+
       CONFIG_FILE="${configDir}/leetcode-cli/leetcode.toml"
       GENERATED_CONFIG_FILE="${config.user.home}/.leetcode/leetcode.toml"
       ${getExe' pkgs.coreutils-full "cat"} "$CONFIG_FILE" > "$GENERATED_CONFIG_FILE"
