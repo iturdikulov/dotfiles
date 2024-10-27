@@ -11,7 +11,13 @@
     desktop = {
       hyprland = {
         enable = true;
-        monitors = [ { output = "eDP-1"; primary = true; } ];
+        monitors = [{
+          output = "eDP-1";
+          primary = true;
+          mode = "1920x1080@300";
+          position = "0x0";
+          scale = 2;
+        }];
       };
       high-dpi.scaleFactor = "1.5";
       wine.enable = true;
