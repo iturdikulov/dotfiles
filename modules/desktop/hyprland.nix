@@ -16,7 +16,7 @@ in
         output = mkOpt str "";
         mode = mkOpt str "preferred";
         position = mkOpt str "auto";
-        scale = mkOpt int 1;
+        scale = mkOpt str "1";
         disable = mkOpt bool false;
         primary = mkOpt bool false;
       };
@@ -134,7 +134,7 @@ in
         ${concatStringsSep "\n" (map
           (v: if v.disable
               then "monitor = ${v.output},disable"
-              else "monitor = ${v.output},${v.mode},${v.position},${toString v.scale}")
+              else "monitor = ${v.output},${v.mode},${v.position},${v.scale}")
           cfg.monitors)}
 
         $PRIMARY_MONITOR = ${primaryMonitor.output or ""}
