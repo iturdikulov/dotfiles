@@ -16,7 +16,7 @@
           primary = true;
           mode = "1920x1080@300";
           position = "0x0";
-          scale = 1.5;
+          scale = "1.5";
         }];
       };
       high-dpi.scaleFactor = "1.5";
