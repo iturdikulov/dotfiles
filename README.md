@@ -99,6 +99,10 @@ OR
    # as alternative you can install flake from installed nixos
    USER=$USER nixos-install --root /mnt --impure --flake .#$HOST
 
+   # Alternative install method with building
+   # nix build /mnt/etc/nixos#nixosConfigurations.<HOSTNAME>.config.system.build.toplevel --experimental-features "flakes nix-command" --store "/mnt" --impure
+   # nixos-install --root /mnt --system ./result
+
    # If you get 'unrecognized option: --impure', replace '--impure' with
    # `--option pure-eval no`.
 
