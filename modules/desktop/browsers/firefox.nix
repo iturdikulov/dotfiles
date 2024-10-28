@@ -79,6 +79,8 @@ in {
         "browser.shell.checkDefaultBrowser" = false;
         # Prevent closing the browser with the last tab
         "browser.tabs.closeWindowWithLastTab" = false;
+        # Hide tabs hover preview
+        "browser.tabs.hoverPreview.enabled" = false;
         # Disable the "new tab page" feature and show a blank tab instead
         # https://wiki.mozilla.org/Privacy/Reviews/New_Tab
         # https://support.mozilla.org/en-US/kb/new-tab-page-show-hide-and-customize-top-sites#w_how-do-i-turn-the-new-tab-page-off
