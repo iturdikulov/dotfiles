@@ -173,10 +173,6 @@ function vmconnect {
   looking-glass-client
 }
 
-function dict {
-    sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat --style=grid --terminal-width=80
-}
-
 function nullify {
   "$@" >/dev/null 2>&1
 }

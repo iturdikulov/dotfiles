@@ -10,11 +10,11 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      pkgs.crow-translate
+      translate-shell
 
-      (writeScriptBin "trans" ''
+      (writeScriptBin "tn" ''
         #!/bin/sh
-        crow -t ru+en "$@"|bat --style=grid --terminal-width=80
+        ${getExe' pkgs.translate-shell "trans"} :ru -speak -join $@
        '')
     ];
   };

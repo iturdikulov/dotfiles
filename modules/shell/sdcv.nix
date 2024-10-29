@@ -11,6 +11,11 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       sdcv
+
+      (writeScriptBin "d" ''
+        #!/bin/sh
+        sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat --style=grid --terminal-width=80
+       '')
     ];
 
     env = {
