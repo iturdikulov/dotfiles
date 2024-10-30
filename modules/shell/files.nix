@@ -39,6 +39,7 @@ in {
       file
       fd
       ripgrep
+      ripgrep-all
       redis
     ];
 
