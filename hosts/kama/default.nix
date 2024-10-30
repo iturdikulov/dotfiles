@@ -57,51 +57,6 @@
     theme.active = "alucard";
   };
 
-  ## btrbk required config
-  security.sudo = {
-    enable = true;
-    extraRules = [{
-      commands = [
-        {
-          command = "${pkgs.coreutils-full}/bin/test";
-          options = [ "NOPASSWD" ];
-        }
-        # In some reason required to add full path
-        # in config example this wasn't required
-        # I THINK BECAUSE USED SAME USER inom, need change config
-        # to use btrbk user
-        # TODO: maybe need to check/remove this
-        {
-          command = "/run/current-system/sw/bin/test";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "${pkgs.coreutils-full}/bin/readlink";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/sw/bin/readlink";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "${pkgs.btrfs-progs}/bin/btrfs";
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = "/run/current-system/sw/bin/btrfs";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-      groups = [ "wheel" ];
-    }];
-    extraConfig = with pkgs; ''
-      Defaults:picloud secure_path="${lib.makeBinPath [
-        btrfs-progs coreutils-full
-      ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-    '';
-  };
-  environment.systemPackages = [ pkgs.lz4 ];
-
   ## Local config
   programs.ssh.startAgent = false;
   services.openssh.startWhenNeeded = true;
