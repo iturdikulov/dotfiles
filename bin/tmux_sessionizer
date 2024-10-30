@@ -8,6 +8,7 @@ else
         --no-follow --full-path $HOME \
 ~/ \
 ~/Arts_and_Entertainment \
+~/.local \
 ~/IRL \
 ~/Science/* \
 ~/Computer/*/ \
