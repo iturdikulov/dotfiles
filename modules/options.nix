@@ -54,12 +54,22 @@ with lib.my;
       in {
         inherit name;
         description = "The primary user account";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "multimedia" ];
         isNormalUser = true;
         home = "/home/${name}";
         group = "users";
         uid = 1000;
       };
+
+    # Special "multimedia" user
+    users.groups.multimedia = { };
+    users.users.multimedia = {
+      home = "/var/lib/multimedia";
+      group = "multimedia";
+      createHome = true;
+      isSystemUser = true;
+      description = "Multimedia Related Services User";
+    };
 
     # Install user packages to /etc/profiles instead. Necessary for
     # nixos-rebuild build-vm to work.
