@@ -16,11 +16,13 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      # TODO
+      user.packages = with pkgs; [
+        jdk
+      ];
     })
 
-    (mkIf cfg.xdg.enable {
-      env._JAVA_OPTIONS = "-Djava.util.prefs.userRoot=\"$XDG_CONFIG_HOME\"/java";
-    })
+    # (mkIf cfg.xdg.enable {
+    #   env._JAVA_OPTIONS = "-Djava.util.prefs.userRoot=\"$XDG_CONFIG_HOME\"/java";
+    # })
   ];
 }
