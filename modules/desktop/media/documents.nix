@@ -23,6 +23,10 @@ in
     # TODO parametrize this, with mkMerge
     home.configFile."zathura/zathurarc".source = "${configDir}/zathura/zathurarc";
 
+    # Fix foliate xdg-open integration (blank page when open file)
+    # FIXME: is this still relevant?
+    env.WEBKIT_DISABLE_DMABUF_RENDERER = "1";
+
     # TODO thing about dotfiles for this packages
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
@@ -34,6 +38,7 @@ in
 
       (if cfg.pdf.enable then [
         zathura
+        foliate
         ghostscript
         xournalpp
       ] else [ ]) ++
