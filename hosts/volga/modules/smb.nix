@@ -48,7 +48,7 @@
     '';
     shares = {
       downloads = {
-        path = "/home/${config.user.name}/Downloads";
+        pat = "${config.user.home}/Downloads";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
@@ -59,7 +59,7 @@
       };
 
       videos = {
-        path = "/home/${config.user.name}/Videos";
+        path = "${config.user.home}/Videos";
         browseable = "yes";
         "read only" = "yes";
         "guest ok" = "no";

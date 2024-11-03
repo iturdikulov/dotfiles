@@ -48,7 +48,7 @@ in {
     env.GNUPGHOME = "$XDG_CONFIG_HOME/gnupg";
 
     systemd.user.services.gpg-agent.serviceConfig.Environment = [
-      "GNUPGHOME=/home/${config.user.name}/.config/gnupg"
+      "GNUPGHOME=${config.user.home}/.config/gnupg"
     ];
 
     programs.gnupg.package = gnupgPkg;

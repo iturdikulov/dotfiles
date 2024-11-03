@@ -47,7 +47,7 @@
           };
     in {
       home-inom = basicBorgJob "inom" // rec {
-        paths = "/home/inom";
+        paths = config.user.home;
         exclude = map (x: paths + "/" + x) common-excludes;
       };
     };
