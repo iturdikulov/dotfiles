@@ -34,7 +34,9 @@
         telegram.enable = true;
         godot.enable = true;
         filezilla.enable = true;
+        gpt4all.enable = true;
         stellarium.enable = true;
+        qucs.enable = true;
 
         parsec.enable = true;
         remmina.enable = true;
@@ -56,6 +58,7 @@
         documents.office.enable = true;
         graphics.enable = true;
         mpv.enable = true;
+        kodi.enable = true;
         recording.enable = true;
         espeak.enable = true;
         useless.enable = true;
@@ -73,6 +76,7 @@
       rust.enable = true;
       go.enable = true;
       python.enable = true;
+      java.enable = true;
       cc.enable = true;
       lua.enable = true;
 
