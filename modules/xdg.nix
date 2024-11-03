@@ -186,23 +186,27 @@ in {
           "text/x-scala" = [ "nvim.desktop" ]; # scala.scala
           "text/vnd.trolltech.linguist" = [ "nvim.desktop" ]; # typescript.ts
 
+          # Images
+          "application/x-krita" = [ "krita.desktop" ]; # krita.kra
+          "image/x-xcf" = [ "gimp.desktop" ]; # gimp.xcf
+
           # Raster Images
           "image/x-eps" = [ "org.pwmt.zathura-cb.desktop" ]; # eps.eps
           "image/jp2" = [ "org.darktable.darktable.desktop" ]; # jpeg2.jp2, nsxiv can't open it
-          "image/webp" = [ "org.geeqie.Geeqie.desktop" ]; # webp.webp
-          "image/jpeg" = [ "org.geeqie.Geeqie.desktop" ]; # jpeg.jpg
-          "image/png" = [ "org.geeqie.Geeqie.desktop" ]; # png-transparent.png
-          "image/tiff" = [ "org.geeqie.Geeqie.desktop" ]; # tiff.tif
-          "image/gif" = [ "org.geeqie.Geeqie.desktop" ]; # gif-transparent.gif
-          "image/bmp" = [ "org.geeqie.Geeqie.desktop" ]; # bmp.bmp
-          "image/vnd.microsoft.icon" = [ "org.geeqie.Geeqie.desktop" ]; # ico.ico
-          "image/heif" = [ "org.geeqie.Geeqie.desktop" ]; # heif.heif
-          "image/x-portable-bitmap" = [ "org.geeqie.Geeqie.desktop" ]; # pbm.pbm
-          "image/x-portable-graymap" = [ "org.geeqie.Geeqie.desktop" ]; # pgmb.pgm
-          "image/x-tga" = [ "org.geeqie.Geeqie.desktop" ]; # targa.tga
-          "image/jxl" = [ "org.geeqie.Geeqie.desktop" ]; # jxl.jxl
-          "image/x-xbitmap" = [ "org.geeqie.Geeqie.desktop" ]; # x-bitmap.xbm
-          "image/x-portable-pixmap" = [ "org.geeqie.Geeqie.desktop" ]; # ppmb.ppm
+          "image/webp" = [ "com.interversehq.qView.desktop" ]; # webp.webp
+          "image/jpeg" = [ "com.interversehq.qView.desktop" ]; # jpeg.jpg
+          "image/png" = [ "com.interversehq.qView.desktop" ]; # png-transparent.png
+          "image/tiff" = [ "com.interversehq.qView.desktop" ]; # tiff.tif
+          "image/gif" = [ "com.interversehq.qView.desktop" ]; # gif-transparent.gif
+          "image/bmp" = [ "com.interversehq.qView.desktop" ]; # bmp.bmp
+          "image/vnd.microsoft.icon" = [ "com.interversehq.qView.desktop" ]; # ico.ico
+          "image/heif" = [ "com.interversehq.qView.desktop" ]; # heif.heif
+          "image/x-portable-bitmap" = [ "com.interversehq.qView.desktop" ]; # pbm.pbm
+          "image/x-portable-graymap" = [ "com.interversehq.qView.desktop" ]; # pgmb.pgm
+          "image/x-tga" = [ "com.interversehq.qView.desktop" ]; # targa.tga
+          "image/jxl" = [ "com.interversehq.qView.desktop" ]; # jxl.jxl
+          "image/x-xbitmap" = [ "com.interversehq.qView.desktop" ]; # x-bitmap.xbm
+          "image/x-portable-pixmap" = [ "com.interversehq.qView.desktop" ]; # ppmb.ppm
 
           # Vector Images
           "image/wmf" = [ "org.inkscape.Inkscape.desktop" ]; # WindowsMetafile.wmf
