@@ -26,6 +26,7 @@ in {
     services.xserver.deviceSection = ''Option "TearFree" "true"'';  # Fix tearing for amdgpu.
 
     hardware.graphics.extraPackages = with pkgs; [
+      clinfo
       amdvlk
       rocmPackages.clr.icd
     ];
