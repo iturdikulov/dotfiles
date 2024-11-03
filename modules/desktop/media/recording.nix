@@ -46,6 +46,7 @@ in {
     (mkIf cfg.tools.enable {
       user.packages = with pkgs; [
         ffmpeg-full
+        handbrake
       ];
     })
   ]);
