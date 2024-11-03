@@ -115,8 +115,11 @@ in {
       # export XDG_UTILS_DEBUG_LEVEL=2
       # xdg-mime query default application/pdf
       # xdg-mime query filetype file.ext
-      home-manager.users.${config.user.name}.xdg.mimeApps = {
-        enable = true;
+
+      xdg.mime = {
+        addedAssociations = {
+          "image/webp" = [ "com.interversehq.qView.desktop" ]; # webp.webp
+        };
         defaultApplications = {
           # TODO: check raster/svg/etc enabled and only then apply associations?
 
@@ -136,9 +139,9 @@ in {
           "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ]; # odt.odt
 
           "application/pdf" = [ "com.github.xournalpp.xournalpp.desktop" ]; # pdf.pdf
-          "application/epub+zip" = [ "org.pwmt.zathura-cb.desktop" ]; # epub.epub
-          "application/x-fictionbook+xml" = [ "org.pwmt.zathura-cb.desktop" ]; # fictionbook.fb2
-          "application/x-mobipocket-ebook" = [ "org.pwmt.zathura-cb.desktop" ]; # mobi.mobi
+          "application/epub+zip" = [ "com.github.johnfactotum.Foliate.desktop" ]; # epub.epub
+          "application/x-fictionbook+xml" = [ "com.github.johnfactotum.Foliate.desktop" ]; # fictionbook.fb2
+          "application/x-mobipocket-ebook" = [ "com.github.johnfactotum.Foliate.desktop" ]; # mobi.mobi
           "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
           "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
           "application/vnd.comicbook-rar" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbr
