@@ -37,6 +37,14 @@ in {
           fspy                  # Quick and easy still image camera matching
       ];
 
+      # Blender scripts
+      home.configFile = {
+        "blender/${blenderVersion}/scripts" = {
+          source = "${configDir}/blender/scripts";
+          recursive = true;
+        };
+      };
+
       # I copy these files manually because they should be mutable, as Blender is
       # very stateful. Having a consistent starting point for new systems is good
       # enough for me.
