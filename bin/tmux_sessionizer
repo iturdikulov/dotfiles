@@ -9,6 +9,7 @@ else
 ~/ \
 ~/Arts_and_Entertainment \
 ~/.local \
+~/.config \
 ~/IRL \
 ~/Science/* \
 ~/Computer/*/ \
