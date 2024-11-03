@@ -25,6 +25,7 @@ in {
         llvmPackages.libcxx
         llvmPackages.libcxxStdenv
         llvmPackages.clang
+        cling  # Interactive C++ interpreter
 
         # builder
         gnumake
