@@ -112,6 +112,7 @@ in {
         # Raster images workflow
         (if cfg.raster.enable then [
           geeqie
+          qview  # has nice integration with geeqie
           librsvg
           nodePackages.svgo
 
