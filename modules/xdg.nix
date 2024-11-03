@@ -228,6 +228,8 @@ in {
           "audio/x-m4b" = [ "mpv.desktop" ]; # m4b.m4b
           "video/x-ms-wmv" = [ "mpv.desktop" ]; # WindowsMediaVideo.wmv
           "video/webm" = [ "mpv.desktop" ]; # webm.webm
+          "audio/ogg" = [ "mpv.desktop" ]; # ogg.ogg
+          "audio/x-vorbis+ogg" = [ "mpv.desktop" ]; # ogg.ogg
           "audio/flac" = [ "mpv.desktop" ]; # flac.flac
           "audio/vnd.wav" = [ "mpv.desktop" ]; # wav.wav
           "audio/x-wav" = [ "mpv.desktop" ]; # wav.wav
