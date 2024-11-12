@@ -1,4 +1,4 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, inputs, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -13,6 +13,9 @@ in
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
+      (my.yandex-music.override {
+        trayEnabled = false;
+      })
       beets
       cmus
       cmusfm  # don't forget cmusfm init on first time
@@ -75,6 +78,7 @@ in
       set color_win_title_attr=default
       set color_win_title_bg=232
       set color_win_title_fg=83
+      set resume=true
       bind -f common delete run trash {}
       update-cache
       add ~/Arts_and_Entertainment/music
