@@ -9,7 +9,7 @@ alias rnd='ta +rnd +@computer'
 
 # Report
 alias ti="task in limit:20"
-alias td="task next status:pending -BLOCKED -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'"
+alias td="task next status:pending -BLOCKED -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'|bat --plain"
 
 # Add tickle task function
 # Usage example
@@ -19,13 +19,13 @@ tat () {
     task add +tickle wait:$deadline $@
 }
 alias think='tat +1d'
-finish (){
-    task $@ done
-    td
+fin (){
+    local task_id=$1
+    task $task_id done && td
 }
 delay (){
     local delay=$1; shift
-    task "$@" modify wait:$delay
+    task "$@" modify wait:$delay && td
 }
 
 # Research and review

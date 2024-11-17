@@ -58,6 +58,7 @@ alias rcpd='rcp --delete --delete-after'
 alias rcpu='rcp --chmod=go='
 alias rcpdu='rcpd --chmod=go='
 
+alias stag='sed -E "s/<[^>]*>//g"'
 alias y='wl-copy'
 alias p='wl-paste'
 
@@ -80,6 +81,10 @@ fi
 if (( $+commands[ddgr] )); then
     alias ddgr="ddgr -n 7";
     alias bang="ddgr --gb --np"
+fi
+
+if (( $+commands[7zz] )); then
+  alias 7z='7zz'
 fi
 
 autoload -U zmv
