@@ -28,6 +28,7 @@ in
     env.WEBKIT_DISABLE_DMABUF_RENDERER = "1";
 
     # TODO thing about dotfiles for this packages
+    env.CALIBRE_USE_SYSTEM_THEME = "true";
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         xchm
