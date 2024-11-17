@@ -49,6 +49,7 @@ in
       wf-recorder    # screencasting
       wlr-randr      # for monitors that hyprctl can't handle
       xorg.xrandr    # for XWayland windows
+      copyq           # clipboard manager
     ];
 
     # # Enable the gnome-keyring secrets vault.
