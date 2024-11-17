@@ -58,8 +58,8 @@ alias rcpd='rcp --delete --delete-after'
 alias rcpu='rcp --chmod=go='
 alias rcpdu='rcpd --chmod=go='
 
-alias y='xclip -selection clipboard -in'
-alias p='xclip -selection clipboard -out'
+alias y='wl-copy'
+alias p='wl-paste'
 
 alias jc='journalctl -xe'
 alias sc=systemctl

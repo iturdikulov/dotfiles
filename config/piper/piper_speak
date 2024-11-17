@@ -35,7 +35,7 @@ if [ $# -eq 0 ]
         xdotool getactivewindow key ctrl+c
     fi
 
-    text=$(xclip -o -selection clipboard)
+    text=$(wl-copy)
 else
     if [[ $1 == "stdin" ]]; then
         text=$(</dev/stdin)
