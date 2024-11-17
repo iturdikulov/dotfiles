@@ -69,16 +69,16 @@ in {
 
       ## LSP
       lua-language-server
-      clang-tools  # NOTE: sync this with cc.nix
+      clang-tools        # NOTE: sync this with cc.nix
       ltex-ls
-      nil             # Yet another language server for Nix
-      efm-langserver  # for formatting
+      nil                # Yet another language server for Nix
+      efm-langserver     # for formatting
       unstable.emmet-ls  # HTML/XML/CSS completion
-      texlab    # LaTeX
-      ruff-lsp  # Python linter
-      gopls     # Go
-      marksman  # Markdown
-      nil       # Nix
+      texlab             # LaTeX
+      ruff-lsp           # Python linter
+      gopls              # Go
+      marksman           # Markdown
+      nil                # Nix
 
       ## Formatting
       stylua
@@ -95,7 +95,7 @@ in {
         desktopName = "Neovim Text Editor";
         comment = "Edit text files";
         tryExec = "nvim";
-        exec = "${pkgs.xst}/bin/xst -e nvim %F";
+        exec = "${getExe' pkgs.foot "foot"} -e nvim %F";
         terminal = false;
         type = "Application";
         keywords = [ "Text" "editor" ];
