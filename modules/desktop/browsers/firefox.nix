@@ -47,6 +47,8 @@ in {
       env.XDG_DESKTOP_DIR = "$HOME/";
 
       modules.desktop.browsers.firefox.settings = {
+        # My provider blocks this... 👿, maybe need to remove echconfig in future
+        "echconfig.enabled" = false;
         # Reduce File IO / SSD abuse
         # Otherwise, Firefox bombards the HD with writes. Not so nice for SSDs.
         # This forces it to write every 30 minutes, rather than 15 seconds.
@@ -106,9 +108,6 @@ in {
         # Reduce search engine noise in the urlbar's completion window. The
         # shortcuts and suggestions will still work, but Firefox won't clutter
         # its UI with reminders that they exist.
-        "browser.urlbar.suggest.searches" = false;
-        "browser.urlbar.shortcuts.bookmarks" = false;
-        "browser.urlbar.shortcuts.history" = false;
         "browser.urlbar.shortcuts.tabs" = false;
         "browser.urlbar.showSearchSuggestionsFirst" = false;
         "browser.urlbar.speculativeConnect.enabled" = false;
