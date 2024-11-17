@@ -24,10 +24,10 @@ speak(){
     piper --length_scale 1.2 --model $model --output-raw --quiet | aplay --quiet -f S16_LE -c1 -r22050 -
 }
 
-if [[ $1 == "stdin" ]]; then
-    text=$(</dev/stdin)
-else
+if [ -t 0 ]; then
     text="$@"
+else
+    text=$(</dev/stdin)
 fi
 
 if [[ "$text" =~ $RU_PATTERN ]]; then
