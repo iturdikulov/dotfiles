@@ -14,7 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      taskwarrior # my daily tasks
+      taskwarrior3 # my daily tasks
       timewarrior # time tracking
     ];
 
