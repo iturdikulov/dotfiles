@@ -123,7 +123,7 @@ in {
         defaultApplications = {
           # TODO: check raster/svg/etc enabled and only then apply associations?
 
-          "inode/directory" = "nnn-xst.desktop"; # directory
+          "inode/directory" = "nnn.desktop"; # directory
 
           # Default browser & html files
           "x-scheme-handler/http" = "firefox.desktop";
@@ -212,8 +212,8 @@ in {
           "image/x-portable-pixmap" = [ "com.interversehq.qView.desktop" ]; # ppmb.ppm
 
           # Vector Images
-          "image/wmf" = [ "org.inkscape.Inkscape.desktop" ]; # WindowsMetafile.wmf
-          "image/svg+xml" = [ "org.inkscape.Inkscape.desktop" ]; # svg.svg
+          "image/svg+xml" = [ "com.interversehq.qView.desktop" ]; # svg.svg
+          "image/wmf" = [ "com.interversehq.qView.desktop" ]; # WindowsMetafile.wmf
 
           # Multimedia
           "application/x-cue" = [ "mpv.desktop" ]; # cue.cue
