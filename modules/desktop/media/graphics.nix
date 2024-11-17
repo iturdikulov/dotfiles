@@ -113,6 +113,16 @@ in {
           librsvg
           nodePackages.svgo
 
+          pureref
+          (makeDesktopItem {
+            name = "pureref";
+            desktopName = "PureRef";
+            genericName = "Simple reference image viewer";
+            icon = "pureref";
+            exec = "env QT_SCALE_FACTOR=${screenScaleFactor} ${getExe' pkgs.pureref "pureref"} %F";
+            categories = [ "Graphics" "Photography" ];
+          })
+
           # FIXME: on some point need to remove this and add gimp 3.0
           # this using manually gimp 2.99 build
           # also this directory is exclued from VCS and you need to copy
