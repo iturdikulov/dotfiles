@@ -32,7 +32,7 @@ max_line_length = 80
 quote_type = double
 
 # Web files
-[*.{js,json,yml,html,md,css,scss,less,Gemfile}]
+[*.{js,json,yml,html,css,scss,less,Gemfile}]
 indent_style = space
 indent_size = 2
 
