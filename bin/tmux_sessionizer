@@ -7,14 +7,14 @@ else
         --exclude='Arts_and_Entertainment/literature/*' --exclude='Arts_and_Entertainment/music/*' --exclude='_*' \
         --no-follow --full-path $HOME \
 ~/ \
-~/Arts_and_Entertainment \
 ~/.local \
-~/.config \
+~/Arts_and_Entertainment \
+~/Arts_and_Entertainment/visual_arts \
 ~/IRL \
 ~/Science/* \
 ~/Computer/*/ \
 ~/Computer/graphics/*/ \
-~/Computer/reference/*/ \
+~/Computer/reference \
 echo /etc/dotfiles) | fzf --tac)
 fi
 
