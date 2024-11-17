@@ -11,7 +11,6 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       rpcs3            # PS3
-      unstable.lime3ds # 3DS
       (retroarch.override {
         cores = with libretro; [
           genesis-plus-gx  # SG-1000, Master System, Genesis, Sega CD, Game Gear

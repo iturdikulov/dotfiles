@@ -19,6 +19,16 @@ in {
       mari0          # Crossover between Super Mario Bros. and Portal
       pacvim         # Game that teaches you vim commands
       vimgolf        # A game that tests Vim efficiency, train vim skills
+
+      # Non-packaged games
+      (makeDesktopItem {
+        name = "factorio";
+        desktopName = "Factorio Native";
+        exec = "steam-run /games/factorio/bin/x64/factorio";
+        type = "Application";
+        icon = "factorio";
+        categories = [ "Game" ];
+      })
     ];
 
     # Special wrapper to fix -Z issues
