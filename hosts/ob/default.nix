@@ -86,6 +86,8 @@
       php.enable = true;
 
       beekeeper.enable = true;
+      dbeaver.enable = true;
+
       mitmproxy.enable = true;
       shell.enable = true;
       data_serialization.enable = true;
