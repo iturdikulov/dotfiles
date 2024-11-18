@@ -9,7 +9,13 @@ alias rnd='ta +rnd +@computer'
 
 # Report
 alias ti="task in limit:20"
-alias td="task next status:pending -BLOCKED -WAITING limit:page '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'|bat --plain"
+alias td_raw="task next \
+    rc._forcecolor=on \
+    rc.defaultwidth=`tput cols` \
+    rc.verbose=affected,blank,context,edit,header,footnote,label,new-id,project,special,sync,recur \
+    status:pending -BLOCKED -WAITING \
+    '(+ACTIVE or +OVERDUE or due:today or scheduled:today or pri:H)'"
+alias td="td_raw|bat --plain"
 
 # Add tickle task function
 # Usage example
