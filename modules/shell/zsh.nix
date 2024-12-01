@@ -57,6 +57,8 @@ in {
     };
 
     home.configFile = {
+      "bat/config".source = "${configDir}/bat/config";
+
       "starship.toml".source = "${configDir}/starship/starship.toml";
 
       "atuin/config.toml".text = ''
@@ -96,7 +98,7 @@ in {
            fi
 
            if (( $+commands[leetcode] )); then
-             eval "$(leetcode completions)"
+             eval "$(leetcode completions zsh)"
            fi
 
            if [ "$SSH_CLIENT" ]; then
