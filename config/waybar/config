@@ -9,8 +9,15 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "hyprland/language", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
+        "hyprland/language", "custom/dnd", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
     ],
+
+    "custom/dnd": {
+        "exec-if": "command -v makoctl",
+        "exec": "makoctl mode",
+        "format": "[{}]",
+        "interval": 4,
+    },
 
     "hyprland/window": {
         "max-length": 30,

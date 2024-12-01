@@ -114,6 +114,8 @@ function r {
   sched "$time" "notify-send --urgency=critical 'Reminder' '$@'; ding";
 }; compdef r=sched
 
+# Enable DND mode with mako (notification daemon)
+alias dnd='$(makoctl mode -s dnd && sleep 10800 && makoctl mode -r dnd) & disown'
 
 alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
 alias urldecode='python3 -c "import sys, urllib.parse as ul; print (ul.unquote_plus(sys.argv[1]))"'
