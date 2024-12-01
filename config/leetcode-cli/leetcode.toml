@@ -15,5 +15,5 @@ test = true
 [storage]
 cache = 'Problems'
 code = 'code'
-root = '~/Computer/programming/competitive/'
+root = '~/Computer/science/LeetCode-solutions/'
 scripts = 'scripts'
