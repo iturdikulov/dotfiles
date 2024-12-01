@@ -34,12 +34,6 @@
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."${config.user.home}/Computer" = {
-      device = "volga.local:/Computer";
-      fsType = "nfs";
-      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
-  };
-
   fileSystems."${config.user.home}/IRL" = {
       device = "volga.local:/IRL";
       fsType = "nfs";
