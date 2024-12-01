@@ -4,8 +4,7 @@
 #   variable=$HOME/task
 #   variable=$VALUE
 # Use the command 'task show' to see all defaults and overrides
-
-news.version=2.6.0
+news.version=3.1.0
 
 # Files
 data.location=~/.config/task
