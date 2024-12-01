@@ -78,12 +78,12 @@ in {
           maim           # A command-line screenshot utility
           flameshot      # Screenshots
 
-          # TODO: rewrite this
+          # TODO: rewrite this, broken!
           (pkgs.writeScriptBin "scrcap_ocr" ''
           #!/bin/sh
           maim -s | convert - -units PixelsPerInch -resample 300 -sharpen 12x6.0 - \
           | tesseract -l eng+rus stdin stdout \
-          | xclip -in -selection clipboard
+          | wl-copy
           notify-send "Screenshot OCR" "Image copied to clipboard"
           '')
         ] else []) ++
