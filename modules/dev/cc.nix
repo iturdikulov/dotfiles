@@ -39,9 +39,6 @@ in {
         # fix headers not found
         clang-tools
 
-        # LSP and compiler
-        libstdcxx5
-
         # other tools
         cppcheck
         libllvm
