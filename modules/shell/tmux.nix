@@ -32,6 +32,22 @@ in {
       # plugins = with pkgs.tmuxPlugins; [];
     };
 
+    user.packages = with pkgs.tmuxPlugins; [
+      (pkgs.writeScriptBin "mux" ''
+        function ressurect() {
+            pgrep -vx tmux > /dev/null && \
+                                  tmux new -d -s delete-me && \
+                                  tmux run-shell ${resurrect}/share/tmux-plugins/resurrect/scripts/restore.sh && \
+                                  tmux kill-session -t delete-me && attach
+        }
+        function attach() {
+          tmux ls | grep -qEv 'attached|scratch' && tmux at
+        }
+
+        attach || ressurect
+       '')
+    ];
+
     home.configFile."tmux" = {
       source = "${configDir}/tmux";
       recursive = true;
