@@ -14,8 +14,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -pv'
-alias wget='wget -c'
-alias wget_img='wget -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
+alias wget='wget2 -c'
+alias wget_img='wget2 -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
 
 alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'

@@ -17,7 +17,7 @@ in {
       aria
       yt-dlp
       gallery-dl
-      wget
+      wget2
       nmap
       whois
       unstable.copilot-cli
@@ -26,6 +26,8 @@ in {
       my.tun2proxy
       proxychains
       tshark  # powerful network protocol analyzer
+      single-file-cli
+      bore-cli
     ];
 
     ## Custom ENV variables
