@@ -125,6 +125,7 @@
       git.enable = true;
       tmux.enable = true;
       zsh.enable = true;
+      bash.enable = true;
       sdcv.enable = true;
       visidata.enable = true;
       maintenance.enable = true;
