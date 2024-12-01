@@ -86,7 +86,13 @@
   hardware = {
     xone.enable = true;  # Xbox controller support
     onlykey.enable = true;  # OnlyKey token support
+
   };
+
+
+  # FIXME: this fix nvidia driver build, but maybe not actual anymore!
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_11; # to build beta driver
 
   services.asusd = {
     enable = true;
