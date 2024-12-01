@@ -13,7 +13,6 @@ in {
     user.packages = with pkgs; [
       xscreensaver   # A set of screensavers
       cmatrix        # Simulates the falling characters theme from The Matrix movie
-      cava           # Console-based Audio Visualizer for Alsa
       cbonsai        # Grow bonsai trees in your terminal
       sl             # Steam Locomotive runs across your terminal when you type 'sl'
 
