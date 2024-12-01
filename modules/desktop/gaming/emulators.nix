@@ -10,8 +10,8 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      rpcs3            # PS3
-      (retroarch.override {
+      rpcs3 # PS3
+      (retroarch.overrideAttrs (old: {
         cores = with libretro; [
           genesis-plus-gx  # SG-1000, Master System, Genesis, Sega CD, Game Gear
           mesen            # NES
@@ -21,7 +21,7 @@ in {
           pcsx2            # PS2
           ppsspp           # PSP
         ];
-      })
+      }))
     ];
   };
 }
