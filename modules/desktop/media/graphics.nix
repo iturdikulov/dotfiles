@@ -6,7 +6,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.desktop.media.graphics;
     configDir = config.dotfiles.configDir;
-    blenderVersion = "4.2";
+    blenderVersion = "4.3";
     screenScaleFactor = config.modules.desktop.high-dpi.scaleFactor;
 in {
   options.modules.desktop.media.graphics = {
@@ -29,12 +29,14 @@ in {
       # 3D modelling
       user.packages = with pkgs; [
           f3d                   # Fast and minimalist 3D viewer using VTK
+          unstable.freecad-wayland  # General purpose Open Source 3D CAD/MCAD/CAx/CAE/PLM modeler
           # TODO: verify libcrypt-legacy is required
           # Blender itself doesn't need libxcrypt-legacy, but I use blenderkit,
           # which needs libcrypt.so.1, which libxcrypt no longer provides.
           pkgs."blender_${builtins.replaceStrings ["."] ["_"] blenderVersion}"
           solvespace
           fspy                  # Quick and easy still image camera matching
+          my.tungsten              # 3D rendering engine
       ];
 
       # I copy these files manually because they should be mutable, as Blender is
