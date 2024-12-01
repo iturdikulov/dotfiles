@@ -22,7 +22,7 @@ with lib.my;
         (removePrefix "/mnt"
           (findFirst pathExists (toString ../.) [
             "/mnt/etc/dotfiles"
-            "/etc/dotfiles"
+            "/home/inom/Computer/software/dotfiles"
           ]));
       binDir     = mkOpt path "${config.dotfiles.dir}/bin";
       configDir  = mkOpt path "${config.dotfiles.dir}/config";
