@@ -74,12 +74,12 @@ OR
    # Optional, set architecture (defaults to x86_64-linux)
    export NIX_SYSTEM=x86_64-linux # or aarch64-linux
 
-   git clone https://github.com/iturdikulov/dotfiles /etc/dotfiles
-   cd /etc/dotfiles
+   git clone https://github.com/iturdikulov/dotfiles /home/inom/Computer/software/dotfiles
+   cd /home/inom/Computer/software/dotfiles
 
    # Create a host config in `hosts/` and add it to the repo:
    mkdir -p hosts/$HOST
-   nixos-generate-config --root /mnt --dir /etc/dotfiles/hosts/$HOST
+   nixos-generate-config --root /mnt --dir /home/inom/Computer/software/dotfiles/hosts/$HOST
    rm -f hosts/$HOST/configuration.nix
    cp hosts/volga/default.nix hosts/$HOST/default.nix
    # get some settings from hosts/volga/hardware-configuration.nix too!
@@ -107,7 +107,9 @@ OR
    # `--option pure-eval no`.
 
    # Then move the dotfiles to the mounted drive!
-   mv /etc/dotfiles /mnt/etc/dotfiles
+   # TODO: need verify this
+   mkdir -p /mnt/home/$USER/Computer/software/dotfiles
+   mv /mnt/dotfiles /mnt/home/$USER/Computer/software/dotfiles
 
    # Reboot and change owner
    chown -R ...
@@ -131,7 +133,7 @@ OR
 
 9. When you configured git access, you can change dotfiles remote url:
    ```sh
-   cd /etc/dotfiles
+   cd /home/inom/Computer/software/dotfiles
    git remote set-url origin git@github.com:Inom-Turdikulov/nix_dotfiles.git
    git status
    ```
