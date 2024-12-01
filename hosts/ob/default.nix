@@ -137,8 +137,6 @@
 
       leetcode-cli.enable = true;
       task.enable = true;
-
-      fhs-compat.enable = true;
     };
     services = {
       ssh.enable = true;
