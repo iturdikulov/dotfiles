@@ -11,7 +11,9 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       translate-shell
-      python3.packages.cyrtranslit
+      (python3.withPackages(ps: with ps; [
+        cyrtranslit
+      ]))
 
       # TODO: need to extract into separate script and simplify logic
       (writeScriptBin "D" ''
