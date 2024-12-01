@@ -159,12 +159,12 @@ in
       }
 
       listener {
-          timeout = 2000
+          timeout = 7200
           on-timeout = ${getExe pkgs.swaylock} -f -c 0E1415      # lock screen when timeout has passed
       }
 
       listener {
-          timeout = 4600
+          timeout = 10800
           on-timeout = ${getExe' pkgs.hyprland "hyprctl"} dispatch dpms off  # screen off when timeout has passed
           on-resume = ${getExe' pkgs.hyprland "hyprctl"} dispatch dpms on    # screen on when activity is detected after timeout has fired.}
       }
