@@ -69,7 +69,7 @@ in {
           noto-fonts
           noto-fonts-cjk-serif
           noto-fonts-emoji
-          fira-code-nerdfont
+          nerd-fonts.fira-code
           fira-code-symbols
           fira
           terminus_font_ttf
