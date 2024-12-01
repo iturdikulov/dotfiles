@@ -65,7 +65,7 @@
     },
 
     "bluetooth": {
-        "format": "\udb80\udcaf",
+        "format": "",
         "format-disabled": "\udb80\udcb2",
         "format-connected": "\udb80\udcb1",
         "format-connected-battery": " {device_battery_percentage}%",
