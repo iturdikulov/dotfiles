@@ -12,7 +12,6 @@ in
   options.modules.desktop.media.documents = {
     enable = mkBoolOpt false;
     pdf.enable = mkBoolOpt true;
-    research.enable = mkBoolOpt true;
     ebook.enable = mkBoolOpt true;
     office.enable = mkBoolOpt false;
   };
@@ -42,12 +41,9 @@ in
         foliate
         ghostscript
         xournalpp
-      ] else [ ]) ++
 
-      (if cfg.research.enable then [
-        unstable.obsidian # render markdown and learn flashcards
-        papis # to store DOI stuff
-        wiki-tui # wikipedia in terminal
+        # FIXME: force to use x11 since there is opentabletdiver issues with wayland
+        (unstable.obsidian.override { commandLineArgs = [ "--ozone-platform=x11" ]; })
       ] else [ ]) ++
 
       (if cfg.office.enable then [
