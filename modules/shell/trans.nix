@@ -11,32 +11,25 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       translate-shell
+      python3.packages.cyrtranslit
 
       # TODO: need to extract into separate script and simplify logic
       (writeScriptBin "D" ''
         #!/bin/sh
-
         if [[ $# -gt 0 ]]; then
             CONTENT=$@
-            source=$(trans -id $CONTENT|sed -n 's/^Code *//p')
         else
             CONTENT=$(wl-paste -n)
-            source=$($CONTENT|trans -id|sed -n 's/^Code *//p')
         fi
 
-        if [[ $source == *ru* ]]; then
-            target=en
+        RU_PATTERN='[А-Яа-яЁё]+'  # Regex pattern for Cyrillic characters
+        if [[ "$CONTENT" =~ $RU_PATTERN ]]; then
+            target="en"
         else
-            target=ru
+            target="ru"
         fi
 
-        echo Translation from $source to $target
-
-        if [[ $# -gt 0 ]]; then
-            ${getExe' pkgs.translate-shell "trans"} -brief -target $target -play -join $@
-        else
-            wl-paste -n|${getExe' pkgs.translate-shell "trans"} -brief -target $target -play -join $@
-        fi
+        ${getExe' pkgs.translate-shell "trans"} -brief -target $target -play -join $CONTENT
        '')
     ];
   };

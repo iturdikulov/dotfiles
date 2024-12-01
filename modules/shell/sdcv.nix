@@ -14,7 +14,7 @@ in {
 
       (writeScriptBin "d" ''
         #!/bin/sh
-        sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat --style=grid --terminal-width=80
+        sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat
        '')
     ];
 
