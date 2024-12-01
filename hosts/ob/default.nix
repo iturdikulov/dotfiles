@@ -77,6 +77,7 @@
       go.enable = true;
       python.enable = true;
       java.enable = true;
+      python.pycharm.enable = true;
       cc.enable = true;
       lua.enable = true;
 
@@ -136,9 +137,12 @@
 
       leetcode-cli.enable = true;
       task.enable = true;
+
+      fhs-compat.enable = true;
     };
     services = {
       ssh.enable = true;
+      wlsunset.enable = true;
 
       syncthing.enable = true;
       virt-manager.enable = true;
@@ -147,6 +151,7 @@
       docker.enable = true;
       rabbitmq.enable = false;
       postgresql.enable = false;
+      ydotool.enable = true;
     };
     theme.active = "alucard";
   };
@@ -164,8 +169,5 @@
   services.openssh.startWhenNeeded = true;
   services.pcscd.enable = true; # for gpg-agent
   services.timesyncd.enable = true; # to sync time
-
-  #services.openssh.settings.X11Forwarding = true;
-
   networking.networkmanager.enable = true;
 }
