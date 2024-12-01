@@ -10,8 +10,13 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      chatgpt-cli
-      my.tungsten
+      (python3.withPackages (ps: [
+        (ps.llm.overridePythonAttrs (old: { doCheck = false; }))
+        ps.huggingface-hub
+        my.llm-openrouter
+        my.files-to-prompt
+      ]))
+      unstable.koboldcpp
     ];
   };
 }

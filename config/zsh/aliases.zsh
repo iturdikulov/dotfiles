@@ -26,6 +26,9 @@ alias watch='watch --color' # Color using watch
 alias chown="chown --preserve-root" # Do not do chown for root directory
 alias chmod="chmod --preserve-root"
 alias E="SUDO_EDITOR=nvim sudo -e"
+gpt() {
+    noglob llm "$@" | fold | bat --language=markdown --plain
+}
 
 # disable globbing for some specific programs
 alias c="noglob qalc"
@@ -71,7 +74,7 @@ if (( $+commands[eza] )); then
   alias eza="eza --group-directories-first --git";
   alias l="eza -bl";
   alias ll="eza -abghilmu";
-  alias llm='ll --sort=modified'
+  alias lm='ll --sort=modified'
   alias la="LC_COLLATE=C eza -ablF";
   alias tree='eza --tree'
   alias tree_bat='eza --color=always --tree|bat'
