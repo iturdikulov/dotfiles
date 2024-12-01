@@ -131,6 +131,12 @@ options libata          allow_tpm=0
     };
 
   # NFS
+  fileSystems."${config.user.home}/Media/nas" = {
+      device = "kama.local:/torrent";
+      fsType = "nfs";
+      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
+  };
+
   fileSystems."/export/Arts_and_Entertainment" = {
     device = "${config.user.home}/Arts_and_Entertainment";
     options = [ "bind" ];
@@ -186,10 +192,16 @@ options libata          allow_tpm=0
   #   upsmon.monitor."apcBX950U".user = "upsmon";
   # };
 
-  # Disable wakeup by mouse
+  # Disable wakeup by mouse, lock if token is removed
   services.udev.extraRules = ''
   ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="248a", ATTRS{idProduct}=="5b2f", ATTR{power/wakeup}="disabled", ATTR{driver/3-3.3/power/wakeup}="disabled"
-'';
+
+  ACTION=="remove",\
+  SUBSYSTEM=="hidraw",\
+   ENV{ID_FIDO_TOKEN}=="1",\
+   ENV{ID_MODEL_FROM_DATABASE}=="OnlyKey Two-factor Authentication and Password Solution",\
+   RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  '';
 
   # Disable mouse acceleration
   services.libinput.mouse.accelProfile = "flat";
