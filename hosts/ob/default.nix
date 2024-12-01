@@ -92,6 +92,8 @@
       shell.enable = true;
       data_serialization.enable = true;
       docs.enable = true; # dev man pages and docsets tools
+
+      fhs-compat.enable = true;
     };
     editors = {
       default = "nvim";
