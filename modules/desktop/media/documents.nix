@@ -22,26 +22,20 @@ in
     # TODO parametrize this, with mkMerge
     home.configFile."zathura/zathurarc".source = "${configDir}/zathura/zathurarc";
 
-    # Fix foliate xdg-open integration (blank page when open file)
-    # FIXME: is this still relevant?
-    env.WEBKIT_DISABLE_DMABUF_RENDERER = "1";
-
     # TODO thing about dotfiles for this packages
     env.CALIBRE_USE_SYSTEM_THEME = "true";
+
     user.packages = with pkgs;
       (if cfg.ebook.enable then [
         xchm
         calibre
-        zathura
         pandoc
+        my.koreader
       ] else []) ++
 
       (if cfg.pdf.enable then [
-        zathura
-        foliate
+        okular
         ghostscript
-        xournalpp
-
         # FIXME: force to use x11 since there is opentabletdiver issues with wayland
         (unstable.obsidian.override { commandLineArgs = [ "--ozone-platform=x11" ]; })
       ] else [ ]) ++
