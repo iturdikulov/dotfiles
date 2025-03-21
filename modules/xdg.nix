@@ -137,17 +137,17 @@ in {
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ]; # docx.docx
           "application/vnd.oasis.opendocument.text" = [ "writer.desktop" ]; # odt.odt
 
-          "application/pdf" = [ "com.github.xournalpp.xournalpp.desktop" ]; # pdf.pdf
-          "application/epub+zip" = [ "com.github.johnfactotum.Foliate.desktop" ]; # epub.epub
-          "application/x-fictionbook+xml" = [ "com.github.johnfactotum.Foliate.desktop" ]; # fictionbook.fb2
-          "application/x-mobipocket-ebook" = [ "com.github.johnfactotum.Foliate.desktop" ]; # mobi.mobi
+          "application/pdf" = [ "org.kde.okular.desktop" ]; # pdf.pdf
+          "application/epub+zip" = [ "org.kde.okular.desktop" ]; # epub.epub
+          "application/x-fictionbook+xml" = [ "org.kde.okular.desktop" ]; # fictionbook.fb2
+          "application/x-mobipocket-ebook" = [ "org.kde.okular.desktop" ]; # mobi.mobi
           "application/vnd.ms-htmlhelp" = [ "xchm.desktop" ]; # compiledhtml.chm
-          "application/x-cb7" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cb7
-          "application/vnd.comicbook-rar" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbr
-          "application/x-cbt" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbt
-          "application/vnd.comicbook+zip" = [ "org.pwmt.zathura-cb.desktop" ]; # comix.cbz
-          "application/postscript" = [ "org.pwmt.zathura-ps.desktop" ]; # ps.ps
-          "image/vnd.djvu+multipage" = [ "org.pwmt.zathura-djvu.desktop" ]; # djvu.djvu
+          "application/x-cb7" = [ "org.kde.okular.desktop" ]; # comix.cb7
+          "application/vnd.comicbook-rar" = [ "org.kde.okular.desktop" ]; # comix.cbr
+          "application/x-cbt" = [ "org.kde.okular.desktop" ]; # comix.cbt
+          "application/vnd.comicbook+zip" = [ "org.kde.okular.desktop" ]; # comix.cbz
+          "application/postscript" = [ "org.kde.okular.desktop" ]; # ps.ps
+          "image/vnd.djvu+multipage" = [ "org.kde.okular.desktop" ]; # djvu.djvu
 
           # Text Files Associated with nvim (and some other types)
           "text/x-adasrc" = [ "nvim.desktop" ]; # ada.adb
@@ -193,7 +193,7 @@ in {
           "image/x-xcf" = [ "gimp.desktop" ]; # gimp.xcf
 
           # Raster Images
-          "image/x-eps" = [ "org.pwmt.zathura-cb.desktop" ]; # eps.eps
+          "image/x-eps" = [ "org.kde.okular.desktop" ]; # eps.eps
           "image/jp2" = [ "org.darktable.darktable.desktop" ]; # jpeg2.jp2, nsxiv can't open it
           "image/webp" = [ "com.interversehq.qView.desktop" ]; # webp.webp
           "image/jpeg" = [ "com.interversehq.qView.desktop" ]; # jpeg.jpg
