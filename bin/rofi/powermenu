@@ -37,6 +37,6 @@ case $choice in
         fi
         ;;
     ${lock#*	})
-        loginctl lock-session
+        swaylock
         ;;
 esac
