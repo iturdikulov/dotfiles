@@ -122,8 +122,7 @@ in {
         };
         defaultApplications = {
           # TODO: check raster/svg/etc enabled and only then apply associations?
-
-          "inode/directory" = "nnn.desktop"; # directory
+          "inode/directory" = "pcmanfm.desktop"; # directory
 
           # Default browser & html files
           "x-scheme-handler/http" = "firefox.desktop";
