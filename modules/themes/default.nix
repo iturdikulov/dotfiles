@@ -9,8 +9,6 @@ with lib.my;
 let cfg = config.modules.theme;
     qtctConf = {
       Appearance = {
-        color_scheme_path="${pkgs.libsForQt5.qt5ct}/share/qt5ct/colors/darker.conf";
-        custom_palette = true;
         icon_theme = "Papirus-Dark";
         standard_dialogs = "gtk3";
         style = "kvantum-dark";
@@ -64,6 +62,10 @@ in {
       };
       sans = {
         name = mkOpt str "Sans";
+        size = mkOpt int 12;
+      };
+      serif = {
+        name = mkOpt str "Serif";
         size = mkOpt int 12;
       };
       emoji = {
@@ -254,6 +256,7 @@ in {
           useEmbeddedBitmaps = true;
           defaultFonts = {
             sansSerif = [ cfg.fonts.sans.name cfg.fonts.emoji.name ];
+            serif = [ cfg.fonts.serif.name cfg.fonts.emoji.name ];
             monospace = [ cfg.fonts.mono.name cfg.fonts.emoji.name ];
           };
         };
