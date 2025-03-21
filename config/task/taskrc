@@ -32,3 +32,8 @@ report.in.columns           = id,priority,tags,description
 report.in.labels            = ID,Pri,Tags,Description
 report.in.description       = Inbox
 report.in.filter            = status:pending limit:page (project:inbox)
+
+report.learn.columns           = id,priority,tags,description
+report.learn.labels            = ID,Pri,Tags,Description
+report.learn.description       = Learning Tasks
+report.learn.filter            = status:pending limit:page (project:learn)
