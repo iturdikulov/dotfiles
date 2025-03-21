@@ -21,19 +21,17 @@ in {
     ];
 
     systemd.user.services.wlsunset = {
-      unitConfig = {
-        PartOf = [ "graphical-session.target" ];
-      };
-      environment = {
-        WAYLAND_DISPLAY = "wayland-1";
-        DISPLAY = ":0";
-      };
       serviceConfig = {
         ExecStart =
           let lat = toString config.location.latitude;
               lng = toString config.location.longitude;
           in "${pkgs.wlsunset}/bin/wlsunset -l ${lat} -L ${lng}";
+        Restart = "always";
+        RestartSec = 5;
       };
+      bindsTo = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
       wantedBy = [ "graphical-session.target" ];
     };
   };
