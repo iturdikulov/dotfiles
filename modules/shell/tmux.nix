@@ -38,13 +38,13 @@ in {
             pgrep -vx tmux > /dev/null && \
                                   tmux new -d -s delete-me && \
                                   tmux run-shell ${resurrect}/share/tmux-plugins/resurrect/scripts/restore.sh && \
-                                  tmux kill-session -t delete-me && attach
+                                  tmux kill-session -t delete-me
         }
         function attach() {
           tmux ls | grep -qEv 'attached|scratch' && tmux at
         }
 
-        attach || ressurect
+        attach || ressurect && attach
        '')
     ];
 
