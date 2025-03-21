@@ -10,7 +10,7 @@ with lib.my;
 
     networking = {
       globalProxy = {
-        host = mkOpt str "socks5://kama.local";
+        host = mkOpt str "socks5://kama";
         port = mkOpt str "1080";
       };
     };

@@ -4,14 +4,13 @@ with builtins;
 with lib;
 {
   networking.extraHosts = ''
-    192.168.0.1   router.home
+    192.168.88.1   router
 
     # Hosts
     ${optionalString (config.time.timeZone == "Europe/Moscow") ''
-        192.168.0.190  kama.local
-        192.168.0.191  volga.local
-        192.168.0.192  ob.local
-        192.168.0.193  baikal.local
+        192.168.0.190  kama
+        192.168.0.191  volga
+        192.168.0.192  ob
       ''}
     '';
 

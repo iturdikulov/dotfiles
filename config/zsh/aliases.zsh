@@ -16,7 +16,7 @@ alias mv='mv -i'
 alias mkdir='mkdir -pv'
 alias wget='wget2 -c'
 alias wget_img='wget2 -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
-alias sfile='single-file --browser-executable-path=brave --http-proxy-server=kama.local:1080'
+alias sfile='single-file --browser-executable-path=brave --http-proxy-server=kama:1080'
 alias sarticle='sfile --output-directory=$HOME/Wiki/articles'
 
 alias path_dirs='echo -e ${PATH//:/\\n}'
