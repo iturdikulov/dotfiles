@@ -14,7 +14,7 @@ in {
 
       (writeScriptBin "d" ''
         #!/bin/sh
-        sdcv -nc "$@"| sed 's/<[^>]*>//g' | bat
+        sdcv -nc "$@"| sed 's/<[^>]*>//g' | sed 's/0m.*\w\+\.wav.*/0m/g' | bat
        '')
     ];
 
@@ -24,14 +24,12 @@ in {
 
     home.file.".sdcv_ordering" = {
       text = ''
-        Wiktionary (En-Ru)
-        LingvoUniversal (En-Ru)
         LingvoComputer (En-Ru)
+        LingvoComputer (Ru-En)
+        LingvoUniversal (En-Ru)
         New Oxford American Dictionary. Angus Stevenson and Christine A. Lindberg (En-En)
         CollinsCobuild (En-En)
-        WordNet
         Abbrev
-        LingvoComputer (Ru-En)
         LingvoUniversal (Ru-En)
         TechAbrreviations (Ru-Ru)
         Oxford English Collocation Dictionary
@@ -43,8 +41,6 @@ in {
         Этимологический Словарь. Семенов А.В (Ru-Ru)
         Этимологический словарь русского языка. М. Фасмер (Ru-Ru)
         Толковый словарь живого великорусского языка. В. Даль (Ru-Ru)
-        Wiktionary (Ru-Ru)
-        Wiktionary (Ru-En)
         '';
     };
   };
