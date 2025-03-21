@@ -33,6 +33,7 @@ in {
           };
           fonts = {
             sans.name = "Noto Sans";
+            serif.name = "PT Serif";
             mono.name = "FiraCode Nerd Font Mono";
           };
           colors = {
