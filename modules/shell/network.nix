@@ -16,6 +16,7 @@ in {
       cloudflared
       aria
       yt-dlp
+      scdl
       gallery-dl
       wget2
       nmap
@@ -28,6 +29,7 @@ in {
       tshark  # powerful network protocol analyzer
       single-file-cli
       bore-cli
+      buku # CLI bookmark manager
     ];
 
     ## Custom ENV variables
