@@ -277,7 +277,6 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "rust-overlay": "rust-overlay",
-        "wired": "wired"
       }
     },
     "rust-overlay": {
@@ -328,28 +327,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "wired": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay_2"
-      },
-      "locked": {
-        "lastModified": 1730615238,
-        "narHash": "sha256-u/ZGtyEUvAkFOBgLo2YldOx0GKjE3/esWpWruRD376E=",
-        "owner": "Toqozz",
-        "repo": "wired-notify",
-        "rev": "1632418aa15889343028261663e81d8b5595860e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Toqozz",
-        "repo": "wired-notify",
         "type": "github"
       }
     }

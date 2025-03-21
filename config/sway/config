@@ -263,10 +263,6 @@ font pango:monospace 0.001
 titlebar_border_thickness 0
 titlebar_padding 1
 
-# Notifications
-# bindsym $mod+n exec wired --drop all
-# bindsym $mod+Shift+n exec wired --show 10
-
 seat seat0 xcursor_theme default 32
 
 input type:keyboard {

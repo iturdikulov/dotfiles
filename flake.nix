@@ -21,17 +21,13 @@
       agenix.inputs.nixpkgs.follows = "nixpkgs";
 
       # Extras
-      emacs-overlay.url  = "github:nix-community/emacs-overlay";
       nixos-hardware.url = "github:nixos/nixos-hardware";
       rust-overlay.url = "github:oxalica/rust-overlay";
       blender-bin.url = "github:edolstra/nix-warez?dir=blender";
       blender-bin.inputs.nixpkgs.follows = "nixpkgs-unstable";
-
-      wired.url = "github:Toqozz/wired-notify";
-      wired.inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, wired, ... }:
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:
     let
       inherit (lib.my) mapModules mapModulesRec mapHosts;
 
