@@ -66,6 +66,10 @@ in {
         update_check = false
         show_help = false
         inline_height = 20
+        history_filter = [
+         "^echo.*rclone obscure"
+        ]
+        filter_mode_shell_up_key_binding = "session"
       '';
 
       # Write it recursively so other modules can write files to it
