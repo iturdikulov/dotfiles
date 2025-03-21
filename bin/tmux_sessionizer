@@ -4,7 +4,6 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     selected=$((
-        echo /home/inom/Computer/software/dotfiles; \
         echo /games; \
         echo /archive; \
         fd --type=directory --max-depth=1 \
