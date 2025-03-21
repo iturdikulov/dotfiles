@@ -4,6 +4,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.shell.files;
     configDir = config.dotfiles.configDir;
+    nnn = (pkgs.nnn.override({ withNerdIcons = true; }));
     nnnPlugins = pkgs.fetchFromGitHub {
           owner = "jarun";
           repo = "nnn";
@@ -17,7 +18,15 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      (nnn.override {withNerdIcons = true;})
+      # use shell script to avoid creating nnn desktop file (some issues with
+      # xdg-open)
+      (writeShellScriptBin "nnn" ''
+          export NNN_PLUG = "i:imgview;d:dragdrop;D:dups;c:chksum;f:fzcd;F:fixname;m:mymount;M:mtpmount;o:oldbigfile;R:rsync;s:suedit";
+          ${getExe' nnn "nnn"} "$@"
+      '')
+
+      pcmanfm
+
       xdragon  # supporting dragdrop nnn plugin
       ffmpeg-full # ffmpeg-full
       ffmpegthumbnailer
@@ -34,8 +43,6 @@ in {
       redis
     ];
 
-    # NNN plugins setup
-    env.NNN_PLUG = "i:imgview;d:dragdrop;D:dups;c:chksum;f:fzcd;F:fixname;m:mymount;M:mtpmount;o:oldbigfile;R:rsync;s:suedit";
     home.configFile = {
       # Service files, verify them when you change plugins revision
       "nnn/plugins/.cbcp".source = nnnPlugins + "/.cbcp";
