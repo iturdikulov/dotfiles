@@ -18,6 +18,7 @@ alias wget='wget2 -c'
 alias wget_img='wget2 -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
 alias sfile='single-file --browser-executable-path=brave --http-proxy-server=kama:1080'
 alias sarticle='sfile --output-directory=$HOME/Wiki/articles'
+alias b='buku --suggest'
 
 alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
