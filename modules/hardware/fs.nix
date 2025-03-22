@@ -13,9 +13,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      programs.udevil.enable = true;
-
-      # Support for more filesystems, mostly to support external drives
+      # Support for more filesystems, mostly to support external drives.
       environment.systemPackages = with pkgs; [
         sshfs
         detox     # Tames problematic filenames, normalize filenames
@@ -25,6 +23,7 @@ in {
         exfat     # Windows drives
         ntfs3g    # Windows drives
         hfsprogs  # MacOS drives
+        android-file-transfer # Android devices
 
         # To mount android devices using gio, trash cli
         glib
