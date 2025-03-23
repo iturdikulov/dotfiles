@@ -40,6 +40,7 @@
 
         parsec.enable = true;
         remmina.enable = true;
+        anydesk.enable = true;
       };
       browsers = {
         default = "firefox";
