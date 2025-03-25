@@ -49,5 +49,10 @@ in {
       "mpv/mpv.conf".source   = "${configDir}/mpv/mpv.conf";
       "mpv/input.conf".source = "${configDir}/mpv/input.conf";
     };
+
+    home.configFile."mpv/scripts" = {
+      source = "${configDir}/mpv/scripts";
+      recursive = true;
+    };
   };
 }
