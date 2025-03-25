@@ -52,6 +52,7 @@
         native_games.enable = true;
         steam.enable = true;
         emulators.enable = true;
+        tools.enable = true;
       };
       media = {
         archive.enable = true;
@@ -143,7 +144,7 @@
       ssh.enable = true;
       wlsunset.enable = true;
 
-      syncthing.enable = true;
+      resilio.enable = true;
       virt-manager.enable = true;
 
       nginx.enable = true;
@@ -152,9 +153,7 @@
       postgresql.enable = true;
 
       ydotool.enable = true;
-
-      # Needed occasionally to help the parental units with PC problems
-      # teamviewer.enable = true;
+      msmtp.enable = true;
     };
     theme.active = "alucard";
   };

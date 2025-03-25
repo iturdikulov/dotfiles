@@ -29,13 +29,13 @@
     ];
 
   fileSystems."${config.user.home}/Arts_and_Entertainment" = {
-      device = "volga.local:/Arts_and_Entertainment";
+      device = "volga:/Arts_and_Entertainment";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
   fileSystems."${config.user.home}/IRL" = {
-      device = "volga.local:/IRL";
+      device = "volga:/IRL";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };

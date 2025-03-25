@@ -52,6 +52,7 @@
         native_games.enable = true;
         steam.enable = true;
         emulators.enable = true;
+        tools.enable = true;
       };
       media = {
         archive.enable = true;
@@ -143,7 +144,7 @@
       ssh.enable = true;
       wlsunset.enable = true;
 
-      syncthing.enable = true;
+      resilio.enable = true;
       virt-manager.enable = true;
 
       nginx.enable = true;
@@ -151,6 +152,7 @@
       rabbitmq.enable = false;
       postgresql.enable = false;
       ydotool.enable = true;
+      msmtp.enable = true;
     };
     theme.active = "alucard";
   };
@@ -160,6 +162,7 @@
     file://${config.user.home}/Downloads
     file://${config.user.home}/Arts_and_Entertainment
     file://${config.user.home}/Computer
+    file://${config.user.home}/Computer/software
     file://${config.user.home}/Wiki
   '';
 
