@@ -34,7 +34,7 @@ in
       ] else []) ++
 
       (if cfg.pdf.enable then [
-        okular
+        kdePackages.okular
         ghostscript
         # FIXME: force to use x11 since there is opentabletdiver issues with wayland
         (unstable.obsidian.override { commandLineArgs = [ "--ozone-platform=x11" ]; })
