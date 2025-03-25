@@ -1,3 +1,5 @@
+# FHS-compatible environment with https://github.com/nix-community/nix-ld
+# Check also nix-alien if it's not enough
 { config, options, lib, pkgs, ... }:
 
 with lib;
@@ -42,6 +44,11 @@ in
         zstd
       ]
       ++ lib.optionals (cfg.withGraphics) [
+        # You can also add this packages for X11 support
+        # xorg.libX11 xorg.libXScrnSaver xorg.libXcomposite xorg.libXcursor
+        # xorg.libXdamage xorg.libXext xorg.libXfixes xorg.libXi xorg.libXrandr
+        # xorg.libXrender xorg.libXtst xorg.libxcb xorg.libxkbfile
+        # xorg.libxshmfence
         pipewire
         cups
         libxkbcommon
@@ -61,20 +68,6 @@ in
         libGL
         libappindicator-gtk3
         vulkan-loader
-        # xorg.libX11
-        # xorg.libXScrnSaver
-        # xorg.libXcomposite
-        # xorg.libXcursor
-        # xorg.libXdamage
-        # xorg.libXext
-        # xorg.libXfixes
-        # xorg.libXi
-        # xorg.libXrandr
-        # xorg.libXrender
-        # xorg.libXtst
-        # xorg.libxcb
-        # xorg.libxkbfile
-        # xorg.libxshmfence
       ];
   };
 }
