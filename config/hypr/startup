@@ -1,0 +1,4 @@
+#!/bin/sh
+swaylock
+sleep 0.1
+copyq --start-server &
