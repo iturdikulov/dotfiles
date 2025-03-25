@@ -47,21 +47,20 @@ in {
         fontDir.enable = true;
         enableGhostscriptFonts = true;
         packages = with pkgs; [
-          ubuntu_font_family
-          dejavu_fonts
-
+          paratype-pt-sans
+          paratype-pt-serif
+          nerd-fonts.fira-code
           noto-fonts
           noto-fonts-cjk-serif
           noto-fonts-emoji
-          nerd-fonts.fira-code
-          fira-code-symbols
-          fira
+
+          ubuntu_font_family
+          dejavu_fonts
           terminus_font_ttf
           open-sans
           jetbrains-mono
           siji
           font-awesome
-          paratype-pt-sans
         ];
       };
     })
