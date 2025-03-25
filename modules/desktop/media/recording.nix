@@ -40,6 +40,7 @@ in {
       user.packages = with pkgs; [
         unstable.audacity
         reaper
+        mixxx
       ];
     })
 
