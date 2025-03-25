@@ -20,14 +20,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
-
     user.packages = with pkgs; [
       ## Emacs itself
-      binutils       # native-comp needs 'as', provided by this
-      # 28.2 + native-comp
-      ((emacsPackagesFor emacs-unstable).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]))
+      emacs
 
       ## Doom dependencies
       git
