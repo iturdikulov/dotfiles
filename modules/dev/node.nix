@@ -27,6 +27,7 @@ in {
         nodePackages.browser-sync
         yarn
         bun
+        mockoon
 
         # LSP
         nodePackages.typescript-language-server
