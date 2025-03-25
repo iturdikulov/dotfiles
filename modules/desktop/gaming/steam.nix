@@ -3,7 +3,6 @@
 with lib;
 with lib.my;
 let cfg = config.modules.desktop.gaming.steam;
-    steamDir = "$XDG_STATE_HOME/steam";
 in {
   options.modules.desktop.gaming.steam = with types; {
     enable = mkBoolOpt false;
@@ -20,8 +19,8 @@ in {
       # SteamOS session compositing window manager
       # Steam > Game > Properties > Launch Options and add:
       # run with resolution & fps & fullscreen & mangohud
-      # gamescope -W 3840 -H 2160 -r 60 -f -e -- mangohud gamemoderun %command%
-      # gamescope -F fsr -w 1920 -h 1080 -W 3440 -H 1440 -b -r 60 -f -e -- mangohud gamemoderun %command%
+      # MANGOHUD_CONFIG=no_display gamescope --mangoapp -W 3840 -H 2160 -r 60 -f -e -- gamemoderun %command%
+      # gamescope -F fsr -w 1920 -h 1080 -W 3840 -H 2160 -b -r 60 -f -e -- %command%
       # Options:
       #   -W, --output-width             output width
       #   -H, --output-height            output height
@@ -36,6 +35,8 @@ in {
       #   -e, --steam                    enable Steam integration
       #   -f, --fullscreen               make the window fullscreen
       #   -b, --borderless               make the window borderless
+      #
+      #   --mangoapp                     enable mangohud with gamescope
 
       gamescope.enable = true;
 
@@ -57,17 +58,7 @@ in {
     user.extraGroups = [ "gamemode" ];
 
     # Stop Steam from polluting $HOME
-    environment.systemPackages = with pkgs; [
-      (writeShellScriptBin "steam" ''
-        mkdir -p "${steamDir}"
-        HOME="${steamDir}" exec ${config.programs.steam.package}/bin/steam "$@"
-      '')
-      # for running GOG and humble bundle games
-      (writeShellScriptBin "steam-run" ''
-        mkdir -p "${steamDir}"
-        HOME="${steamDir}" exec ${config.programs.steam.package.run}/bin/steam-run "$@"
-      '')
-    ] ++ (if cfg.mangohud.enable then [ pkgs.mangohud ] else []);
+    environment.systemPackages = (if cfg.mangohud.enable then [ pkgs.mangohud ] else [ ]);
 
     # Better for steam proton games
     systemd.extraConfig = "DefaultLimitNOFILE=1048576";
