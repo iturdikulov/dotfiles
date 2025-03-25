@@ -21,8 +21,11 @@ in {
   config = mkMerge [
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        lua
-        luaPackages.moonscript
+        (luajit.withPackages (p: with p; [
+            moonscript
+            luarocks
+            jsregexp
+        ]))
         (mkIf cfg.love2D.enable love)
       ];
     })
