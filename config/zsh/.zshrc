@@ -23,7 +23,6 @@ if ! zgenom saved; then
   #   emerge. This is the best order I've sussed out for these plugins.
   zgenom load junegunn/fzf shell
   zgenom load zsh-users/zsh-completions src
-  zgenom load zsh-users/zsh-autosuggestions
   zgenom load zsh-users/zsh-history-substring-search
   zgenom load hlissner/zsh-autopair autopair.zsh
 
