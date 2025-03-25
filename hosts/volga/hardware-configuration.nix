@@ -151,10 +151,10 @@ options libata          allow_tpm=0
   };
   services.rpcbind.enable = true;
   services.nfs.server.exports = ''
-    /export                         volga.local(rw,fsid=0,no_subtree_check)          ob.local(rw,fsid=0,no_subtree_check)
-    /export/Arts_and_Entertainment  volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
-    /export/Computer                volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
-    /export/IRL                     volga.local(rw,nohide,insecure,no_subtree_check) ob.local(rw,nohide,insecure,no_subtree_check)
+    /export                         volga(rw,fsid=0,no_subtree_check)          ob(rw,fsid=0,no_subtree_check)
+    /export/Arts_and_Entertainment  volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/Computer                volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+    /export/IRL                     volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
   '';
 
   swapDevices = [ ];
