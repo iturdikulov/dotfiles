@@ -19,7 +19,15 @@ in {
     security.rtkit.enable = true;
 
     user.packages = with pkgs; [
-      pavucontrol
+      sonusmix
+
+      (makeDesktopItem {
+        name = "sonusmix";
+        desktopName = "sonusmix";
+        icon = "pavucontrol";
+        exec = "${getExe' sonusmix "sonusmix"}";
+        categories = ["AudioVideo" "Audio" "Utility"];
+      })
     ];
 
     user.extraGroups = [ "audio" ];
