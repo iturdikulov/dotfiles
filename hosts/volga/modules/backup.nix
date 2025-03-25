@@ -17,6 +17,8 @@
             "*/.tox"
             "*/venv"
             "*/.venv"
+            # Mounted dirs
+            "Media/"
           ];
           basicBorgJob = name: {
             encryption.mode = "none";
@@ -42,11 +44,17 @@
             };
 
             postPrune = ''
+              # TODO remove /README postfix to sync all repo
+              ${pkgs.rclone}/bin/rclone sync -v --config ${config.user.home}/.config/rclone/rclone.conf \
+              --bwlimit 2M  --max-duration 9h \
+              /archive/backup/file/${name} repo:${name}
+
+              # TODO weekly borg and rsync verify script
               ls -l /archive/backup/file/${name}
             '';
           };
     in {
-      home-inom = basicBorgJob "inom" // rec {
+      home-inom = basicBorgJob config.user.name // rec {
         paths = config.user.home;
         exclude = map (x: paths + "/" + x) common-excludes;
       };
@@ -56,13 +64,16 @@
     systemd.services = {
       "notify-problems@" = {
         enable = true;
-        serviceConfig.User = "inom";
-        environment.SERVICE = "%i";
         script = ''
-          # DBUS is optimized for dwm-desktop, you need to tune it for your DE
-          export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u $USER)/bus
-          export DISPLAY=:0
-          ${pkgs.libnotify}/bin/notify-send -u critical "$SERVICE FAILED!" "Run journalctl -u $SERVICE for details"
+          ${pkgs.system-sendmail}/bin/sendmail -t <<ERRMAIL
+          To: inom@iturdikulov.com
+          Subject: Backup failed at $(date)
+          From: inom@iturdikulov.com
+
+          Borg backup job failed, here is borg log
+
+          $(systemctl status --full "borgbackup-job-home-${config.user.name}.service")
+          ERRMAIL
         '';
       };
     } // lib.flip lib.mapAttrs' config.services.borgbackup.jobs (name: value:
