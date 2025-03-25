@@ -7,8 +7,6 @@ alias -- -="cd -"
 
 # Programs remap
 # ===============
-alias q=exit
-alias clr=clear
 alias sudo='sudo '
 alias rm='rm -i'
 alias cp='cp -i'
@@ -18,6 +16,7 @@ alias wget='wget2 -c'
 alias wget_img='wget2 -nd -r -l 1 -P . -A jpeg,jpg,bmp,gif,png,webp,webm' # TODO: convert to chrome based wget/use long arguments
 alias sfile='single-file --browser-executable-path=brave --http-proxy-server=kama:1080'
 alias sarticle='sfile --output-directory=$HOME/Wiki/articles'
+alias draft='nvim $HOME/Wiki/articles/drafts.md'
 alias b='buku --suggest'
 
 alias path_dirs='echo -e ${PATH//:/\\n}'
@@ -29,9 +28,6 @@ alias watch='watch --color' # Color using watch
 alias chown="chown --preserve-root" # Do not do chown for root directory
 alias chmod="chmod --preserve-root"
 alias E="SUDO_EDITOR=nvim sudo -e"
-gpt() {
-    noglob llm "$@" | fold | bat --language=markdown --plain
-}
 
 # disable globbing for some specific programs
 alias c="noglob qalc"
@@ -40,7 +36,7 @@ alias tplay="noglob tplay"
 alias mk=make
 alias gurl='curl --compressed'
 alias gaudio="yt-dlp -N 5 -f 'ba' -o '%(id)s-%(title)s.%(ext)s'"
-alias yt-dlp-all="yt-dlp --embed-metadata --embed-subs --embed-chapters --embed-thumbnail --embed-info-json"
+alias yt-dlp-all="yt-dlp --embed-metadata --write-auto-subs --sub-langs en,ru --embed-subs --embed-chapters --embed-thumbnail --embed-info-json"
 
 # An rsync that respects gitignore
 rcp() {
@@ -118,7 +114,7 @@ function r {
 }; compdef r=sched
 
 # Enable DND mode with mako (notification daemon)
-alias dnd='$(makoctl mode -s dnd && sleep 10800 && makoctl mode -r dnd) & disown'
+alias dnd='$(makoctl mode -s dnd && sleep 10800 && makoctl mode -r dnd) &'
 
 alias urlencode='python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.argv[1]))"'
 alias urldecode='python3 -c "import sys, urllib.parse as ul; print (ul.unquote_plus(sys.argv[1]))"'

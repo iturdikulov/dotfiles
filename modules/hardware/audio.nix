@@ -13,14 +13,8 @@ in {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
-      pulse.enable = true;
       wireplumber.enable = true;  # for screencasting support
     };
-
-    # Auto-conncet trusted bluetooth devices
-    hardware.pulseaudio.extraConfig = "
-      load-module module-switch-on-connect
-    ";
 
     security.rtkit.enable = true;
 
