@@ -9,7 +9,7 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "hyprland/language", "custom/dnd", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
+        "hyprland/language", "custom/dnd", "custom/timew", "clock", "wireplumber", "battery", "bluetooth", "network", "tray"
     ],
 
     "custom/dnd": {
@@ -19,8 +19,14 @@
         "interval": 4,
     },
 
+    "custom/timew": {
+        "exec": "timew|rg -Po 'Total +(.*):(?=..$)' -r '$1'",
+        "format": "[ {}]",
+        "interval": 4,
+    },
+
     "hyprland/window": {
-        "max-length": 30,
+        "max-length": 60,
     },
 
     "hyprland/language": {
