@@ -16,13 +16,18 @@ in
     user.packages = with pkgs; [
       scrcpy
 
-      # Custom scrcpy desktop item
       (makeDesktopItem {
-        name = "scrcpy (custom)";
-        desktopName = "scrcpy (custom)";
-        genericName = "Android remote control";
+        name = "scrcpy-keyboard";
+        desktopName = "scrcpy (keyboard)";
         icon = "scrcpy";
-        exec = "/bin/sh -c \"\\$SHELL -i -c scrcpy --hid-keyboard\"";
+        exec = "${getExe' scrcpy "scrcpy"} --no-video --keyboard=aoa";
+      })
+
+      (makeDesktopItem {
+        name = "scrcpy-camera";
+        desktopName = "scrcpy (camera)";
+        icon = "scrcpy";
+        exec = "${getExe' scrcpy "scrcpy"} --video-source=camera --no-audio --camera-ar=1:1 -m1920 --v4l2-sink=/dev/video1 --capture-orientation=90";
       })
     ];
   };
