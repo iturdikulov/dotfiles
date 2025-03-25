@@ -10,6 +10,10 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
+      wineWowPackages.staging
+      winetricks
+      wineWowPackages.waylandFull
+
       bastet         # Tetris clone with 'bastard' block-choosing AI
       nsnake         # ncurses based snake game for the terminal
       tty-solitaire  # Klondike Solitaire in your ncurses terminal

@@ -10,15 +10,8 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      wineWowPackages.staging # wine-staging (version with experimental features)
-      winetricks
-
-      # for msvc-wine
-      msitools
-
+      bottles
       protontricks
-      # native wayland support (unstable)
-      # wineWowPackages.waylandFull
     ];
   };
 }
