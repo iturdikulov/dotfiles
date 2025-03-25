@@ -30,7 +30,6 @@ in {
         swappy        # swappy/Snappy/sharex
         slurp         # slop (screenshot tool)
         swayimg       # feh (as an image previewer)
-        imv
       ];
 
       # Improves latency and reduces stuttering in high load scenarios
@@ -43,21 +42,6 @@ in {
       user.packages = with pkgs; [
         libnotify
       ];
-
-      security.polkit.enable = true; # to promt root password in GUI programs
-      systemd.user.services.polkit-gnome-authentication-agent-1 = {
-          description = "polkit-gnome-authentication-agent-1";
-          wantedBy = [ "graphical-session.target" ];
-          wants = [ "graphical-session.target" ];
-          after = [ "graphical-session.target" ];
-          serviceConfig = {
-            Type = "simple";
-            ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-            Restart = "on-failure";
-            RestartSec = 1;
-            TimeoutStopSec = 10;
-          };
-      };
 
       fonts = {
         fontDir.enable = true;
