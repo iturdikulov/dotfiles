@@ -67,6 +67,12 @@ in {
         ipylab = "ipython --pylab=qt5 --no-banner";
       };
       home.configFile."python/pythonrc".source = "${configDir}/python/pythonrc";
+
+      system.activationScripts."ipython-profile" = ''
+        ${getExe' pkgs.python3Packages.ipython "ipython"} profile create default
+        ${getExe' pkgs.coreutils-full "echo"} "c.TerminalInteractiveShell.editing_mode = 'vi'" >> "${configDir}/ipython/profile_default/ipython_config.py"
+        ${getExe' pkgs.coreutils-full "echo"} "c.TerminalInteractiveShell.emacs_bindings_in_vi_insert_mode = False" >> "${configDir}/ipython/profile_default/ipython_config.py"
+      '';
     })
 
     (mkIf cfg.xdg.enable {
