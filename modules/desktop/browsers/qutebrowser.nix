@@ -30,7 +30,7 @@ in {
         categories = [ "Network" ];
       })
       # built-in host blocking. Works on youtube and crunchyroll ads!
-      python311Packages.adblock
+      python3Packages.adblock
     ];
 
     home = {
