@@ -65,7 +65,9 @@ in {
       editorconfig-core-c
       sqlite
 
+      # Vim-Tex dependencies
       tex
+      kdePackages.okular
 
       ## LSP
       lua-language-server
@@ -86,8 +88,8 @@ in {
       shfmt
 
       ## Debugging
+      vscode-js-debug
       vscode-extensions.vadimcn.vscode-lldb
-      unstable.vscode-js-debug
 
       # Desktop file
       (makeDesktopItem {
@@ -105,6 +107,9 @@ in {
         mimeTypes = [ "text/plain" "text/x-makefile" "text/x-c++hdr" "text/x-c++src" "text/x-chdr" "text/x-csrc" "text/x-java" "text/x-moc" "text/x-pascal" "text/x-tcl" "text/x-tex" "application/x-shellscript" "text/x-c" "text/x-c++" ];
       })
     ];
+
+    # Add LLDB debugger path into environment variables
+    env.LLDB_VSCODE_DEBUGGER_PATH = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
 
     programs.neovim = {
       enable = true;
