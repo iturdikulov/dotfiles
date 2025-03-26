@@ -79,7 +79,7 @@ in {
       texlab             # LaTeX
       ruff-lsp           # Python linter
       gopls              # Go
-      marksman           # Markdown
+      unstable.marksman           # Markdown
       nil                # Nix
 
       ## Formatting
