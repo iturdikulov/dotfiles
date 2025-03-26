@@ -5,4 +5,5 @@ in {
   "samba.age".publicKeys = [key];
   "leetcode-cli.age".publicKeys = [key];
   "msmtprc.age".publicKeys = [key];
+  "openai_api_key.age".publicKeys = [key];
 }
