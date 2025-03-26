@@ -4,4 +4,5 @@ in {
   "upsmon.age".publicKeys = [key];
   "samba.age".publicKeys = [key];
   "leetcode-cli.age".publicKeys = [key];
+  "msmtprc.age".publicKeys = [key];
 }
