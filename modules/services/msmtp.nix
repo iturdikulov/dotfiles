@@ -15,6 +15,9 @@ in {
     # NEXT: propably better to use ... agenix.secrets.msmtprc = {
     # pat = ... mode = "0644" ..., but it's not working
     system.activationScripts."msmtprc" = ''
+      if [ ! -f /etc/msmtprc ]; then
+        exit 0
+      fi
       ${pkgs.coreutils-full}/bin/cat "${config.age.secrets.msmtprc.path}" > /etc/msmtprc
       ${pkgs.coreutils-full}/bin/chmod 0600 /etc/msmtprc
     '';
