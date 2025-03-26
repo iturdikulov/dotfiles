@@ -28,7 +28,7 @@ in {
 
     (mkIf cfg.enable {
       user.packages = with pkgs; [
-        unstable.basedpyright
+        basedpyright
 
         # Some pre-installed python packages
         # to avoid pip installing them every time
