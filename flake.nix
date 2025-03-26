@@ -41,7 +41,7 @@
         # Allos some insecure packages
         # TODO: potentially need remove all this
         config.permittedInsecurePackages = [
-          # "fspy-1.0.3"
+          "fspy-1.0.3"
           # "dotnet-runtime-6.0.36"
           # "dotnet-sdk-wrapped-6.0.428"
           # "dotnet-sdk-6.0.428"
