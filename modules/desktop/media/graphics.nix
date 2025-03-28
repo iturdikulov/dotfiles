@@ -6,7 +6,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.desktop.media.graphics;
     configDir = config.dotfiles.configDir;
-    blenderVersion = "4.4";
+    blenderVersion = "4.3";
     screenScaleFactor = config.modules.desktop.high-dpi.scaleFactor;
 in {
   options.modules.desktop.media.graphics = {

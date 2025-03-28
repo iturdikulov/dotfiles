@@ -24,7 +24,7 @@
       nixos-hardware.url = "github:nixos/nixos-hardware";
       rust-overlay.url = "github:oxalica/rust-overlay";
       blender-bin.url = "github:edolstra/nix-warez?dir=blender";
-      blender-bin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+      blender-bin.inputs.nixpkgs.follows = "nixpkgs";
     };
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, ... }:

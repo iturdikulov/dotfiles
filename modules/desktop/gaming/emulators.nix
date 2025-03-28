@@ -11,7 +11,15 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       rpcs3 # PS3
-      retroarchFull
+      (retroarch.withCores (cores: with cores; [
+        beetle-psx-hw # playstation
+        gambatte # game boy / gbc
+        genesis-plus-gx # genesis
+        mesen # nes
+        mgba # gba
+        mupen64plus # n64
+        snes9x # snes
+      ]))
       flips # Patcher for IPS and BPS files
     ];
   };
