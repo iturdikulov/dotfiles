@@ -38,6 +38,7 @@ in {
           pkgs."blender_${builtins.replaceStrings ["."] ["_"] blenderVersion}"
           solvespace
           fspy                  # Quick and easy still image camera matching
+          unstable.orca-slicer
         ];
 
       services.flatpak.enable = true;
