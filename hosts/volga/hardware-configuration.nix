@@ -137,25 +137,25 @@ options libata          allow_tpm=0
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
 
-  fileSystems."/export/Arts_and_Entertainment" = {
-    device = "${config.user.home}/Arts_and_Entertainment";
-    options = [ "bind" ];
-  };
-  fileSystems."/export/Computer" = {
-    device = "${config.user.home}/Computer";
-    options = [ "bind" ];
-  };
-  fileSystems."/export/Life" = {
-    device = "${config.user.home}/Life";
-    options = [ "bind" ];
-  };
-  services.rpcbind.enable = true;
-  services.nfs.server.exports = ''
-    /export                         volga(rw,fsid=0,no_subtree_check)          ob(rw,fsid=0,no_subtree_check)
-    /export/Arts_and_Entertainment  volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
-    /export/Computer                volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
-    /export/Life                    volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
-  '';
+  # fileSystems."/export/Arts_and_Entertainment" = {
+  #   device = "${config.user.home}/Arts_and_Entertainment";
+  #   options = [ "bind" ];
+  # };
+  # fileSystems."/export/Computer" = {
+  #   device = "${config.user.home}/Computer";
+  #   options = [ "bind" ];
+  # };
+  # fileSystems."/export/Life" = {
+  #   device = "${config.user.home}/Life";
+  #   options = [ "bind" ];
+  # };
+  # services.rpcbind.enable = true;
+  # services.nfs.server.exports = ''
+  #   /export                         volga(rw,fsid=0,no_subtree_check)          ob(rw,fsid=0,no_subtree_check)
+  #   /export/Arts_and_Entertainment  volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+  #   /export/Computer                volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+  #   /export/Life                    volga(rw,nohide,insecure,no_subtree_check) ob(rw,nohide,insecure,no_subtree_check)
+  # '';
 
   swapDevices = [ ];
 
