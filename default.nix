@@ -86,7 +86,6 @@ with lib.my;
   # Console setup
   console = {
     packages = with pkgs; [
-      terminus_font
       colemak-dh
     ];
     keyMap = "colemak_dh_iso_us";
