@@ -19,6 +19,7 @@ in {
         mgba # gba
         mupen64plus # n64
         snes9x # snes
+        dolphin
       ]))
       flips # Patcher for IPS and BPS files
     ];
