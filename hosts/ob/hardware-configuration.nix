@@ -9,9 +9,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.luks.devices.cryptstorage.device = "/dev/disk/by-uuid/9012aa88-25d2-47ff-836f-c7b4639cb5ba";
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/9fde4312-021c-4fca-8107-d6c0df60eeea";
@@ -27,20 +26,6 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/152943f9-cda2-46c3-9fe8-dd0efbf6f332"; }
     ];
-
-  fileSystems."${config.user.home}/Arts_and_Entertainment" = {
-      device = "volga:/Arts_and_Entertainment";
-      fsType = "nfs";
-      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
-  };
-
-  fileSystems."${config.user.home}/IRL" = {
-      device = "volga:/IRL";
-      fsType = "nfs";
-      options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
-  };
-
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/9012aa88-25d2-47ff-836f-c7b4639cb5ba";
 
   # tlp is enabled by nixos-hardware.asus-rog-strix-g513im
   services.tlp.settings = {
