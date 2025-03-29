@@ -59,6 +59,7 @@
         documents.enable = true;
         documents.office.enable = true;
         graphics.enable = true;
+        graphics.davinci.enable = true;
         mpv.enable = true;
         kodi.enable = true;
         recording.enable = true;

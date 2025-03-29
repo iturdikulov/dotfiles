@@ -18,6 +18,7 @@ in {
     models.enable  = mkBoolOpt true;
     photos.enable  = mkBoolOpt true;
     videos.enable  = mkBoolOpt true;
+    davinci.enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -149,6 +150,9 @@ in {
         (if cfg.videos.enable then [
           losslesscut-bin
           kdePackages.kdenlive
+        ] else []) ++
+
+        (if cfg.davinci.enable then [
           davinci-resolve
         ] else []);
 
