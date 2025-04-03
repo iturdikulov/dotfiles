@@ -45,6 +45,7 @@ in {
       # Prevent auto-creation of ~/Desktop. The trailing slash is necessary; see
       # https://bugzilla.mozilla.org/show_bug.cgi?id=1082717
       env.XDG_DESKTOP_DIR = "$HOME/";
+      env.MOZ_ENABLE_WAYLAND = "1"; # Support Wayland
 
       modules.desktop.browsers.firefox.settings = {
         # My provider blocks this... 👿, maybe need to remove echconfig in future
