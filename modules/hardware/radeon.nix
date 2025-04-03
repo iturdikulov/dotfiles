@@ -14,9 +14,6 @@ in {
       opencl.enable = true;
     };
 
-    # Force enable RADV driver
-    environment.variables.AMD_VULKAN_ICD = "RADV";
-
     environment.systemPackages = with pkgs; [
       vulkan-loader
 
@@ -28,12 +25,10 @@ in {
       amdgpu_top
     ];
 
-    services.xserver.videoDrivers = [ "amdgpu" ];
-    services.xserver.deviceSection = ''Option "TearFree" "true"'';  # Fix tearing for amdgpu.
-
-    hardware.graphics.extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
     # Most software has the HIP libraries hard-coded. You can work around it on NixOS by using
     systemd.tmpfiles.rules = [
