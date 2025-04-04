@@ -79,7 +79,6 @@
       common-lisp.enable = true;
       php.enable = true;
 
-      beekeeper.enable = true;
       dbeaver.enable = true;
 
       mitmproxy.enable = true;
