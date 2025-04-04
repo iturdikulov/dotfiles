@@ -9,7 +9,17 @@
   ## Modules
   modules = {
     desktop = {
-      cosmic.enable = true;
+      hyprland = {
+        enable = true;
+        monitors = [{
+          output = "DP-1";
+          primary = true;
+          mode = "3840x2160@60";
+          position = "0x0";
+          scale = "2";
+        }];
+      };
+      high-dpi.scaleFactor = "2";
       wine.enable = true;
       appimage.enable = true;
       term = {
