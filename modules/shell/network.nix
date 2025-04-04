@@ -13,7 +13,6 @@ in {
     user.packages = with pkgs; [
       curlHTTP3
       qbittorrent
-      cloudflared
       aria
       yt-dlp
       scdl
