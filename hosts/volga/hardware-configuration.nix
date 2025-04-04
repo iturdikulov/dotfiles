@@ -11,6 +11,7 @@
 
   boot = {
     initrd.availableKernelModules = [ "amdgpu" "vfio-pci" "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+    kernelPackages = pkgs.linuxPackages_latest;
 
     # TODO: make this configurable, required for IOMMU
     #   initrd.preDeviceCommands = ''
