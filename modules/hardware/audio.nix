@@ -13,7 +13,6 @@ in {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
-      wireplumber.enable = true;  # for screencasting support
     };
 
     security.rtkit.enable = true;
