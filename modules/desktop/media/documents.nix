@@ -26,6 +26,11 @@ in
     env.CALIBRE_USE_SYSTEM_THEME = "true";
 
     user.packages = with pkgs;
+      ([
+        (unstable.obsidian.override { commandLineArgs = [ "--ozone-platform=x11" ]; })  # TODO: switch to wayland when opentabletdriver will be ready
+        kdePackages.okular
+      ]) ++
+
       (if cfg.ebook.enable then [
         xchm
         calibre
@@ -34,10 +39,7 @@ in
       ] else []) ++
 
       (if cfg.pdf.enable then [
-        kdePackages.okular
         ghostscript
-        # FIXME: force to use x11 since there is opentabletdiver issues with wayland
-        (unstable.obsidian.override { commandLineArgs = [ "--ozone-platform=x11" ]; })
       ] else [ ]) ++
 
       (if cfg.office.enable then [
