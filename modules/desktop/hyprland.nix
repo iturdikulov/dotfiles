@@ -51,12 +51,7 @@ in
       copyq           # clipboard manager
     ];
 
-    # # Enable the gnome-keyring secrets vault.
-    # # Will be exposed through DBus to programs willing to store secrets.
-    # services.gnome.gnome-keyring.enable = true;
-
     services.gvfs.enable = true;
-
 
     # Enable hyprland window manager and related services/programs
     programs.hyprland = {
@@ -99,7 +94,6 @@ in
     # NEXT: move into own module
     home.configFile = {
       "swaylock/config".text = ''
-        ignore-empty-password
         indicator-caps-lock
         image=$XDG_DATA_HOME/wallpaper
         scaling=fill
