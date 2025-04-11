@@ -115,6 +115,7 @@ in {
       enable = true;
       defaultEditor = true;
       viAlias = true;
+      package = pkgs.unstable.neovim-unwrapped;
       configure = {
          customRC = ''
            luafile $XDG_CONFIG_HOME/nvim/init.lua
