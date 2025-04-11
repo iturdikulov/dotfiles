@@ -1,11 +1,13 @@
 { options, config, pkgs, ... }:
 
 {
-  services.calibre-server = {
+  services.calibre-web = {
     enable = true;
-    port = 8080;
-    libraries = [ "${config.user.home}/Arts_and_Entertainment/literature" ];
-    user = "${config.user.name}";
+    user = config.user.name;
+    group = "syncthing";
+    options.calibreLibrary = "${config.user.home}/Arts_and_Entertainment/literature";
+    listen.ip = "127.0.0.1";
+    listen.port = 8080;
   };
 
   services.nginx.virtualHosts."books.home.arpa" = {
