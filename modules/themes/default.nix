@@ -187,8 +187,7 @@ in {
             ''gtk-icon-theme-name=${cfg.gtk.iconTheme}''}
           ${optionalString (cfg.gtk.cursorTheme != "")
             ''gtk-cursor-theme-name=${cfg.gtk.cursorTheme}''}
-          gtk-fallback-icon-theme=gnome
-          gtk-application-prefer-dark-theme=true
+          gtk-cursor-theme-size=32
           gtk-xft-hinting=1
           gtk-xft-hintstyle=hintfull
           gtk-xft-rgba=none
@@ -201,8 +200,7 @@ in {
             ''gtk-icon-theme-name=${cfg.gtk.iconTheme}''}
           ${optionalString (cfg.gtk.cursorTheme != "")
             ''gtk-cursor-theme-name=${cfg.gtk.cursorTheme}''}
-          gtk-fallback-icon-theme=gnome
-          gtk-application-prefer-dark-theme=true
+          gtk-cursor-theme-size=32
           gtk-xft-hinting=1
           gtk-xft-hintstyle=hintfull
           gtk-xft-rgba=none
