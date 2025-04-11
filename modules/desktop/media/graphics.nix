@@ -38,10 +38,8 @@ in {
           pkgs."blender_${builtins.replaceStrings ["."] ["_"] blenderVersion}"
           solvespace
           fspy                  # Quick and easy still image camera matching
+          unstable.orca-slicer
         ];
-
-      # For orca-slicer
-      services.flatpak.enable = true;
 
       # OpenSCAD libraries
       home.dataFile."OpenSCAD/libraries/Round-Anything" = {
@@ -111,7 +109,6 @@ in {
           qview  # has nice integration with geeqie
           librsvg
           nodePackages.svgo
-
           pureref
           (makeDesktopItem {
             name = "pureref";
