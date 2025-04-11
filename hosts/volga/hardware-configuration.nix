@@ -212,13 +212,15 @@ options libata          allow_tpm=0
 
   # Disable wakeup by mouse, lock if token is removed
   services.udev.extraRules = ''
+  # TODO: verify if this works
   ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="248a", ATTRS{idProduct}=="5b2f", ATTR{power/wakeup}="disabled", ATTR{driver/3-3.3/power/wakeup}="disabled"
 
-  ACTION=="remove",\
-  SUBSYSTEM=="hidraw",\
-   ENV{ID_FIDO_TOKEN}=="1",\
-   ENV{ID_MODEL_FROM_DATABASE}=="OnlyKey Two-factor Authentication and Password Solution",\
-   RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  # TODO: maybe loginctl & hyperlock in future will work
+  # ACTION=="remove",\
+  # SUBSYSTEM=="hidraw",\
+  #  ENV{ID_FIDO_TOKEN}=="1",\
+  #  ENV{ID_MODEL_FROM_DATABASE}=="OnlyKey Two-factor Authentication and Password Solution",\
+  #  RUN+="${pkgs.coreutils}/bin/env WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 ${pkgs.swaylock}/bin/swaylock -f"
   '';
 
   # Disable mouse acceleration
