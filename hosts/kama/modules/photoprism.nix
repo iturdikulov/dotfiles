@@ -1,4 +1,4 @@
-{ options, config, pkgs, ... }:
+{ options, config, pkgs, lib, ... }:
 
 {
 
@@ -15,7 +15,7 @@
   services.photoprism = {
     enable = true;
     port = 2342;
-    originalsPath = "/var/lib/private/photoprism/originals";
+    originalsPath = "/media/photography/personal";
     address = "127.0.0.1";
     # TODO: replace with ageniex, require some fixes?
     passwordFile = "${config.user.home}/.secrets/photoprism";
@@ -31,16 +31,16 @@
     };
   };
 
+  # Set multimedia group to allow read synced originals
+  systemd.services.photoprism.serviceConfig = {
+    Group = lib.mkForce "multimedia";
+  };
+
   services.nginx.virtualHosts."photo.home.arpa" = {
     http2 = true;
     locations."/" = {
       proxyPass = "http://127.0.0.1:2342";
       proxyWebsockets = true;
-      # extraConfig = ''
-      #   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-      #   proxy_set_header Host $host;
-      #   proxy_buffering off;
-      # '';
     };
   };
 }
