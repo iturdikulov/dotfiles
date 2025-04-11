@@ -9,9 +9,16 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+
+  networking.firewall.allowedTCPPorts = [ 2049 139 137 445 ];
+
+  # NFS
+  services.nfs.server.enable = true;
+  services.rpcbind.enable = true;
+  services.nfs.server.exports = ''
+    /media          kama(rw,fsid=0,insecure,no_subtree_check)          volga(rw,fsid=0,insecure,no_subtree_check)
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/454ecdd1-dfb4-4453-88b1-3b06d5412123";

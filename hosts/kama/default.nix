@@ -12,7 +12,6 @@
     ./modules/jupyenv.nix
     ./modules/autologin.nix
     ./modules/smb.nix
-    ./modules/ngnix_server.nix
     ./modules/proxy.nix
     ./modules/jellyfin.nix
   ];
