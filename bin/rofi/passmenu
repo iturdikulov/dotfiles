@@ -46,7 +46,7 @@ fi
 echo "$entry" >/tmp/_upm
 secrets="$(pass show "$entry")"
 if [[ -n $secrets ]]; then
-  fields=$(awk -F': ' 'NR>1 && !/^otpauth:/ {print $1}' <<<"$secrets")
+  fields=$(awk -F': ' -F ':' 'NR>1 && !/^otpauth:/ {print $1}' <<<"$secrets")
   field=$(printf "password\n%s\notp\n" "${fields[@]}" | $ROFI_CMD -p "$entry")
   case $field in
     password) pass -c "$entry" ;;
