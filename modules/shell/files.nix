@@ -33,6 +33,7 @@ in {
       rsync    # better copy/paste
       # imgview dependencies
       nsxiv
+      nix-index # Files database for nixpkgs
 
       dos2unix  # text file format converters
       ncdu
