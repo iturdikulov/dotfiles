@@ -128,7 +128,7 @@ in {
             desktopName = "GIMP";
             genericName = "GNU Image Manipulation Program";
             icon = "gimp";
-            exec = "${config.user.home}/.local/bin/gimp/result/bin/gimp %F";
+            exec = "env GDK_BACKEND=x11 ${config.user.home}/.local/bin/gimp/result/bin/gimp %F";
             categories = [ "Graphics" "Photography" ];
           })
         ] else []) ++
