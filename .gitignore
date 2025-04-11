@@ -1,3 +1,4 @@
 bin/gimp
 bin/copilot
 bin/codecrafters
+hosts/kama/modules/proxy.nix
