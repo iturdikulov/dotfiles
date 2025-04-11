@@ -13,20 +13,13 @@ in {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
+      pulse.enable = true;
     };
 
     security.rtkit.enable = true;
 
     user.packages = with pkgs; [
-      sonusmix
-
-      (makeDesktopItem {
-        name = "sonusmix";
-        desktopName = "sonusmix";
-        icon = "pavucontrol";
-        exec = "${getExe' sonusmix "sonusmix"}";
-        categories = ["AudioVideo" "Audio" "Utility"];
-      })
+      pavucontrol
     ];
 
     user.extraGroups = [ "audio" ];
