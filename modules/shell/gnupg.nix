@@ -32,8 +32,8 @@ let cfg = config.modules.shell.gnupg;
 in {
   options.modules.shell.gnupg = with types; {
     enable   = mkBoolOpt false;
-    cacheTTL = mkOpt int (3600 * 4);
-    maxCacheTTL = mkOpt int (3600 * 24);
+    cacheTTL = mkOpt int (3600 * 8);
+    maxCacheTTL = mkOpt int (3600 * 48);
     sshKeys = mkOption {
       type = types.nullOr (types.listOf types.str);
       default = null;
