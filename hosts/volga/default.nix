@@ -41,6 +41,7 @@
         parsec.enable = true;
         remmina.enable = true;
         anydesk.enable = true;
+        wireshark.enable = true;
       };
       browsers = {
         default = "firefox";
