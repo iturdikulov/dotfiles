@@ -9,6 +9,7 @@
         FILTER_ENTRY_MAX_AGE_DAYS = "36500";
         CLEANUP_FREQUENCY = "48";
         LISTEN_ADDR = "localhost:8081";
+        HTTP_CLIENT_PROXY = "http://localhost:1080";
       };
 
       # TODO: replace with agenix
