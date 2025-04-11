@@ -5,7 +5,7 @@
     enable = true;
     securityType = "user";
     openFirewall = true;
-    extraConfig = ''
+    settings = ''
       workgroup = WORKGROUP
       server string = ${config.networking.hostName}
       netbios name = ${config.networking.hostName}
@@ -17,7 +17,7 @@
       '';
     shares = {
       public = {
-        path = "/media/public/";
+        path = "/media/";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
@@ -25,16 +25,6 @@
         "directory mask" = "0755";
         "force user" = "inom"; # smbpasswd -a <user>
         "force group" = "users";
-      };
-      torrent = {
-        path = "/media/torrent/";
-        browseable = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0644";
-        "directory mask" = "0755";
-        "force user" = "qbittorrent"; # smbpasswd -a <user>
-        "force group" = "qbittorrent";
       };
     };
   };
