@@ -16,7 +16,7 @@ in {
         #type database  DBuser  auth-method
         local all       all     trust
       '';
-      package = pkgs.unstable.postgresql;
+      package = pkgs.postgresql;
     };
   };
 }
