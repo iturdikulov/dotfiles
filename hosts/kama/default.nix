@@ -4,7 +4,6 @@
     ../home.nix
     ./hardware-configuration.nix
     ./modules/adguard.nix
-    ./modules/calibre.nix
     ./modules/gitea.nix
     ./modules/miniflux.nix
     ./modules/syncthing.nix
@@ -13,6 +12,9 @@
     ./modules/jupyenv.nix
     ./modules/autologin.nix
     ./modules/smb.nix
+    ./modules/ngnix_server.nix
+    ./modules/proxy.nix
+    ./modules/jellyfin.nix
   ];
 
   ## Modules
@@ -28,6 +30,7 @@
       network.enable = true;
       files.enable    = true;  # files utilites
       editorconfig.enable = true;
+      maintenance.enable = true;
 
       gnupg = {
         enable = true;
@@ -43,13 +46,9 @@
       ssh.enable = true;
       docker.enable = true;
       nginx.enable = true;
-      tailscale.enable = true;
       mysql.enable = true; # for photoprism
       qbittorrent.enable = true;
-
-      spoofdpi.enable = true;
-      spoofdpi.openFirewall = true;
-      spoofdpi.address = "192.168.0.190";
+      virt-manager.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
       # teamviewer.enable = true;
