@@ -8,12 +8,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
-  boot.extraModulePackages = [ ];
-
-  networking.firewall.allowedTCPPorts = [ 2049 139 137 445 ];
+  boot = {
+    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+    extraModulePackages = [ ];
+  };
 
   # NFS
+  networking.firewall.allowedTCPPorts = [ 2049 ];
   services.nfs.server.enable = true;
   services.rpcbind.enable = true;
   services.nfs.server.exports = ''
@@ -23,25 +24,18 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/454ecdd1-dfb4-4453-88b1-3b06d5412123";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/C96B-3940";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/454ecdd1-dfb4-4453-88b1-3b06d5412123";
       fsType = "btrfs";
       options = [ "subvol=home" ];
-      neededForBoot = true; # required to load ssh key with agenix early
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/454ecdd1-dfb4-4453-88b1-3b06d5412123";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
     };
 
   fileSystems."/media" =
@@ -53,6 +47,8 @@
   { device = "${config.user.home}/Pictures/photos";
     options = [ "bind" ];
   };
+
+  systemd.tmpfiles.rules = ["d /media 0755 inom users"];
 
   swapDevices = [ ];
 
