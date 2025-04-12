@@ -18,6 +18,7 @@ alias sfile='single-file --browser-executable-path=brave --http-proxy-server=kam
 alias sarticle='sfile --output-directory=$HOME/Wiki/articles'
 alias draft='nvim $HOME/Wiki/articles/drafts.md'
 alias b='buku --suggest'
+alias reboot='reboot || sudo reboot'
 
 alias path_dirs='echo -e ${PATH//:/\\n}'
 alias ports='netstat -tulanp'
