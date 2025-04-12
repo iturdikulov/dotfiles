@@ -150,7 +150,7 @@ options libata          allow_tpm=0
 
   # NFS
   fileSystems."${config.user.home}/Media/nas" = {
-      device = "kama:/torrent";
+      device = "kama:/";
       fsType = "nfs";
       options = [ "noauto" "nofail" "noatime" "nfsvers=4.2" "x-systemd.automount" "x-systemd.idle-timeout=600" ];
   };
