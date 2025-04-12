@@ -12,17 +12,6 @@ in {
     services.mysql = {
       enable = true;
       package = pkgs.mariadb;
-
-      # Add some default databases
-      ensureDatabases = [ "photoprism" ];
-
-      # Add some default users
-      ensureUsers = [ {
-        name = "photoprism";
-        ensurePermissions = {
-          "photoprism.*" = "ALL PRIVILEGES";
-        };
-      } ];
     };
   };
 }
