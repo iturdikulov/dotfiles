@@ -5,15 +5,10 @@
     ./hardware-configuration.nix
     ./modules/adguard.nix
     ./modules/gitea.nix
-    ./modules/miniflux.nix
-    ./modules/syncthing.nix
-    ./modules/photoprism.nix
     ./modules/taskwarrior.nix
-    ./modules/jupyenv.nix
     ./modules/autologin.nix
     ./modules/smb.nix
     ./modules/proxy.nix
-    ./modules/jellyfin.nix
   ];
 
   ## Modules
@@ -45,7 +40,6 @@
       ssh.enable = true;
       docker.enable = true;
       nginx.enable = true;
-      mysql.enable = true; # for photoprism
       qbittorrent.enable = true;
       virt-manager.enable = true;
 
