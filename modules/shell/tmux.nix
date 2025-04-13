@@ -25,28 +25,17 @@ in {
         run-shell ${copycat.rtp}
         run-shell ${prefix-highlight.rtp}
         run-shell ${yank.rtp}
+
+        # Resurrect & continuum
+        set -g @resurrect-dir '$HOME/.config/tmux/resurrect'
+        set -g @continuum-restore 'on'
         run-shell ${resurrect.rtp}
+        run-shell ${continuum.rtp}
       '';
       # I avoid programs.tmux.plugins because they're initialized before
       # extraConfig, robbing us of the opportunity to pre-configure plugins.
       # plugins = with pkgs.tmuxPlugins; [];
     };
-
-    user.packages = with pkgs.tmuxPlugins; [
-      (pkgs.writeScriptBin "mux" ''
-        function ressurect() {
-            pgrep -vx tmux > /dev/null && \
-                                  tmux new -d -s delete-me && \
-                                  tmux run-shell ${resurrect}/share/tmux-plugins/resurrect/scripts/restore.sh && \
-                                  tmux kill-session -t delete-me
-        }
-        function attach() {
-          tmux ls | grep -qEv 'attached|scratch' && tmux at
-        }
-
-        attach || ressurect && attach
-       '')
-    ];
 
     home.configFile."tmux" = {
       source = "${configDir}/tmux";
