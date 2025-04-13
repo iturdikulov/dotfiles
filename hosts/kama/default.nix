@@ -40,7 +40,10 @@
       ssh.enable = true;
       docker.enable = true;
       nginx.enable = true;
-      qbittorrent.enable = true;
+      qbittorrent ={
+        enable = true;
+        profile = "/media/qbittorrent";
+      };
       virt-manager.enable = true;
 
       # Needed occasionally to help the parental units with PC problems
