@@ -44,6 +44,17 @@ in {
     ];
     user.extraGroups = [ "libvirtd" ];
 
+    user.packages = with pkgs; [
+      (makeDesktopItem {
+        name = "win";
+        desktopName = "win";
+        genericName = "Open a Windows 10 virtual machine";
+        icon = "microsoft";
+        exec = "${config.dotfiles.binDir}/win_connect";
+        categories = [ "System" ];
+      })
+    ];
+
     # Fix Could not detect a default hypervisor. Make sure the appropriate
     # QEMU/KVM virtualization packages are installed to manage virtualization
     # on this host using home-manager.
