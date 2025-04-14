@@ -74,6 +74,10 @@
 
   };
 
+  # Use card1 as default in hyprland with uwsm
+  environment.sessionVariables = {
+    AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
+  };
 
   services.asusd = {
     enable = true;
